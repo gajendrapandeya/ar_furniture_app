@@ -94,18 +94,19 @@ class AppTheme {
     colorScheme: ColorScheme.fromSwatch().copyWith(
       secondary: LightColor.secondaryColor,
       brightness: Brightness.light,
+      tertiary: LightColor.accentColor,
       primary: LightColor.primaryColor,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: LightColor.platianGreen,
-        backgroundColor: LightColor.secondaryColor,
+        foregroundColor: LightColor.primaryColor,
+        backgroundColor: LightColor.platianGreen,
         textStyle: const TextStyle(
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: FontWeight.w500,
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(6),
         ),
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
@@ -156,19 +157,22 @@ class AppTheme {
       cursorColor: LightColor.secondaryColor,
     ),
     inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: Colors.white,
+      isDense: true,
       border: OutlineInputBorder(
         borderSide: BorderSide(
-          color: Colors.grey.shade400,
+          color: Colors.grey.shade50,
         ),
       ),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          color: Colors.grey.shade400,
+          color: Colors.grey.shade200,
         ),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          color: Colors.grey.shade400,
+          color: Colors.grey.shade200,
         ),
       ),
       errorBorder: const OutlineInputBorder(
@@ -184,12 +188,12 @@ class AppTheme {
       suffixIconColor: LightColor.secondaryColor,
       labelStyle: const TextStyle(
         color: LightColor.secondaryColor,
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
       ),
       hintStyle: const TextStyle(
         color: LightColor.secondaryColor,
-        fontSize: 14,
+        fontSize: 12,
         fontWeight: FontWeight.w400,
       ),
       errorStyle: const TextStyle(
@@ -199,6 +203,7 @@ class AppTheme {
       ),
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 16,
+        vertical: 12,
       ),
     ),
     bottomSheetTheme: const BottomSheetThemeData(
@@ -302,6 +307,7 @@ class AppTheme {
     colorScheme: ColorScheme.fromSwatch().copyWith(
       secondary: DarkColor.secondaryColor,
       brightness: Brightness.dark,
+      tertiary: LightColor.accentColor,
       onSecondary: LightColor.secondaryColor,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(

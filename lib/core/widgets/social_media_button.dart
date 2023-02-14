@@ -7,12 +7,14 @@ class SocialMediaButton extends ConsumerWidget {
   const SocialMediaButton({
     required this.onBtnPressed,
     required this.buttonText,
-    required this.assetName,
+    required this.iconData,
+    required this.iconColor,
     Key? key,
   }) : super(key: key);
   final Function onBtnPressed;
   final String buttonText;
-  final String assetName;
+  final IconData iconData;
+  final Color iconColor;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,7 +26,7 @@ class SocialMediaButton extends ConsumerWidget {
             backgroundColor: MaterialStateProperty.all(Colors.transparent),
             side: MaterialStateProperty.all(
               BorderSide(
-                color: Colors.grey.shade500,
+                color: Colors.grey.shade300,
                 width: 1.0,
               ),
             ),
@@ -32,12 +34,17 @@ class SocialMediaButton extends ConsumerWidget {
       onPressed: () {
         onBtnPressed();
       },
-      icon: Image.asset(assetName),
+      icon: Icon(
+        iconData,
+        color: iconColor,
+        size: 20,
+      ),
       label: Text(
         buttonText,
         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              color: Theme.of(context).colorScheme.onSecondary,
-              fontWeight: FontWeight.w700,
+              color: Theme.of(context).colorScheme.secondary,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
             ),
       ),
     );
