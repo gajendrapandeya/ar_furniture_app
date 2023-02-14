@@ -41,7 +41,7 @@ class CustomOutlinedButton extends ConsumerWidget {
             buttonText,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.onSecondary,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
           ),
           HorizontalSpacer.xs,
