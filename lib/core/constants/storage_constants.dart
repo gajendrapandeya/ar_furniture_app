@@ -1,5 +1,6 @@
 class StorageConstants {
-  static const String theme = 'theme';
-  static const String lightTheme = 'lightTheme';
-  static const String darkTheme = 'darkTheme';
+  static const String themeKey = 'theme';
+  static const String lightThemeKey = 'lightTheme';
+  static const String darkThemeKey = 'darkTheme';
+  static const String onboardingKey = 'on-boarding';
 }
