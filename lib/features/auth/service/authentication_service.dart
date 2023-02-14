@@ -1,10 +1,10 @@
 import 'package:ar_furniture_app/core/constants/firebase_constants.dart';
+import 'package:ar_furniture_app/core/model/user_model.dart';
 import 'package:ar_furniture_app/core/providers/firebase_providers.dart';
 import 'package:ar_furniture_app/core/utils/custom_firebase_exception.dart';
 import 'package:ar_furniture_app/core/utils/error_mixin.dart';
 import 'package:ar_furniture_app/core/utils/firebase_failure.dart';
 import 'package:ar_furniture_app/core/utils/firestore_exception.dart';
-import 'package:ar_furniture_app/features/auth/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

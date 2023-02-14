@@ -4,6 +4,10 @@ class RouteConstants {
   static const String loginRoute = '/login';
   static const String registerRoute = '/signup';
   static const String forgotPasswordRoute = '/forgot-password';
-  static const String chnagePasswordRoute = '/change-password';
+  static const String changePasswordRoute = '/change-password';
   static const String profileRoute = '/profile';
+  static const String productListRoute = '/product-list';
+  static const String productDetailRoute = '/product-detail';
+  static const String cartRoute = '/cart';
+  static const String wishListRoute = '/wish-list';
 }
