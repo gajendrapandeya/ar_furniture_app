@@ -26,7 +26,7 @@ dependencies:
   cloud_firestore: ^4.3.2
   google_sign_in: ^5.4.4
   flutter_riverpod: ^2.2.0
-  flutter_svg: ^2.0.0+1
+  flutter_svg: ^2.0.1
   cached_network_image: ^3.2.3
   intl: ^0.17.0
   persistent_bottom_nav_bar: ^5.0.2
@@ -52,3 +52,5 @@ flutter:
           weight: 500
         - asset: assets/fonts/Poppins-SemiBold.ttf
           weight: 600
+  assets:
+    - assets/images/

@@ -24,9 +24,9 @@ class ThemeController extends StateNotifier<ThemeData> {
   // If the theme is dark, it will set the theme to dark
   void getTheme() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final theme = prefs.getString(StorageConstants.theme);
+    final theme = prefs.getString(StorageConstants.themeKey);
 
-    if (theme == StorageConstants.lightTheme) {
+    if (theme == StorageConstants.lightThemeKey) {
       _themeMode = ThemeMode.light;
       state = AppTheme.lightThemeData;
     } else {
