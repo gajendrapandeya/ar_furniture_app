@@ -2,10 +2,16 @@ import 'package:ar_furniture_app/core/constants/app_constants.dart';
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/controllers/theme_controller.dart';
 import 'package:ar_furniture_app/core/router/app_router.dart';
+import 'package:ar_furniture_app/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     const ProviderScope(
       child: Furniturly(),
