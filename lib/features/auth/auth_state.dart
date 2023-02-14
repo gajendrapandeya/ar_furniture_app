@@ -1,5 +1,5 @@
+import 'package:ar_furniture_app/core/model/user_model.dart';
 import 'package:ar_furniture_app/core/utils/enums.dart';
-import 'package:ar_furniture_app/features/auth/user_model.dart';
 
 class AuthState {
   final AuthStateEnum authStateEnum;
