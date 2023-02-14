@@ -32,8 +32,8 @@ class CustomElevatedButton extends ConsumerWidget {
         children: [
           Text(
             buttonText,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w500,
                   color: Colors.white,
                 ),
           ),
