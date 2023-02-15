@@ -2,7 +2,6 @@ import 'package:ar_furniture_app/core/constants/app_constants.dart';
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/controllers/theme_controller.dart';
 import 'package:ar_furniture_app/core/providers/storage_provider.dart';
-import 'package:ar_furniture_app/core/providers/user_provider.dart';
 import 'package:ar_furniture_app/core/router/app_router.dart';
 import 'package:ar_furniture_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final sharedPreferencesProvider =
     Provider<SharedPreferences>((_) => throw UnimplementedError());
+final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +34,6 @@ class Furniturly extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userProvider = ref.watch(userNotifierProvider);
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -45,11 +44,11 @@ class Furniturly extends ConsumerWidget {
       },
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        navigatorKey: navigatorKey,
         title: AppConstants.appName,
         theme: ref.watch(themeProvider),
         onGenerateRoute: AppRouter.generateRoute,
-        initialRoute: (ref.read(storageProvider).isOnboardingCompleted &&
-                userProvider != null)
+        initialRoute: ref.read(storageProvider).isOnboardingCompleted
             ? RouteConstants.homeRoute
             : RouteConstants.onboardingRoute,
       ),

@@ -29,9 +29,9 @@ dependencies:
   flutter_svg: ^2.0.1
   cached_network_image: ^3.2.3
   intl: ^0.17.0
-  persistent_bottom_nav_bar: ^5.0.2
   shared_preferences: ^2.0.15
   flutter_facebook_auth: ^5.0.7
+  lottie: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -55,3 +55,4 @@ flutter:
           weight: 600
   assets:
     - assets/images/
+    - assets/lottie/

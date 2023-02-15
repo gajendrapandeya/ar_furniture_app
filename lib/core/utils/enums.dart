@@ -25,3 +25,10 @@ enum AuthStateFailureType {
   newPasswordAndConfirmNewPasswordNotSame,
   none,
 }
+
+enum NetworkStateEnum {
+  initial,
+  loading,
+  success,
+  failure,
+}
