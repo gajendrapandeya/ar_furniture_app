@@ -1,45 +1,36 @@
+import 'dart:io';
+
 import 'package:ar_furniture_app/core/constants/firebase_constants.dart';
 import 'package:ar_furniture_app/core/model/user_model.dart';
 import 'package:ar_furniture_app/core/providers/firebase_providers.dart';
-import 'package:ar_furniture_app/core/utils/custom_firebase_exception.dart';
 import 'package:ar_furniture_app/core/utils/error_mixin.dart';
-import 'package:ar_furniture_app/core/utils/firebase_failure.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final profileServiceProvider = Provider<ProfileService>((ref) => ProfileService(
-      firestore: ref.read(firestoreProvider),
-      auth: ref.read(firebaseAuthProvider),
-    ));
+    firestore: ref.read(firestoreProvider),
+    firebaseStorage: ref.read(firebaseStorageProvider)));
 
 class ProfileService with ErrorMixin {
   final FirebaseFirestore _firestore;
-  final FirebaseAuth _auth;
+  final FirebaseStorage _firebaseStorage;
 
   ProfileService({
     required FirebaseFirestore firestore,
-    required FirebaseAuth auth,
-  })  : _auth = auth,
-        _firestore = firestore;
+    required FirebaseStorage firebaseStorage,
+  })  : _firestore = firestore,
+        _firebaseStorage = firebaseStorage;
 
   CollectionReference get _userCollection =>
       _firestore.collection(FirebaseConstants.usersCollection);
 
-  Future<bool> updateProfilePicture({required String url}) async {
+  Future<bool> updateProfilePicture({required File photo}) async {
     try {
-      final User? user = _auth.currentUser;
-      if (user != null) {
-        await user.updatePhotoURL(url);
-        return true;
-      } else {
-        throw CustomFirebaseException(
-          failure: FirebaseFailure.unknown(
-            message: 'User not found',
-          ),
-        );
-      }
+      final ref = _firebaseStorage.ref('files/${photo.path}').child('users');
+      await ref.putFile(photo);
+      return true;
     } catch (error) {
       throw handleError(error);
     }

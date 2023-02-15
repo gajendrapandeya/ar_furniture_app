@@ -9,7 +9,7 @@ import 'package:ar_furniture_app/features/onboarding/onboarding_screen.dart';
 import 'package:ar_furniture_app/features/product_list/product_list_screen.dart';
 import 'package:ar_furniture_app/features/profile/change_password/screens/change_password_screen.dart';
 import 'package:ar_furniture_app/features/profile/core/screens/profile_screen.dart';
-import 'package:ar_furniture_app/features/profile/update_profile/update_profile_screen.dart';
+import 'package:ar_furniture_app/features/profile/update_profile/screens/update_profile_screen.dart';
 import 'package:ar_furniture_app/features/wishlist/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 
