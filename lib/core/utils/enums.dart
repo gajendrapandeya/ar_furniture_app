@@ -19,6 +19,7 @@ enum AuthStateEnum {
 enum AuthStateFailureType {
   emptyUsername,
   emptyEmail,
+  invalidMobileNumber,
   emptyPassword,
   emptyOldPassword,
   emptyConfirmPassowrd,

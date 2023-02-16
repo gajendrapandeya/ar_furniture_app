@@ -34,7 +34,7 @@ class LabelledTextFormField extends StatelessWidget {
         CustomTextFormField(
           readOnly: readOnly,
           formFieldValue: value,
-          onTextChanged: onTextChanged,
+          onTextChanged: (input) => onTextChanged?.call(input),
           errorText: errorText,
           keyboardType: keyboardType,
         )

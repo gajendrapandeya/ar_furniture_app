@@ -5,10 +5,9 @@ import 'package:ar_furniture_app/core/widgets/not_logged_in_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/auth/core/controller/authentication_controller.dart';
 import 'package:ar_furniture_app/features/profile/core/controller/profile_controller.dart';
+import 'package:ar_furniture_app/features/profile/core/model/profile_item.dart';
 import 'package:ar_furniture_app/features/profile/core/widgets/profile_header.dart';
 import 'package:ar_furniture_app/features/profile/core/widgets/profile_list_item.dart';
-import 'package:ar_furniture_app/features/profile/model/profile_item.dart';
-import 'package:ar_furniture_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -84,8 +83,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               )
             : NotLoggedInWidget(onLoginPressed: () {
                 ref.read(authProvider.notifier).logout();
-                debugPrint('currentroute: ${ModalRoute.of(context)?.settings}');
-                navigatorKey.currentState!
+                Navigator.of(context)
                     .pushReplacementNamed(RouteConstants.loginRoute);
               }),
       ),

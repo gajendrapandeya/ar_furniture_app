@@ -36,6 +36,7 @@ class _CustomTextFormFieldState extends ConsumerState<CustomTextFormField> {
   @override
   void initState() {
     _errorText = widget.errorText;
+    _controller.text = widget.formFieldValue ?? '';
     super.initState();
   }
 
@@ -59,7 +60,7 @@ class _CustomTextFormFieldState extends ConsumerState<CustomTextFormField> {
   Widget build(BuildContext context) {
     return TextFormField(
       readOnly: widget.readOnly,
-      controller: _controller..text = widget.formFieldValue ?? '',
+      controller: _controller,
       validator: (value) {
         if (value != null && value.isEmpty) {
           return _errorText;

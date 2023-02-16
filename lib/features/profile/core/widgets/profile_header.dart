@@ -3,6 +3,7 @@ import 'package:ar_furniture_app/core/model/user_model.dart';
 import 'package:ar_furniture_app/core/utils/enums.dart';
 import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
 import 'package:ar_furniture_app/core/widgets/generic_error_widget.dart';
+import 'package:ar_furniture_app/core/widgets/image_widget.dart';
 import 'package:ar_furniture_app/features/profile/core/controller/profile_controller.dart';
 import 'package:ar_furniture_app/features/profile/core/widgets/profile_loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +23,15 @@ class ProfileHeader extends ConsumerWidget {
         (state.networkStateEnum == NetworkStateEnum.loading)) {
       return const ProfileLoadingWidget();
     } else if (state.networkStateEnum == NetworkStateEnum.success) {
-      return _builldHeader(state.data as UserModel, context);
+      return _builldHeader(state.data as UserModel, context, ref);
     } else {
       return GenericErrorWidget(
           error: state.message ?? 'Unknown Error', onBtnPressed: () {});
     }
   }
 
-  Widget _builldHeader(UserModel userModel, BuildContext context) {
+  Widget _builldHeader(
+      UserModel userModel, BuildContext context, WidgetRef ref) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -57,10 +59,18 @@ class ProfileHeader extends ConsumerWidget {
                         .titleLarge
                         ?.copyWith(fontWeight: FontWeight.bold, fontSize: 24),
                   )
-                : CircleAvatar(
-                    radius: 80,
-                    backgroundImage: NetworkImage(
-                      userModel.photoUrl,
+                : SizedBox(
+                    height: 150,
+                    width: 150,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(150),
+                      ),
+                      child: ImageWidget(
+                        url: userModel.photoUrl,
+                        imageHeight: 80,
+                        imageWidth: 80,
+                      ),
                     ),
                   ),
           ),
@@ -89,9 +99,17 @@ class ProfileHeader extends ConsumerWidget {
           child: Container(
             transform: Matrix4.translationValues(0.0, 12.0, 0.0),
             child: IconButton(
-              onPressed: () => Navigator.of(context).pushNamed(
+              onPressed: () async {
+                final result = await Navigator.of(context).pushNamed(
                   RouteConstants.updateProfileRoute,
-                  arguments: userModel),
+                  arguments: userModel,
+                );
+                if (result != null && result == true) {
+                  ref
+                      .read(profileProvider.notifier)
+                      .getUserData(uid: userModel.id);
+                }
+              },
               icon: const Icon(
                 MdiIcons.pencilCircleOutline,
                 color: Colors.black,

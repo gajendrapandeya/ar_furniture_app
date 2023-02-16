@@ -6,18 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class LabelItem {
+class BottomNavBarItem {
   final String label;
   final IconData iconData;
 
-  LabelItem({required this.label, required this.iconData});
+  BottomNavBarItem({required this.label, required this.iconData});
 }
 
 final _navBarItems = [
-  LabelItem(label: '', iconData: MdiIcons.homeOutline),
-  LabelItem(label: '', iconData: MdiIcons.cart),
-  LabelItem(label: '', iconData: MdiIcons.cardsHeartOutline),
-  LabelItem(label: '', iconData: MdiIcons.accountOutline),
+  BottomNavBarItem(label: '', iconData: MdiIcons.homeOutline),
+  BottomNavBarItem(label: '', iconData: MdiIcons.cart),
+  BottomNavBarItem(label: '', iconData: MdiIcons.cardsHeartOutline),
+  BottomNavBarItem(label: '', iconData: MdiIcons.accountOutline),
 ];
 
 class BottomNavBar extends ConsumerWidget {
@@ -30,7 +30,8 @@ class BottomNavBar extends ConsumerWidget {
     final currentIndex = ref.watch(bottomNavBarCurrentIndexProvider);
     return BottomNavigationBar(
       currentIndex: currentIndex,
-      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.red,
+      type: BottomNavigationBarType.shifting,
       selectedLabelStyle: const TextStyle(
         fontWeight: FontWeight.bold,
       ),
@@ -61,6 +62,7 @@ class BottomNavBar extends ConsumerWidget {
   }) {
     return BottomNavigationBarItem(
       label: label,
+      backgroundColor: Colors.grey.shade50,
       icon: Column(
         children: [
           Icon(

@@ -26,11 +26,30 @@ class ProfileService with ErrorMixin {
   CollectionReference get _userCollection =>
       _firestore.collection(FirebaseConstants.usersCollection);
 
-  Future<bool> updateProfilePicture({required File photo}) async {
+  Future<String> updateProfilePicture({
+    required File file,
+    required String userId,
+  }) async {
     try {
-      final ref = _firebaseStorage.ref('files/${photo.path}').child('users');
-      await ref.putFile(photo);
-      return true;
+      final ref = _firebaseStorage.ref();
+      final imagesRef = ref.child('images/users/${file.path}');
+      await imagesRef.putFile(file);
+      final downloadImageUrl = await imagesRef.getDownloadURL();
+      await _userCollection.doc(userId).update({'photoUrl': downloadImageUrl});
+      return downloadImageUrl;
+    } catch (error) {
+      debugPrint('error: $error');
+      throw handleError(error);
+    }
+  }
+
+  Future<UserModel> updateUserDetail(
+      {required Map<String, dynamic> userDetail,
+      required String userId}) async {
+    try {
+      await _userCollection.doc(userId).update(userDetail);
+      debugPrint('caled');
+      return await getUserData(userId: userId);
     } catch (error) {
       throw handleError(error);
     }
@@ -39,7 +58,6 @@ class ProfileService with ErrorMixin {
   Future<UserModel> getUserData({required String userId}) async {
     try {
       final snapshot = await _userCollection.doc(userId).get();
-      debugPrint('snapshot: ${snapshot.data()}');
       return UserModel.fromMap(snapshot.data() as Map<String, dynamic>);
     } catch (error) {
       throw handleError(error);
