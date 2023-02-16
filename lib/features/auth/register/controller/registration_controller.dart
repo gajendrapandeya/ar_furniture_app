@@ -1,7 +1,7 @@
 import 'package:ar_furniture_app/core/utils/custom_firebase_exception.dart';
 import 'package:ar_furniture_app/core/utils/enums.dart';
 import 'package:ar_furniture_app/features/auth/auth_state.dart';
-import 'package:ar_furniture_app/features/auth/service/authentication_service.dart';
+import 'package:ar_furniture_app/features/auth/core/service/authentication_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final registrationProvider =

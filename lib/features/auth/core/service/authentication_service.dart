@@ -126,7 +126,7 @@ class AuthenticationService with ErrorMixin {
           final UserModel userModel = UserModel(
             id: user.uid,
             fullName: user.displayName!,
-            email: user.email!,
+            email: user.email ?? '',
             photoUrl: user.photoURL ?? '',
           );
           await _users.doc(user.uid).set(userModel.toMap());
@@ -147,10 +147,21 @@ class AuthenticationService with ErrorMixin {
     }
   }
 
+  Future<bool> resetPassword({required String email}) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      await GoogleSignIn().signOut();
+      return true;
+    } catch (error) {
+      throw handleError(error);
+    }
+  }
+
   Future<bool> logOut() async {
     try {
       await _auth.signOut();
-      await GoogleSignIn().signOut();
+      await _googleSignIn.signOut();
+      await _facebookAuth.logOut();
       return true;
     } catch (error) {
       throw handleError(error);
@@ -175,35 +186,6 @@ class AuthenticationService with ErrorMixin {
     }
   }
 
-  Future<bool> resetPassword({required String email}) async {
-    try {
-      await _auth.sendPasswordResetEmail(email: email);
-      await GoogleSignIn().signOut();
-      return true;
-    } catch (error) {
-      throw handleError(error);
-    }
-  }
-
-  Future<bool> updateProfilePicture({required String url}) async {
-    try {
-      final User? user = _auth.currentUser;
-      if (user != null) {
-        await user.updatePhotoURL(url);
-        return true;
-      } else {
-        throw CustomFirebaseException(
-          failure: FirebaseFailure.unknown(
-            message: 'User not found',
-          ),
-        );
-      }
-    } catch (error) {
-      throw handleError(error);
-    }
-  }
-
-  //check if token expired and change password
   Future<bool> changePassword(
       {required String oldPassword, required String newPassword}) async {
     try {
@@ -232,11 +214,5 @@ class AuthenticationService with ErrorMixin {
     } catch (error) {
       throw handleError(error);
     }
-  }
-
-  Stream<UserModel> getUserData(String uid) {
-    return _users.doc(uid).snapshots().map((snapshot) {
-      return UserModel.fromMap(snapshot.data() as Map<String, dynamic>);
-    });
   }
 }

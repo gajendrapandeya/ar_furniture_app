@@ -95,7 +95,7 @@ class AppTheme {
       secondary: LightColor.secondaryColor,
       brightness: Brightness.light,
       tertiary: LightColor.accentColor,
-      primary: LightColor.primaryColor,
+      primary: LightColor.platianGreen,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

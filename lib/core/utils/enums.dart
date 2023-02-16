@@ -19,9 +19,17 @@ enum AuthStateEnum {
 enum AuthStateFailureType {
   emptyUsername,
   emptyEmail,
+  invalidMobileNumber,
   emptyPassword,
   emptyOldPassword,
   emptyConfirmPassowrd,
   newPasswordAndConfirmNewPasswordNotSame,
   none,
+}
+
+enum NetworkStateEnum {
+  initial,
+  loading,
+  success,
+  failure,
 }

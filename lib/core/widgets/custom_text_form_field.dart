@@ -8,14 +8,18 @@ class CustomTextFormField extends ConsumerStatefulWidget {
     Key? key,
     this.keyboardType = TextInputType.text,
     this.errorText,
-    required this.hintText,
+    this.hintText,
     this.onTextChanged,
+    this.readOnly = false,
+    this.formFieldValue,
   }) : super(key: key);
 
   final TextInputType keyboardType;
   final String? errorText;
-  final String hintText;
+  final String? hintText;
   final Function(String)? onTextChanged;
+  final bool readOnly;
+  final String? formFieldValue;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -32,6 +36,7 @@ class _CustomTextFormFieldState extends ConsumerState<CustomTextFormField> {
   @override
   void initState() {
     _errorText = widget.errorText;
+    _controller.text = widget.formFieldValue ?? '';
     super.initState();
   }
 
@@ -54,6 +59,7 @@ class _CustomTextFormFieldState extends ConsumerState<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: widget.readOnly,
       controller: _controller,
       validator: (value) {
         if (value != null && value.isEmpty) {

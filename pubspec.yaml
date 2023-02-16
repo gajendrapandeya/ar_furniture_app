@@ -29,17 +29,23 @@ dependencies:
   flutter_svg: ^2.0.1
   cached_network_image: ^3.2.3
   intl: ^0.17.0
-  persistent_bottom_nav_bar: ^5.0.2
+  firebase_storage: ^11.0.11
   shared_preferences: ^2.0.15
   flutter_facebook_auth: ^5.0.7
+  lottie: ^2.2.0
+  image_picker: ^0.8.6+1
+  firebase_app_check: ^0.1.1+9
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.8.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
-  build_runner: ^2.2.0
-  json_serializable: ^6.3.1
+  build_runner: ^2.3.3
+  json_serializable: ^6.6.1
+  freezed: ^2.3.2
 
 flutter:
   uses-material-design: true
@@ -55,3 +61,4 @@ flutter:
           weight: 600
   assets:
     - assets/images/
+    - assets/lottie/

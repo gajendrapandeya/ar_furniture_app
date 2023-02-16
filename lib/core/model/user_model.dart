@@ -5,11 +5,13 @@ class UserModel {
   final String fullName;
   final String email;
   final String photoUrl;
+  final String? mobileNumber;
   UserModel({
     required this.id,
     required this.fullName,
     required this.email,
     required this.photoUrl,
+    this.mobileNumber,
   });
 
   UserModel copyWith({
@@ -32,6 +34,7 @@ class UserModel {
       'fullName': fullName,
       'email': email,
       'photoUrl': photoUrl,
+      'mobileNumber': mobileNumber,
     };
   }
 
@@ -41,6 +44,7 @@ class UserModel {
       fullName: map['fullName'] as String,
       email: map['email'] as String,
       photoUrl: map['photoUrl'] as String,
+      mobileNumber: map['mobileNumber'],
     );
   }
 
