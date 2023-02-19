@@ -32,7 +32,8 @@ class ProfileService with ErrorMixin {
   }) async {
     try {
       final ref = _firebaseStorage.ref();
-      final imagesRef = ref.child('images/users/${file.path}');
+      final imageName = file.path.split('/').last;
+      final imagesRef = ref.child('images/users/$imageName');
       await imagesRef.putFile(file);
       final downloadImageUrl = await imagesRef.getDownloadURL();
       await _userCollection.doc(userId).update({'photoUrl': downloadImageUrl});
@@ -48,7 +49,6 @@ class ProfileService with ErrorMixin {
       required String userId}) async {
     try {
       await _userCollection.doc(userId).update(userDetail);
-      debugPrint('caled');
       return await getUserData(userId: userId);
     } catch (error) {
       throw handleError(error);

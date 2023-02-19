@@ -25,8 +25,7 @@ class ProfileHeader extends ConsumerWidget {
     } else if (state.networkStateEnum == NetworkStateEnum.success) {
       return _builldHeader(state.data as UserModel, context, ref);
     } else {
-      return GenericErrorWidget(
-          error: state.message ?? 'Unknown Error', onBtnPressed: () {});
+      return GenericErrorWidget(error: state.message ?? 'Unknown Error');
     }
   }
 

@@ -2,6 +2,7 @@
 
 import 'package:ar_furniture_app/core/constants/asset_constants.dart';
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
+import 'package:ar_furniture_app/core/providers/storage_provider.dart';
 import 'package:ar_furniture_app/core/utils/enums.dart';
 import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
 import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
@@ -43,7 +44,22 @@ class LoginScreen extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            VerticalSpacer.exl,
+            VerticalSpacer.l,
+            Align(
+              alignment: Alignment.topRight,
+              child: IconButton(
+                style: IconButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+                onPressed: () {
+                  ref.read(storageProvider).setOnboardingCompleted();
+                  Navigator.of(context)
+                      .pushReplacementNamed(RouteConstants.homeRoute);
+                },
+                icon: const Icon(MdiIcons.close),
+                color: Colors.black,
+              ),
+            ),
             Align(
               alignment: Alignment.center,
               child: ImageWidget(

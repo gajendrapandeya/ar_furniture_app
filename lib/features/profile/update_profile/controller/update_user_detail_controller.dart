@@ -5,10 +5,9 @@ import 'package:ar_furniture_app/features/profile/update_profile/controller/upda
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final updateUserDetailProvider = StateNotifierProvider.family<
-    UpdateUserDetailController,
-    UpdateProfileState,
-    UserModel>((ref, userModel) {
+final updateUserDetailProvider = StateNotifierProvider.family
+    .autoDispose<UpdateUserDetailController, UpdateProfileState, UserModel>(
+        (ref, userModel) {
   return UpdateUserDetailController(
       profileService: ref.watch(profileServiceProvider), userModel: userModel);
 });

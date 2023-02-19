@@ -11,4 +11,5 @@ class RouteConstants {
   static const String cartRoute = '/cart';
   static const String wishListRoute = '/wish-list';
   static const String updateProfileRoute = '/update-profile';
+  static const String categoryRoute = '/category';
 }

@@ -30,8 +30,8 @@ class BottomNavBar extends ConsumerWidget {
     final currentIndex = ref.watch(bottomNavBarCurrentIndexProvider);
     return BottomNavigationBar(
       currentIndex: currentIndex,
-      backgroundColor: Colors.red,
-      type: BottomNavigationBarType.shifting,
+      backgroundColor: Colors.grey.shade50,
+      type: BottomNavigationBarType.fixed,
       selectedLabelStyle: const TextStyle(
         fontWeight: FontWeight.bold,
       ),
