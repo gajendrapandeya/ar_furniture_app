@@ -20,7 +20,7 @@ Category _$CategoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Category {
-  String? get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
 
@@ -35,7 +35,7 @@ abstract class $CategoryCopyWith<$Res> {
   factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
       _$CategoryCopyWithImpl<$Res, Category>;
   @useResult
-  $Res call({String? id, String name, String imageUrl});
+  $Res call({String id, String name, String imageUrl});
 }
 
 /// @nodoc
@@ -51,15 +51,15 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
     Object? imageUrl = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -79,7 +79,7 @@ abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
       __$$_CategoryCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, String name, String imageUrl});
+  $Res call({String id, String name, String imageUrl});
 }
 
 /// @nodoc
@@ -93,15 +93,15 @@ class __$$_CategoryCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
     Object? imageUrl = null,
   }) {
     return _then(_$_Category(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -124,7 +124,7 @@ class _$_Category implements _Category {
       _$$_CategoryFromJson(json);
 
   @override
-  final String? id;
+  final String id;
   @override
   final String name;
   @override
@@ -166,14 +166,14 @@ class _$_Category implements _Category {
 
 abstract class _Category implements Category {
   const factory _Category(
-      {required final String? id,
+      {required final String id,
       required final String name,
       required final String imageUrl}) = _$_Category;
 
   factory _Category.fromJson(Map<String, dynamic> json) = _$_Category.fromJson;
 
   @override
-  String? get id;
+  String get id;
   @override
   String get name;
   @override

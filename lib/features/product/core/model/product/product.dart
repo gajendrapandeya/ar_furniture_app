@@ -5,6 +5,7 @@ part 'product.g.dart';
 
 @freezed
 class Product with _$Product {
+  const Product._();
   const factory Product({
     required final String id,
     required final String categoryId,
@@ -13,10 +14,14 @@ class Product with _$Product {
     required final int price,
     required final double rating,
     required final String description,
-    required final List<String> color,
-    required final List<String> size,
+    required final List<String> colors,
+    required final List<String> sizes,
   }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
+
+  bool get isRatingAvailable => rating != 0.0;
+
+  String get formattedPrice => 'NPR: $price';
 }

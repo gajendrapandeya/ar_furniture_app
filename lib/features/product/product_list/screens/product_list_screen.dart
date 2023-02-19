@@ -1,9 +1,11 @@
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/category/controller/category_controller.dart';
+import 'package:ar_furniture_app/features/product/core/controller/product_controller.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/categories_list_widget.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/hot_deal_widget.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/product_list_app_bar.dart';
+import 'package:ar_furniture_app/features/product/product_list/widgets/product_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -21,6 +23,7 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ref.read(categoryProvider.notifier).loadCategories();
+      ref.read(productsProvider.notifier).fetchProducts(categoryId: '');
     });
   }
 
@@ -72,7 +75,16 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
                 ),
               ],
             ),
-            const CategoryListWidget()
+            CategoryListWidget(
+              onCategorySelected: (categoryId) {
+                debugPrint('categoryId: $categoryId');
+                ref
+                    .read(productsProvider.notifier)
+                    .fetchProducts(categoryId: categoryId);
+              },
+            ),
+            VerticalSpacer.l,
+            const ProductListWidget(),
           ],
         ),
       ),

@@ -9,7 +9,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final selectedCategoryIndexProvider = StateProvider<int>((ref) => 0);
 
 class CategoryListWidget extends ConsumerWidget {
-  const CategoryListWidget({super.key});
+  const CategoryListWidget({
+    super.key,
+    required this.onCategorySelected,
+  });
+
+  final void Function(String) onCategorySelected;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,9 +34,18 @@ class CategoryListWidget extends ConsumerWidget {
               child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) => GestureDetector(
-                        onTap: () => ref
-                            .read(selectedCategoryIndexProvider.notifier)
-                            .update((state) => state = index),
+                        onTap: () {
+                          final selectedCategory = addedCategories[index];
+                          ref
+                              .read(selectedCategoryIndexProvider.notifier)
+                              .update((state) => state = index);
+
+                          if (selectedCategory.imageUrl.isEmpty) {
+                            onCategorySelected('');
+                          } else {
+                            onCategorySelected(selectedCategory.id);
+                          }
+                        },
                         child: _buildListItem(
                           category: addedCategories[index],
                           isSelected: selectedCategoryIndex == index,

@@ -11,7 +11,7 @@ import 'package:ar_furniture_app/features/product/product_list/screens/product_l
 import 'package:ar_furniture_app/features/profile/change_password/screens/change_password_screen.dart';
 import 'package:ar_furniture_app/features/profile/core/screens/profile_screen.dart';
 import 'package:ar_furniture_app/features/profile/update_profile/screens/update_profile_screen.dart';
-import 'package:ar_furniture_app/features/wishlist/wish_list_screen.dart';
+import 'package:ar_furniture_app/features/wishlist/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {

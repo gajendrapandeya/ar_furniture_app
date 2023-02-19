@@ -29,7 +29,7 @@ class CategoryScreen extends ConsumerWidget {
               ),
         ),
       ),
-      body: ref.read(categoryProvider).when(
+      body: ref.watch(categoryProvider).when(
             loading: () => const LoadingWidget(),
             success: (categoriesList) => _buildCategories(categoriesList),
             error: (error) => GenericErrorWidget(error: error),
