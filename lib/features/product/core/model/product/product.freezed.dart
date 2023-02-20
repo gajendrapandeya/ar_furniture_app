@@ -20,15 +20,14 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Product {
-  String get id => throw _privateConstructorUsedError;
-  String get categoryId => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String? get categoryId => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   List<String> get imageUrls => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   List<String> get colors => throw _privateConstructorUsedError;
-  List<String> get sizes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,15 +40,14 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {String id,
-      String categoryId,
-      String name,
+      {String? id,
+      String? categoryId,
+      String? name,
       List<String> imageUrls,
       int price,
       double rating,
-      String description,
-      List<String> colors,
-      List<String> sizes});
+      String? description,
+      List<String> colors});
 }
 
 /// @nodoc
@@ -65,29 +63,28 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? categoryId = null,
-    Object? name = null,
+    Object? id = freezed,
+    Object? categoryId = freezed,
+    Object? name = freezed,
     Object? imageUrls = null,
     Object? price = null,
     Object? rating = null,
-    Object? description = null,
+    Object? description = freezed,
     Object? colors = null,
-    Object? sizes = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
+              as String?,
+      categoryId: freezed == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as String?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       imageUrls: null == imageUrls
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -100,17 +97,13 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       colors: null == colors
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      sizes: null == sizes
-          ? _value.sizes
-          : sizes // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ) as $Val);
   }
@@ -124,15 +117,14 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      String categoryId,
-      String name,
+      {String? id,
+      String? categoryId,
+      String? name,
       List<String> imageUrls,
       int price,
       double rating,
-      String description,
-      List<String> colors,
-      List<String> sizes});
+      String? description,
+      List<String> colors});
 }
 
 /// @nodoc
@@ -145,29 +137,28 @@ class __$$_ProductCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? categoryId = null,
-    Object? name = null,
+    Object? id = freezed,
+    Object? categoryId = freezed,
+    Object? name = freezed,
     Object? imageUrls = null,
     Object? price = null,
     Object? rating = null,
-    Object? description = null,
+    Object? description = freezed,
     Object? colors = null,
-    Object? sizes = null,
   }) {
     return _then(_$_Product(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
+              as String?,
+      categoryId: freezed == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as String?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       imageUrls: null == imageUrls
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -180,17 +171,13 @@ class __$$_ProductCopyWithImpl<$Res>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       colors: null == colors
           ? _value._colors
           : colors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      sizes: null == sizes
-          ? _value._sizes
-          : sizes // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
@@ -207,22 +194,20 @@ class _$_Product extends _Product {
       required this.price,
       required this.rating,
       required this.description,
-      required final List<String> colors,
-      required final List<String> sizes})
+      required final List<String> colors})
       : _imageUrls = imageUrls,
         _colors = colors,
-        _sizes = sizes,
         super._();
 
   factory _$_Product.fromJson(Map<String, dynamic> json) =>
       _$$_ProductFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
-  final String categoryId;
+  final String? categoryId;
   @override
-  final String name;
+  final String? name;
   final List<String> _imageUrls;
   @override
   List<String> get imageUrls {
@@ -236,7 +221,7 @@ class _$_Product extends _Product {
   @override
   final double rating;
   @override
-  final String description;
+  final String? description;
   final List<String> _colors;
   @override
   List<String> get colors {
@@ -245,17 +230,9 @@ class _$_Product extends _Product {
     return EqualUnmodifiableListView(_colors);
   }
 
-  final List<String> _sizes;
-  @override
-  List<String> get sizes {
-    if (_sizes is EqualUnmodifiableListView) return _sizes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_sizes);
-  }
-
   @override
   String toString() {
-    return 'Product(id: $id, categoryId: $categoryId, name: $name, imageUrls: $imageUrls, price: $price, rating: $rating, description: $description, colors: $colors, sizes: $sizes)';
+    return 'Product(id: $id, categoryId: $categoryId, name: $name, imageUrls: $imageUrls, price: $price, rating: $rating, description: $description, colors: $colors)';
   }
 
   @override
@@ -273,8 +250,7 @@ class _$_Product extends _Product {
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(other._colors, _colors) &&
-            const DeepCollectionEquality().equals(other._sizes, _sizes));
+            const DeepCollectionEquality().equals(other._colors, _colors));
   }
 
   @JsonKey(ignore: true)
@@ -288,8 +264,7 @@ class _$_Product extends _Product {
       price,
       rating,
       description,
-      const DeepCollectionEquality().hash(_colors),
-      const DeepCollectionEquality().hash(_sizes));
+      const DeepCollectionEquality().hash(_colors));
 
   @JsonKey(ignore: true)
   @override
@@ -307,25 +282,24 @@ class _$_Product extends _Product {
 
 abstract class _Product extends Product {
   const factory _Product(
-      {required final String id,
-      required final String categoryId,
-      required final String name,
+      {required final String? id,
+      required final String? categoryId,
+      required final String? name,
       required final List<String> imageUrls,
       required final int price,
       required final double rating,
-      required final String description,
-      required final List<String> colors,
-      required final List<String> sizes}) = _$_Product;
+      required final String? description,
+      required final List<String> colors}) = _$_Product;
   const _Product._() : super._();
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
-  String get categoryId;
+  String? get categoryId;
   @override
-  String get name;
+  String? get name;
   @override
   List<String> get imageUrls;
   @override
@@ -333,11 +307,9 @@ abstract class _Product extends Product {
   @override
   double get rating;
   @override
-  String get description;
+  String? get description;
   @override
   List<String> get colors;
-  @override
-  List<String> get sizes;
   @override
   @JsonKey(ignore: true)
   _$$_ProductCopyWith<_$_Product> get copyWith =>

@@ -15,12 +15,13 @@ class CategoryService with ErrorMixin {
 
   Future<List<Category>> fetchCategories() async {
     try {
+      debugPrint('categoriescalled:');
       final snapshot = await _categoryCollection.get();
       return snapshot.docs.map((doc) {
         return Category.fromJson(doc.data() as Map<String, dynamic>);
       }).toList();
     } catch (error) {
-      debugPrint('error: $error');
+      debugPrint('error cat: $error');
       throw handleError(error);
     }
   }

@@ -1,3 +1,4 @@
+import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/widgets/generic_error_widget.dart';
 import 'package:ar_furniture_app/core/widgets/loading_widget.dart';
 import 'package:ar_furniture_app/features/category/controller/category_controller.dart';
@@ -30,6 +31,7 @@ class CategoryScreen extends ConsumerWidget {
         ),
       ),
       body: ref.watch(categoryProvider).when(
+            initial: () => const LoadingWidget(),
             loading: () => const LoadingWidget(),
             success: (categoriesList) => _buildCategories(categoriesList),
             error: (error) => GenericErrorWidget(error: error),
@@ -53,8 +55,14 @@ class CategoryScreen extends ConsumerWidget {
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
         ),
-        itemBuilder: ((context, index) =>
-            _buildCategoryItem(categoriesList[index], context)),
+        itemBuilder: ((context, index) => InkWell(
+              onTap: () => Navigator.of(context)
+                  .pushNamed(RouteConstants.categoryProductRoute, arguments: {
+                'categoryId': categoriesList[index].id,
+                'categoryName': categoriesList[index].name,
+              }),
+              child: _buildCategoryItem(categoriesList[index], context),
+            )),
       ),
     );
   }
@@ -64,10 +72,12 @@ class CategoryScreen extends ConsumerWidget {
       borderRadius: BorderRadius.circular(4),
       child: Stack(
         children: [
-          CachedNetworkImage(
-            imageUrl: category.imageUrl,
-            fit: BoxFit.fill,
-            height: double.infinity,
+          Positioned.fill(
+            child: CachedNetworkImage(
+              imageUrl: category.imageUrl,
+              fit: BoxFit.fill,
+              height: double.infinity,
+            ),
           ),
           Container(
             color: Colors.black.withOpacity(0.7),

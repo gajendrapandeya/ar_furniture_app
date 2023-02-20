@@ -14,10 +14,11 @@ class CategoryController extends StateNotifier<CategoryState> {
 
   CategoryController({required CategoryService categoryService})
       : _categoryService = categoryService,
-        super(const CategoryState.loading());
+        super(const CategoryState.initial());
 
   Future<void> loadCategories() async {
     try {
+      state = const CategoryState.loading();
       final categories = await _categoryService.fetchCategories();
       state = CategoryState.success(categories: categories);
     } catch (error) {

@@ -35,57 +35,66 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
         padding: const EdgeInsets.symmetric(
           horizontal: 16.0,
         ),
-        child: ListView(
-          children: [
-            VerticalSpacer.l,
-            Text(
-              'Find The\nBest Furniture',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20,
+        child: RefreshIndicator(
+          backgroundColor: Theme.of(context).colorScheme.secondary,
+          color: Colors.white,
+          onRefresh: () {
+            ref.read(categoryProvider.notifier).loadCategories();
+            ref.read(productsProvider.notifier).fetchProducts(categoryId: '');
+            return Future.value();
+          },
+          child: ListView(
+            children: [
+              VerticalSpacer.l,
+              Text(
+                'Find The\nBest Furniture',
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                    ),
+              ),
+              VerticalSpacer.l,
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.18,
+                child: const HotDealWidget(),
+              ),
+              VerticalSpacer.m,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Categories',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(fontWeight: FontWeight.bold),
                   ),
-            ),
-            VerticalSpacer.l,
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.18,
-              child: const HotDealWidget(),
-            ),
-            VerticalSpacer.m,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Categories',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(RouteConstants.categoryRoute);
-                  },
-                  child: Text(
-                    'See All',
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          color: Colors.grey.shade500,
-                        ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushNamed(RouteConstants.categoryRoute);
+                    },
+                    child: Text(
+                      'See All',
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            color: Colors.grey.shade500,
+                          ),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            CategoryListWidget(
-              onCategorySelected: (categoryId) {
-                debugPrint('categoryId: $categoryId');
-                ref
-                    .read(productsProvider.notifier)
-                    .fetchProducts(categoryId: categoryId);
-              },
-            ),
-            VerticalSpacer.l,
-            const ProductListWidget(),
-          ],
+                ],
+              ),
+              CategoryListWidget(
+                onCategorySelected: (categoryId) {
+                  debugPrint('categoryId: $categoryId');
+                  ref
+                      .read(productsProvider.notifier)
+                      .fetchProducts(categoryId: categoryId);
+                },
+              ),
+              VerticalSpacer.l,
+              const ProductListWidget(),
+            ],
+          ),
         ),
       ),
     );

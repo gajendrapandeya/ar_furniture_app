@@ -24,9 +24,9 @@ class ProductService with ErrorMixin {
         snapshot = await _productCollection.get();
       }
 
-      return snapshot.docs
-          .map((doc) => Product.fromJson(doc.data() as Map<String, dynamic>))
-          .toList();
+      return snapshot.docs.map((doc) {
+        return Product.fromJson(doc.data() as Map<String, dynamic>);
+      }).toList();
     } catch (error) {
       debugPrint('error; $error');
       throw handleError(error);

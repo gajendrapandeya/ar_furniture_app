@@ -5,6 +5,7 @@ part 'category_state.freezed.dart';
 
 @freezed
 class CategoryState with _$CategoryState {
+  const factory CategoryState.initial() = CategoryStateInitial;
   const factory CategoryState.loading() = CategoryStateLoading;
   const factory CategoryState.success({required List<Category> categories}) =
       CategoryStateSuccess;

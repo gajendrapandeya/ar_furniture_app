@@ -20,6 +20,10 @@ class CategoryListWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedCategoryIndex = ref.watch(selectedCategoryIndexProvider);
     return ref.watch(categoryProvider).when(
+          initial: () => const SizedBox(
+            height: 18,
+            child: CategoryLoadingWidget(),
+          ),
           loading: () => const SizedBox(
             height: 18,
             child: CategoryLoadingWidget(),

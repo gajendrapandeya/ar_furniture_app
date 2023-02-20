@@ -7,6 +7,9 @@ import 'package:ar_furniture_app/features/cart/cart_screen.dart';
 import 'package:ar_furniture_app/features/category/screens/category_screen.dart';
 import 'package:ar_furniture_app/features/home/home_screen.dart';
 import 'package:ar_furniture_app/features/onboarding/onboarding_screen.dart';
+import 'package:ar_furniture_app/features/product/core/model/product/product.dart';
+import 'package:ar_furniture_app/features/product/core/screen/category_product_screen.dart';
+import 'package:ar_furniture_app/features/product/product_detail/screens/product_detail_screen.dart';
 import 'package:ar_furniture_app/features/product/product_list/screens/product_list_screen.dart';
 import 'package:ar_furniture_app/features/profile/change_password/screens/change_password_screen.dart';
 import 'package:ar_furniture_app/features/profile/core/screens/profile_screen.dart';
@@ -33,6 +36,18 @@ class AppRouter {
         );
       case RouteConstants.productListRoute:
         return MaterialPageRoute(builder: (_) => const ProductListScreen());
+      case RouteConstants.productDetailRoute:
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailScreen(
+            product: settings.arguments as Product,
+          ),
+        );
+      case RouteConstants.categoryProductRoute:
+        return MaterialPageRoute(
+          builder: (_) => CategoryProductScreen(
+            categoryMap: settings.arguments as Map<String, dynamic>,
+          ),
+        );
       case RouteConstants.cartRoute:
         return MaterialPageRoute(builder: (_) => const CartScreen());
       case RouteConstants.wishListRoute:
