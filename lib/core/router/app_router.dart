@@ -4,13 +4,17 @@ import 'package:ar_furniture_app/features/auth/forgot_password/screens/forgot_pa
 import 'package:ar_furniture_app/features/auth/login/screens/login_screen.dart';
 import 'package:ar_furniture_app/features/auth/register/screens/register_screen.dart';
 import 'package:ar_furniture_app/features/cart/cart_screen.dart';
+import 'package:ar_furniture_app/features/category/screens/category_screen.dart';
 import 'package:ar_furniture_app/features/home/home_screen.dart';
 import 'package:ar_furniture_app/features/onboarding/onboarding_screen.dart';
-import 'package:ar_furniture_app/features/product_list/product_list_screen.dart';
+import 'package:ar_furniture_app/features/product/core/model/product/product.dart';
+import 'package:ar_furniture_app/features/product/core/screen/category_product_screen.dart';
+import 'package:ar_furniture_app/features/product/product_detail/screens/product_detail_screen.dart';
+import 'package:ar_furniture_app/features/product/product_list/screens/product_list_screen.dart';
 import 'package:ar_furniture_app/features/profile/change_password/screens/change_password_screen.dart';
 import 'package:ar_furniture_app/features/profile/core/screens/profile_screen.dart';
 import 'package:ar_furniture_app/features/profile/update_profile/screens/update_profile_screen.dart';
-import 'package:ar_furniture_app/features/wishlist/wish_list_screen.dart';
+import 'package:ar_furniture_app/features/wishlist/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -32,12 +36,26 @@ class AppRouter {
         );
       case RouteConstants.productListRoute:
         return MaterialPageRoute(builder: (_) => const ProductListScreen());
+      case RouteConstants.productDetailRoute:
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailScreen(
+            product: settings.arguments as Product,
+          ),
+        );
+      case RouteConstants.categoryProductRoute:
+        return MaterialPageRoute(
+          builder: (_) => CategoryProductScreen(
+            categoryMap: settings.arguments as Map<String, dynamic>,
+          ),
+        );
       case RouteConstants.cartRoute:
         return MaterialPageRoute(builder: (_) => const CartScreen());
       case RouteConstants.wishListRoute:
         return MaterialPageRoute(builder: (_) => const WishListScreen());
       case RouteConstants.profileRoute:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
+      case RouteConstants.categoryRoute:
+        return MaterialPageRoute(builder: (_) => const CategoryScreen());
       case RouteConstants.updateProfileRoute:
         return MaterialPageRoute(
           builder: (_) => UpdateProfileScreen(

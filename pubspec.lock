@@ -345,30 +345,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
-  firebase_app_check:
-    dependency: "direct main"
-    description:
-      name: firebase_app_check
-      sha256: "76e803404c66a12401b2c9554b930a126a6397d19acf321982b023b076751e3e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.1+9"
-  firebase_app_check_platform_interface:
-    dependency: transitive
-    description:
-      name: firebase_app_check_platform_interface
-      sha256: "2f891fc30799143b1aafb8411d1dce271b8a248102a4db3415ede71c02ddbca2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.5+12"
-  firebase_app_check_web:
-    dependency: transitive
-    description:
-      name: firebase_app_check_web
-      sha256: "4ec15928e1e75f0b8bd4043278eb06f82730288a4d8edd6eaec91badefd02b3a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.7+12"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -768,6 +744,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.6.1"
+  like_button:
+    dependency: "direct main"
+    description:
+      name: like_button
+      sha256: "08e6a45b78888412df5d351786c550205ad3a677e72a0820d5bbc0b063c8a463"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.5"
   lints:
     dependency: transitive
     description:
