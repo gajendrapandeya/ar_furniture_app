@@ -1,7 +1,6 @@
 import 'package:ar_furniture_app/core/utils/generic_utils.dart';
 import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 class ArViewScreen extends StatefulWidget {
@@ -18,12 +17,10 @@ class _ArViewScreenState extends State<ArViewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: ArCoreView(
-          onArCoreViewCreated: _onArCoreViewCreated,
-          enableTapRecognizer: true,
-        ),
+    return Scaffold(
+      body: ArCoreView(
+        onArCoreViewCreated: _onArCoreViewCreated,
+        enableTapRecognizer: true,
       ),
     );
   }
@@ -38,24 +35,18 @@ class _ArViewScreenState extends State<ArViewScreen> {
 
     final file = await GenericUtils.urlToFile(widget.imageUrl);
     final bytes = file.readAsBytesSync();
-    final uint8List = Uint8List.fromList(bytes);
-    final byteData = ByteData.view(uint8List.buffer);
 
-    // final ByteData textureBytes =
-    //     await rootBundle.load('assets/images/sofa.png');
+    final imageItem = ArCoreNode(
+      image: ArCoreImage(
+        bytes: bytes,
+        width: 600,
+        height: 600,
+      ),
+      position: plane.pose.translation + vector.Vector3(0.0, 0.0, 0.0),
+      rotation: plane.pose.rotation + vector.Vector4(0.0, 0.0, 0.0, 0.0),
+    );
 
-    final earthMaterial = ArCoreMaterial(
-        color: Colors.transparent, textureBytes: byteData.buffer.asUint8List());
-
-    final earthShape = ArCoreCube(
-        materials: [earthMaterial], size: vector.Vector3(1.0, 1.0, 1.0));
-
-    final earth = ArCoreNode(
-        shape: earthShape,
-        position: plane.pose.translation,
-        rotation: plane.pose.rotation);
-
-    arCoreController.addArCoreNodeWithAnchor(earth);
+    arCoreController.addArCoreNodeWithAnchor(imageItem);
   }
 
   @override

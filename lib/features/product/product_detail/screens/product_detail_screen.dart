@@ -172,18 +172,25 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          product.formattedPrice,
-          style: Theme.of(context).textTheme.headlineMedium,
+        Expanded(
+          child: Text(
+            product.formattedPrice,
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
         ),
         ...product.colors.map((color) {
-          return Container(
-            width: 12,
-            height: 12,
-            decoration: BoxDecoration(
-              color: _hexToColor(color),
-              shape: BoxShape.circle,
-            ),
+          return Row(
+            children: [
+              Container(
+                width: 12,
+                height: 12,
+                decoration: BoxDecoration(
+                  color: _hexToColor(color),
+                  shape: BoxShape.circle,
+                ),
+              ),
+              HorizontalSpacer.s,
+            ],
           );
         }).toList()
       ],
