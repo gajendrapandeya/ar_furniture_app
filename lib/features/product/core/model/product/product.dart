@@ -11,7 +11,7 @@ class Product with _$Product {
     required final String? categoryId,
     required final String? name,
     required final List<String> imageUrls,
-    required final int price,
+    required final int? price,
     required final double rating,
     required final String? description,
     required final List<String> colors,

@@ -47,10 +47,10 @@ class _ProductListItemState extends ConsumerState<ProductListItem> {
             ),
             child: ImageWidget(
               url: widget.product.imageUrls.first,
+              imageFit: BoxFit.cover,
             ),
           ),
         ),
-        VerticalSpacer.l,
         _buildProductInfo()
       ],
     );

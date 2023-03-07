@@ -24,7 +24,7 @@ mixin _$Product {
   String? get categoryId => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   List<String> get imageUrls => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   List<String> get colors => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $ProductCopyWith<$Res> {
       String? categoryId,
       String? name,
       List<String> imageUrls,
-      int price,
+      int? price,
       double rating,
       String? description,
       List<String> colors});
@@ -67,7 +67,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? categoryId = freezed,
     Object? name = freezed,
     Object? imageUrls = null,
-    Object? price = null,
+    Object? price = freezed,
     Object? rating = null,
     Object? description = freezed,
     Object? colors = null,
@@ -89,10 +89,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -121,7 +121,7 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String? categoryId,
       String? name,
       List<String> imageUrls,
-      int price,
+      int? price,
       double rating,
       String? description,
       List<String> colors});
@@ -141,7 +141,7 @@ class __$$_ProductCopyWithImpl<$Res>
     Object? categoryId = freezed,
     Object? name = freezed,
     Object? imageUrls = null,
-    Object? price = null,
+    Object? price = freezed,
     Object? rating = null,
     Object? description = freezed,
     Object? colors = null,
@@ -163,10 +163,10 @@ class __$$_ProductCopyWithImpl<$Res>
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -217,7 +217,7 @@ class _$_Product extends _Product {
   }
 
   @override
-  final int price;
+  final int? price;
   @override
   final double rating;
   @override
@@ -286,7 +286,7 @@ abstract class _Product extends Product {
       required final String? categoryId,
       required final String? name,
       required final List<String> imageUrls,
-      required final int price,
+      required final int? price,
       required final double rating,
       required final String? description,
       required final List<String> colors}) = _$_Product;
@@ -303,7 +303,7 @@ abstract class _Product extends Product {
   @override
   List<String> get imageUrls;
   @override
-  int get price;
+  int? get price;
   @override
   double get rating;
   @override

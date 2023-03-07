@@ -1,3 +1,4 @@
+import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
 import 'package:ar_furniture_app/core/widgets/image_widget.dart';
@@ -34,43 +35,30 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.grey.shade100,
-        leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(),
-          icon: const Icon(MdiIcons.chevronLeft),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            _buildProductDetail(),
+            Positioned(
+              bottom: 16,
+              left: 0,
+              right: 0,
+              child: _buildBottomWidget(context),
+            ),
+          ],
         ),
-      ),
-      body: Stack(
-        children: [
-          _buildProductDetail(),
-          Positioned(
-            bottom: 16,
-            left: 0,
-            right: 0,
-            child: _buildBottomWidget(context),
-          ),
-        ],
       ),
     );
   }
 
   Widget _buildProductImageWithLikeButton() {
     final product = widget.product;
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Container(
-          height: MediaQuery.of(context).size.height * 0.45,
-          decoration: BoxDecoration(
-            color: Colors.grey.shade100,
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(48),
-              bottomRight: Radius.circular(48),
-            ),
-          ),
-          child: PageView.builder(
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.45,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          PageView.builder(
             controller: _pageController,
             clipBehavior: Clip.none,
             itemCount: product.imageUrls.length,
@@ -78,20 +66,30 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
               clipBehavior: Clip.none,
               children: [
                 Positioned.fill(
-                  child: ImageWidget(
-                    url: product.imageUrls[index],
-                    imageWidth: double.infinity,
-                    imageFit: BoxFit.fill,
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(
+                        56,
+                      ),
+                      bottomRight: Radius.circular(
+                        56,
+                      ),
+                    ),
+                    child: ImageWidget(
+                      url: product.imageUrls[index],
+                      imageWidth: double.infinity,
+                      imageFit: BoxFit.fill,
+                    ),
                   ),
                 ),
                 Positioned(
                   bottom: -12,
-                  right: 32,
+                  right: 24,
                   child: Container(
                     padding: const EdgeInsets.all(
                       8,
                     ),
-                    alignment: Alignment.center,
+                    alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: const Color(
@@ -111,30 +109,33 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   Widget _buildProductDetail() {
     final product = widget.product;
-    return Column(
+    return ListView(
       children: [
         _buildProductImageWithLikeButton(),
         VerticalSpacer.s,
         if (widget.product.imageUrls.length > 1)
-          SmoothPageIndicator(
-            controller: _pageController,
-            count: widget.product.imageUrls.length,
-            effect: ExpandingDotsEffect(
-              activeDotColor: Theme.of(context).colorScheme.secondary,
-              dotHeight: 8,
-              dotWidth: 8,
-              dotColor: Colors.grey.shade400,
+          Align(
+            alignment: Alignment.center,
+            child: SmoothPageIndicator(
+              controller: _pageController,
+              count: widget.product.imageUrls.length,
+              effect: ExpandingDotsEffect(
+                activeDotColor: Theme.of(context).colorScheme.secondary,
+                dotHeight: 8,
+                dotWidth: 8,
+                dotColor: Colors.grey.shade400,
+              ),
+              onDotClicked: (index) {},
             ),
-            onDotClicked: (index) {},
           ),
-        VerticalSpacer.l,
+        VerticalSpacer.m,
         Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 16.0,
@@ -145,10 +146,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
             children: [
               _buildProductNameWithRating(product),
               VerticalSpacer.xl,
-              Text(
-                product.formattedPrice,
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
+              _buildProductPriceAndColor(product),
               VerticalSpacer.xxl,
               if (product.isDescriptionAvailable) ...[
                 Text(
@@ -168,6 +166,32 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
         )
       ],
     );
+  }
+
+  Row _buildProductPriceAndColor(Product product) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          product.formattedPrice,
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        ...product.colors.map((color) {
+          return Container(
+            width: 12,
+            height: 12,
+            decoration: BoxDecoration(
+              color: _hexToColor(color),
+              shape: BoxShape.circle,
+            ),
+          );
+        }).toList()
+      ],
+    );
+  }
+
+  Color _hexToColor(String code) {
+    return Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
   Row _buildProductNameWithRating(Product product) {
@@ -218,12 +242,13 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
       ),
       child: Row(
         children: [
-          Expanded(
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.35,
             child: _buildLiveViewButton(context),
           ),
           HorizontalSpacer.l,
-          Expanded(
-            flex: 2,
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.52,
             child: CustomElevatedButton.withIcon(
               onButtonPressed: () {},
               buttonText: 'Add To Cart',
@@ -249,7 +274,12 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
               ),
             ),
           ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).pushNamed(
+          RouteConstants.arViewScreenRoute,
+          arguments: widget.product.imageUrls.first,
+        );
+      },
       icon: const Icon(
         MdiIcons.scanHelper,
         size: 22,

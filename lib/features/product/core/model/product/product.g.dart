@@ -12,7 +12,7 @@ _$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
       name: json['name'] as String?,
       imageUrls:
           (json['imageUrls'] as List<dynamic>).map((e) => e as String).toList(),
-      price: json['price'] as int,
+      price: json['price'] as int?,
       rating: (json['rating'] as num).toDouble(),
       description: json['description'] as String?,
       colors:

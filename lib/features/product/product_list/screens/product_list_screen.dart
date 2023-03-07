@@ -85,7 +85,6 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
               ),
               CategoryListWidget(
                 onCategorySelected: (categoryId) {
-                  debugPrint('categoryId: $categoryId');
                   ref
                       .read(productsProvider.notifier)
                       .fetchProducts(categoryId: categoryId);
