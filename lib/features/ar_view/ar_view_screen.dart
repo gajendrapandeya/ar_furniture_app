@@ -1,3 +1,4 @@
+import 'package:ar_furniture_app/core/utils/generic_utils.dart';
 import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -35,12 +36,16 @@ class _ArViewScreenState extends State<ArViewScreen> {
   void _handleOnPlaneTap(List<ArCoreHitTestResult> hits) async {
     final plane = hits.first;
 
-    final ByteData textureBytes =
-        await rootBundle.load('assets/images/sofa.png');
+    final file = await GenericUtils.urlToFile(widget.imageUrl);
+    final bytes = file.readAsBytesSync();
+    final uint8List = Uint8List.fromList(bytes);
+    final byteData = ByteData.view(uint8List.buffer);
+
+    // final ByteData textureBytes =
+    //     await rootBundle.load('assets/images/sofa.png');
 
     final earthMaterial = ArCoreMaterial(
-        color: Colors.transparent,
-        textureBytes: textureBytes.buffer.asUint8List());
+        color: Colors.transparent, textureBytes: byteData.buffer.asUint8List());
 
     final earthShape = ArCoreCube(
         materials: [earthMaterial], size: vector.Vector3(1.0, 1.0, 1.0));
