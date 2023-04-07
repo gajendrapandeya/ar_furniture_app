@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
@@ -5,10 +7,15 @@ import 'package:ar_furniture_app/core/widgets/image_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/product/core/model/product/product.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/add_to_wishlist_button.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+final selectedColorProvider = StateProvider<int>((_) {
+  return 0;
+});
 
 class ProductDetailScreen extends ConsumerStatefulWidget {
   const ProductDetailScreen({
@@ -52,7 +59,10 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   }
 
   Widget _buildProductImageWithLikeButton() {
+    ref.watch(selectedColorProvider);
     final product = widget.product;
+    final imageUrl =
+        product.imageUrls[ref.read(selectedColorProvider.notifier).state];
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.45,
       child: Stack(
@@ -76,7 +86,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                       ),
                     ),
                     child: ImageWidget(
-                      url: product.imageUrls[index],
+                      url: imageUrl,
                       imageWidth: double.infinity,
                       imageFit: BoxFit.fill,
                     ),
@@ -169,6 +179,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   }
 
   Row _buildProductPriceAndColor(Product product) {
+    ref.watch(selectedColorProvider);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -178,19 +189,50 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
         ),
-        ...product.colors.map((color) {
-          return Row(
-            children: [
-              Container(
-                width: 12,
-                height: 12,
-                decoration: BoxDecoration(
-                  color: _hexToColor(color),
-                  shape: BoxShape.circle,
+        ...product.colors.mapIndexed((index, colorHex) {
+          final selectedColorIndex =
+              ref.read(selectedColorProvider.notifier).state;
+          final isSelected = selectedColorIndex == index;
+          return InkWell(
+            customBorder: const CircleBorder(),
+            onTap: () => ref.read(selectedColorProvider.notifier).update(
+                  (state) => state = index,
                 ),
-              ),
-              HorizontalSpacer.s,
-            ],
+            child: Row(
+              children: [
+                if (isSelected) ...[
+                  Container(
+                    padding: const EdgeInsets.all(
+                      2,
+                    ),
+                    decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.black.withOpacity(0.7),
+                          width: 1.0,
+                        )),
+                    child: Container(
+                      width: 12,
+                      height: 12,
+                      decoration: BoxDecoration(
+                        color: _hexToColor(colorHex),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
+                ] else
+                  Container(
+                    width: 12,
+                    height: 12,
+                    decoration: BoxDecoration(
+                      color: _hexToColor(colorHex),
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                HorizontalSpacer.s,
+              ],
+            ),
           );
         }).toList()
       ],
