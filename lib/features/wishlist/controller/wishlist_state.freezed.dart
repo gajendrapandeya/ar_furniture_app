@@ -20,10 +20,10 @@ mixin _$WishListState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addToCart,
-    required TResult Function() removeFromCart,
-    required TResult Function() alreadyInCart,
-    required TResult Function() notInCart,
+    required TResult Function() addToWishlist,
+    required TResult Function() removeFromWishlist,
+    required TResult Function() alreadyInWishlist,
+    required TResult Function() notInWishlist,
     required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) =>
@@ -32,10 +32,10 @@ mixin _$WishListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addToCart,
-    TResult? Function()? removeFromCart,
-    TResult? Function()? alreadyInCart,
-    TResult? Function()? notInCart,
+    TResult? Function()? addToWishlist,
+    TResult? Function()? removeFromWishlist,
+    TResult? Function()? alreadyInWishlist,
+    TResult? Function()? notInWishlist,
     TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) =>
@@ -44,10 +44,10 @@ mixin _$WishListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addToCart,
-    TResult Function()? removeFromCart,
-    TResult Function()? alreadyInCart,
-    TResult Function()? notInCart,
+    TResult Function()? addToWishlist,
+    TResult Function()? removeFromWishlist,
+    TResult Function()? alreadyInWishlist,
+    TResult Function()? notInWishlist,
     TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -57,12 +57,12 @@ mixin _$WishListState {
   TResult map<TResult extends Object?>({
     required TResult Function(WishListStateInitial value) initial,
     required TResult Function(WishListStateLoading value) loading,
-    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateAddedToWishList value) addToWishlist,
     required TResult Function(WishListStateRemoveFromWishList value)
-        removeFromCart,
+        removeFromWishlist,
     required TResult Function(WishListStateAlreadyInWishList value)
-        alreadyInCart,
-    required TResult Function(WishListStateNotInWishList value) notInCart,
+        alreadyInWishlist,
+    required TResult Function(WishListStateNotInWishList value) notInWishlist,
     required TResult Function(WishListStateSuccess value) success,
     required TResult Function(WishListStateError value) error,
   }) =>
@@ -71,10 +71,11 @@ mixin _$WishListState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(WishListStateInitial value)? initial,
     TResult? Function(WishListStateLoading value)? loading,
-    TResult? Function(WishListStateAddedToWishList value)? addToCart,
-    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult? Function(WishListStateRemoveFromWishList value)?
+        removeFromWishlist,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult? Function(WishListStateNotInWishList value)? notInWishlist,
     TResult? Function(WishListStateSuccess value)? success,
     TResult? Function(WishListStateError value)? error,
   }) =>
@@ -83,10 +84,10 @@ mixin _$WishListState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WishListStateInitial value)? initial,
     TResult Function(WishListStateLoading value)? loading,
-    TResult Function(WishListStateAddedToWishList value)? addToCart,
-    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromWishlist,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult Function(WishListStateNotInWishList value)? notInWishlist,
     TResult Function(WishListStateSuccess value)? success,
     TResult Function(WishListStateError value)? error,
     required TResult orElse(),
@@ -152,10 +153,10 @@ class _$WishListStateInitial implements WishListStateInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addToCart,
-    required TResult Function() removeFromCart,
-    required TResult Function() alreadyInCart,
-    required TResult Function() notInCart,
+    required TResult Function() addToWishlist,
+    required TResult Function() removeFromWishlist,
+    required TResult Function() alreadyInWishlist,
+    required TResult Function() notInWishlist,
     required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
@@ -167,10 +168,10 @@ class _$WishListStateInitial implements WishListStateInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addToCart,
-    TResult? Function()? removeFromCart,
-    TResult? Function()? alreadyInCart,
-    TResult? Function()? notInCart,
+    TResult? Function()? addToWishlist,
+    TResult? Function()? removeFromWishlist,
+    TResult? Function()? alreadyInWishlist,
+    TResult? Function()? notInWishlist,
     TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
@@ -182,10 +183,10 @@ class _$WishListStateInitial implements WishListStateInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addToCart,
-    TResult Function()? removeFromCart,
-    TResult Function()? alreadyInCart,
-    TResult Function()? notInCart,
+    TResult Function()? addToWishlist,
+    TResult Function()? removeFromWishlist,
+    TResult Function()? alreadyInWishlist,
+    TResult Function()? notInWishlist,
     TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -201,12 +202,12 @@ class _$WishListStateInitial implements WishListStateInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(WishListStateInitial value) initial,
     required TResult Function(WishListStateLoading value) loading,
-    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateAddedToWishList value) addToWishlist,
     required TResult Function(WishListStateRemoveFromWishList value)
-        removeFromCart,
+        removeFromWishlist,
     required TResult Function(WishListStateAlreadyInWishList value)
-        alreadyInCart,
-    required TResult Function(WishListStateNotInWishList value) notInCart,
+        alreadyInWishlist,
+    required TResult Function(WishListStateNotInWishList value) notInWishlist,
     required TResult Function(WishListStateSuccess value) success,
     required TResult Function(WishListStateError value) error,
   }) {
@@ -218,10 +219,11 @@ class _$WishListStateInitial implements WishListStateInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(WishListStateInitial value)? initial,
     TResult? Function(WishListStateLoading value)? loading,
-    TResult? Function(WishListStateAddedToWishList value)? addToCart,
-    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult? Function(WishListStateRemoveFromWishList value)?
+        removeFromWishlist,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult? Function(WishListStateNotInWishList value)? notInWishlist,
     TResult? Function(WishListStateSuccess value)? success,
     TResult? Function(WishListStateError value)? error,
   }) {
@@ -233,10 +235,10 @@ class _$WishListStateInitial implements WishListStateInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WishListStateInitial value)? initial,
     TResult Function(WishListStateLoading value)? loading,
-    TResult Function(WishListStateAddedToWishList value)? addToCart,
-    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromWishlist,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult Function(WishListStateNotInWishList value)? notInWishlist,
     TResult Function(WishListStateSuccess value)? success,
     TResult Function(WishListStateError value)? error,
     required TResult orElse(),
@@ -292,10 +294,10 @@ class _$WishListStateLoading implements WishListStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addToCart,
-    required TResult Function() removeFromCart,
-    required TResult Function() alreadyInCart,
-    required TResult Function() notInCart,
+    required TResult Function() addToWishlist,
+    required TResult Function() removeFromWishlist,
+    required TResult Function() alreadyInWishlist,
+    required TResult Function() notInWishlist,
     required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
@@ -307,10 +309,10 @@ class _$WishListStateLoading implements WishListStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addToCart,
-    TResult? Function()? removeFromCart,
-    TResult? Function()? alreadyInCart,
-    TResult? Function()? notInCart,
+    TResult? Function()? addToWishlist,
+    TResult? Function()? removeFromWishlist,
+    TResult? Function()? alreadyInWishlist,
+    TResult? Function()? notInWishlist,
     TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
@@ -322,10 +324,10 @@ class _$WishListStateLoading implements WishListStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addToCart,
-    TResult Function()? removeFromCart,
-    TResult Function()? alreadyInCart,
-    TResult Function()? notInCart,
+    TResult Function()? addToWishlist,
+    TResult Function()? removeFromWishlist,
+    TResult Function()? alreadyInWishlist,
+    TResult Function()? notInWishlist,
     TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -341,12 +343,12 @@ class _$WishListStateLoading implements WishListStateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(WishListStateInitial value) initial,
     required TResult Function(WishListStateLoading value) loading,
-    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateAddedToWishList value) addToWishlist,
     required TResult Function(WishListStateRemoveFromWishList value)
-        removeFromCart,
+        removeFromWishlist,
     required TResult Function(WishListStateAlreadyInWishList value)
-        alreadyInCart,
-    required TResult Function(WishListStateNotInWishList value) notInCart,
+        alreadyInWishlist,
+    required TResult Function(WishListStateNotInWishList value) notInWishlist,
     required TResult Function(WishListStateSuccess value) success,
     required TResult Function(WishListStateError value) error,
   }) {
@@ -358,10 +360,11 @@ class _$WishListStateLoading implements WishListStateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(WishListStateInitial value)? initial,
     TResult? Function(WishListStateLoading value)? loading,
-    TResult? Function(WishListStateAddedToWishList value)? addToCart,
-    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult? Function(WishListStateRemoveFromWishList value)?
+        removeFromWishlist,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult? Function(WishListStateNotInWishList value)? notInWishlist,
     TResult? Function(WishListStateSuccess value)? success,
     TResult? Function(WishListStateError value)? error,
   }) {
@@ -373,10 +376,10 @@ class _$WishListStateLoading implements WishListStateLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WishListStateInitial value)? initial,
     TResult Function(WishListStateLoading value)? loading,
-    TResult Function(WishListStateAddedToWishList value)? addToCart,
-    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromWishlist,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult Function(WishListStateNotInWishList value)? notInWishlist,
     TResult Function(WishListStateSuccess value)? success,
     TResult Function(WishListStateError value)? error,
     required TResult orElse(),
@@ -417,7 +420,7 @@ class _$WishListStateAddedToWishList implements WishListStateAddedToWishList {
 
   @override
   String toString() {
-    return 'WishListState.addToCart()';
+    return 'WishListState.addToWishlist()';
   }
 
   @override
@@ -435,14 +438,14 @@ class _$WishListStateAddedToWishList implements WishListStateAddedToWishList {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addToCart,
-    required TResult Function() removeFromCart,
-    required TResult Function() alreadyInCart,
-    required TResult Function() notInCart,
+    required TResult Function() addToWishlist,
+    required TResult Function() removeFromWishlist,
+    required TResult Function() alreadyInWishlist,
+    required TResult Function() notInWishlist,
     required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
-    return addToCart();
+    return addToWishlist();
   }
 
   @override
@@ -450,14 +453,14 @@ class _$WishListStateAddedToWishList implements WishListStateAddedToWishList {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addToCart,
-    TResult? Function()? removeFromCart,
-    TResult? Function()? alreadyInCart,
-    TResult? Function()? notInCart,
+    TResult? Function()? addToWishlist,
+    TResult? Function()? removeFromWishlist,
+    TResult? Function()? alreadyInWishlist,
+    TResult? Function()? notInWishlist,
     TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
-    return addToCart?.call();
+    return addToWishlist?.call();
   }
 
   @override
@@ -465,16 +468,16 @@ class _$WishListStateAddedToWishList implements WishListStateAddedToWishList {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addToCart,
-    TResult Function()? removeFromCart,
-    TResult Function()? alreadyInCart,
-    TResult Function()? notInCart,
+    TResult Function()? addToWishlist,
+    TResult Function()? removeFromWishlist,
+    TResult Function()? alreadyInWishlist,
+    TResult Function()? notInWishlist,
     TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (addToCart != null) {
-      return addToCart();
+    if (addToWishlist != null) {
+      return addToWishlist();
     }
     return orElse();
   }
@@ -484,16 +487,16 @@ class _$WishListStateAddedToWishList implements WishListStateAddedToWishList {
   TResult map<TResult extends Object?>({
     required TResult Function(WishListStateInitial value) initial,
     required TResult Function(WishListStateLoading value) loading,
-    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateAddedToWishList value) addToWishlist,
     required TResult Function(WishListStateRemoveFromWishList value)
-        removeFromCart,
+        removeFromWishlist,
     required TResult Function(WishListStateAlreadyInWishList value)
-        alreadyInCart,
-    required TResult Function(WishListStateNotInWishList value) notInCart,
+        alreadyInWishlist,
+    required TResult Function(WishListStateNotInWishList value) notInWishlist,
     required TResult Function(WishListStateSuccess value) success,
     required TResult Function(WishListStateError value) error,
   }) {
-    return addToCart(this);
+    return addToWishlist(this);
   }
 
   @override
@@ -501,14 +504,15 @@ class _$WishListStateAddedToWishList implements WishListStateAddedToWishList {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(WishListStateInitial value)? initial,
     TResult? Function(WishListStateLoading value)? loading,
-    TResult? Function(WishListStateAddedToWishList value)? addToCart,
-    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult? Function(WishListStateRemoveFromWishList value)?
+        removeFromWishlist,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult? Function(WishListStateNotInWishList value)? notInWishlist,
     TResult? Function(WishListStateSuccess value)? success,
     TResult? Function(WishListStateError value)? error,
   }) {
-    return addToCart?.call(this);
+    return addToWishlist?.call(this);
   }
 
   @override
@@ -516,16 +520,16 @@ class _$WishListStateAddedToWishList implements WishListStateAddedToWishList {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WishListStateInitial value)? initial,
     TResult Function(WishListStateLoading value)? loading,
-    TResult Function(WishListStateAddedToWishList value)? addToCart,
-    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromWishlist,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult Function(WishListStateNotInWishList value)? notInWishlist,
     TResult Function(WishListStateSuccess value)? success,
     TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
-    if (addToCart != null) {
-      return addToCart(this);
+    if (addToWishlist != null) {
+      return addToWishlist(this);
     }
     return orElse();
   }
@@ -561,7 +565,7 @@ class _$WishListStateRemoveFromWishList
 
   @override
   String toString() {
-    return 'WishListState.removeFromCart()';
+    return 'WishListState.removeFromWishlist()';
   }
 
   @override
@@ -579,14 +583,14 @@ class _$WishListStateRemoveFromWishList
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addToCart,
-    required TResult Function() removeFromCart,
-    required TResult Function() alreadyInCart,
-    required TResult Function() notInCart,
+    required TResult Function() addToWishlist,
+    required TResult Function() removeFromWishlist,
+    required TResult Function() alreadyInWishlist,
+    required TResult Function() notInWishlist,
     required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
-    return removeFromCart();
+    return removeFromWishlist();
   }
 
   @override
@@ -594,14 +598,14 @@ class _$WishListStateRemoveFromWishList
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addToCart,
-    TResult? Function()? removeFromCart,
-    TResult? Function()? alreadyInCart,
-    TResult? Function()? notInCart,
+    TResult? Function()? addToWishlist,
+    TResult? Function()? removeFromWishlist,
+    TResult? Function()? alreadyInWishlist,
+    TResult? Function()? notInWishlist,
     TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
-    return removeFromCart?.call();
+    return removeFromWishlist?.call();
   }
 
   @override
@@ -609,16 +613,16 @@ class _$WishListStateRemoveFromWishList
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addToCart,
-    TResult Function()? removeFromCart,
-    TResult Function()? alreadyInCart,
-    TResult Function()? notInCart,
+    TResult Function()? addToWishlist,
+    TResult Function()? removeFromWishlist,
+    TResult Function()? alreadyInWishlist,
+    TResult Function()? notInWishlist,
     TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (removeFromCart != null) {
-      return removeFromCart();
+    if (removeFromWishlist != null) {
+      return removeFromWishlist();
     }
     return orElse();
   }
@@ -628,16 +632,16 @@ class _$WishListStateRemoveFromWishList
   TResult map<TResult extends Object?>({
     required TResult Function(WishListStateInitial value) initial,
     required TResult Function(WishListStateLoading value) loading,
-    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateAddedToWishList value) addToWishlist,
     required TResult Function(WishListStateRemoveFromWishList value)
-        removeFromCart,
+        removeFromWishlist,
     required TResult Function(WishListStateAlreadyInWishList value)
-        alreadyInCart,
-    required TResult Function(WishListStateNotInWishList value) notInCart,
+        alreadyInWishlist,
+    required TResult Function(WishListStateNotInWishList value) notInWishlist,
     required TResult Function(WishListStateSuccess value) success,
     required TResult Function(WishListStateError value) error,
   }) {
-    return removeFromCart(this);
+    return removeFromWishlist(this);
   }
 
   @override
@@ -645,14 +649,15 @@ class _$WishListStateRemoveFromWishList
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(WishListStateInitial value)? initial,
     TResult? Function(WishListStateLoading value)? loading,
-    TResult? Function(WishListStateAddedToWishList value)? addToCart,
-    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult? Function(WishListStateRemoveFromWishList value)?
+        removeFromWishlist,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult? Function(WishListStateNotInWishList value)? notInWishlist,
     TResult? Function(WishListStateSuccess value)? success,
     TResult? Function(WishListStateError value)? error,
   }) {
-    return removeFromCart?.call(this);
+    return removeFromWishlist?.call(this);
   }
 
   @override
@@ -660,16 +665,16 @@ class _$WishListStateRemoveFromWishList
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WishListStateInitial value)? initial,
     TResult Function(WishListStateLoading value)? loading,
-    TResult Function(WishListStateAddedToWishList value)? addToCart,
-    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromWishlist,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult Function(WishListStateNotInWishList value)? notInWishlist,
     TResult Function(WishListStateSuccess value)? success,
     TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
-    if (removeFromCart != null) {
-      return removeFromCart(this);
+    if (removeFromWishlist != null) {
+      return removeFromWishlist(this);
     }
     return orElse();
   }
@@ -706,7 +711,7 @@ class _$WishListStateAlreadyInWishList
 
   @override
   String toString() {
-    return 'WishListState.alreadyInCart()';
+    return 'WishListState.alreadyInWishlist()';
   }
 
   @override
@@ -724,14 +729,14 @@ class _$WishListStateAlreadyInWishList
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addToCart,
-    required TResult Function() removeFromCart,
-    required TResult Function() alreadyInCart,
-    required TResult Function() notInCart,
+    required TResult Function() addToWishlist,
+    required TResult Function() removeFromWishlist,
+    required TResult Function() alreadyInWishlist,
+    required TResult Function() notInWishlist,
     required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
-    return alreadyInCart();
+    return alreadyInWishlist();
   }
 
   @override
@@ -739,14 +744,14 @@ class _$WishListStateAlreadyInWishList
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addToCart,
-    TResult? Function()? removeFromCart,
-    TResult? Function()? alreadyInCart,
-    TResult? Function()? notInCart,
+    TResult? Function()? addToWishlist,
+    TResult? Function()? removeFromWishlist,
+    TResult? Function()? alreadyInWishlist,
+    TResult? Function()? notInWishlist,
     TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
-    return alreadyInCart?.call();
+    return alreadyInWishlist?.call();
   }
 
   @override
@@ -754,16 +759,16 @@ class _$WishListStateAlreadyInWishList
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addToCart,
-    TResult Function()? removeFromCart,
-    TResult Function()? alreadyInCart,
-    TResult Function()? notInCart,
+    TResult Function()? addToWishlist,
+    TResult Function()? removeFromWishlist,
+    TResult Function()? alreadyInWishlist,
+    TResult Function()? notInWishlist,
     TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (alreadyInCart != null) {
-      return alreadyInCart();
+    if (alreadyInWishlist != null) {
+      return alreadyInWishlist();
     }
     return orElse();
   }
@@ -773,16 +778,16 @@ class _$WishListStateAlreadyInWishList
   TResult map<TResult extends Object?>({
     required TResult Function(WishListStateInitial value) initial,
     required TResult Function(WishListStateLoading value) loading,
-    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateAddedToWishList value) addToWishlist,
     required TResult Function(WishListStateRemoveFromWishList value)
-        removeFromCart,
+        removeFromWishlist,
     required TResult Function(WishListStateAlreadyInWishList value)
-        alreadyInCart,
-    required TResult Function(WishListStateNotInWishList value) notInCart,
+        alreadyInWishlist,
+    required TResult Function(WishListStateNotInWishList value) notInWishlist,
     required TResult Function(WishListStateSuccess value) success,
     required TResult Function(WishListStateError value) error,
   }) {
-    return alreadyInCart(this);
+    return alreadyInWishlist(this);
   }
 
   @override
@@ -790,14 +795,15 @@ class _$WishListStateAlreadyInWishList
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(WishListStateInitial value)? initial,
     TResult? Function(WishListStateLoading value)? loading,
-    TResult? Function(WishListStateAddedToWishList value)? addToCart,
-    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult? Function(WishListStateRemoveFromWishList value)?
+        removeFromWishlist,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult? Function(WishListStateNotInWishList value)? notInWishlist,
     TResult? Function(WishListStateSuccess value)? success,
     TResult? Function(WishListStateError value)? error,
   }) {
-    return alreadyInCart?.call(this);
+    return alreadyInWishlist?.call(this);
   }
 
   @override
@@ -805,16 +811,16 @@ class _$WishListStateAlreadyInWishList
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WishListStateInitial value)? initial,
     TResult Function(WishListStateLoading value)? loading,
-    TResult Function(WishListStateAddedToWishList value)? addToCart,
-    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromWishlist,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult Function(WishListStateNotInWishList value)? notInWishlist,
     TResult Function(WishListStateSuccess value)? success,
     TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
-    if (alreadyInCart != null) {
-      return alreadyInCart(this);
+    if (alreadyInWishlist != null) {
+      return alreadyInWishlist(this);
     }
     return orElse();
   }
@@ -850,7 +856,7 @@ class _$WishListStateNotInWishList implements WishListStateNotInWishList {
 
   @override
   String toString() {
-    return 'WishListState.notInCart()';
+    return 'WishListState.notInWishlist()';
   }
 
   @override
@@ -868,14 +874,14 @@ class _$WishListStateNotInWishList implements WishListStateNotInWishList {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addToCart,
-    required TResult Function() removeFromCart,
-    required TResult Function() alreadyInCart,
-    required TResult Function() notInCart,
+    required TResult Function() addToWishlist,
+    required TResult Function() removeFromWishlist,
+    required TResult Function() alreadyInWishlist,
+    required TResult Function() notInWishlist,
     required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
-    return notInCart();
+    return notInWishlist();
   }
 
   @override
@@ -883,14 +889,14 @@ class _$WishListStateNotInWishList implements WishListStateNotInWishList {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addToCart,
-    TResult? Function()? removeFromCart,
-    TResult? Function()? alreadyInCart,
-    TResult? Function()? notInCart,
+    TResult? Function()? addToWishlist,
+    TResult? Function()? removeFromWishlist,
+    TResult? Function()? alreadyInWishlist,
+    TResult? Function()? notInWishlist,
     TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
-    return notInCart?.call();
+    return notInWishlist?.call();
   }
 
   @override
@@ -898,16 +904,16 @@ class _$WishListStateNotInWishList implements WishListStateNotInWishList {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addToCart,
-    TResult Function()? removeFromCart,
-    TResult Function()? alreadyInCart,
-    TResult Function()? notInCart,
+    TResult Function()? addToWishlist,
+    TResult Function()? removeFromWishlist,
+    TResult Function()? alreadyInWishlist,
+    TResult Function()? notInWishlist,
     TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (notInCart != null) {
-      return notInCart();
+    if (notInWishlist != null) {
+      return notInWishlist();
     }
     return orElse();
   }
@@ -917,16 +923,16 @@ class _$WishListStateNotInWishList implements WishListStateNotInWishList {
   TResult map<TResult extends Object?>({
     required TResult Function(WishListStateInitial value) initial,
     required TResult Function(WishListStateLoading value) loading,
-    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateAddedToWishList value) addToWishlist,
     required TResult Function(WishListStateRemoveFromWishList value)
-        removeFromCart,
+        removeFromWishlist,
     required TResult Function(WishListStateAlreadyInWishList value)
-        alreadyInCart,
-    required TResult Function(WishListStateNotInWishList value) notInCart,
+        alreadyInWishlist,
+    required TResult Function(WishListStateNotInWishList value) notInWishlist,
     required TResult Function(WishListStateSuccess value) success,
     required TResult Function(WishListStateError value) error,
   }) {
-    return notInCart(this);
+    return notInWishlist(this);
   }
 
   @override
@@ -934,14 +940,15 @@ class _$WishListStateNotInWishList implements WishListStateNotInWishList {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(WishListStateInitial value)? initial,
     TResult? Function(WishListStateLoading value)? loading,
-    TResult? Function(WishListStateAddedToWishList value)? addToCart,
-    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult? Function(WishListStateRemoveFromWishList value)?
+        removeFromWishlist,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult? Function(WishListStateNotInWishList value)? notInWishlist,
     TResult? Function(WishListStateSuccess value)? success,
     TResult? Function(WishListStateError value)? error,
   }) {
-    return notInCart?.call(this);
+    return notInWishlist?.call(this);
   }
 
   @override
@@ -949,16 +956,16 @@ class _$WishListStateNotInWishList implements WishListStateNotInWishList {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WishListStateInitial value)? initial,
     TResult Function(WishListStateLoading value)? loading,
-    TResult Function(WishListStateAddedToWishList value)? addToCart,
-    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromWishlist,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult Function(WishListStateNotInWishList value)? notInWishlist,
     TResult Function(WishListStateSuccess value)? success,
     TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
-    if (notInCart != null) {
-      return notInCart(this);
+    if (notInWishlist != null) {
+      return notInWishlist(this);
     }
     return orElse();
   }
@@ -1042,10 +1049,10 @@ class _$WishListStateSuccess implements WishListStateSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addToCart,
-    required TResult Function() removeFromCart,
-    required TResult Function() alreadyInCart,
-    required TResult Function() notInCart,
+    required TResult Function() addToWishlist,
+    required TResult Function() removeFromWishlist,
+    required TResult Function() alreadyInWishlist,
+    required TResult Function() notInWishlist,
     required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
@@ -1057,10 +1064,10 @@ class _$WishListStateSuccess implements WishListStateSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addToCart,
-    TResult? Function()? removeFromCart,
-    TResult? Function()? alreadyInCart,
-    TResult? Function()? notInCart,
+    TResult? Function()? addToWishlist,
+    TResult? Function()? removeFromWishlist,
+    TResult? Function()? alreadyInWishlist,
+    TResult? Function()? notInWishlist,
     TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
@@ -1072,10 +1079,10 @@ class _$WishListStateSuccess implements WishListStateSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addToCart,
-    TResult Function()? removeFromCart,
-    TResult Function()? alreadyInCart,
-    TResult Function()? notInCart,
+    TResult Function()? addToWishlist,
+    TResult Function()? removeFromWishlist,
+    TResult Function()? alreadyInWishlist,
+    TResult Function()? notInWishlist,
     TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -1091,12 +1098,12 @@ class _$WishListStateSuccess implements WishListStateSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(WishListStateInitial value) initial,
     required TResult Function(WishListStateLoading value) loading,
-    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateAddedToWishList value) addToWishlist,
     required TResult Function(WishListStateRemoveFromWishList value)
-        removeFromCart,
+        removeFromWishlist,
     required TResult Function(WishListStateAlreadyInWishList value)
-        alreadyInCart,
-    required TResult Function(WishListStateNotInWishList value) notInCart,
+        alreadyInWishlist,
+    required TResult Function(WishListStateNotInWishList value) notInWishlist,
     required TResult Function(WishListStateSuccess value) success,
     required TResult Function(WishListStateError value) error,
   }) {
@@ -1108,10 +1115,11 @@ class _$WishListStateSuccess implements WishListStateSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(WishListStateInitial value)? initial,
     TResult? Function(WishListStateLoading value)? loading,
-    TResult? Function(WishListStateAddedToWishList value)? addToCart,
-    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult? Function(WishListStateRemoveFromWishList value)?
+        removeFromWishlist,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult? Function(WishListStateNotInWishList value)? notInWishlist,
     TResult? Function(WishListStateSuccess value)? success,
     TResult? Function(WishListStateError value)? error,
   }) {
@@ -1123,10 +1131,10 @@ class _$WishListStateSuccess implements WishListStateSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WishListStateInitial value)? initial,
     TResult Function(WishListStateLoading value)? loading,
-    TResult Function(WishListStateAddedToWishList value)? addToCart,
-    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromWishlist,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult Function(WishListStateNotInWishList value)? notInWishlist,
     TResult Function(WishListStateSuccess value)? success,
     TResult Function(WishListStateError value)? error,
     required TResult orElse(),
@@ -1215,10 +1223,10 @@ class _$WishListStateError implements WishListStateError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addToCart,
-    required TResult Function() removeFromCart,
-    required TResult Function() alreadyInCart,
-    required TResult Function() notInCart,
+    required TResult Function() addToWishlist,
+    required TResult Function() removeFromWishlist,
+    required TResult Function() alreadyInWishlist,
+    required TResult Function() notInWishlist,
     required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
@@ -1230,10 +1238,10 @@ class _$WishListStateError implements WishListStateError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addToCart,
-    TResult? Function()? removeFromCart,
-    TResult? Function()? alreadyInCart,
-    TResult? Function()? notInCart,
+    TResult? Function()? addToWishlist,
+    TResult? Function()? removeFromWishlist,
+    TResult? Function()? alreadyInWishlist,
+    TResult? Function()? notInWishlist,
     TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
@@ -1245,10 +1253,10 @@ class _$WishListStateError implements WishListStateError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addToCart,
-    TResult Function()? removeFromCart,
-    TResult Function()? alreadyInCart,
-    TResult Function()? notInCart,
+    TResult Function()? addToWishlist,
+    TResult Function()? removeFromWishlist,
+    TResult Function()? alreadyInWishlist,
+    TResult Function()? notInWishlist,
     TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -1264,12 +1272,12 @@ class _$WishListStateError implements WishListStateError {
   TResult map<TResult extends Object?>({
     required TResult Function(WishListStateInitial value) initial,
     required TResult Function(WishListStateLoading value) loading,
-    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateAddedToWishList value) addToWishlist,
     required TResult Function(WishListStateRemoveFromWishList value)
-        removeFromCart,
+        removeFromWishlist,
     required TResult Function(WishListStateAlreadyInWishList value)
-        alreadyInCart,
-    required TResult Function(WishListStateNotInWishList value) notInCart,
+        alreadyInWishlist,
+    required TResult Function(WishListStateNotInWishList value) notInWishlist,
     required TResult Function(WishListStateSuccess value) success,
     required TResult Function(WishListStateError value) error,
   }) {
@@ -1281,10 +1289,11 @@ class _$WishListStateError implements WishListStateError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(WishListStateInitial value)? initial,
     TResult? Function(WishListStateLoading value)? loading,
-    TResult? Function(WishListStateAddedToWishList value)? addToCart,
-    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult? Function(WishListStateRemoveFromWishList value)?
+        removeFromWishlist,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult? Function(WishListStateNotInWishList value)? notInWishlist,
     TResult? Function(WishListStateSuccess value)? success,
     TResult? Function(WishListStateError value)? error,
   }) {
@@ -1296,10 +1305,10 @@ class _$WishListStateError implements WishListStateError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WishListStateInitial value)? initial,
     TResult Function(WishListStateLoading value)? loading,
-    TResult Function(WishListStateAddedToWishList value)? addToCart,
-    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
-    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
-    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateAddedToWishList value)? addToWishlist,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromWishlist,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInWishlist,
+    TResult Function(WishListStateNotInWishList value)? notInWishlist,
     TResult Function(WishListStateSuccess value)? success,
     TResult Function(WishListStateError value)? error,
     required TResult orElse(),

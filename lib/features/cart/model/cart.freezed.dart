@@ -134,13 +134,14 @@ class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Cart implements _Cart {
+class _$_Cart extends _Cart {
   const _$_Cart(
       {required this.id,
       required this.quantity,
       required this.imageUrl,
       required this.price,
-      required this.name});
+      required this.name})
+      : super._();
 
   factory _$_Cart.fromJson(Map<String, dynamic> json) => _$$_CartFromJson(json);
 
@@ -193,13 +194,14 @@ class _$_Cart implements _Cart {
   }
 }
 
-abstract class _Cart implements Cart {
+abstract class _Cart extends Cart {
   const factory _Cart(
       {required final String id,
       required final int quantity,
       required final String imageUrl,
       required final int price,
       required final String name}) = _$_Cart;
+  const _Cart._() : super._();
 
   factory _Cart.fromJson(Map<String, dynamic> json) = _$_Cart.fromJson;
 

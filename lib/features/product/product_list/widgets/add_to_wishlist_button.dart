@@ -10,7 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:like_button/like_button.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class AddToWishlistButton extends ConsumerWidget {
+class AddToWishlistButton extends ConsumerStatefulWidget {
   const AddToWishlistButton({
     super.key,
     required this.product,
@@ -19,14 +19,36 @@ class AddToWishlistButton extends ConsumerWidget {
   final Product product;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<WishListState>(wishListProvider, (previous, currentState) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _AddToWishlistButtonState();
+}
+
+class _AddToWishlistButtonState extends ConsumerState<AddToWishlistButton> {
+  late Product _product;
+
+  @override
+  void initState() {
+    super.initState();
+    _product = widget.product;
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final userId = ref.read(userNotifierProvider)?.uid;
+      ref.read(wishListProvider(_product.id).notifier).isInWishList(
+            userId: userId ?? '',
+            productId: _product.id,
+          );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ref.listen<WishListState>(wishListProvider(_product.id),
+        (previous, currentState) {
       if (currentState is WishListStateAddedToWishList) {
         context.showSuccessSnackBar(
             message: 'Added to wish list successfully.');
       }
     });
-    final wishListState = ref.watch(wishListProvider);
+    final wishListState = ref.watch(wishListProvider(_product.id));
     return LikeButton(
       size: 18,
       bubblesColor: BubblesColor(
@@ -38,9 +60,9 @@ class AddToWishlistButton extends ConsumerWidget {
       onTap: (isLiked) async {
         if (ref.read(userNotifierProvider) != null &&
             (wishListState != const WishListStateAlreadyInWishList() ||
-                wishListState != const WishListState.addToCart())) {
+                wishListState != const WishListState.addToWishlist())) {
           return await _onLikeButtonTapped(
-              isLiked, ref, ref.read(userNotifierProvider)!.uid, product);
+              isLiked, ref, ref.read(userNotifierProvider)!.uid, _product);
         } else {
           _handleNotLogggedInWishButtonClick(context);
           return false;
@@ -49,7 +71,10 @@ class AddToWishlistButton extends ConsumerWidget {
       likeBuilder: (isLiked) {
         return Icon(
           MdiIcons.heart,
-          color: ref.watch(wishListProvider) is WishListStateAlreadyInWishList
+          color: (ref.watch(wishListProvider(_product.id))
+                      is WishListStateAlreadyInWishList ||
+                  ref.watch(wishListProvider(_product.id))
+                      is WishListStateAddedToWishList)
               ? Theme.of(context).colorScheme.tertiary
               : Colors.grey,
           size: 18,
@@ -65,7 +90,7 @@ class AddToWishlistButton extends ConsumerWidget {
   Future<bool> _onLikeButtonTapped(
       bool isLiked, WidgetRef ref, String userId, Product product) async {
     ref
-        .read(wishListProvider.notifier)
+        .read(wishListProvider(product.id).notifier)
         .addProductToWishList(userId: userId, product: product);
 
     return true;

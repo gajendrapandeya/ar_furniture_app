@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 
 class GenericUtils {
@@ -21,5 +22,11 @@ class GenericUtils {
 // now return the file which is created with random name in
 // temporary directory and image bytes from response is written to // that file.
     return file;
+  }
+
+  static String formatAmount(int amount) {
+    NumberFormat nepaliFormat = NumberFormat('###,##,###.##', 'en_US');
+    String formattedTotal = nepaliFormat.format(amount);
+    return 'NPR: $formattedTotal';
   }
 }
