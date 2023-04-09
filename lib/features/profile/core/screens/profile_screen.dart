@@ -57,6 +57,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         return ProfileListItem(
                           iconData: item.iconData,
                           title: item.title,
+                          onItemClicked: () => _navigateToParticularScreen(
+                              profileItems[index].title),
                         );
                       }),
                       separatorBuilder: ((_, index) => Divider(
@@ -88,5 +90,13 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               }),
       ),
     );
+  }
+
+  void _navigateToParticularScreen(String itemName) {
+    if (itemName == 'Address Book') {
+      Navigator.of(context).pushNamed(
+        RouteConstants.addressListScreenRoute,
+      );
+    }
   }
 }

@@ -1,5 +1,7 @@
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/model/user_model.dart';
+import 'package:ar_furniture_app/features/address/screen/add_address_screen.dart';
+import 'package:ar_furniture_app/features/address/screen/address_list_screen.dart';
 import 'package:ar_furniture_app/features/ar_view/ar_view_screen.dart';
 import 'package:ar_furniture_app/features/auth/forgot_password/screens/forgot_password_screen.dart';
 import 'package:ar_furniture_app/features/auth/login/screens/login_screen.dart';
@@ -63,6 +65,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case RouteConstants.categoryRoute:
         return MaterialPageRoute(builder: (_) => const CategoryScreen());
+      case RouteConstants.addressListScreenRoute:
+        return MaterialPageRoute(builder: (_) => const AddressListScreen());
+      case RouteConstants.addAddressScreenRoute:
+        return MaterialPageRoute(builder: (_) => const AddAddressScreen());
       case RouteConstants.updateProfileRoute:
         return MaterialPageRoute(
           builder: (_) => UpdateProfileScreen(
