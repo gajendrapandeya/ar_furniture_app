@@ -1,13 +1,20 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
+import 'package:ar_furniture_app/core/providers/user_provider.dart';
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
+import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
+import 'package:ar_furniture_app/core/widgets/custom_dialog.dart';
 import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
 import 'package:ar_furniture_app/core/widgets/image_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
+import 'package:ar_furniture_app/features/cart/controller/cart_controller.dart';
+import 'package:ar_furniture_app/features/cart/controller/cart_state.dart';
+import 'package:ar_furniture_app/features/cart/model/cart.dart';
 import 'package:ar_furniture_app/features/product/core/model/product/product.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/add_to_wishlist_button.dart';
 import 'package:collection/collection.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -32,6 +39,15 @@ class ProductDetailScreen extends ConsumerStatefulWidget {
 
 class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   final PageController _pageController = PageController();
+
+  @override
+  void initState() {
+    final userId = ref.read(userNotifierProvider)?.uid;
+    ref
+        .read(cartProvider.notifier)
+        .inInCart(userId: userId ?? '', cartId: widget.product.id);
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -89,6 +105,23 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                       url: imageUrl,
                       imageWidth: double.infinity,
                       imageFit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 12,
+                  top: 24,
+                  child: InkWell(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: const Icon(
+                        MdiIcons.chevronLeft,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
@@ -248,7 +281,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
       children: [
         Expanded(
           child: Text(
-            product.name ?? '',
+            product.name,
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -285,6 +318,17 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   }
 
   Widget _buildBottomWidget(BuildContext context) {
+    final CartState cartState = ref.watch(cartProvider);
+    debugPrint('cartState: $cartState');
+    final product = widget.product;
+    User? currentUser = ref.read(userNotifierProvider);
+    final cart = Cart(
+      id: product.id,
+      quantity: 1,
+      imageUrl: product.imageUrls.first,
+      price: product.price!,
+      name: product.name,
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 16,
@@ -296,14 +340,36 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
             child: _buildLiveViewButton(context),
           ),
           HorizontalSpacer.l,
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.52,
-            child: CustomElevatedButton.withIcon(
-              onButtonPressed: () {},
-              buttonText: 'Add To Cart',
-              iconData: MdiIcons.cart,
+          if (cartState != const CartState.alreadyInCart() &&
+              cartState != const CartState.addedToCart())
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.52,
+              child: CustomElevatedButton.withIcon(
+                onButtonPressed: () {
+                  if (currentUser == null) {
+                    _handleNotLogggedInWhenAddToCartClicked();
+                  } else {
+                    ref.read(cartProvider.notifier).addProductToCart(
+                          userId: currentUser.uid,
+                          cart: cart,
+                        );
+                    context.showSuccessSnackBar(
+                      message: 'Successfully added to the cart',
+                    );
+                  }
+                },
+                buttonText: 'Add To Cart',
+                iconData: MdiIcons.cart,
+                isLoading: (cartState == const CartState.loading()) ||
+                    (cartState == const CartState.alreadyInCart()),
+              ),
+            )
+          else if (cartState is CartStateLoading)
+            Container(
+              width: 30,
+              height: 30,
+              color: Colors.green,
             ),
-          ),
         ],
       ),
     );
@@ -340,5 +406,18 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
             ),
       ),
     );
+  }
+
+  void _handleNotLogggedInWhenAddToCartClicked() async {
+    showDialog(
+      context: context,
+      builder: ((context) {
+        return const CustomDialog();
+      }),
+    ).then((value) {
+      if (value != null && value == true) {
+        Navigator.of(context).pushNamed(RouteConstants.loginRoute);
+      }
+    });
   }
 }

@@ -59,7 +59,7 @@ class CartService with ErrorMixin {
     }
   }
 
-  Future<List<Cart>> fetchEventsFromCart({required String userId}) async {
+  Future<List<Cart>> fetchProductsInCart({required String userId}) async {
     try {
       final snapshot = await _userCollection
           .doc(userId)

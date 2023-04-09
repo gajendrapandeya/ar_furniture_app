@@ -30,7 +30,7 @@ class _ProductListItemState extends ConsumerState<ProductListItem> {
       if (userId != null) {
         ref
             .read(wishListProvider.notifier)
-            .isInWishList(userId: userId, productId: widget.product.id ?? "");
+            .isInWishList(userId: userId, productId: widget.product.id);
       }
     });
   }
@@ -96,7 +96,7 @@ class _ProductListItemState extends ConsumerState<ProductListItem> {
       children: [
         Expanded(
           child: Text(
-            product.name ?? 'Unknown',
+            product.name,
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).colorScheme.secondary.withOpacity(

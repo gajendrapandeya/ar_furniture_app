@@ -22,8 +22,8 @@ class WishlistController extends StateNotifier<WishListState> {
       final isInWishList = await _wishListService.isInWishList(
           userId: userId, productId: productId);
       state = isInWishList
-          ? const WishListState.alreadyInWishList()
-          : const WishListState.notInWishList();
+          ? const WishListState.alreadyInCart()
+          : const WishListState.notInCart();
     } catch (error) {
       state = WishListState.error(
         error: error.toString(),
@@ -35,7 +35,7 @@ class WishlistController extends StateNotifier<WishListState> {
       {required String userId, required Product product}) async {
     try {
       await _wishListService.addToWishList(product: product, userId: userId);
-      state = const WishListState.addedToWishList();
+      state = const WishListState.addToCart();
     } catch (error) {
       state = WishListState.error(
         error: error.toString(),
@@ -48,7 +48,7 @@ class WishlistController extends StateNotifier<WishListState> {
     try {
       await _wishListService.removeFromWishList(
           productId: productId, userId: userId);
-      state = const WishListState.removeFromWishList();
+      state = const WishListState.removeFromCart();
     } catch (error) {
       state = WishListState.error(
         error: error.toString(),
