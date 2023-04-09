@@ -6,7 +6,6 @@ import 'package:ar_furniture_app/core/providers/firebase_providers.dart';
 import 'package:ar_furniture_app/core/utils/error_mixin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final profileServiceProvider = Provider<ProfileService>((ref) => ProfileService(
@@ -39,7 +38,6 @@ class ProfileService with ErrorMixin {
       await _userCollection.doc(userId).update({'photoUrl': downloadImageUrl});
       return downloadImageUrl;
     } catch (error) {
-      debugPrint('error: $error');
       throw handleError(error);
     }
   }

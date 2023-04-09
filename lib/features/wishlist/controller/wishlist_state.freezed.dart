@@ -15,16 +15,16 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$WishListState<T> {
+mixin _$WishListState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addedToWishList,
-    required TResult Function() removeFromWishList,
-    required TResult Function() alreadyInWishList,
-    required TResult Function() notInWishList,
-    required TResult Function(T data) success,
+    required TResult Function() addToCart,
+    required TResult Function() removeFromCart,
+    required TResult Function() alreadyInCart,
+    required TResult Function() notInCart,
+    required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,11 +32,11 @@ mixin _$WishListState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addedToWishList,
-    TResult? Function()? removeFromWishList,
-    TResult? Function()? alreadyInWishList,
-    TResult? Function()? notInWishList,
-    TResult? Function(T data)? success,
+    TResult? Function()? addToCart,
+    TResult? Function()? removeFromCart,
+    TResult? Function()? alreadyInCart,
+    TResult? Function()? notInCart,
+    TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -44,72 +44,66 @@ mixin _$WishListState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addedToWishList,
-    TResult Function()? removeFromWishList,
-    TResult Function()? alreadyInWishList,
-    TResult Function()? notInWishList,
-    TResult Function(T data)? success,
+    TResult Function()? addToCart,
+    TResult Function()? removeFromCart,
+    TResult Function()? alreadyInCart,
+    TResult Function()? notInCart,
+    TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WishListStateInitial<T> value) initial,
-    required TResult Function(WishListStateLoading<T> value) loading,
-    required TResult Function(WishListStateAddedToWishList<T> value)
-        addedToWishList,
-    required TResult Function(WishListStateRemoveFromWishList<T> value)
-        removeFromWishList,
-    required TResult Function(WishListStateAlreadyInWishList<T> value)
-        alreadyInWishList,
-    required TResult Function(WishListStateNotInWishList<T> value)
-        notInWishList,
-    required TResult Function(WishListStateSuccess<T> value) success,
-    required TResult Function(WishListStateError<T> value) error,
+    required TResult Function(WishListStateInitial value) initial,
+    required TResult Function(WishListStateLoading value) loading,
+    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateRemoveFromWishList value)
+        removeFromCart,
+    required TResult Function(WishListStateAlreadyInWishList value)
+        alreadyInCart,
+    required TResult Function(WishListStateNotInWishList value) notInCart,
+    required TResult Function(WishListStateSuccess value) success,
+    required TResult Function(WishListStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WishListStateInitial<T> value)? initial,
-    TResult? Function(WishListStateLoading<T> value)? loading,
-    TResult? Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult? Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult? Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult? Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult? Function(WishListStateSuccess<T> value)? success,
-    TResult? Function(WishListStateError<T> value)? error,
+    TResult? Function(WishListStateInitial value)? initial,
+    TResult? Function(WishListStateLoading value)? loading,
+    TResult? Function(WishListStateAddedToWishList value)? addToCart,
+    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateSuccess value)? success,
+    TResult? Function(WishListStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WishListStateInitial<T> value)? initial,
-    TResult Function(WishListStateLoading<T> value)? loading,
-    TResult Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult Function(WishListStateSuccess<T> value)? success,
-    TResult Function(WishListStateError<T> value)? error,
+    TResult Function(WishListStateInitial value)? initial,
+    TResult Function(WishListStateLoading value)? loading,
+    TResult Function(WishListStateAddedToWishList value)? addToCart,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateSuccess value)? success,
+    TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WishListStateCopyWith<T, $Res> {
+abstract class $WishListStateCopyWith<$Res> {
   factory $WishListStateCopyWith(
-          WishListState<T> value, $Res Function(WishListState<T>) then) =
-      _$WishListStateCopyWithImpl<T, $Res, WishListState<T>>;
+          WishListState value, $Res Function(WishListState) then) =
+      _$WishListStateCopyWithImpl<$Res, WishListState>;
 }
 
 /// @nodoc
-class _$WishListStateCopyWithImpl<T, $Res, $Val extends WishListState<T>>
-    implements $WishListStateCopyWith<T, $Res> {
+class _$WishListStateCopyWithImpl<$Res, $Val extends WishListState>
+    implements $WishListStateCopyWith<$Res> {
   _$WishListStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -119,36 +113,35 @@ class _$WishListStateCopyWithImpl<T, $Res, $Val extends WishListState<T>>
 }
 
 /// @nodoc
-abstract class _$$WishListStateInitialCopyWith<T, $Res> {
-  factory _$$WishListStateInitialCopyWith(_$WishListStateInitial<T> value,
-          $Res Function(_$WishListStateInitial<T>) then) =
-      __$$WishListStateInitialCopyWithImpl<T, $Res>;
+abstract class _$$WishListStateInitialCopyWith<$Res> {
+  factory _$$WishListStateInitialCopyWith(_$WishListStateInitial value,
+          $Res Function(_$WishListStateInitial) then) =
+      __$$WishListStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WishListStateInitialCopyWithImpl<T, $Res>
-    extends _$WishListStateCopyWithImpl<T, $Res, _$WishListStateInitial<T>>
-    implements _$$WishListStateInitialCopyWith<T, $Res> {
-  __$$WishListStateInitialCopyWithImpl(_$WishListStateInitial<T> _value,
-      $Res Function(_$WishListStateInitial<T>) _then)
+class __$$WishListStateInitialCopyWithImpl<$Res>
+    extends _$WishListStateCopyWithImpl<$Res, _$WishListStateInitial>
+    implements _$$WishListStateInitialCopyWith<$Res> {
+  __$$WishListStateInitialCopyWithImpl(_$WishListStateInitial _value,
+      $Res Function(_$WishListStateInitial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$WishListStateInitial<T> implements WishListStateInitial<T> {
+class _$WishListStateInitial implements WishListStateInitial {
   const _$WishListStateInitial();
 
   @override
   String toString() {
-    return 'WishListState<$T>.initial()';
+    return 'WishListState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$WishListStateInitial<T>);
+        (other.runtimeType == runtimeType && other is _$WishListStateInitial);
   }
 
   @override
@@ -159,11 +152,11 @@ class _$WishListStateInitial<T> implements WishListStateInitial<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addedToWishList,
-    required TResult Function() removeFromWishList,
-    required TResult Function() alreadyInWishList,
-    required TResult Function() notInWishList,
-    required TResult Function(T data) success,
+    required TResult Function() addToCart,
+    required TResult Function() removeFromCart,
+    required TResult Function() alreadyInCart,
+    required TResult Function() notInCart,
+    required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -174,11 +167,11 @@ class _$WishListStateInitial<T> implements WishListStateInitial<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addedToWishList,
-    TResult? Function()? removeFromWishList,
-    TResult? Function()? alreadyInWishList,
-    TResult? Function()? notInWishList,
-    TResult? Function(T data)? success,
+    TResult? Function()? addToCart,
+    TResult? Function()? removeFromCart,
+    TResult? Function()? alreadyInCart,
+    TResult? Function()? notInCart,
+    TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -189,11 +182,11 @@ class _$WishListStateInitial<T> implements WishListStateInitial<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addedToWishList,
-    TResult Function()? removeFromWishList,
-    TResult Function()? alreadyInWishList,
-    TResult Function()? notInWishList,
-    TResult Function(T data)? success,
+    TResult Function()? addToCart,
+    TResult Function()? removeFromCart,
+    TResult Function()? alreadyInCart,
+    TResult Function()? notInCart,
+    TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -206,18 +199,16 @@ class _$WishListStateInitial<T> implements WishListStateInitial<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WishListStateInitial<T> value) initial,
-    required TResult Function(WishListStateLoading<T> value) loading,
-    required TResult Function(WishListStateAddedToWishList<T> value)
-        addedToWishList,
-    required TResult Function(WishListStateRemoveFromWishList<T> value)
-        removeFromWishList,
-    required TResult Function(WishListStateAlreadyInWishList<T> value)
-        alreadyInWishList,
-    required TResult Function(WishListStateNotInWishList<T> value)
-        notInWishList,
-    required TResult Function(WishListStateSuccess<T> value) success,
-    required TResult Function(WishListStateError<T> value) error,
+    required TResult Function(WishListStateInitial value) initial,
+    required TResult Function(WishListStateLoading value) loading,
+    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateRemoveFromWishList value)
+        removeFromCart,
+    required TResult Function(WishListStateAlreadyInWishList value)
+        alreadyInCart,
+    required TResult Function(WishListStateNotInWishList value) notInCart,
+    required TResult Function(WishListStateSuccess value) success,
+    required TResult Function(WishListStateError value) error,
   }) {
     return initial(this);
   }
@@ -225,16 +216,14 @@ class _$WishListStateInitial<T> implements WishListStateInitial<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WishListStateInitial<T> value)? initial,
-    TResult? Function(WishListStateLoading<T> value)? loading,
-    TResult? Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult? Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult? Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult? Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult? Function(WishListStateSuccess<T> value)? success,
-    TResult? Function(WishListStateError<T> value)? error,
+    TResult? Function(WishListStateInitial value)? initial,
+    TResult? Function(WishListStateLoading value)? loading,
+    TResult? Function(WishListStateAddedToWishList value)? addToCart,
+    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateSuccess value)? success,
+    TResult? Function(WishListStateError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -242,16 +231,14 @@ class _$WishListStateInitial<T> implements WishListStateInitial<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WishListStateInitial<T> value)? initial,
-    TResult Function(WishListStateLoading<T> value)? loading,
-    TResult Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult Function(WishListStateSuccess<T> value)? success,
-    TResult Function(WishListStateError<T> value)? error,
+    TResult Function(WishListStateInitial value)? initial,
+    TResult Function(WishListStateLoading value)? loading,
+    TResult Function(WishListStateAddedToWishList value)? addToCart,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateSuccess value)? success,
+    TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -261,41 +248,40 @@ class _$WishListStateInitial<T> implements WishListStateInitial<T> {
   }
 }
 
-abstract class WishListStateInitial<T> implements WishListState<T> {
-  const factory WishListStateInitial() = _$WishListStateInitial<T>;
+abstract class WishListStateInitial implements WishListState {
+  const factory WishListStateInitial() = _$WishListStateInitial;
 }
 
 /// @nodoc
-abstract class _$$WishListStateLoadingCopyWith<T, $Res> {
-  factory _$$WishListStateLoadingCopyWith(_$WishListStateLoading<T> value,
-          $Res Function(_$WishListStateLoading<T>) then) =
-      __$$WishListStateLoadingCopyWithImpl<T, $Res>;
+abstract class _$$WishListStateLoadingCopyWith<$Res> {
+  factory _$$WishListStateLoadingCopyWith(_$WishListStateLoading value,
+          $Res Function(_$WishListStateLoading) then) =
+      __$$WishListStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WishListStateLoadingCopyWithImpl<T, $Res>
-    extends _$WishListStateCopyWithImpl<T, $Res, _$WishListStateLoading<T>>
-    implements _$$WishListStateLoadingCopyWith<T, $Res> {
-  __$$WishListStateLoadingCopyWithImpl(_$WishListStateLoading<T> _value,
-      $Res Function(_$WishListStateLoading<T>) _then)
+class __$$WishListStateLoadingCopyWithImpl<$Res>
+    extends _$WishListStateCopyWithImpl<$Res, _$WishListStateLoading>
+    implements _$$WishListStateLoadingCopyWith<$Res> {
+  __$$WishListStateLoadingCopyWithImpl(_$WishListStateLoading _value,
+      $Res Function(_$WishListStateLoading) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$WishListStateLoading<T> implements WishListStateLoading<T> {
+class _$WishListStateLoading implements WishListStateLoading {
   const _$WishListStateLoading();
 
   @override
   String toString() {
-    return 'WishListState<$T>.loading()';
+    return 'WishListState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$WishListStateLoading<T>);
+        (other.runtimeType == runtimeType && other is _$WishListStateLoading);
   }
 
   @override
@@ -306,11 +292,11 @@ class _$WishListStateLoading<T> implements WishListStateLoading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addedToWishList,
-    required TResult Function() removeFromWishList,
-    required TResult Function() alreadyInWishList,
-    required TResult Function() notInWishList,
-    required TResult Function(T data) success,
+    required TResult Function() addToCart,
+    required TResult Function() removeFromCart,
+    required TResult Function() alreadyInCart,
+    required TResult Function() notInCart,
+    required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -321,11 +307,11 @@ class _$WishListStateLoading<T> implements WishListStateLoading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addedToWishList,
-    TResult? Function()? removeFromWishList,
-    TResult? Function()? alreadyInWishList,
-    TResult? Function()? notInWishList,
-    TResult? Function(T data)? success,
+    TResult? Function()? addToCart,
+    TResult? Function()? removeFromCart,
+    TResult? Function()? alreadyInCart,
+    TResult? Function()? notInCart,
+    TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -336,11 +322,11 @@ class _$WishListStateLoading<T> implements WishListStateLoading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addedToWishList,
-    TResult Function()? removeFromWishList,
-    TResult Function()? alreadyInWishList,
-    TResult Function()? notInWishList,
-    TResult Function(T data)? success,
+    TResult Function()? addToCart,
+    TResult Function()? removeFromCart,
+    TResult Function()? alreadyInCart,
+    TResult Function()? notInCart,
+    TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -353,18 +339,16 @@ class _$WishListStateLoading<T> implements WishListStateLoading<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WishListStateInitial<T> value) initial,
-    required TResult Function(WishListStateLoading<T> value) loading,
-    required TResult Function(WishListStateAddedToWishList<T> value)
-        addedToWishList,
-    required TResult Function(WishListStateRemoveFromWishList<T> value)
-        removeFromWishList,
-    required TResult Function(WishListStateAlreadyInWishList<T> value)
-        alreadyInWishList,
-    required TResult Function(WishListStateNotInWishList<T> value)
-        notInWishList,
-    required TResult Function(WishListStateSuccess<T> value) success,
-    required TResult Function(WishListStateError<T> value) error,
+    required TResult Function(WishListStateInitial value) initial,
+    required TResult Function(WishListStateLoading value) loading,
+    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateRemoveFromWishList value)
+        removeFromCart,
+    required TResult Function(WishListStateAlreadyInWishList value)
+        alreadyInCart,
+    required TResult Function(WishListStateNotInWishList value) notInCart,
+    required TResult Function(WishListStateSuccess value) success,
+    required TResult Function(WishListStateError value) error,
   }) {
     return loading(this);
   }
@@ -372,16 +356,14 @@ class _$WishListStateLoading<T> implements WishListStateLoading<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WishListStateInitial<T> value)? initial,
-    TResult? Function(WishListStateLoading<T> value)? loading,
-    TResult? Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult? Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult? Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult? Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult? Function(WishListStateSuccess<T> value)? success,
-    TResult? Function(WishListStateError<T> value)? error,
+    TResult? Function(WishListStateInitial value)? initial,
+    TResult? Function(WishListStateLoading value)? loading,
+    TResult? Function(WishListStateAddedToWishList value)? addToCart,
+    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateSuccess value)? success,
+    TResult? Function(WishListStateError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -389,16 +371,14 @@ class _$WishListStateLoading<T> implements WishListStateLoading<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WishListStateInitial<T> value)? initial,
-    TResult Function(WishListStateLoading<T> value)? loading,
-    TResult Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult Function(WishListStateSuccess<T> value)? success,
-    TResult Function(WishListStateError<T> value)? error,
+    TResult Function(WishListStateInitial value)? initial,
+    TResult Function(WishListStateLoading value)? loading,
+    TResult Function(WishListStateAddedToWishList value)? addToCart,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateSuccess value)? success,
+    TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -408,45 +388,43 @@ class _$WishListStateLoading<T> implements WishListStateLoading<T> {
   }
 }
 
-abstract class WishListStateLoading<T> implements WishListState<T> {
-  const factory WishListStateLoading() = _$WishListStateLoading<T>;
+abstract class WishListStateLoading implements WishListState {
+  const factory WishListStateLoading() = _$WishListStateLoading;
 }
 
 /// @nodoc
-abstract class _$$WishListStateAddedToWishListCopyWith<T, $Res> {
+abstract class _$$WishListStateAddedToWishListCopyWith<$Res> {
   factory _$$WishListStateAddedToWishListCopyWith(
-          _$WishListStateAddedToWishList<T> value,
-          $Res Function(_$WishListStateAddedToWishList<T>) then) =
-      __$$WishListStateAddedToWishListCopyWithImpl<T, $Res>;
+          _$WishListStateAddedToWishList value,
+          $Res Function(_$WishListStateAddedToWishList) then) =
+      __$$WishListStateAddedToWishListCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WishListStateAddedToWishListCopyWithImpl<T, $Res>
-    extends _$WishListStateCopyWithImpl<T, $Res,
-        _$WishListStateAddedToWishList<T>>
-    implements _$$WishListStateAddedToWishListCopyWith<T, $Res> {
+class __$$WishListStateAddedToWishListCopyWithImpl<$Res>
+    extends _$WishListStateCopyWithImpl<$Res, _$WishListStateAddedToWishList>
+    implements _$$WishListStateAddedToWishListCopyWith<$Res> {
   __$$WishListStateAddedToWishListCopyWithImpl(
-      _$WishListStateAddedToWishList<T> _value,
-      $Res Function(_$WishListStateAddedToWishList<T>) _then)
+      _$WishListStateAddedToWishList _value,
+      $Res Function(_$WishListStateAddedToWishList) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$WishListStateAddedToWishList<T>
-    implements WishListStateAddedToWishList<T> {
+class _$WishListStateAddedToWishList implements WishListStateAddedToWishList {
   const _$WishListStateAddedToWishList();
 
   @override
   String toString() {
-    return 'WishListState<$T>.addedToWishList()';
+    return 'WishListState.addToCart()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WishListStateAddedToWishList<T>);
+            other is _$WishListStateAddedToWishList);
   }
 
   @override
@@ -457,14 +435,14 @@ class _$WishListStateAddedToWishList<T>
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addedToWishList,
-    required TResult Function() removeFromWishList,
-    required TResult Function() alreadyInWishList,
-    required TResult Function() notInWishList,
-    required TResult Function(T data) success,
+    required TResult Function() addToCart,
+    required TResult Function() removeFromCart,
+    required TResult Function() alreadyInCart,
+    required TResult Function() notInCart,
+    required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
-    return addedToWishList();
+    return addToCart();
   }
 
   @override
@@ -472,14 +450,14 @@ class _$WishListStateAddedToWishList<T>
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addedToWishList,
-    TResult? Function()? removeFromWishList,
-    TResult? Function()? alreadyInWishList,
-    TResult? Function()? notInWishList,
-    TResult? Function(T data)? success,
+    TResult? Function()? addToCart,
+    TResult? Function()? removeFromCart,
+    TResult? Function()? alreadyInCart,
+    TResult? Function()? notInCart,
+    TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
-    return addedToWishList?.call();
+    return addToCart?.call();
   }
 
   @override
@@ -487,16 +465,16 @@ class _$WishListStateAddedToWishList<T>
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addedToWishList,
-    TResult Function()? removeFromWishList,
-    TResult Function()? alreadyInWishList,
-    TResult Function()? notInWishList,
-    TResult Function(T data)? success,
+    TResult Function()? addToCart,
+    TResult Function()? removeFromCart,
+    TResult Function()? alreadyInCart,
+    TResult Function()? notInCart,
+    TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (addedToWishList != null) {
-      return addedToWishList();
+    if (addToCart != null) {
+      return addToCart();
     }
     return orElse();
   }
@@ -504,101 +482,93 @@ class _$WishListStateAddedToWishList<T>
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WishListStateInitial<T> value) initial,
-    required TResult Function(WishListStateLoading<T> value) loading,
-    required TResult Function(WishListStateAddedToWishList<T> value)
-        addedToWishList,
-    required TResult Function(WishListStateRemoveFromWishList<T> value)
-        removeFromWishList,
-    required TResult Function(WishListStateAlreadyInWishList<T> value)
-        alreadyInWishList,
-    required TResult Function(WishListStateNotInWishList<T> value)
-        notInWishList,
-    required TResult Function(WishListStateSuccess<T> value) success,
-    required TResult Function(WishListStateError<T> value) error,
+    required TResult Function(WishListStateInitial value) initial,
+    required TResult Function(WishListStateLoading value) loading,
+    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateRemoveFromWishList value)
+        removeFromCart,
+    required TResult Function(WishListStateAlreadyInWishList value)
+        alreadyInCart,
+    required TResult Function(WishListStateNotInWishList value) notInCart,
+    required TResult Function(WishListStateSuccess value) success,
+    required TResult Function(WishListStateError value) error,
   }) {
-    return addedToWishList(this);
+    return addToCart(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WishListStateInitial<T> value)? initial,
-    TResult? Function(WishListStateLoading<T> value)? loading,
-    TResult? Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult? Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult? Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult? Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult? Function(WishListStateSuccess<T> value)? success,
-    TResult? Function(WishListStateError<T> value)? error,
+    TResult? Function(WishListStateInitial value)? initial,
+    TResult? Function(WishListStateLoading value)? loading,
+    TResult? Function(WishListStateAddedToWishList value)? addToCart,
+    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateSuccess value)? success,
+    TResult? Function(WishListStateError value)? error,
   }) {
-    return addedToWishList?.call(this);
+    return addToCart?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WishListStateInitial<T> value)? initial,
-    TResult Function(WishListStateLoading<T> value)? loading,
-    TResult Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult Function(WishListStateSuccess<T> value)? success,
-    TResult Function(WishListStateError<T> value)? error,
+    TResult Function(WishListStateInitial value)? initial,
+    TResult Function(WishListStateLoading value)? loading,
+    TResult Function(WishListStateAddedToWishList value)? addToCart,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateSuccess value)? success,
+    TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
-    if (addedToWishList != null) {
-      return addedToWishList(this);
+    if (addToCart != null) {
+      return addToCart(this);
     }
     return orElse();
   }
 }
 
-abstract class WishListStateAddedToWishList<T> implements WishListState<T> {
-  const factory WishListStateAddedToWishList() =
-      _$WishListStateAddedToWishList<T>;
+abstract class WishListStateAddedToWishList implements WishListState {
+  const factory WishListStateAddedToWishList() = _$WishListStateAddedToWishList;
 }
 
 /// @nodoc
-abstract class _$$WishListStateRemoveFromWishListCopyWith<T, $Res> {
+abstract class _$$WishListStateRemoveFromWishListCopyWith<$Res> {
   factory _$$WishListStateRemoveFromWishListCopyWith(
-          _$WishListStateRemoveFromWishList<T> value,
-          $Res Function(_$WishListStateRemoveFromWishList<T>) then) =
-      __$$WishListStateRemoveFromWishListCopyWithImpl<T, $Res>;
+          _$WishListStateRemoveFromWishList value,
+          $Res Function(_$WishListStateRemoveFromWishList) then) =
+      __$$WishListStateRemoveFromWishListCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WishListStateRemoveFromWishListCopyWithImpl<T, $Res>
-    extends _$WishListStateCopyWithImpl<T, $Res,
-        _$WishListStateRemoveFromWishList<T>>
-    implements _$$WishListStateRemoveFromWishListCopyWith<T, $Res> {
+class __$$WishListStateRemoveFromWishListCopyWithImpl<$Res>
+    extends _$WishListStateCopyWithImpl<$Res, _$WishListStateRemoveFromWishList>
+    implements _$$WishListStateRemoveFromWishListCopyWith<$Res> {
   __$$WishListStateRemoveFromWishListCopyWithImpl(
-      _$WishListStateRemoveFromWishList<T> _value,
-      $Res Function(_$WishListStateRemoveFromWishList<T>) _then)
+      _$WishListStateRemoveFromWishList _value,
+      $Res Function(_$WishListStateRemoveFromWishList) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$WishListStateRemoveFromWishList<T>
-    implements WishListStateRemoveFromWishList<T> {
+class _$WishListStateRemoveFromWishList
+    implements WishListStateRemoveFromWishList {
   const _$WishListStateRemoveFromWishList();
 
   @override
   String toString() {
-    return 'WishListState<$T>.removeFromWishList()';
+    return 'WishListState.removeFromCart()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WishListStateRemoveFromWishList<T>);
+            other is _$WishListStateRemoveFromWishList);
   }
 
   @override
@@ -609,14 +579,14 @@ class _$WishListStateRemoveFromWishList<T>
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addedToWishList,
-    required TResult Function() removeFromWishList,
-    required TResult Function() alreadyInWishList,
-    required TResult Function() notInWishList,
-    required TResult Function(T data) success,
+    required TResult Function() addToCart,
+    required TResult Function() removeFromCart,
+    required TResult Function() alreadyInCart,
+    required TResult Function() notInCart,
+    required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
-    return removeFromWishList();
+    return removeFromCart();
   }
 
   @override
@@ -624,14 +594,14 @@ class _$WishListStateRemoveFromWishList<T>
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addedToWishList,
-    TResult? Function()? removeFromWishList,
-    TResult? Function()? alreadyInWishList,
-    TResult? Function()? notInWishList,
-    TResult? Function(T data)? success,
+    TResult? Function()? addToCart,
+    TResult? Function()? removeFromCart,
+    TResult? Function()? alreadyInCart,
+    TResult? Function()? notInCart,
+    TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
-    return removeFromWishList?.call();
+    return removeFromCart?.call();
   }
 
   @override
@@ -639,16 +609,16 @@ class _$WishListStateRemoveFromWishList<T>
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addedToWishList,
-    TResult Function()? removeFromWishList,
-    TResult Function()? alreadyInWishList,
-    TResult Function()? notInWishList,
-    TResult Function(T data)? success,
+    TResult Function()? addToCart,
+    TResult Function()? removeFromCart,
+    TResult Function()? alreadyInCart,
+    TResult Function()? notInCart,
+    TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (removeFromWishList != null) {
-      return removeFromWishList();
+    if (removeFromCart != null) {
+      return removeFromCart();
     }
     return orElse();
   }
@@ -656,101 +626,94 @@ class _$WishListStateRemoveFromWishList<T>
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WishListStateInitial<T> value) initial,
-    required TResult Function(WishListStateLoading<T> value) loading,
-    required TResult Function(WishListStateAddedToWishList<T> value)
-        addedToWishList,
-    required TResult Function(WishListStateRemoveFromWishList<T> value)
-        removeFromWishList,
-    required TResult Function(WishListStateAlreadyInWishList<T> value)
-        alreadyInWishList,
-    required TResult Function(WishListStateNotInWishList<T> value)
-        notInWishList,
-    required TResult Function(WishListStateSuccess<T> value) success,
-    required TResult Function(WishListStateError<T> value) error,
+    required TResult Function(WishListStateInitial value) initial,
+    required TResult Function(WishListStateLoading value) loading,
+    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateRemoveFromWishList value)
+        removeFromCart,
+    required TResult Function(WishListStateAlreadyInWishList value)
+        alreadyInCart,
+    required TResult Function(WishListStateNotInWishList value) notInCart,
+    required TResult Function(WishListStateSuccess value) success,
+    required TResult Function(WishListStateError value) error,
   }) {
-    return removeFromWishList(this);
+    return removeFromCart(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WishListStateInitial<T> value)? initial,
-    TResult? Function(WishListStateLoading<T> value)? loading,
-    TResult? Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult? Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult? Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult? Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult? Function(WishListStateSuccess<T> value)? success,
-    TResult? Function(WishListStateError<T> value)? error,
+    TResult? Function(WishListStateInitial value)? initial,
+    TResult? Function(WishListStateLoading value)? loading,
+    TResult? Function(WishListStateAddedToWishList value)? addToCart,
+    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateSuccess value)? success,
+    TResult? Function(WishListStateError value)? error,
   }) {
-    return removeFromWishList?.call(this);
+    return removeFromCart?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WishListStateInitial<T> value)? initial,
-    TResult Function(WishListStateLoading<T> value)? loading,
-    TResult Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult Function(WishListStateSuccess<T> value)? success,
-    TResult Function(WishListStateError<T> value)? error,
+    TResult Function(WishListStateInitial value)? initial,
+    TResult Function(WishListStateLoading value)? loading,
+    TResult Function(WishListStateAddedToWishList value)? addToCart,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateSuccess value)? success,
+    TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
-    if (removeFromWishList != null) {
-      return removeFromWishList(this);
+    if (removeFromCart != null) {
+      return removeFromCart(this);
     }
     return orElse();
   }
 }
 
-abstract class WishListStateRemoveFromWishList<T> implements WishListState<T> {
+abstract class WishListStateRemoveFromWishList implements WishListState {
   const factory WishListStateRemoveFromWishList() =
-      _$WishListStateRemoveFromWishList<T>;
+      _$WishListStateRemoveFromWishList;
 }
 
 /// @nodoc
-abstract class _$$WishListStateAlreadyInWishListCopyWith<T, $Res> {
+abstract class _$$WishListStateAlreadyInWishListCopyWith<$Res> {
   factory _$$WishListStateAlreadyInWishListCopyWith(
-          _$WishListStateAlreadyInWishList<T> value,
-          $Res Function(_$WishListStateAlreadyInWishList<T>) then) =
-      __$$WishListStateAlreadyInWishListCopyWithImpl<T, $Res>;
+          _$WishListStateAlreadyInWishList value,
+          $Res Function(_$WishListStateAlreadyInWishList) then) =
+      __$$WishListStateAlreadyInWishListCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WishListStateAlreadyInWishListCopyWithImpl<T, $Res>
-    extends _$WishListStateCopyWithImpl<T, $Res,
-        _$WishListStateAlreadyInWishList<T>>
-    implements _$$WishListStateAlreadyInWishListCopyWith<T, $Res> {
+class __$$WishListStateAlreadyInWishListCopyWithImpl<$Res>
+    extends _$WishListStateCopyWithImpl<$Res, _$WishListStateAlreadyInWishList>
+    implements _$$WishListStateAlreadyInWishListCopyWith<$Res> {
   __$$WishListStateAlreadyInWishListCopyWithImpl(
-      _$WishListStateAlreadyInWishList<T> _value,
-      $Res Function(_$WishListStateAlreadyInWishList<T>) _then)
+      _$WishListStateAlreadyInWishList _value,
+      $Res Function(_$WishListStateAlreadyInWishList) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$WishListStateAlreadyInWishList<T>
-    implements WishListStateAlreadyInWishList<T> {
+class _$WishListStateAlreadyInWishList
+    implements WishListStateAlreadyInWishList {
   const _$WishListStateAlreadyInWishList();
 
   @override
   String toString() {
-    return 'WishListState<$T>.alreadyInWishList()';
+    return 'WishListState.alreadyInCart()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WishListStateAlreadyInWishList<T>);
+            other is _$WishListStateAlreadyInWishList);
   }
 
   @override
@@ -761,14 +724,14 @@ class _$WishListStateAlreadyInWishList<T>
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addedToWishList,
-    required TResult Function() removeFromWishList,
-    required TResult Function() alreadyInWishList,
-    required TResult Function() notInWishList,
-    required TResult Function(T data) success,
+    required TResult Function() addToCart,
+    required TResult Function() removeFromCart,
+    required TResult Function() alreadyInCart,
+    required TResult Function() notInCart,
+    required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
-    return alreadyInWishList();
+    return alreadyInCart();
   }
 
   @override
@@ -776,14 +739,14 @@ class _$WishListStateAlreadyInWishList<T>
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addedToWishList,
-    TResult? Function()? removeFromWishList,
-    TResult? Function()? alreadyInWishList,
-    TResult? Function()? notInWishList,
-    TResult? Function(T data)? success,
+    TResult? Function()? addToCart,
+    TResult? Function()? removeFromCart,
+    TResult? Function()? alreadyInCart,
+    TResult? Function()? notInCart,
+    TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
-    return alreadyInWishList?.call();
+    return alreadyInCart?.call();
   }
 
   @override
@@ -791,16 +754,16 @@ class _$WishListStateAlreadyInWishList<T>
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addedToWishList,
-    TResult Function()? removeFromWishList,
-    TResult Function()? alreadyInWishList,
-    TResult Function()? notInWishList,
-    TResult Function(T data)? success,
+    TResult Function()? addToCart,
+    TResult Function()? removeFromCart,
+    TResult Function()? alreadyInCart,
+    TResult Function()? notInCart,
+    TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (alreadyInWishList != null) {
-      return alreadyInWishList();
+    if (alreadyInCart != null) {
+      return alreadyInCart();
     }
     return orElse();
   }
@@ -808,100 +771,93 @@ class _$WishListStateAlreadyInWishList<T>
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WishListStateInitial<T> value) initial,
-    required TResult Function(WishListStateLoading<T> value) loading,
-    required TResult Function(WishListStateAddedToWishList<T> value)
-        addedToWishList,
-    required TResult Function(WishListStateRemoveFromWishList<T> value)
-        removeFromWishList,
-    required TResult Function(WishListStateAlreadyInWishList<T> value)
-        alreadyInWishList,
-    required TResult Function(WishListStateNotInWishList<T> value)
-        notInWishList,
-    required TResult Function(WishListStateSuccess<T> value) success,
-    required TResult Function(WishListStateError<T> value) error,
+    required TResult Function(WishListStateInitial value) initial,
+    required TResult Function(WishListStateLoading value) loading,
+    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateRemoveFromWishList value)
+        removeFromCart,
+    required TResult Function(WishListStateAlreadyInWishList value)
+        alreadyInCart,
+    required TResult Function(WishListStateNotInWishList value) notInCart,
+    required TResult Function(WishListStateSuccess value) success,
+    required TResult Function(WishListStateError value) error,
   }) {
-    return alreadyInWishList(this);
+    return alreadyInCart(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WishListStateInitial<T> value)? initial,
-    TResult? Function(WishListStateLoading<T> value)? loading,
-    TResult? Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult? Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult? Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult? Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult? Function(WishListStateSuccess<T> value)? success,
-    TResult? Function(WishListStateError<T> value)? error,
+    TResult? Function(WishListStateInitial value)? initial,
+    TResult? Function(WishListStateLoading value)? loading,
+    TResult? Function(WishListStateAddedToWishList value)? addToCart,
+    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateSuccess value)? success,
+    TResult? Function(WishListStateError value)? error,
   }) {
-    return alreadyInWishList?.call(this);
+    return alreadyInCart?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WishListStateInitial<T> value)? initial,
-    TResult Function(WishListStateLoading<T> value)? loading,
-    TResult Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult Function(WishListStateSuccess<T> value)? success,
-    TResult Function(WishListStateError<T> value)? error,
+    TResult Function(WishListStateInitial value)? initial,
+    TResult Function(WishListStateLoading value)? loading,
+    TResult Function(WishListStateAddedToWishList value)? addToCart,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateSuccess value)? success,
+    TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
-    if (alreadyInWishList != null) {
-      return alreadyInWishList(this);
+    if (alreadyInCart != null) {
+      return alreadyInCart(this);
     }
     return orElse();
   }
 }
 
-abstract class WishListStateAlreadyInWishList<T> implements WishListState<T> {
+abstract class WishListStateAlreadyInWishList implements WishListState {
   const factory WishListStateAlreadyInWishList() =
-      _$WishListStateAlreadyInWishList<T>;
+      _$WishListStateAlreadyInWishList;
 }
 
 /// @nodoc
-abstract class _$$WishListStateNotInWishListCopyWith<T, $Res> {
+abstract class _$$WishListStateNotInWishListCopyWith<$Res> {
   factory _$$WishListStateNotInWishListCopyWith(
-          _$WishListStateNotInWishList<T> value,
-          $Res Function(_$WishListStateNotInWishList<T>) then) =
-      __$$WishListStateNotInWishListCopyWithImpl<T, $Res>;
+          _$WishListStateNotInWishList value,
+          $Res Function(_$WishListStateNotInWishList) then) =
+      __$$WishListStateNotInWishListCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WishListStateNotInWishListCopyWithImpl<T, $Res>
-    extends _$WishListStateCopyWithImpl<T, $Res,
-        _$WishListStateNotInWishList<T>>
-    implements _$$WishListStateNotInWishListCopyWith<T, $Res> {
+class __$$WishListStateNotInWishListCopyWithImpl<$Res>
+    extends _$WishListStateCopyWithImpl<$Res, _$WishListStateNotInWishList>
+    implements _$$WishListStateNotInWishListCopyWith<$Res> {
   __$$WishListStateNotInWishListCopyWithImpl(
-      _$WishListStateNotInWishList<T> _value,
-      $Res Function(_$WishListStateNotInWishList<T>) _then)
+      _$WishListStateNotInWishList _value,
+      $Res Function(_$WishListStateNotInWishList) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$WishListStateNotInWishList<T> implements WishListStateNotInWishList<T> {
+class _$WishListStateNotInWishList implements WishListStateNotInWishList {
   const _$WishListStateNotInWishList();
 
   @override
   String toString() {
-    return 'WishListState<$T>.notInWishList()';
+    return 'WishListState.notInCart()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WishListStateNotInWishList<T>);
+            other is _$WishListStateNotInWishList);
   }
 
   @override
@@ -912,14 +868,14 @@ class _$WishListStateNotInWishList<T> implements WishListStateNotInWishList<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addedToWishList,
-    required TResult Function() removeFromWishList,
-    required TResult Function() alreadyInWishList,
-    required TResult Function() notInWishList,
-    required TResult Function(T data) success,
+    required TResult Function() addToCart,
+    required TResult Function() removeFromCart,
+    required TResult Function() alreadyInCart,
+    required TResult Function() notInCart,
+    required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
-    return notInWishList();
+    return notInCart();
   }
 
   @override
@@ -927,14 +883,14 @@ class _$WishListStateNotInWishList<T> implements WishListStateNotInWishList<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addedToWishList,
-    TResult? Function()? removeFromWishList,
-    TResult? Function()? alreadyInWishList,
-    TResult? Function()? notInWishList,
-    TResult? Function(T data)? success,
+    TResult? Function()? addToCart,
+    TResult? Function()? removeFromCart,
+    TResult? Function()? alreadyInCart,
+    TResult? Function()? notInCart,
+    TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
-    return notInWishList?.call();
+    return notInCart?.call();
   }
 
   @override
@@ -942,16 +898,16 @@ class _$WishListStateNotInWishList<T> implements WishListStateNotInWishList<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addedToWishList,
-    TResult Function()? removeFromWishList,
-    TResult Function()? alreadyInWishList,
-    TResult Function()? notInWishList,
-    TResult Function(T data)? success,
+    TResult Function()? addToCart,
+    TResult Function()? removeFromCart,
+    TResult Function()? alreadyInCart,
+    TResult Function()? notInCart,
+    TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (notInWishList != null) {
-      return notInWishList();
+    if (notInCart != null) {
+      return notInCart();
     }
     return orElse();
   }
@@ -959,126 +915,126 @@ class _$WishListStateNotInWishList<T> implements WishListStateNotInWishList<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WishListStateInitial<T> value) initial,
-    required TResult Function(WishListStateLoading<T> value) loading,
-    required TResult Function(WishListStateAddedToWishList<T> value)
-        addedToWishList,
-    required TResult Function(WishListStateRemoveFromWishList<T> value)
-        removeFromWishList,
-    required TResult Function(WishListStateAlreadyInWishList<T> value)
-        alreadyInWishList,
-    required TResult Function(WishListStateNotInWishList<T> value)
-        notInWishList,
-    required TResult Function(WishListStateSuccess<T> value) success,
-    required TResult Function(WishListStateError<T> value) error,
+    required TResult Function(WishListStateInitial value) initial,
+    required TResult Function(WishListStateLoading value) loading,
+    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateRemoveFromWishList value)
+        removeFromCart,
+    required TResult Function(WishListStateAlreadyInWishList value)
+        alreadyInCart,
+    required TResult Function(WishListStateNotInWishList value) notInCart,
+    required TResult Function(WishListStateSuccess value) success,
+    required TResult Function(WishListStateError value) error,
   }) {
-    return notInWishList(this);
+    return notInCart(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WishListStateInitial<T> value)? initial,
-    TResult? Function(WishListStateLoading<T> value)? loading,
-    TResult? Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult? Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult? Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult? Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult? Function(WishListStateSuccess<T> value)? success,
-    TResult? Function(WishListStateError<T> value)? error,
+    TResult? Function(WishListStateInitial value)? initial,
+    TResult? Function(WishListStateLoading value)? loading,
+    TResult? Function(WishListStateAddedToWishList value)? addToCart,
+    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateSuccess value)? success,
+    TResult? Function(WishListStateError value)? error,
   }) {
-    return notInWishList?.call(this);
+    return notInCart?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WishListStateInitial<T> value)? initial,
-    TResult Function(WishListStateLoading<T> value)? loading,
-    TResult Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult Function(WishListStateSuccess<T> value)? success,
-    TResult Function(WishListStateError<T> value)? error,
+    TResult Function(WishListStateInitial value)? initial,
+    TResult Function(WishListStateLoading value)? loading,
+    TResult Function(WishListStateAddedToWishList value)? addToCart,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateSuccess value)? success,
+    TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
-    if (notInWishList != null) {
-      return notInWishList(this);
+    if (notInCart != null) {
+      return notInCart(this);
     }
     return orElse();
   }
 }
 
-abstract class WishListStateNotInWishList<T> implements WishListState<T> {
-  const factory WishListStateNotInWishList() = _$WishListStateNotInWishList<T>;
+abstract class WishListStateNotInWishList implements WishListState {
+  const factory WishListStateNotInWishList() = _$WishListStateNotInWishList;
 }
 
 /// @nodoc
-abstract class _$$WishListStateSuccessCopyWith<T, $Res> {
-  factory _$$WishListStateSuccessCopyWith(_$WishListStateSuccess<T> value,
-          $Res Function(_$WishListStateSuccess<T>) then) =
-      __$$WishListStateSuccessCopyWithImpl<T, $Res>;
+abstract class _$$WishListStateSuccessCopyWith<$Res> {
+  factory _$$WishListStateSuccessCopyWith(_$WishListStateSuccess value,
+          $Res Function(_$WishListStateSuccess) then) =
+      __$$WishListStateSuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({T data});
+  $Res call({List<Product> data});
 }
 
 /// @nodoc
-class __$$WishListStateSuccessCopyWithImpl<T, $Res>
-    extends _$WishListStateCopyWithImpl<T, $Res, _$WishListStateSuccess<T>>
-    implements _$$WishListStateSuccessCopyWith<T, $Res> {
-  __$$WishListStateSuccessCopyWithImpl(_$WishListStateSuccess<T> _value,
-      $Res Function(_$WishListStateSuccess<T>) _then)
+class __$$WishListStateSuccessCopyWithImpl<$Res>
+    extends _$WishListStateCopyWithImpl<$Res, _$WishListStateSuccess>
+    implements _$$WishListStateSuccessCopyWith<$Res> {
+  __$$WishListStateSuccessCopyWithImpl(_$WishListStateSuccess _value,
+      $Res Function(_$WishListStateSuccess) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
+    Object? data = null,
   }) {
-    return _then(_$WishListStateSuccess<T>(
-      data: freezed == data
-          ? _value.data
+    return _then(_$WishListStateSuccess(
+      data: null == data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as T,
+              as List<Product>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$WishListStateSuccess<T> implements WishListStateSuccess<T> {
-  const _$WishListStateSuccess({required this.data});
+class _$WishListStateSuccess implements WishListStateSuccess {
+  const _$WishListStateSuccess({required final List<Product> data})
+      : _data = data;
 
+  final List<Product> _data;
   @override
-  final T data;
+  List<Product> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
-    return 'WishListState<$T>.success(data: $data)';
+    return 'WishListState.success(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WishListStateSuccess<T> &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is _$WishListStateSuccess &&
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$WishListStateSuccessCopyWith<T, _$WishListStateSuccess<T>> get copyWith =>
-      __$$WishListStateSuccessCopyWithImpl<T, _$WishListStateSuccess<T>>(
+  _$$WishListStateSuccessCopyWith<_$WishListStateSuccess> get copyWith =>
+      __$$WishListStateSuccessCopyWithImpl<_$WishListStateSuccess>(
           this, _$identity);
 
   @override
@@ -1086,11 +1042,11 @@ class _$WishListStateSuccess<T> implements WishListStateSuccess<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addedToWishList,
-    required TResult Function() removeFromWishList,
-    required TResult Function() alreadyInWishList,
-    required TResult Function() notInWishList,
-    required TResult Function(T data) success,
+    required TResult Function() addToCart,
+    required TResult Function() removeFromCart,
+    required TResult Function() alreadyInCart,
+    required TResult Function() notInCart,
+    required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
     return success(data);
@@ -1101,11 +1057,11 @@ class _$WishListStateSuccess<T> implements WishListStateSuccess<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addedToWishList,
-    TResult? Function()? removeFromWishList,
-    TResult? Function()? alreadyInWishList,
-    TResult? Function()? notInWishList,
-    TResult? Function(T data)? success,
+    TResult? Function()? addToCart,
+    TResult? Function()? removeFromCart,
+    TResult? Function()? alreadyInCart,
+    TResult? Function()? notInCart,
+    TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
     return success?.call(data);
@@ -1116,11 +1072,11 @@ class _$WishListStateSuccess<T> implements WishListStateSuccess<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addedToWishList,
-    TResult Function()? removeFromWishList,
-    TResult Function()? alreadyInWishList,
-    TResult Function()? notInWishList,
-    TResult Function(T data)? success,
+    TResult Function()? addToCart,
+    TResult Function()? removeFromCart,
+    TResult Function()? alreadyInCart,
+    TResult Function()? notInCart,
+    TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1133,18 +1089,16 @@ class _$WishListStateSuccess<T> implements WishListStateSuccess<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WishListStateInitial<T> value) initial,
-    required TResult Function(WishListStateLoading<T> value) loading,
-    required TResult Function(WishListStateAddedToWishList<T> value)
-        addedToWishList,
-    required TResult Function(WishListStateRemoveFromWishList<T> value)
-        removeFromWishList,
-    required TResult Function(WishListStateAlreadyInWishList<T> value)
-        alreadyInWishList,
-    required TResult Function(WishListStateNotInWishList<T> value)
-        notInWishList,
-    required TResult Function(WishListStateSuccess<T> value) success,
-    required TResult Function(WishListStateError<T> value) error,
+    required TResult Function(WishListStateInitial value) initial,
+    required TResult Function(WishListStateLoading value) loading,
+    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateRemoveFromWishList value)
+        removeFromCart,
+    required TResult Function(WishListStateAlreadyInWishList value)
+        alreadyInCart,
+    required TResult Function(WishListStateNotInWishList value) notInCart,
+    required TResult Function(WishListStateSuccess value) success,
+    required TResult Function(WishListStateError value) error,
   }) {
     return success(this);
   }
@@ -1152,16 +1106,14 @@ class _$WishListStateSuccess<T> implements WishListStateSuccess<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WishListStateInitial<T> value)? initial,
-    TResult? Function(WishListStateLoading<T> value)? loading,
-    TResult? Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult? Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult? Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult? Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult? Function(WishListStateSuccess<T> value)? success,
-    TResult? Function(WishListStateError<T> value)? error,
+    TResult? Function(WishListStateInitial value)? initial,
+    TResult? Function(WishListStateLoading value)? loading,
+    TResult? Function(WishListStateAddedToWishList value)? addToCart,
+    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateSuccess value)? success,
+    TResult? Function(WishListStateError value)? error,
   }) {
     return success?.call(this);
   }
@@ -1169,16 +1121,14 @@ class _$WishListStateSuccess<T> implements WishListStateSuccess<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WishListStateInitial<T> value)? initial,
-    TResult Function(WishListStateLoading<T> value)? loading,
-    TResult Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult Function(WishListStateSuccess<T> value)? success,
-    TResult Function(WishListStateError<T> value)? error,
+    TResult Function(WishListStateInitial value)? initial,
+    TResult Function(WishListStateLoading value)? loading,
+    TResult Function(WishListStateAddedToWishList value)? addToCart,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateSuccess value)? success,
+    TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -1188,31 +1138,31 @@ class _$WishListStateSuccess<T> implements WishListStateSuccess<T> {
   }
 }
 
-abstract class WishListStateSuccess<T> implements WishListState<T> {
-  const factory WishListStateSuccess({required final T data}) =
-      _$WishListStateSuccess<T>;
+abstract class WishListStateSuccess implements WishListState {
+  const factory WishListStateSuccess({required final List<Product> data}) =
+      _$WishListStateSuccess;
 
-  T get data;
+  List<Product> get data;
   @JsonKey(ignore: true)
-  _$$WishListStateSuccessCopyWith<T, _$WishListStateSuccess<T>> get copyWith =>
+  _$$WishListStateSuccessCopyWith<_$WishListStateSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$WishListStateErrorCopyWith<T, $Res> {
-  factory _$$WishListStateErrorCopyWith(_$WishListStateError<T> value,
-          $Res Function(_$WishListStateError<T>) then) =
-      __$$WishListStateErrorCopyWithImpl<T, $Res>;
+abstract class _$$WishListStateErrorCopyWith<$Res> {
+  factory _$$WishListStateErrorCopyWith(_$WishListStateError value,
+          $Res Function(_$WishListStateError) then) =
+      __$$WishListStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$WishListStateErrorCopyWithImpl<T, $Res>
-    extends _$WishListStateCopyWithImpl<T, $Res, _$WishListStateError<T>>
-    implements _$$WishListStateErrorCopyWith<T, $Res> {
-  __$$WishListStateErrorCopyWithImpl(_$WishListStateError<T> _value,
-      $Res Function(_$WishListStateError<T>) _then)
+class __$$WishListStateErrorCopyWithImpl<$Res>
+    extends _$WishListStateCopyWithImpl<$Res, _$WishListStateError>
+    implements _$$WishListStateErrorCopyWith<$Res> {
+  __$$WishListStateErrorCopyWithImpl(
+      _$WishListStateError _value, $Res Function(_$WishListStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1220,7 +1170,7 @@ class __$$WishListStateErrorCopyWithImpl<T, $Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$WishListStateError<T>(
+    return _then(_$WishListStateError(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -1231,7 +1181,7 @@ class __$$WishListStateErrorCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$WishListStateError<T> implements WishListStateError<T> {
+class _$WishListStateError implements WishListStateError {
   const _$WishListStateError({required this.error});
 
   @override
@@ -1239,14 +1189,14 @@ class _$WishListStateError<T> implements WishListStateError<T> {
 
   @override
   String toString() {
-    return 'WishListState<$T>.error(error: $error)';
+    return 'WishListState.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WishListStateError<T> &&
+            other is _$WishListStateError &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -1256,8 +1206,8 @@ class _$WishListStateError<T> implements WishListStateError<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$WishListStateErrorCopyWith<T, _$WishListStateError<T>> get copyWith =>
-      __$$WishListStateErrorCopyWithImpl<T, _$WishListStateError<T>>(
+  _$$WishListStateErrorCopyWith<_$WishListStateError> get copyWith =>
+      __$$WishListStateErrorCopyWithImpl<_$WishListStateError>(
           this, _$identity);
 
   @override
@@ -1265,11 +1215,11 @@ class _$WishListStateError<T> implements WishListStateError<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() addedToWishList,
-    required TResult Function() removeFromWishList,
-    required TResult Function() alreadyInWishList,
-    required TResult Function() notInWishList,
-    required TResult Function(T data) success,
+    required TResult Function() addToCart,
+    required TResult Function() removeFromCart,
+    required TResult Function() alreadyInCart,
+    required TResult Function() notInCart,
+    required TResult Function(List<Product> data) success,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -1280,11 +1230,11 @@ class _$WishListStateError<T> implements WishListStateError<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? addedToWishList,
-    TResult? Function()? removeFromWishList,
-    TResult? Function()? alreadyInWishList,
-    TResult? Function()? notInWishList,
-    TResult? Function(T data)? success,
+    TResult? Function()? addToCart,
+    TResult? Function()? removeFromCart,
+    TResult? Function()? alreadyInCart,
+    TResult? Function()? notInCart,
+    TResult? Function(List<Product> data)? success,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -1295,11 +1245,11 @@ class _$WishListStateError<T> implements WishListStateError<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? addedToWishList,
-    TResult Function()? removeFromWishList,
-    TResult Function()? alreadyInWishList,
-    TResult Function()? notInWishList,
-    TResult Function(T data)? success,
+    TResult Function()? addToCart,
+    TResult Function()? removeFromCart,
+    TResult Function()? alreadyInCart,
+    TResult Function()? notInCart,
+    TResult Function(List<Product> data)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1312,18 +1262,16 @@ class _$WishListStateError<T> implements WishListStateError<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WishListStateInitial<T> value) initial,
-    required TResult Function(WishListStateLoading<T> value) loading,
-    required TResult Function(WishListStateAddedToWishList<T> value)
-        addedToWishList,
-    required TResult Function(WishListStateRemoveFromWishList<T> value)
-        removeFromWishList,
-    required TResult Function(WishListStateAlreadyInWishList<T> value)
-        alreadyInWishList,
-    required TResult Function(WishListStateNotInWishList<T> value)
-        notInWishList,
-    required TResult Function(WishListStateSuccess<T> value) success,
-    required TResult Function(WishListStateError<T> value) error,
+    required TResult Function(WishListStateInitial value) initial,
+    required TResult Function(WishListStateLoading value) loading,
+    required TResult Function(WishListStateAddedToWishList value) addToCart,
+    required TResult Function(WishListStateRemoveFromWishList value)
+        removeFromCart,
+    required TResult Function(WishListStateAlreadyInWishList value)
+        alreadyInCart,
+    required TResult Function(WishListStateNotInWishList value) notInCart,
+    required TResult Function(WishListStateSuccess value) success,
+    required TResult Function(WishListStateError value) error,
   }) {
     return error(this);
   }
@@ -1331,16 +1279,14 @@ class _$WishListStateError<T> implements WishListStateError<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WishListStateInitial<T> value)? initial,
-    TResult? Function(WishListStateLoading<T> value)? loading,
-    TResult? Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult? Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult? Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult? Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult? Function(WishListStateSuccess<T> value)? success,
-    TResult? Function(WishListStateError<T> value)? error,
+    TResult? Function(WishListStateInitial value)? initial,
+    TResult? Function(WishListStateLoading value)? loading,
+    TResult? Function(WishListStateAddedToWishList value)? addToCart,
+    TResult? Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult? Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult? Function(WishListStateNotInWishList value)? notInCart,
+    TResult? Function(WishListStateSuccess value)? success,
+    TResult? Function(WishListStateError value)? error,
   }) {
     return error?.call(this);
   }
@@ -1348,16 +1294,14 @@ class _$WishListStateError<T> implements WishListStateError<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WishListStateInitial<T> value)? initial,
-    TResult Function(WishListStateLoading<T> value)? loading,
-    TResult Function(WishListStateAddedToWishList<T> value)? addedToWishList,
-    TResult Function(WishListStateRemoveFromWishList<T> value)?
-        removeFromWishList,
-    TResult Function(WishListStateAlreadyInWishList<T> value)?
-        alreadyInWishList,
-    TResult Function(WishListStateNotInWishList<T> value)? notInWishList,
-    TResult Function(WishListStateSuccess<T> value)? success,
-    TResult Function(WishListStateError<T> value)? error,
+    TResult Function(WishListStateInitial value)? initial,
+    TResult Function(WishListStateLoading value)? loading,
+    TResult Function(WishListStateAddedToWishList value)? addToCart,
+    TResult Function(WishListStateRemoveFromWishList value)? removeFromCart,
+    TResult Function(WishListStateAlreadyInWishList value)? alreadyInCart,
+    TResult Function(WishListStateNotInWishList value)? notInCart,
+    TResult Function(WishListStateSuccess value)? success,
+    TResult Function(WishListStateError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1367,12 +1311,12 @@ class _$WishListStateError<T> implements WishListStateError<T> {
   }
 }
 
-abstract class WishListStateError<T> implements WishListState<T> {
+abstract class WishListStateError implements WishListState {
   const factory WishListStateError({required final String error}) =
-      _$WishListStateError<T>;
+      _$WishListStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$WishListStateErrorCopyWith<T, _$WishListStateError<T>> get copyWith =>
+  _$$WishListStateErrorCopyWith<_$WishListStateError> get copyWith =>
       throw _privateConstructorUsedError;
 }

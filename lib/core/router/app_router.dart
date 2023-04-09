@@ -1,9 +1,10 @@
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/model/user_model.dart';
+import 'package:ar_furniture_app/features/ar_view/ar_view_screen.dart';
 import 'package:ar_furniture_app/features/auth/forgot_password/screens/forgot_password_screen.dart';
 import 'package:ar_furniture_app/features/auth/login/screens/login_screen.dart';
 import 'package:ar_furniture_app/features/auth/register/screens/register_screen.dart';
-import 'package:ar_furniture_app/features/cart/cart_screen.dart';
+import 'package:ar_furniture_app/features/cart/screens/cart_screen.dart';
 import 'package:ar_furniture_app/features/category/screens/category_screen.dart';
 import 'package:ar_furniture_app/features/home/home_screen.dart';
 import 'package:ar_furniture_app/features/onboarding/onboarding_screen.dart';
@@ -46,6 +47,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => CategoryProductScreen(
             categoryMap: settings.arguments as Map<String, dynamic>,
+          ),
+        );
+      case RouteConstants.arViewScreenRoute:
+        return MaterialPageRoute(
+          builder: (_) => ArViewScreen(
+            imageUrl: settings.arguments as String,
           ),
         );
       case RouteConstants.cartRoute:

@@ -27,6 +27,7 @@ void main() async {
       statusBarColor: Colors.black,
     ),
   );
+
   runApp(
     ProviderScope(
       overrides: [

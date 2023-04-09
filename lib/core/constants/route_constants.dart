@@ -13,4 +13,5 @@ class RouteConstants {
   static const String updateProfileRoute = '/update-profile';
   static const String categoryRoute = '/category';
   static const String categoryProductRoute = '/category-product';
+  static const String arViewScreenRoute = '/arview';
 }

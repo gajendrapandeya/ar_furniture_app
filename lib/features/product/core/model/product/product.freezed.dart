@@ -20,11 +20,11 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Product {
-  String? get id => throw _privateConstructorUsedError;
-  String? get categoryId => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get categoryId => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   List<String> get imageUrls => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   List<String> get colors => throw _privateConstructorUsedError;
@@ -40,11 +40,11 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {String? id,
-      String? categoryId,
-      String? name,
+      {String id,
+      String categoryId,
+      String name,
       List<String> imageUrls,
-      int price,
+      int? price,
       double rating,
       String? description,
       List<String> colors});
@@ -63,36 +63,36 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? categoryId = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? categoryId = null,
+    Object? name = null,
     Object? imageUrls = null,
-    Object? price = null,
+    Object? price = freezed,
     Object? rating = null,
     Object? description = freezed,
     Object? colors = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      categoryId: freezed == categoryId
+              as String,
+      categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
+              as String,
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       imageUrls: null == imageUrls
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -117,11 +117,11 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? id,
-      String? categoryId,
-      String? name,
+      {String id,
+      String categoryId,
+      String name,
       List<String> imageUrls,
-      int price,
+      int? price,
       double rating,
       String? description,
       List<String> colors});
@@ -137,36 +137,36 @@ class __$$_ProductCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? categoryId = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? categoryId = null,
+    Object? name = null,
     Object? imageUrls = null,
-    Object? price = null,
+    Object? price = freezed,
     Object? rating = null,
     Object? description = freezed,
     Object? colors = null,
   }) {
     return _then(_$_Product(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      categoryId: freezed == categoryId
+              as String,
+      categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
+              as String,
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       imageUrls: null == imageUrls
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -203,11 +203,11 @@ class _$_Product extends _Product {
       _$$_ProductFromJson(json);
 
   @override
-  final String? id;
+  final String id;
   @override
-  final String? categoryId;
+  final String categoryId;
   @override
-  final String? name;
+  final String name;
   final List<String> _imageUrls;
   @override
   List<String> get imageUrls {
@@ -217,7 +217,7 @@ class _$_Product extends _Product {
   }
 
   @override
-  final int price;
+  final int? price;
   @override
   final double rating;
   @override
@@ -282,11 +282,11 @@ class _$_Product extends _Product {
 
 abstract class _Product extends Product {
   const factory _Product(
-      {required final String? id,
-      required final String? categoryId,
-      required final String? name,
+      {required final String id,
+      required final String categoryId,
+      required final String name,
       required final List<String> imageUrls,
-      required final int price,
+      required final int? price,
       required final double rating,
       required final String? description,
       required final List<String> colors}) = _$_Product;
@@ -295,15 +295,15 @@ abstract class _Product extends Product {
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
 
   @override
-  String? get id;
+  String get id;
   @override
-  String? get categoryId;
+  String get categoryId;
   @override
-  String? get name;
+  String get name;
   @override
   List<String> get imageUrls;
   @override
-  int get price;
+  int? get price;
   @override
   double get rating;
   @override

@@ -2,7 +2,6 @@ import 'package:ar_furniture_app/core/constants/firebase_constants.dart';
 import 'package:ar_furniture_app/core/utils/error_mixin.dart';
 import 'package:ar_furniture_app/features/category/model/category.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final categoryServiceProvider = Provider(
@@ -15,13 +14,11 @@ class CategoryService with ErrorMixin {
 
   Future<List<Category>> fetchCategories() async {
     try {
-      debugPrint('categoriescalled:');
       final snapshot = await _categoryCollection.get();
       return snapshot.docs.map((doc) {
         return Category.fromJson(doc.data() as Map<String, dynamic>);
       }).toList();
     } catch (error) {
-      debugPrint('error cat: $error');
       throw handleError(error);
     }
   }

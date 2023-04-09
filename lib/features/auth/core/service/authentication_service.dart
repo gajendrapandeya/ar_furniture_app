@@ -7,7 +7,6 @@ import 'package:ar_furniture_app/core/utils/firebase_failure.dart';
 import 'package:ar_furniture_app/core/utils/firestore_exception.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -142,7 +141,6 @@ class AuthenticationService with ErrorMixin {
         );
       }
     } catch (error) {
-      debugPrint('error: $error');
       throw handleError(error);
     }
   }

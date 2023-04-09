@@ -27,7 +27,6 @@ class AddToWishlistButton extends ConsumerWidget {
       }
     });
     final wishListState = ref.watch(wishListProvider);
-    debugPrint('wishlistStae: $wishListState');
     return LikeButton(
       size: 18,
       bubblesColor: BubblesColor(
@@ -35,15 +34,11 @@ class AddToWishlistButton extends ConsumerWidget {
         dotSecondaryColor: Theme.of(context).colorScheme.tertiary,
       ),
       isLiked: (wishListState is WishListStateAlreadyInWishList ||
-              wishListState is WishListStateAddedToWishList)
-          ? true
-          : false,
+          wishListState is WishListStateAddedToWishList),
       onTap: (isLiked) async {
-        debugPrint('isLiked: $isLiked');
         if (ref.read(userNotifierProvider) != null &&
-            (wishListState != const WishListState.alreadyInWishList() ||
-                wishListState != const WishListState.addedToWishList())) {
-          debugPrint('called');
+            (wishListState != const WishListStateAlreadyInWishList() ||
+                wishListState != const WishListState.addToCart())) {
           return await _onLikeButtonTapped(
               isLiked, ref, ref.read(userNotifierProvider)!.uid, product);
         } else {

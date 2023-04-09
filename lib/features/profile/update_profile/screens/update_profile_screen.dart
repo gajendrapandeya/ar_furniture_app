@@ -153,7 +153,6 @@ class UpdateProfileScreen extends ConsumerWidget {
           keyboardType: TextInputType.number,
           value: userModel.mobileNumber,
           onTextChanged: (input) {
-            debugPrint('input: $input');
             mobileNumber = input;
           },
           errorText: state is UpdateProfileStateError &&

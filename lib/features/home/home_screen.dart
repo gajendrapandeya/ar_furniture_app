@@ -1,5 +1,5 @@
 import 'package:ar_furniture_app/core/widgets/bottom_nav_bar.dart';
-import 'package:ar_furniture_app/features/cart/cart_screen.dart';
+import 'package:ar_furniture_app/features/cart/screens/cart_screen.dart';
 import 'package:ar_furniture_app/features/product/product_list/screens/product_list_screen.dart';
 import 'package:ar_furniture_app/features/profile/core/screens/profile_screen.dart';
 import 'package:ar_furniture_app/features/wishlist/screens/wish_list_screen.dart';

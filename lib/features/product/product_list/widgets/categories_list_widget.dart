@@ -36,28 +36,30 @@ class CategoryListWidget extends ConsumerWidget {
             return SizedBox(
               height: 40,
               child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: ((context, index) => GestureDetector(
-                        onTap: () {
-                          final selectedCategory = addedCategories[index];
-                          ref
-                              .read(selectedCategoryIndexProvider.notifier)
-                              .update((state) => state = index);
+                scrollDirection: Axis.horizontal,
+                itemBuilder: ((context, index) => GestureDetector(
+                      onTap: () {
+                        final selectedCategory = addedCategories[index];
+                        ref
+                            .read(selectedCategoryIndexProvider.notifier)
+                            .update((state) => state = index);
 
-                          if (selectedCategory.imageUrl.isEmpty) {
-                            onCategorySelected('');
-                          } else {
-                            onCategorySelected(selectedCategory.id);
-                          }
-                        },
-                        child: _buildListItem(
-                          category: addedCategories[index],
-                          isSelected: selectedCategoryIndex == index,
-                          context: context,
-                        ),
-                      )),
-                  separatorBuilder: ((context, index) => HorizontalSpacer.xxxl),
-                  itemCount: 5),
+                        if (selectedCategory.imageUrl.isEmpty) {
+                          onCategorySelected('');
+                        } else {
+                          onCategorySelected(selectedCategory.id);
+                        }
+                      },
+                      child: _buildListItem(
+                        category: addedCategories[index],
+                        isSelected: selectedCategoryIndex == index,
+                        context: context,
+                      ),
+                    )),
+                separatorBuilder: ((context, index) => HorizontalSpacer.xxxl),
+                itemCount:
+                    addedCategories.length >= 5 ? 5 : addedCategories.length,
+              ),
             );
           },
           error: (error) => GenericErrorWidget(error: error),

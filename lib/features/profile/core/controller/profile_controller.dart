@@ -1,7 +1,6 @@
 import 'package:ar_furniture_app/core/utils/custom_firebase_exception.dart';
 import 'package:ar_furniture_app/core/utils/network_state.dart';
 import 'package:ar_furniture_app/features/profile/core/service/profile_service.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final profileProvider =
@@ -22,7 +21,6 @@ class ProfileController extends StateNotifier<NetworkState> {
     try {
       state = NetworkState.loading();
       final user = await _profileService.getUserData(userId: uid);
-      debugPrint('userData: $user');
 
       state = NetworkState.success(
         user,
