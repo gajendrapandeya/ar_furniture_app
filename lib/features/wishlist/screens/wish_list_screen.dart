@@ -22,7 +22,7 @@ class _WishListScreenState extends ConsumerState<WishListScreen> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(wishListProvider('').notifier).fetchProductsInWishList(
+      ref.read(wishListProvider.notifier).fetchProductsInWishList(
             userId: ref.read(userNotifierProvider)?.uid ?? '',
           );
     });
@@ -44,7 +44,7 @@ class _WishListScreenState extends ConsumerState<WishListScreen> {
   }
 
   Widget _buildWishlist() {
-    return ref.watch(wishListProvider('')).maybeWhen(
+    return ref.watch(wishListProvider).maybeWhen(
           orElse: () => const Text('Helo'),
           loading: () => const LoadingWidget(),
           success: (products) => products.isEmpty

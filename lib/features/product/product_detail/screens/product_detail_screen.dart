@@ -75,10 +75,8 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   }
 
   Widget _buildProductImageWithLikeButton() {
-    ref.watch(selectedColorProvider);
     final product = widget.product;
-    final imageUrl =
-        product.imageUrls[ref.read(selectedColorProvider.notifier).state];
+
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.45,
       child: Stack(
@@ -102,7 +100,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                       ),
                     ),
                     child: ImageWidget(
-                      url: imageUrl,
+                      url: product.imageUrls[index],
                       imageWidth: double.infinity,
                       imageFit: BoxFit.fill,
                     ),
@@ -228,9 +226,12 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
           final isSelected = selectedColorIndex == index;
           return InkWell(
             customBorder: const CircleBorder(),
-            onTap: () => ref.read(selectedColorProvider.notifier).update(
-                  (state) => state = index,
-                ),
+            onTap: () {
+              ref.read(selectedColorProvider.notifier).update(
+                    (state) => state = index,
+                  );
+              _pageController.jumpToPage(ref.watch(selectedColorProvider));
+            },
             child: Row(
               children: [
                 if (isSelected) ...[

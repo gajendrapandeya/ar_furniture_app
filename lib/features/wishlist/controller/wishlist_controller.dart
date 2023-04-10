@@ -4,8 +4,7 @@ import 'package:ar_furniture_app/features/wishlist/service/wishlist_service.dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final wishListProvider =
-    StateNotifierProvider.family<WishlistController, WishListState, String>(
-        (ref, productId) {
+    StateNotifierProvider<WishlistController, WishListState>((ref) {
   return WishlistController(
     wishListService: ref.watch(wishListServiceProvider),
   );
@@ -17,45 +16,6 @@ class WishlistController extends StateNotifier<WishListState> {
   WishlistController({required WishListService wishListService})
       : _wishListService = wishListService,
         super(const WishListState.initial());
-
-  void isInWishList({required String userId, required String productId}) async {
-    try {
-      final isInWishList = await _wishListService.isInWishList(
-          userId: userId, productId: productId);
-      state = isInWishList
-          ? const WishListState.alreadyInWishlist()
-          : const WishListState.notInWishlist();
-    } catch (error) {
-      state = WishListState.error(
-        error: error.toString(),
-      );
-    }
-  }
-
-  void addProductToWishList(
-      {required String userId, required Product product}) async {
-    try {
-      await _wishListService.addToWishList(product: product, userId: userId);
-      state = const WishListState.addToWishlist();
-    } catch (error) {
-      state = WishListState.error(
-        error: error.toString(),
-      );
-    }
-  }
-
-  void removeProductFromWishList(
-      {required String userId, required String productId}) async {
-    try {
-      await _wishListService.removeFromWishList(
-          productId: productId, userId: userId);
-      state = const WishListState.removeFromWishlist();
-    } catch (error) {
-      state = WishListState.error(
-        error: error.toString(),
-      );
-    }
-  }
 
   void fetchProductsInWishList({required String userId}) async {
     try {
@@ -70,10 +30,9 @@ class WishlistController extends StateNotifier<WishListState> {
     }
   }
 
-  void locallyRemoveEventFromCart(String id) {
-    final wishlistItems = (state as WishListStateSuccess).data;
-    final itemToBeRemoved = wishlistItems.firstWhere((e) => e.id == id);
-    wishlistItems.remove(itemToBeRemoved);
+  void removeFromWishlist({required Product product}) {
+    final wishlistItems = [...(state as WishListStateSuccess).data];
+    wishlistItems.remove(product);
     state = WishListStateSuccess(data: wishlistItems);
   }
 }

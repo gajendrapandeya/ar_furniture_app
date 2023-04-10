@@ -4,8 +4,8 @@ import 'package:ar_furniture_app/core/widgets/image_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/product/core/model/product/product.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/add_to_wishlist_button.dart';
-import 'package:ar_furniture_app/features/wishlist/controller/wishlist_controller.dart';
-import 'package:ar_furniture_app/features/wishlist/controller/wishlist_state.dart';
+import 'package:ar_furniture_app/features/wishlist/controller/wishlist_item_controller.dart';
+import 'package:ar_furniture_app/features/wishlist/controller/wishlist_item_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -33,7 +33,7 @@ class _ProductListItemState extends ConsumerState<ProductListItem> {
       final userId = ref.read(userNotifierProvider)?.uid;
       if (userId != null) {
         ref
-            .read(wishListProvider(widget.product.id).notifier)
+            .read(wishListItemProvider(widget.product.id).notifier)
             .isInWishList(userId: userId, productId: widget.product.id);
       }
     });
@@ -41,15 +41,10 @@ class _ProductListItemState extends ConsumerState<ProductListItem> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<WishListState>(
-      wishListProvider(widget.product.id),
+    ref.listen<WishlistItemState>(
+      wishListItemProvider(widget.product.id),
       (prevState, currentState) {
-        if (currentState is WishListStateRemoveFromWishList) {
-          ref
-              .read(wishListProvider(widget.product.id).notifier)
-              .removeProductFromWishList(
-                  userId: ref.read(userNotifierProvider)!.uid,
-                  productId: widget.product.id);
+        if (currentState is WishlistItemStateRemoveFromWishlist) {
           context.showSuccessSnackBar(
             message: 'Successfully removed from wishlist',
           );
@@ -79,7 +74,7 @@ class _ProductListItemState extends ConsumerState<ProductListItem> {
                   top: 8,
                   child: InkWell(
                     customBorder: const CircleBorder(),
-                    onTap: () => _removeItemFromWishlist(widget.product.id),
+                    onTap: () => _removeItemFromWishlist(),
                     child: Container(
                       padding: const EdgeInsets.all(4),
                       decoration: const BoxDecoration(
@@ -151,7 +146,7 @@ class _ProductListItemState extends ConsumerState<ProductListItem> {
                 ),
           ),
         ),
-        AddToWishlistButton(product: product),
+        if (!widget.isFromWishlist) AddToWishlistButton(product: product),
       ],
     );
   }
@@ -173,8 +168,11 @@ class _ProductListItemState extends ConsumerState<ProductListItem> {
     );
   }
 
-  void _removeItemFromWishlist(String productId) {
-    ref.read(wishListProvider(productId).notifier).removeProductFromWishList(
-        userId: ref.read(userNotifierProvider)!.uid, productId: productId);
+  void _removeItemFromWishlist() {
+    ref
+        .read(wishListItemProvider(widget.product.id).notifier)
+        .removeProductFromWishList(
+            userId: ref.read(userNotifierProvider)!.uid,
+            product: widget.product);
   }
 }

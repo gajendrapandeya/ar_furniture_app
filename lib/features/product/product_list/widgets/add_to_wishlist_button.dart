@@ -3,8 +3,8 @@ import 'package:ar_furniture_app/core/providers/user_provider.dart';
 import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
 import 'package:ar_furniture_app/core/widgets/custom_dialog.dart';
 import 'package:ar_furniture_app/features/product/core/model/product/product.dart';
-import 'package:ar_furniture_app/features/wishlist/controller/wishlist_controller.dart';
-import 'package:ar_furniture_app/features/wishlist/controller/wishlist_state.dart';
+import 'package:ar_furniture_app/features/wishlist/controller/wishlist_item_controller.dart';
+import 'package:ar_furniture_app/features/wishlist/controller/wishlist_item_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:like_button/like_button.dart';
@@ -32,7 +32,7 @@ class _AddToWishlistButtonState extends ConsumerState<AddToWishlistButton> {
     _product = widget.product;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final userId = ref.read(userNotifierProvider)?.uid;
-      ref.read(wishListProvider(_product.id).notifier).isInWishList(
+      ref.read(wishListItemProvider(_product.id).notifier).isInWishList(
             userId: userId ?? '',
             productId: _product.id,
           );
@@ -41,26 +41,27 @@ class _AddToWishlistButtonState extends ConsumerState<AddToWishlistButton> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<WishListState>(wishListProvider(_product.id),
+    ref.listen<WishlistItemState>(wishListItemProvider(_product.id),
         (previous, currentState) {
-      if (currentState is WishListStateAddedToWishList) {
+      if (currentState is WishlistItemStateAddedtoWishlist) {
         context.showSuccessSnackBar(
             message: 'Added to wish list successfully.');
       }
     });
-    final wishListState = ref.watch(wishListProvider(_product.id));
+    final wishlistItemState = ref.watch(wishListItemProvider(_product.id));
     return LikeButton(
       size: 18,
       bubblesColor: BubblesColor(
         dotPrimaryColor: Theme.of(context).colorScheme.tertiary,
         dotSecondaryColor: Theme.of(context).colorScheme.tertiary,
       ),
-      isLiked: (wishListState is WishListStateAlreadyInWishList ||
-          wishListState is WishListStateAddedToWishList),
+      isLiked: wishlistItemState.maybeWhen(
+        orElse: () => false,
+        success: (isInlist) => isInlist,
+        addedToWishlist: () => true,
+      ),
       onTap: (isLiked) async {
-        if (ref.read(userNotifierProvider) != null &&
-            (wishListState != const WishListStateAlreadyInWishList() ||
-                wishListState != const WishListState.addToWishlist())) {
+        if (ref.read(userNotifierProvider) != null) {
           return await _onLikeButtonTapped(
               isLiked, ref, ref.read(userNotifierProvider)!.uid, _product);
         } else {
@@ -71,12 +72,13 @@ class _AddToWishlistButtonState extends ConsumerState<AddToWishlistButton> {
       likeBuilder: (isLiked) {
         return Icon(
           MdiIcons.heart,
-          color: (ref.watch(wishListProvider(_product.id))
-                      is WishListStateAlreadyInWishList ||
-                  ref.watch(wishListProvider(_product.id))
-                      is WishListStateAddedToWishList)
-              ? Theme.of(context).colorScheme.tertiary
-              : Colors.grey,
+          color: wishlistItemState.maybeWhen(
+            orElse: () => Colors.grey,
+            success: (isInWishlist) => isInWishlist
+                ? Theme.of(context).colorScheme.tertiary
+                : Colors.grey,
+            addedToWishlist: () => Theme.of(context).colorScheme.tertiary,
+          ),
           size: 18,
         );
       },
@@ -90,7 +92,7 @@ class _AddToWishlistButtonState extends ConsumerState<AddToWishlistButton> {
   Future<bool> _onLikeButtonTapped(
       bool isLiked, WidgetRef ref, String userId, Product product) async {
     ref
-        .read(wishListProvider(product.id).notifier)
+        .read(wishListItemProvider(product.id).notifier)
         .addProductToWishList(userId: userId, product: product);
 
     return true;
