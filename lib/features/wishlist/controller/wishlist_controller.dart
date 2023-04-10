@@ -17,47 +17,9 @@ class WishlistController extends StateNotifier<WishListState> {
       : _wishListService = wishListService,
         super(const WishListState.initial());
 
-  void isInWishList({required String userId, required String productId}) async {
-    try {
-      final isInWishList = await _wishListService.isInWishList(
-          userId: userId, productId: productId);
-      state = isInWishList
-          ? const WishListState.alreadyInCart()
-          : const WishListState.notInCart();
-    } catch (error) {
-      state = WishListState.error(
-        error: error.toString(),
-      );
-    }
-  }
-
-  void addProductToWishList(
-      {required String userId, required Product product}) async {
-    try {
-      await _wishListService.addToWishList(product: product, userId: userId);
-      state = const WishListState.addToCart();
-    } catch (error) {
-      state = WishListState.error(
-        error: error.toString(),
-      );
-    }
-  }
-
-  void removeProductFromWishList(
-      {required String userId, required String productId}) async {
-    try {
-      await _wishListService.removeFromWishList(
-          productId: productId, userId: userId);
-      state = const WishListState.removeFromCart();
-    } catch (error) {
-      state = WishListState.error(
-        error: error.toString(),
-      );
-    }
-  }
-
   void fetchProductsInWishList({required String userId}) async {
     try {
+      state = const WishListState.loading();
       final products =
           await _wishListService.fetchProductsInWishList(userId: userId);
       state = WishListState.success(data: products);
@@ -66,5 +28,11 @@ class WishlistController extends StateNotifier<WishListState> {
         error: error.toString(),
       );
     }
+  }
+
+  void removeFromWishlist({required Product product}) {
+    final wishlistItems = [...(state as WishListStateSuccess).data];
+    wishlistItems.remove(product);
+    state = WishListStateSuccess(data: wishlistItems);
   }
 }

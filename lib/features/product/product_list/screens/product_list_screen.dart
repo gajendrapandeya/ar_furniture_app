@@ -1,7 +1,9 @@
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/category/controller/category_controller.dart';
+import 'package:ar_furniture_app/features/category/controller/category_state.dart';
 import 'package:ar_furniture_app/features/product/core/controller/product_controller.dart';
+import 'package:ar_furniture_app/features/product/core/controller/product_state.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/categories_list_widget.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/hot_deal_widget.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/product_list_app_bar.dart';
@@ -22,8 +24,11 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.read(categoryProvider.notifier).loadCategories();
-      ref.read(productsProvider.notifier).fetchProducts(categoryId: '');
+      if (ref.read(categoryProvider) is! CategoryStateSuccess &&
+          ref.read(productsProvider) is! ProductStateLoaded) {
+        ref.read(categoryProvider.notifier).loadCategories();
+        ref.read(productsProvider.notifier).fetchProducts(categoryId: '');
+      }
     });
   }
 

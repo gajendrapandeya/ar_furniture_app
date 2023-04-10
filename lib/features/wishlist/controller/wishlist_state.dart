@@ -7,11 +7,7 @@ part 'wishlist_state.freezed.dart';
 class WishListState with _$WishListState {
   const factory WishListState.initial() = WishListStateInitial;
   const factory WishListState.loading() = WishListStateLoading;
-  const factory WishListState.addToCart() = WishListStateAddedToWishList;
-  const factory WishListState.removeFromCart() =
-      WishListStateRemoveFromWishList;
-  const factory WishListState.alreadyInCart() = WishListStateAlreadyInWishList;
-  const factory WishListState.notInCart() = WishListStateNotInWishList;
+
   const factory WishListState.success({required List<Product> data}) =
       WishListStateSuccess;
   const factory WishListState.error({required String error}) =

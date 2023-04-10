@@ -8,8 +8,8 @@ import 'package:ar_furniture_app/core/widgets/custom_dialog.dart';
 import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
 import 'package:ar_furniture_app/core/widgets/image_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
-import 'package:ar_furniture_app/features/cart/controller/cart_controller.dart';
-import 'package:ar_furniture_app/features/cart/controller/cart_state.dart';
+import 'package:ar_furniture_app/features/cart/controller/cart_item_controller.dart';
+import 'package:ar_furniture_app/features/cart/controller/cart_item_state.dart';
 import 'package:ar_furniture_app/features/cart/model/cart.dart';
 import 'package:ar_furniture_app/features/product/core/model/product/product.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/add_to_wishlist_button.dart';
@@ -44,7 +44,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   void initState() {
     final userId = ref.read(userNotifierProvider)?.uid;
     ref
-        .read(cartProvider.notifier)
+        .read(cartItemProvider.notifier)
         .inInCart(userId: userId ?? '', cartId: widget.product.id);
     super.initState();
   }
@@ -75,10 +75,8 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   }
 
   Widget _buildProductImageWithLikeButton() {
-    ref.watch(selectedColorProvider);
     final product = widget.product;
-    final imageUrl =
-        product.imageUrls[ref.read(selectedColorProvider.notifier).state];
+
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.45,
       child: Stack(
@@ -102,7 +100,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                       ),
                     ),
                     child: ImageWidget(
-                      url: imageUrl,
+                      url: product.imageUrls[index],
                       imageWidth: double.infinity,
                       imageFit: BoxFit.fill,
                     ),
@@ -228,9 +226,12 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
           final isSelected = selectedColorIndex == index;
           return InkWell(
             customBorder: const CircleBorder(),
-            onTap: () => ref.read(selectedColorProvider.notifier).update(
-                  (state) => state = index,
-                ),
+            onTap: () {
+              ref.read(selectedColorProvider.notifier).update(
+                    (state) => state = index,
+                  );
+              _pageController.jumpToPage(ref.watch(selectedColorProvider));
+            },
             child: Row(
               children: [
                 if (isSelected) ...[
@@ -318,8 +319,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   }
 
   Widget _buildBottomWidget(BuildContext context) {
-    final CartState cartState = ref.watch(cartProvider);
-    debugPrint('cartState: $cartState');
+    debugPrint('cartState: ${ref.watch(cartItemProvider)}');
     final product = widget.product;
     User? currentUser = ref.read(userNotifierProvider);
     final cart = Cart(
@@ -340,8 +340,10 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
             child: _buildLiveViewButton(context),
           ),
           HorizontalSpacer.l,
-          if (cartState != const CartState.alreadyInCart() &&
-              cartState != const CartState.addedToCart())
+          if (ref.watch(cartItemProvider).maybeWhen(
+              orElse: () => true,
+              success: (isInCart) => isInCart == true ? false : true,
+              addedToCart: () => false))
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.52,
               child: CustomElevatedButton.withIcon(
@@ -349,7 +351,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                   if (currentUser == null) {
                     _handleNotLogggedInWhenAddToCartClicked();
                   } else {
-                    ref.read(cartProvider.notifier).addProductToCart(
+                    ref.read(cartItemProvider.notifier).addProductToCart(
                           userId: currentUser.uid,
                           cart: cart,
                         );
@@ -360,11 +362,13 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                 },
                 buttonText: 'Add To Cart',
                 iconData: MdiIcons.cart,
-                isLoading: (cartState == const CartState.loading()) ||
-                    (cartState == const CartState.alreadyInCart()),
+                isLoading: (ref.watch(cartItemProvider).maybeWhen(
+                      orElse: () => false,
+                      success: (isInCart) => isInCart,
+                    )),
               ),
             )
-          else if (cartState is CartStateLoading)
+          else if (ref.watch(cartItemProvider) is CartItemStateLoading)
             Container(
               width: 30,
               height: 30,

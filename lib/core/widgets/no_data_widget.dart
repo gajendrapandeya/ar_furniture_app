@@ -22,7 +22,10 @@ class NoDataWidget extends StatelessWidget {
       children: [
         const SizedBox(height: 100),
         Center(
-          child: SvgPicture.asset(AssetConstants.notFound),
+          child: SvgPicture.asset(
+            AssetConstants.notFound,
+            height: 200,
+          ),
         ),
         VerticalSpacer.exl,
         Text(
