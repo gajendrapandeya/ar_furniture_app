@@ -3,22 +3,16 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'address.freezed.dart';
 part 'address.g.dart';
 
-enum AddressType {
-  home,
-  other,
-}
-
 @freezed
 class Address with _$Address {
   const factory Address({
     required final String userId,
-    required final String name,
+    required final String fullName,
     required final String mobileNumber,
-    required final int postalCode,
-    required final String streetAddress,
-    required final String city,
-    required String country,
-    required AddressType addressType,
+    required final String address,
+    required final String state,
+    final String? landmark,
+    required String addressType,
   }) = _Address;
 
   factory Address.fromJson(Map<String, dynamic> json) =>

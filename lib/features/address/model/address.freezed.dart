@@ -21,13 +21,12 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Address {
   String get userId => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String get fullName => throw _privateConstructorUsedError;
   String get mobileNumber => throw _privateConstructorUsedError;
-  int get postalCode => throw _privateConstructorUsedError;
-  String get streetAddress => throw _privateConstructorUsedError;
-  String get city => throw _privateConstructorUsedError;
-  String get country => throw _privateConstructorUsedError;
-  AddressType get addressType => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
+  String get state => throw _privateConstructorUsedError;
+  String? get landmark => throw _privateConstructorUsedError;
+  String get addressType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,13 +40,12 @@ abstract class $AddressCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
-      String name,
+      String fullName,
       String mobileNumber,
-      int postalCode,
-      String streetAddress,
-      String city,
-      String country,
-      AddressType addressType});
+      String address,
+      String state,
+      String? landmark,
+      String addressType});
 }
 
 /// @nodoc
@@ -64,12 +62,11 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
   @override
   $Res call({
     Object? userId = null,
-    Object? name = null,
+    Object? fullName = null,
     Object? mobileNumber = null,
-    Object? postalCode = null,
-    Object? streetAddress = null,
-    Object? city = null,
-    Object? country = null,
+    Object? address = null,
+    Object? state = null,
+    Object? landmark = freezed,
     Object? addressType = null,
   }) {
     return _then(_value.copyWith(
@@ -77,34 +74,30 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       mobileNumber: null == mobileNumber
           ? _value.mobileNumber
           : mobileNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      postalCode: null == postalCode
-          ? _value.postalCode
-          : postalCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      streetAddress: null == streetAddress
-          ? _value.streetAddress
-          : streetAddress // ignore: cast_nullable_to_non_nullable
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String,
-      city: null == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
               as String,
-      country: null == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String,
+      landmark: freezed == landmark
+          ? _value.landmark
+          : landmark // ignore: cast_nullable_to_non_nullable
+              as String?,
       addressType: null == addressType
           ? _value.addressType
           : addressType // ignore: cast_nullable_to_non_nullable
-              as AddressType,
+              as String,
     ) as $Val);
   }
 }
@@ -118,13 +111,12 @@ abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
-      String name,
+      String fullName,
       String mobileNumber,
-      int postalCode,
-      String streetAddress,
-      String city,
-      String country,
-      AddressType addressType});
+      String address,
+      String state,
+      String? landmark,
+      String addressType});
 }
 
 /// @nodoc
@@ -138,12 +130,11 @@ class __$$_AddressCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
-    Object? name = null,
+    Object? fullName = null,
     Object? mobileNumber = null,
-    Object? postalCode = null,
-    Object? streetAddress = null,
-    Object? city = null,
-    Object? country = null,
+    Object? address = null,
+    Object? state = null,
+    Object? landmark = freezed,
     Object? addressType = null,
   }) {
     return _then(_$_Address(
@@ -151,34 +142,30 @@ class __$$_AddressCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       mobileNumber: null == mobileNumber
           ? _value.mobileNumber
           : mobileNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      postalCode: null == postalCode
-          ? _value.postalCode
-          : postalCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      streetAddress: null == streetAddress
-          ? _value.streetAddress
-          : streetAddress // ignore: cast_nullable_to_non_nullable
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String,
-      city: null == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
               as String,
-      country: null == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String,
+      landmark: freezed == landmark
+          ? _value.landmark
+          : landmark // ignore: cast_nullable_to_non_nullable
+              as String?,
       addressType: null == addressType
           ? _value.addressType
           : addressType // ignore: cast_nullable_to_non_nullable
-              as AddressType,
+              as String,
     ));
   }
 }
@@ -188,12 +175,11 @@ class __$$_AddressCopyWithImpl<$Res>
 class _$_Address implements _Address {
   const _$_Address(
       {required this.userId,
-      required this.name,
+      required this.fullName,
       required this.mobileNumber,
-      required this.postalCode,
-      required this.streetAddress,
-      required this.city,
-      required this.country,
+      required this.address,
+      required this.state,
+      this.landmark,
       required this.addressType});
 
   factory _$_Address.fromJson(Map<String, dynamic> json) =>
@@ -202,23 +188,21 @@ class _$_Address implements _Address {
   @override
   final String userId;
   @override
-  final String name;
+  final String fullName;
   @override
   final String mobileNumber;
   @override
-  final int postalCode;
+  final String address;
   @override
-  final String streetAddress;
+  final String state;
   @override
-  final String city;
+  final String? landmark;
   @override
-  final String country;
-  @override
-  final AddressType addressType;
+  final String addressType;
 
   @override
   String toString() {
-    return 'Address(userId: $userId, name: $name, mobileNumber: $mobileNumber, postalCode: $postalCode, streetAddress: $streetAddress, city: $city, country: $country, addressType: $addressType)';
+    return 'Address(userId: $userId, fullName: $fullName, mobileNumber: $mobileNumber, address: $address, state: $state, landmark: $landmark, addressType: $addressType)';
   }
 
   @override
@@ -227,23 +211,22 @@ class _$_Address implements _Address {
         (other.runtimeType == runtimeType &&
             other is _$_Address &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
             (identical(other.mobileNumber, mobileNumber) ||
                 other.mobileNumber == mobileNumber) &&
-            (identical(other.postalCode, postalCode) ||
-                other.postalCode == postalCode) &&
-            (identical(other.streetAddress, streetAddress) ||
-                other.streetAddress == streetAddress) &&
-            (identical(other.city, city) || other.city == city) &&
-            (identical(other.country, country) || other.country == country) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.landmark, landmark) ||
+                other.landmark == landmark) &&
             (identical(other.addressType, addressType) ||
                 other.addressType == addressType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, name, mobileNumber,
-      postalCode, streetAddress, city, country, addressType);
+  int get hashCode => Object.hash(runtimeType, userId, fullName, mobileNumber,
+      address, state, landmark, addressType);
 
   @JsonKey(ignore: true)
   @override
@@ -262,32 +245,29 @@ class _$_Address implements _Address {
 abstract class _Address implements Address {
   const factory _Address(
       {required final String userId,
-      required final String name,
+      required final String fullName,
       required final String mobileNumber,
-      required final int postalCode,
-      required final String streetAddress,
-      required final String city,
-      required final String country,
-      required final AddressType addressType}) = _$_Address;
+      required final String address,
+      required final String state,
+      final String? landmark,
+      required final String addressType}) = _$_Address;
 
   factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
 
   @override
   String get userId;
   @override
-  String get name;
+  String get fullName;
   @override
   String get mobileNumber;
   @override
-  int get postalCode;
+  String get address;
   @override
-  String get streetAddress;
+  String get state;
   @override
-  String get city;
+  String? get landmark;
   @override
-  String get country;
-  @override
-  AddressType get addressType;
+  String get addressType;
   @override
   @JsonKey(ignore: true)
   _$$_AddressCopyWith<_$_Address> get copyWith =>

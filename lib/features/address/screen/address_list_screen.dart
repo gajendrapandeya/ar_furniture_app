@@ -1,13 +1,11 @@
+import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/providers/user_provider.dart';
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
-import 'package:ar_furniture_app/core/widgets/generic_error_widget.dart';
-import 'package:ar_furniture_app/core/widgets/no_data_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/address/controller/address_controller.dart';
-import 'package:ar_furniture_app/features/address/controller/address_state.dart';
 import 'package:ar_furniture_app/features/address/controller/tab_controller.dart';
-import 'package:ar_furniture_app/features/address/model/address.dart';
 import 'package:ar_furniture_app/features/address/model/tab_item.dart';
+import 'package:ar_furniture_app/features/address/widgets/address_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -22,19 +20,6 @@ class AddressListScreen extends ConsumerStatefulWidget {
 
 class _AddressListScreenState extends ConsumerState<AddressListScreen> {
   late List<TabItem> tabItems;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (ref.read(addressProvider) is! AddressStateLoading) {
-        ref.read(addressProvider.notifier).fetchAddresses(
-              userId: ref.read(userNotifierProvider)!.uid,
-              addressType: AddressType.home,
-            );
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +47,11 @@ class _AddressListScreenState extends ConsumerState<AddressListScreen> {
             Radius.circular(4),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed(
+            RouteConstants.addAddressScreenRoute,
+          );
+        },
         label: const Text('Add Address'),
       ),
       body: SafeArea(
@@ -159,29 +148,19 @@ class _AddressListScreenState extends ConsumerState<AddressListScreen> {
 
   Widget _buildSelectedTabWidget() {
     final selectedTab = ref.watch(tabsProvider.notifier).selectedTab;
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.read(addressProvider.notifier).fetchAddresses(
+            userId: ref.read(userNotifierProvider)!.uid,
+            addressType: selectedTab.title,
+          );
+    });
     switch (selectedTab.id) {
       case 0:
-        return _buildAddressList(selectedTab.title);
+        return AddressListWidget(selectedTabName: selectedTab.title);
       case 1:
-        return _buildAddressList(selectedTab.title);
+        return AddressListWidget(selectedTabName: selectedTab.title);
       default:
-        return _buildAddressList(selectedTab.title);
+        throw ArgumentError('Invalid');
     }
-  }
-
-  Widget _buildAddressList(String title) {
-    AddressType addressType =
-        title == 'Home' ? AddressType.home : AddressType.other;
-    return ref.watch(addressProvider).when(
-          loading: () => const CircularProgressIndicator(),
-          success: (addresses) => addresses.isEmpty
-              ? const NoDataWidget(title: 'No Addresses added yet.')
-              : ListView.separated(
-                  itemBuilder: ((context, index) =>
-                      Text(addresses[index].city)),
-                  separatorBuilder: ((context, index) => VerticalSpacer.xxl),
-                  itemCount: addresses.length),
-          error: (error) => GenericErrorWidget(error: error),
-        );
   }
 }
