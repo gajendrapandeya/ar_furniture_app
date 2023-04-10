@@ -42,9 +42,9 @@ class _AddressListScreenState extends ConsumerState<AddressListScreen> {
         icon: const Icon(
           MdiIcons.plus,
         ),
-        shape: const BeveledRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(4),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            32,
           ),
         ),
         onPressed: () {

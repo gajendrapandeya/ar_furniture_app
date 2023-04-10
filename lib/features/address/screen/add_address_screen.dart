@@ -57,7 +57,9 @@ class _AddAddressScreenState extends ConsumerState<AddAddressScreen> {
             VerticalSpacer.xxl,
             _buildAddress(),
             VerticalSpacer.xxl,
-            const AddressTypeWidget(),
+            AddressTypeWidget(
+              onAddressTypeSelected: (selectedAddress) {},
+            ),
           ],
         ),
       ),

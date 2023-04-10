@@ -1,16 +1,26 @@
+// ignore_for_file: depend_on_referenced_packages
+
+import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 final addressTypes = ['Home', 'Other'];
 
 class AddressTypeWidget extends StatefulWidget {
-  const AddressTypeWidget({super.key});
+  const AddressTypeWidget({
+    super.key,
+    required this.onAddressTypeSelected,
+  });
+
+  final Function(String) onAddressTypeSelected;
 
   @override
   State<AddressTypeWidget> createState() => _AddressTypeWidgetState();
 }
 
 class _AddressTypeWidgetState extends State<AddressTypeWidget> {
+  int _selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,9 +50,17 @@ class _AddressTypeWidgetState extends State<AddressTypeWidget> {
           VerticalSpacer.m,
           Row(
             children: [
-              ...addressTypes
-                  .map(
-                    (e) => Container(
+              ...addressTypes.mapIndexed(
+                (index, title) {
+                  bool isSelected = index == _selectedIndex;
+                  return InkWell(
+                    onTap: () {
+                      setState(() {
+                        _selectedIndex = index;
+                      });
+                      widget.onAddressTypeSelected(title);
+                    },
+                    child: Container(
                       margin: const EdgeInsets.only(
                         right: 12,
                       ),
@@ -52,20 +70,27 @@ class _AddressTypeWidgetState extends State<AddressTypeWidget> {
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.grey.shade200,
+                          color: isSelected
+                              ? LightColor.platianGreen
+                              : Colors.grey.shade200,
                         ),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
-                        e,
-                        style:
-                            Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                ),
+                        title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
+                              fontWeight: FontWeight.w500,
+                              color:
+                                  isSelected ? LightColor.platianGreen : null,
+                            ),
                       ),
                     ),
-                  )
-                  .toList()
+                  );
+                },
+              ).toList()
             ],
           ),
           VerticalSpacer.l,
