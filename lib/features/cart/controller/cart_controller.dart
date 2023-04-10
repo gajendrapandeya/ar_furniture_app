@@ -12,47 +12,9 @@ class CartController extends StateNotifier<CartState> {
 
   final _cartService = CartService.instance;
 
-  void inInCart({required String userId, required String cartId}) async {
-    try {
-      final isInCart = await _cartService.isProductAlreadyInCart(
-        userId: userId,
-        cartId: cartId,
-      );
-      state = isInCart
-          ? const CartStateAlreadyInCart()
-          : const CartStateNotInCart();
-    } catch (error) {
-      state = CartState.error(
-        error: error.toString(),
-      );
-    }
-  }
-
-  void addProductToCart({required String userId, required Cart cart}) async {
-    try {
-      await _cartService.addProductToCart(cart: cart, userId: userId);
-      state = const CartState.addedToCart();
-    } catch (error) {
-      state = CartState.error(
-        error: error.toString(),
-      );
-    }
-  }
-
-  void removeProductFromCart(
-      {required String userId, required String cartId}) async {
-    try {
-      await _cartService.removeProductFromCart(cartId: cartId, userId: userId);
-      state = const CartState.removeFromCart();
-    } catch (error) {
-      state = CartState.error(
-        error: error.toString(),
-      );
-    }
-  }
-
   void fetchProductsInCart({required String userId}) async {
     try {
+      state = const CartStateLoading();
       final products = await _cartService.fetchProductsInCart(userId: userId);
 
       state = CartState.success(data: products);
@@ -61,5 +23,11 @@ class CartController extends StateNotifier<CartState> {
         error: error.toString(),
       );
     }
+  }
+
+  void removeFromCart({required Cart cart}) {
+    final cartItems = [...(state as CartStateSuccess).data];
+    cartItems.remove(cart);
+    state = CartStateSuccess(data: cartItems);
   }
 }

@@ -1,12 +1,16 @@
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/providers/user_provider.dart';
+import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
 import 'package:ar_furniture_app/core/widgets/no_data_widget.dart';
 import 'package:ar_furniture_app/core/widgets/not_logged_in_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/auth/core/controller/authentication_controller.dart';
 import 'package:ar_furniture_app/features/cart/controller/cart_amount_controller.dart';
 import 'package:ar_furniture_app/features/cart/controller/cart_controller.dart';
+import 'package:ar_furniture_app/features/cart/controller/cart_item_controller.dart';
+import 'package:ar_furniture_app/features/cart/controller/cart_item_state.dart';
 import 'package:ar_furniture_app/features/cart/controller/cart_state.dart';
+import 'package:ar_furniture_app/features/cart/model/cart.dart';
 import 'package:ar_furniture_app/features/cart/widgets/cart_amount_checkout_widget.dart';
 import 'package:ar_furniture_app/features/cart/widgets/cart_list_item.dart';
 import 'package:flutter/material.dart';
@@ -29,16 +33,20 @@ class _CartScreenState extends ConsumerState<CartScreen> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (ref.read(cartProvider) is! CartStateSuccess) {
-        ref.read(cartProvider.notifier).fetchProductsInCart(
-              userId: ref.read(userNotifierProvider)?.uid ?? '',
-            );
-      }
+      ref.read(cartProvider.notifier).fetchProductsInCart(
+            userId: ref.read(userNotifierProvider)?.uid ?? '',
+          );
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<CartItemState>(cartItemProvider, (prevState, currentState) {
+      if (currentState is CartItemStateRemovedFromCart) {
+        context.showSuccessSnackBar(
+            message: 'Successfully removed from the cart.');
+      }
+    });
     return Scaffold(
       body: SafeArea(
         child: ref.read(userNotifierProvider) != null
@@ -55,24 +63,11 @@ class _CartScreenState extends ConsumerState<CartScreen> {
   Widget _buildCartList() {
     return ref.watch(cartProvider).maybeWhen(
           orElse: () => Container(),
-          loading: () => const CircularProgressIndicator(),
+          loading: () => const Center(
+            child: CircularProgressIndicator(),
+          ),
           success: (cartList) {
-            _subTotal = cartList.fold(
-                0, (previous, current) => previous + current.price);
-
-            _shippingAndTaxesCost = cartList.fold(
-              0,
-              (previousValue, element) =>
-                  previousValue + (80 + (13 / 100) * element.price),
-            );
-            _total = (_shippingAndTaxesCost + _subTotal).toInt();
-            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              ref.read(cartAmountProvider.notifier).setSubtotal(_subTotal);
-              ref
-                  .read(cartAmountProvider.notifier)
-                  .setShippingAndTaxesCost(_shippingAndTaxesCost);
-              ref.read(cartAmountProvider.notifier).setTotal(_total);
-            });
+            _calculateCostAndSetToCartAmountController(cartList);
             return cartList.isEmpty
                 ? const NoDataWidget(
                     title: 'Nothing found in your cart.',
@@ -82,27 +77,28 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                     children: [
                       Positioned.fill(
                         child: ListView.separated(
+                          physics: const AlwaysScrollableScrollPhysics(),
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16,
                             vertical: 28,
                           ),
                           itemBuilder: ((ctx, index) {
+                            final cartItem = cartList[index];
                             return CartListItem(
-                              key: ValueKey(cartList[index].id),
+                              key: ValueKey(cartItem.id),
                               cart: cartList[index],
-                              onAddPressed: (count) {
-                                _subTotal = _subTotal + cartList[index].price;
-                                ref
-                                    .read(cartAmountProvider.notifier)
-                                    .setSubtotal(_subTotal);
+                              isLastItem: index == cartList.length - 1,
+                              onAddPressed: () {
+                                _calculateSubtotalAndTotalOnPressingOnAddButton(
+                                    cartItem);
                               },
-                              onMinusPressed: (count) {
-                                _subTotal = _subTotal - cartList[index].price;
-                                ref
-                                    .read(cartAmountProvider.notifier)
-                                    .setSubtotal(_subTotal);
+                              onMinusPressed: () {
+                                _calculateSubtotalAndTotalOnPressingOnMinusButton(
+                                    cartItem);
                               },
-                              onDeletePressed: () {},
+                              onDeletePressed: () {
+                                _deleteCartItem(cartList, index);
+                              },
                             );
                           }),
                           separatorBuilder: ((ctx, index) => VerticalSpacer.xl),
@@ -121,5 +117,45 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                   );
           },
         );
+  }
+
+  void _deleteCartItem(List<Cart> cartList, int index) {
+    ref.read(cartItemProvider.notifier).removeProductFromCart(
+          userId: ref.read(userNotifierProvider)!.uid,
+          cart: cartList[index],
+        );
+  }
+
+  void _calculateSubtotalAndTotalOnPressingOnMinusButton(Cart cartItem) {
+    _subTotal = _subTotal - cartItem.price;
+    _total -= cartItem.price;
+    ref.read(cartAmountProvider.notifier).setSubtotal(_subTotal);
+    ref.read(cartAmountProvider.notifier).setTotal(_total);
+  }
+
+  void _calculateSubtotalAndTotalOnPressingOnAddButton(Cart cartItem) {
+    _subTotal = _subTotal + cartItem.price;
+    _total = _total + cartItem.price;
+    ref.read(cartAmountProvider.notifier).setSubtotal(_subTotal);
+    ref.read(cartAmountProvider.notifier).setTotal(_total);
+  }
+
+  void _calculateCostAndSetToCartAmountController(List<Cart> cartList) {
+    _subTotal =
+        cartList.fold(0, (previous, current) => previous + current.price);
+
+    _shippingAndTaxesCost = cartList.fold(
+      0,
+      (previousValue, element) =>
+          previousValue + (80 + (13 / 100) * element.price),
+    );
+    _total = (_shippingAndTaxesCost + _subTotal).toInt();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.read(cartAmountProvider.notifier).setSubtotal(_subTotal);
+      ref
+          .read(cartAmountProvider.notifier)
+          .setShippingAndTaxesCost(_shippingAndTaxesCost);
+      ref.read(cartAmountProvider.notifier).setTotal(_total);
+    });
   }
 }

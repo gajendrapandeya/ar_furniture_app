@@ -12,69 +12,76 @@ class CartListItem extends StatelessWidget {
     required this.onAddPressed,
     required this.onMinusPressed,
     required this.onDeletePressed,
+    required this.isLastItem,
   });
 
-  final Function(int) onAddPressed;
-  final Function(int) onMinusPressed;
+  final VoidCallback onAddPressed;
+  final VoidCallback onMinusPressed;
   final VoidCallback onDeletePressed;
+  final bool isLastItem;
 
   final Cart cart;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
       children: [
-        ClipRRect(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(8),
-          ),
-          child: CachedNetworkImage(
-            width: 150,
-            height: 100,
-            fit: BoxFit.fill,
-            imageUrl: cart.imageUrl,
-          ),
-        ),
-        HorizontalSpacer.xl,
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                cart.name,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.titleMedium,
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(8),
               ),
-              VerticalSpacer.s,
-              Text(
-                cart.formattedPrice,
-                style: Theme.of(context).textTheme.titleSmall,
+              child: CachedNetworkImage(
+                width: 150,
+                height: 100,
+                fit: BoxFit.fill,
+                imageUrl: cart.imageUrl,
               ),
-              VerticalSpacer.s,
-              Row(
+            ),
+            HorizontalSpacer.xl,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AddSubtractCartItem(
-                    onAddPressed: (count) => onAddPressed(count),
-                    onSubtractPressed: (count) => onMinusPressed(count),
+                  Text(
+                    cart.name,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      MdiIcons.trashCanOutline,
-                      color: Colors.black54,
-                      size: 20,
-                    ),
-                  )
+                  VerticalSpacer.s,
+                  Text(
+                    cart.formattedPrice,
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                  VerticalSpacer.s,
+                  Row(
+                    children: [
+                      AddSubtractCartItem(
+                        onAddPressed: () => onAddPressed(),
+                        onSubtractPressed: () => onMinusPressed(),
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () => onDeletePressed(),
+                        icon: const Icon(
+                          MdiIcons.trashCanOutline,
+                          color: Colors.black54,
+                          size: 20,
+                        ),
+                      )
+                    ],
+                  ),
+                  Divider(
+                    color: Colors.grey.shade400,
+                  ),
                 ],
               ),
-              Divider(
-                color: Colors.grey.shade400,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
+        if (isLastItem) VerticalSpacer.exl,
       ],
     );
   }

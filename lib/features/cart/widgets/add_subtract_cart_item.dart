@@ -10,8 +10,8 @@ class AddSubtractCartItem extends StatefulWidget {
     required this.onSubtractPressed,
   });
 
-  final Function(int) onSubtractPressed;
-  final Function(int) onAddPressed;
+  final VoidCallback onSubtractPressed;
+  final VoidCallback onAddPressed;
 
   @override
   State<AddSubtractCartItem> createState() => _AddSubtractCartItemState();
@@ -30,7 +30,7 @@ class _AddSubtractCartItemState extends State<AddSubtractCartItem> {
               setState(() {
                 count--;
               });
-              widget.onSubtractPressed(count);
+              widget.onSubtractPressed();
             }
           },
           child: Container(
@@ -54,7 +54,7 @@ class _AddSubtractCartItemState extends State<AddSubtractCartItem> {
         ),
         HorizontalSpacer.s,
         SizedBox(
-          width: 10,
+          width: 8,
           child: Text(
             count.toString(),
             style: Theme.of(context).textTheme.titleMedium,
@@ -68,7 +68,7 @@ class _AddSubtractCartItemState extends State<AddSubtractCartItem> {
               setState(() {
                 count++;
               });
-              widget.onAddPressed(count);
+              widget.onAddPressed();
             } else {
               context.showErrorSnackBar(
                 message: 'You cannot add more than 10 item count',

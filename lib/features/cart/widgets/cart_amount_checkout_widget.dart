@@ -13,10 +13,10 @@ class CartAmountCheckoutWidget extends ConsumerWidget {
     final cartAmount = ref.watch(cartAmountProvider);
 
     return Container(
-      height: MediaQuery.of(context).size.height * 0.35,
+      height: MediaQuery.of(context).size.height * 0.25,
       padding: const EdgeInsets.symmetric(
         horizontal: 24,
-        vertical: 32,
+        vertical: 16,
       ),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.onSecondary,
@@ -40,15 +40,15 @@ class CartAmountCheckoutWidget extends ConsumerWidget {
         children: [
           _buildPriceItem('Subtotal',
               GenericUtils.formatAmount(cartAmount.subTotal), context),
-          VerticalSpacer.l,
+          VerticalSpacer.s,
           _buildPriceItem(
               'Shipping And Taxes',
               GenericUtils.formatAmount(
                   cartAmount.shippingAndTaxesCost.toInt()),
               context),
-          VerticalSpacer.l,
+          VerticalSpacer.s,
           const Divider(),
-          VerticalSpacer.l,
+          VerticalSpacer.s,
           _buildPriceItem(
             'Total'.toUpperCase(),
             GenericUtils.formatAmount(
@@ -57,7 +57,7 @@ class CartAmountCheckoutWidget extends ConsumerWidget {
             context,
             true,
           ),
-          VerticalSpacer.xxxl,
+          VerticalSpacer.m,
           CustomElevatedButton(onButtonPressed: () {}, buttonText: 'Checkout')
         ],
       ),
