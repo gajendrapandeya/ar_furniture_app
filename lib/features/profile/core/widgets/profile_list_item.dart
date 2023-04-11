@@ -6,14 +6,17 @@ class ProfileListItem extends StatelessWidget {
     super.key,
     required this.iconData,
     required this.title,
+    required this.onItemClicked,
   });
 
   final String title;
   final IconData iconData;
+  final VoidCallback onItemClicked;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () => onItemClicked(),
       leading: Icon(
         iconData,
         color: Colors.black,

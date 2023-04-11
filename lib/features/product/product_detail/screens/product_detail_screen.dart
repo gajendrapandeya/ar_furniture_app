@@ -319,7 +319,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   }
 
   Widget _buildBottomWidget(BuildContext context) {
-    debugPrint('cartState: ${ref.watch(cartItemProvider)}');
     final product = widget.product;
     User? currentUser = ref.read(userNotifierProvider);
     final cart = Cart(
