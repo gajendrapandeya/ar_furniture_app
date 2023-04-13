@@ -20,13 +20,14 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Address {
-  String get userId => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
   String get mobileNumber => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get state => throw _privateConstructorUsedError;
-  String? get landmark => throw _privateConstructorUsedError;
+  String get landmark => throw _privateConstructorUsedError;
   String get addressType => throw _privateConstructorUsedError;
+  bool? get isSelected => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,13 +40,14 @@ abstract class $AddressCopyWith<$Res> {
       _$AddressCopyWithImpl<$Res, Address>;
   @useResult
   $Res call(
-      {String userId,
+      {String id,
       String fullName,
       String mobileNumber,
       String address,
       String state,
-      String? landmark,
-      String addressType});
+      String landmark,
+      String addressType,
+      bool? isSelected});
 }
 
 /// @nodoc
@@ -61,18 +63,19 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? id = null,
     Object? fullName = null,
     Object? mobileNumber = null,
     Object? address = null,
     Object? state = null,
-    Object? landmark = freezed,
+    Object? landmark = null,
     Object? addressType = null,
+    Object? isSelected = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       fullName: null == fullName
           ? _value.fullName
@@ -90,14 +93,18 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
-      landmark: freezed == landmark
+      landmark: null == landmark
           ? _value.landmark
           : landmark // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       addressType: null == addressType
           ? _value.addressType
           : addressType // ignore: cast_nullable_to_non_nullable
               as String,
+      isSelected: freezed == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -110,13 +117,14 @@ abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String userId,
+      {String id,
       String fullName,
       String mobileNumber,
       String address,
       String state,
-      String? landmark,
-      String addressType});
+      String landmark,
+      String addressType,
+      bool? isSelected});
 }
 
 /// @nodoc
@@ -129,18 +137,19 @@ class __$$_AddressCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? id = null,
     Object? fullName = null,
     Object? mobileNumber = null,
     Object? address = null,
     Object? state = null,
-    Object? landmark = freezed,
+    Object? landmark = null,
     Object? addressType = null,
+    Object? isSelected = freezed,
   }) {
     return _then(_$_Address(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       fullName: null == fullName
           ? _value.fullName
@@ -158,14 +167,18 @@ class __$$_AddressCopyWithImpl<$Res>
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
-      landmark: freezed == landmark
+      landmark: null == landmark
           ? _value.landmark
           : landmark // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       addressType: null == addressType
           ? _value.addressType
           : addressType // ignore: cast_nullable_to_non_nullable
               as String,
+      isSelected: freezed == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -174,19 +187,20 @@ class __$$_AddressCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Address implements _Address {
   const _$_Address(
-      {required this.userId,
+      {required this.id,
       required this.fullName,
       required this.mobileNumber,
       required this.address,
       required this.state,
-      this.landmark,
-      required this.addressType});
+      required this.landmark,
+      required this.addressType,
+      this.isSelected});
 
   factory _$_Address.fromJson(Map<String, dynamic> json) =>
       _$$_AddressFromJson(json);
 
   @override
-  final String userId;
+  final String id;
   @override
   final String fullName;
   @override
@@ -196,13 +210,15 @@ class _$_Address implements _Address {
   @override
   final String state;
   @override
-  final String? landmark;
+  final String landmark;
   @override
   final String addressType;
+  @override
+  final bool? isSelected;
 
   @override
   String toString() {
-    return 'Address(userId: $userId, fullName: $fullName, mobileNumber: $mobileNumber, address: $address, state: $state, landmark: $landmark, addressType: $addressType)';
+    return 'Address(id: $id, fullName: $fullName, mobileNumber: $mobileNumber, address: $address, state: $state, landmark: $landmark, addressType: $addressType, isSelected: $isSelected)';
   }
 
   @override
@@ -210,7 +226,7 @@ class _$_Address implements _Address {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Address &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
             (identical(other.mobileNumber, mobileNumber) ||
@@ -220,13 +236,15 @@ class _$_Address implements _Address {
             (identical(other.landmark, landmark) ||
                 other.landmark == landmark) &&
             (identical(other.addressType, addressType) ||
-                other.addressType == addressType));
+                other.addressType == addressType) &&
+            (identical(other.isSelected, isSelected) ||
+                other.isSelected == isSelected));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, fullName, mobileNumber,
-      address, state, landmark, addressType);
+  int get hashCode => Object.hash(runtimeType, id, fullName, mobileNumber,
+      address, state, landmark, addressType, isSelected);
 
   @JsonKey(ignore: true)
   @override
@@ -244,18 +262,19 @@ class _$_Address implements _Address {
 
 abstract class _Address implements Address {
   const factory _Address(
-      {required final String userId,
+      {required final String id,
       required final String fullName,
       required final String mobileNumber,
       required final String address,
       required final String state,
-      final String? landmark,
-      required final String addressType}) = _$_Address;
+      required final String landmark,
+      required final String addressType,
+      final bool? isSelected}) = _$_Address;
 
   factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
 
   @override
-  String get userId;
+  String get id;
   @override
   String get fullName;
   @override
@@ -265,9 +284,11 @@ abstract class _Address implements Address {
   @override
   String get state;
   @override
-  String? get landmark;
+  String get landmark;
   @override
   String get addressType;
+  @override
+  bool? get isSelected;
   @override
   @JsonKey(ignore: true)
   _$$_AddressCopyWith<_$_Address> get copyWith =>

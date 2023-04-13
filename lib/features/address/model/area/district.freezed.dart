@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$District {
   int get districtId => throw _privateConstructorUsedError;
-  int get stateId => throw _privateConstructorUsedError;
+  int get provinceId => throw _privateConstructorUsedError;
   String get districtName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $DistrictCopyWith<$Res> {
   factory $DistrictCopyWith(District value, $Res Function(District) then) =
       _$DistrictCopyWithImpl<$Res, District>;
   @useResult
-  $Res call({int districtId, int stateId, String districtName});
+  $Res call({int districtId, int provinceId, String districtName});
 }
 
 /// @nodoc
@@ -47,7 +47,7 @@ class _$DistrictCopyWithImpl<$Res, $Val extends District>
   @override
   $Res call({
     Object? districtId = null,
-    Object? stateId = null,
+    Object? provinceId = null,
     Object? districtName = null,
   }) {
     return _then(_value.copyWith(
@@ -55,9 +55,9 @@ class _$DistrictCopyWithImpl<$Res, $Val extends District>
           ? _value.districtId
           : districtId // ignore: cast_nullable_to_non_nullable
               as int,
-      stateId: null == stateId
-          ? _value.stateId
-          : stateId // ignore: cast_nullable_to_non_nullable
+      provinceId: null == provinceId
+          ? _value.provinceId
+          : provinceId // ignore: cast_nullable_to_non_nullable
               as int,
       districtName: null == districtName
           ? _value.districtName
@@ -74,7 +74,7 @@ abstract class _$$_DistrictCopyWith<$Res> implements $DistrictCopyWith<$Res> {
       __$$_DistrictCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int districtId, int stateId, String districtName});
+  $Res call({int districtId, int provinceId, String districtName});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$_DistrictCopyWithImpl<$Res>
   @override
   $Res call({
     Object? districtId = null,
-    Object? stateId = null,
+    Object? provinceId = null,
     Object? districtName = null,
   }) {
     return _then(_$_District(
@@ -97,9 +97,9 @@ class __$$_DistrictCopyWithImpl<$Res>
           ? _value.districtId
           : districtId // ignore: cast_nullable_to_non_nullable
               as int,
-      stateId: null == stateId
-          ? _value.stateId
-          : stateId // ignore: cast_nullable_to_non_nullable
+      provinceId: null == provinceId
+          ? _value.provinceId
+          : provinceId // ignore: cast_nullable_to_non_nullable
               as int,
       districtName: null == districtName
           ? _value.districtName
@@ -114,19 +114,19 @@ class __$$_DistrictCopyWithImpl<$Res>
 class _$_District implements _District {
   const _$_District(
       {required this.districtId,
-      required this.stateId,
+      required this.provinceId,
       required this.districtName});
 
   @override
   final int districtId;
   @override
-  final int stateId;
+  final int provinceId;
   @override
   final String districtName;
 
   @override
   String toString() {
-    return 'District(districtId: $districtId, stateId: $stateId, districtName: $districtName)';
+    return 'District(districtId: $districtId, provinceId: $provinceId, districtName: $districtName)';
   }
 
   @override
@@ -136,14 +136,15 @@ class _$_District implements _District {
             other is _$_District &&
             (identical(other.districtId, districtId) ||
                 other.districtId == districtId) &&
-            (identical(other.stateId, stateId) || other.stateId == stateId) &&
+            (identical(other.provinceId, provinceId) ||
+                other.provinceId == provinceId) &&
             (identical(other.districtName, districtName) ||
                 other.districtName == districtName));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, districtId, stateId, districtName);
+      Object.hash(runtimeType, districtId, provinceId, districtName);
 
   @JsonKey(ignore: true)
   @override
@@ -155,13 +156,13 @@ class _$_District implements _District {
 abstract class _District implements District {
   const factory _District(
       {required final int districtId,
-      required final int stateId,
+      required final int provinceId,
       required final String districtName}) = _$_District;
 
   @override
   int get districtId;
   @override
-  int get stateId;
+  int get provinceId;
   @override
   String get districtName;
   @override

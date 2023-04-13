@@ -5,7 +5,6 @@ import 'package:ar_furniture_app/features/address/model/area/district.dart';
 import 'package:ar_furniture_app/features/address/model/area/province.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 final provinceProvider =
     StateProvider.family<List<Province>, int?>((ref, provindeId) {
@@ -68,7 +67,14 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
             VerticalSpacer.l,
             _buildProvinceDistrictList(),
             VerticalSpacer.l,
-            CustomOutlinedButton(onBtnPressed: () {}, buttonText: 'Confirm')
+            CustomOutlinedButton(
+              isFilled: ref.watch(selectedDistrictProvider).isNotEmpty &&
+                  ref.watch(selectedProvinceProvider).isNotEmpty,
+              onBtnPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              buttonText: 'Confirm',
+            )
           ],
         ),
       ),
@@ -110,18 +116,18 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
                   }
                   filteredDistricts = districts
                       .where((element) =>
-                          element.stateId == provinces[index].provinceId)
+                          element.provinceId == provinces[index].provinceId)
                       .toList();
                 },
                 contentPadding: EdgeInsets.zero,
                 dense: true,
-                trailing: ref.watch(selectedProvinceProvider).isNotEmpty &&
-                        ref.watch(selectedDistrictProvider).isNotEmpty
-                    ? const Icon(
-                        MdiIcons.check,
-                        color: LightColor.platianGreen,
-                      )
-                    : null,
+                // trailing: ref.watch(selectedProvinceProvider).isNotEmpty &&
+                //         ref.watch(selectedDistrictProvider).isNotEmpty
+                //     ? const Icon(
+                //         MdiIcons.check,
+                //         color: LightColor.platianGreen,
+                //       )
+                //     : null,
                 title: Text(
                   ref.watch(selectedProvinceProvider).isEmpty &&
                           ref.watch(selectedDistrictProvider).isEmpty
@@ -200,7 +206,6 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
               const Spacer(),
               InkWell(
                 onTap: () {
-                  debugPrint('called');
                   filteredDistricts = [];
                 },
                 child: Text(

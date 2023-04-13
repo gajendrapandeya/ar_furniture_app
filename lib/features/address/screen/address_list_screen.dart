@@ -2,7 +2,7 @@ import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/providers/user_provider.dart';
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
-import 'package:ar_furniture_app/features/address/controller/address_controller.dart';
+import 'package:ar_furniture_app/features/address/controller/address_list/address_controller.dart';
 import 'package:ar_furniture_app/features/address/controller/tab_controller.dart';
 import 'package:ar_furniture_app/features/address/model/tab_item.dart';
 import 'package:ar_furniture_app/features/address/widgets/address_list_widget.dart';
@@ -47,10 +47,15 @@ class _AddressListScreenState extends ConsumerState<AddressListScreen> {
             32,
           ),
         ),
-        onPressed: () {
-          Navigator.of(context).pushNamed(
+        onPressed: () async {
+          final result = await Navigator.of(context).pushNamed(
             RouteConstants.addAddressScreenRoute,
           );
+          if (result != null && result == true) {
+            ref.read(addressProvider.notifier).fetchAddresses(
+                userId: ref.read(userNotifierProvider)!.uid,
+                addressType: 'Home');
+          }
         },
         label: const Text('Add Address'),
       ),
