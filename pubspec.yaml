@@ -28,6 +28,7 @@ dependencies:
   flutter_svg: ^2.0.1
   cached_network_image: ^3.2.3
   intl: ^0.17.0
+  easy_stepper: ^0.5.0
   firebase_storage: ^11.0.11
   shared_preferences: ^2.0.15
   flutter_facebook_auth: ^5.0.7

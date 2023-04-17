@@ -8,6 +8,7 @@ import 'package:ar_furniture_app/features/auth/login/screens/login_screen.dart';
 import 'package:ar_furniture_app/features/auth/register/screens/register_screen.dart';
 import 'package:ar_furniture_app/features/cart/screens/cart_screen.dart';
 import 'package:ar_furniture_app/features/category/screens/category_screen.dart';
+import 'package:ar_furniture_app/features/checkout/screens/checkout_screen.dart';
 import 'package:ar_furniture_app/features/home/home_screen.dart';
 import 'package:ar_furniture_app/features/onboarding/onboarding_screen.dart';
 import 'package:ar_furniture_app/features/product/core/model/product/product.dart';
@@ -69,6 +70,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const AddressListScreen());
       case RouteConstants.addAddressScreenRoute:
         return MaterialPageRoute(builder: (_) => const AddAddressScreen());
+      case RouteConstants.checkoutScreenRoute:
+        return MaterialPageRoute(builder: (_) => const CheckoutScreen());
       case RouteConstants.updateProfileRoute:
         return MaterialPageRoute(
           builder: (_) => UpdateProfileScreen(

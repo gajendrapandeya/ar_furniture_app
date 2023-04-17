@@ -1,3 +1,4 @@
+import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/utils/generic_utils.dart';
 import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
@@ -58,7 +59,12 @@ class CartAmountCheckoutWidget extends ConsumerWidget {
             true,
           ),
           VerticalSpacer.m,
-          CustomElevatedButton(onButtonPressed: () {}, buttonText: 'Checkout')
+          CustomElevatedButton(
+              onButtonPressed: () {
+                Navigator.of(context)
+                    .pushNamed(RouteConstants.checkoutScreenRoute);
+              },
+              buttonText: 'Checkout')
         ],
       ),
     );
