@@ -1,6 +1,11 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'province.freezed.dart';
+
+final provinceListProvider = StateProvider<List<Province>>((ref) {
+  return provinces;
+});
 
 @freezed
 class Province with _$Province {
@@ -11,7 +16,7 @@ class Province with _$Province {
   }) = _Province;
 }
 
-const List<Province> province = [
+const List<Province> provinces = [
   Province(provinceId: 1, provinceName: 'Bagmati Province'),
   Province(provinceId: 2, provinceName: 'Gandaki Province'),
   Province(provinceId: 3, provinceName: 'Karnali Province'),

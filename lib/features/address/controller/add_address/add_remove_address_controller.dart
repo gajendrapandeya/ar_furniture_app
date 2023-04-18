@@ -32,6 +32,10 @@ class AddRemoveAddressController extends StateNotifier<AddRemoveAddressState> {
     }
   }
 
+  void editAddressInitial(Address address) {
+    state = AddRemoveAddressState.editAddressStateInitial(address: address);
+  }
+
   Future<void> removeAddress({required String userId}) async {
     try {
       state = const AddRemoveAddressState.loading();

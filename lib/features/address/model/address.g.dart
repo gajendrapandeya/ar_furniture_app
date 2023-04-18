@@ -14,7 +14,7 @@ _$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
       state: json['state'] as String,
       landmark: json['landmark'] as String,
       addressType: json['addressType'] as String,
-      isSelected: json['isSelected'] as bool?,
+      isSelected: json['isSelected'] as bool,
     );
 
 Map<String, dynamic> _$$_AddressToJson(_$_Address instance) =>

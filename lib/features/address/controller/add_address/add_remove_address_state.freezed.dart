@@ -20,6 +20,8 @@ mixin _$AddRemoveAddressState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(Address address) editAddressStateInitial,
+    required TResult Function() editAddressSuccess,
     required TResult Function() addAddressSuccess,
     required TResult Function() removeAddressSuccess,
     required TResult Function(String error) error,
@@ -29,6 +31,8 @@ mixin _$AddRemoveAddressState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(Address address)? editAddressStateInitial,
+    TResult? Function()? editAddressSuccess,
     TResult? Function()? addAddressSuccess,
     TResult? Function()? removeAddressSuccess,
     TResult? Function(String error)? error,
@@ -38,6 +42,8 @@ mixin _$AddRemoveAddressState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(Address address)? editAddressStateInitial,
+    TResult Function()? editAddressSuccess,
     TResult Function()? addAddressSuccess,
     TResult Function()? removeAddressSuccess,
     TResult Function(String error)? error,
@@ -48,11 +54,12 @@ mixin _$AddRemoveAddressState {
   TResult map<TResult extends Object?>({
     required TResult Function(AddRemoveAddressStateInitial value) initial,
     required TResult Function(AddRemoveAddressStateLoading value) loading,
-    required TResult Function(
-            AddRemoveAddressStateInitialAddAddressSuccess value)
+    required TResult Function(EditAddressStateInitial value)
+        editAddressStateInitial,
+    required TResult Function(EditAddressSuccess value) editAddressSuccess,
+    required TResult Function(AddRemoveAddressStateAddSuccess value)
         addAddressSuccess,
-    required TResult Function(
-            AddRemoveAddressStateInitialRemoveAddressSuccess value)
+    required TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)
         removeAddressSuccess,
     required TResult Function(AddAddressStateError value) error,
   }) =>
@@ -61,9 +68,10 @@ mixin _$AddRemoveAddressState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddRemoveAddressStateInitial value)? initial,
     TResult? Function(AddRemoveAddressStateLoading value)? loading,
-    TResult? Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult? Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult? Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult? Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult? Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult? Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult? Function(AddAddressStateError value)? error,
   }) =>
@@ -72,9 +80,10 @@ mixin _$AddRemoveAddressState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddRemoveAddressStateInitial value)? initial,
     TResult Function(AddRemoveAddressStateLoading value)? loading,
-    TResult Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult Function(AddAddressStateError value)? error,
     required TResult orElse(),
@@ -145,6 +154,8 @@ class _$AddRemoveAddressStateInitial implements AddRemoveAddressStateInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(Address address) editAddressStateInitial,
+    required TResult Function() editAddressSuccess,
     required TResult Function() addAddressSuccess,
     required TResult Function() removeAddressSuccess,
     required TResult Function(String error) error,
@@ -157,6 +168,8 @@ class _$AddRemoveAddressStateInitial implements AddRemoveAddressStateInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(Address address)? editAddressStateInitial,
+    TResult? Function()? editAddressSuccess,
     TResult? Function()? addAddressSuccess,
     TResult? Function()? removeAddressSuccess,
     TResult? Function(String error)? error,
@@ -169,6 +182,8 @@ class _$AddRemoveAddressStateInitial implements AddRemoveAddressStateInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(Address address)? editAddressStateInitial,
+    TResult Function()? editAddressSuccess,
     TResult Function()? addAddressSuccess,
     TResult Function()? removeAddressSuccess,
     TResult Function(String error)? error,
@@ -185,11 +200,12 @@ class _$AddRemoveAddressStateInitial implements AddRemoveAddressStateInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(AddRemoveAddressStateInitial value) initial,
     required TResult Function(AddRemoveAddressStateLoading value) loading,
-    required TResult Function(
-            AddRemoveAddressStateInitialAddAddressSuccess value)
+    required TResult Function(EditAddressStateInitial value)
+        editAddressStateInitial,
+    required TResult Function(EditAddressSuccess value) editAddressSuccess,
+    required TResult Function(AddRemoveAddressStateAddSuccess value)
         addAddressSuccess,
-    required TResult Function(
-            AddRemoveAddressStateInitialRemoveAddressSuccess value)
+    required TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)
         removeAddressSuccess,
     required TResult Function(AddAddressStateError value) error,
   }) {
@@ -201,9 +217,10 @@ class _$AddRemoveAddressStateInitial implements AddRemoveAddressStateInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddRemoveAddressStateInitial value)? initial,
     TResult? Function(AddRemoveAddressStateLoading value)? loading,
-    TResult? Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult? Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult? Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult? Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult? Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult? Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult? Function(AddAddressStateError value)? error,
   }) {
@@ -215,9 +232,10 @@ class _$AddRemoveAddressStateInitial implements AddRemoveAddressStateInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddRemoveAddressStateInitial value)? initial,
     TResult Function(AddRemoveAddressStateLoading value)? loading,
-    TResult Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult Function(AddAddressStateError value)? error,
     required TResult orElse(),
@@ -277,6 +295,8 @@ class _$AddRemoveAddressStateLoading implements AddRemoveAddressStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(Address address) editAddressStateInitial,
+    required TResult Function() editAddressSuccess,
     required TResult Function() addAddressSuccess,
     required TResult Function() removeAddressSuccess,
     required TResult Function(String error) error,
@@ -289,6 +309,8 @@ class _$AddRemoveAddressStateLoading implements AddRemoveAddressStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(Address address)? editAddressStateInitial,
+    TResult? Function()? editAddressSuccess,
     TResult? Function()? addAddressSuccess,
     TResult? Function()? removeAddressSuccess,
     TResult? Function(String error)? error,
@@ -301,6 +323,8 @@ class _$AddRemoveAddressStateLoading implements AddRemoveAddressStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(Address address)? editAddressStateInitial,
+    TResult Function()? editAddressSuccess,
     TResult Function()? addAddressSuccess,
     TResult Function()? removeAddressSuccess,
     TResult Function(String error)? error,
@@ -317,11 +341,12 @@ class _$AddRemoveAddressStateLoading implements AddRemoveAddressStateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(AddRemoveAddressStateInitial value) initial,
     required TResult Function(AddRemoveAddressStateLoading value) loading,
-    required TResult Function(
-            AddRemoveAddressStateInitialAddAddressSuccess value)
+    required TResult Function(EditAddressStateInitial value)
+        editAddressStateInitial,
+    required TResult Function(EditAddressSuccess value) editAddressSuccess,
+    required TResult Function(AddRemoveAddressStateAddSuccess value)
         addAddressSuccess,
-    required TResult Function(
-            AddRemoveAddressStateInitialRemoveAddressSuccess value)
+    required TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)
         removeAddressSuccess,
     required TResult Function(AddAddressStateError value) error,
   }) {
@@ -333,9 +358,10 @@ class _$AddRemoveAddressStateLoading implements AddRemoveAddressStateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddRemoveAddressStateInitial value)? initial,
     TResult? Function(AddRemoveAddressStateLoading value)? loading,
-    TResult? Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult? Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult? Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult? Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult? Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult? Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult? Function(AddAddressStateError value)? error,
   }) {
@@ -347,9 +373,10 @@ class _$AddRemoveAddressStateLoading implements AddRemoveAddressStateLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddRemoveAddressStateInitial value)? initial,
     TResult Function(AddRemoveAddressStateLoading value)? loading,
-    TResult Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult Function(AddAddressStateError value)? error,
     required TResult orElse(),
@@ -366,40 +393,215 @@ abstract class AddRemoveAddressStateLoading implements AddRemoveAddressState {
 }
 
 /// @nodoc
-abstract class _$$AddRemoveAddressStateInitialAddAddressSuccessCopyWith<$Res> {
-  factory _$$AddRemoveAddressStateInitialAddAddressSuccessCopyWith(
-          _$AddRemoveAddressStateInitialAddAddressSuccess value,
-          $Res Function(_$AddRemoveAddressStateInitialAddAddressSuccess) then) =
-      __$$AddRemoveAddressStateInitialAddAddressSuccessCopyWithImpl<$Res>;
+abstract class _$$EditAddressStateInitialCopyWith<$Res> {
+  factory _$$EditAddressStateInitialCopyWith(_$EditAddressStateInitial value,
+          $Res Function(_$EditAddressStateInitial) then) =
+      __$$EditAddressStateInitialCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Address address});
+
+  $AddressCopyWith<$Res> get address;
 }
 
 /// @nodoc
-class __$$AddRemoveAddressStateInitialAddAddressSuccessCopyWithImpl<$Res>
-    extends _$AddRemoveAddressStateCopyWithImpl<$Res,
-        _$AddRemoveAddressStateInitialAddAddressSuccess>
-    implements _$$AddRemoveAddressStateInitialAddAddressSuccessCopyWith<$Res> {
-  __$$AddRemoveAddressStateInitialAddAddressSuccessCopyWithImpl(
-      _$AddRemoveAddressStateInitialAddAddressSuccess _value,
-      $Res Function(_$AddRemoveAddressStateInitialAddAddressSuccess) _then)
+class __$$EditAddressStateInitialCopyWithImpl<$Res>
+    extends _$AddRemoveAddressStateCopyWithImpl<$Res, _$EditAddressStateInitial>
+    implements _$$EditAddressStateInitialCopyWith<$Res> {
+  __$$EditAddressStateInitialCopyWithImpl(_$EditAddressStateInitial _value,
+      $Res Function(_$EditAddressStateInitial) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? address = null,
+  }) {
+    return _then(_$EditAddressStateInitial(
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as Address,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressCopyWith<$Res> get address {
+    return $AddressCopyWith<$Res>(_value.address, (value) {
+      return _then(_value.copyWith(address: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$AddRemoveAddressStateInitialAddAddressSuccess
-    implements AddRemoveAddressStateInitialAddAddressSuccess {
-  const _$AddRemoveAddressStateInitialAddAddressSuccess();
+class _$EditAddressStateInitial implements EditAddressStateInitial {
+  const _$EditAddressStateInitial({required this.address});
+
+  @override
+  final Address address;
 
   @override
   String toString() {
-    return 'AddRemoveAddressState.addAddressSuccess()';
+    return 'AddRemoveAddressState.editAddressStateInitial(address: $address)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddRemoveAddressStateInitialAddAddressSuccess);
+            other is _$EditAddressStateInitial &&
+            (identical(other.address, address) || other.address == address));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, address);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditAddressStateInitialCopyWith<_$EditAddressStateInitial> get copyWith =>
+      __$$EditAddressStateInitialCopyWithImpl<_$EditAddressStateInitial>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Address address) editAddressStateInitial,
+    required TResult Function() editAddressSuccess,
+    required TResult Function() addAddressSuccess,
+    required TResult Function() removeAddressSuccess,
+    required TResult Function(String error) error,
+  }) {
+    return editAddressStateInitial(address);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Address address)? editAddressStateInitial,
+    TResult? Function()? editAddressSuccess,
+    TResult? Function()? addAddressSuccess,
+    TResult? Function()? removeAddressSuccess,
+    TResult? Function(String error)? error,
+  }) {
+    return editAddressStateInitial?.call(address);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Address address)? editAddressStateInitial,
+    TResult Function()? editAddressSuccess,
+    TResult Function()? addAddressSuccess,
+    TResult Function()? removeAddressSuccess,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (editAddressStateInitial != null) {
+      return editAddressStateInitial(address);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddRemoveAddressStateInitial value) initial,
+    required TResult Function(AddRemoveAddressStateLoading value) loading,
+    required TResult Function(EditAddressStateInitial value)
+        editAddressStateInitial,
+    required TResult Function(EditAddressSuccess value) editAddressSuccess,
+    required TResult Function(AddRemoveAddressStateAddSuccess value)
+        addAddressSuccess,
+    required TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)
+        removeAddressSuccess,
+    required TResult Function(AddAddressStateError value) error,
+  }) {
+    return editAddressStateInitial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddRemoveAddressStateInitial value)? initial,
+    TResult? Function(AddRemoveAddressStateLoading value)? loading,
+    TResult? Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult? Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult? Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult? Function(AddRemoveAddressStateInitialRemoveSuccess value)?
+        removeAddressSuccess,
+    TResult? Function(AddAddressStateError value)? error,
+  }) {
+    return editAddressStateInitial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddRemoveAddressStateInitial value)? initial,
+    TResult Function(AddRemoveAddressStateLoading value)? loading,
+    TResult Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)?
+        removeAddressSuccess,
+    TResult Function(AddAddressStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (editAddressStateInitial != null) {
+      return editAddressStateInitial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EditAddressStateInitial implements AddRemoveAddressState {
+  const factory EditAddressStateInitial({required final Address address}) =
+      _$EditAddressStateInitial;
+
+  Address get address;
+  @JsonKey(ignore: true)
+  _$$EditAddressStateInitialCopyWith<_$EditAddressStateInitial> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EditAddressSuccessCopyWith<$Res> {
+  factory _$$EditAddressSuccessCopyWith(_$EditAddressSuccess value,
+          $Res Function(_$EditAddressSuccess) then) =
+      __$$EditAddressSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EditAddressSuccessCopyWithImpl<$Res>
+    extends _$AddRemoveAddressStateCopyWithImpl<$Res, _$EditAddressSuccess>
+    implements _$$EditAddressSuccessCopyWith<$Res> {
+  __$$EditAddressSuccessCopyWithImpl(
+      _$EditAddressSuccess _value, $Res Function(_$EditAddressSuccess) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$EditAddressSuccess implements EditAddressSuccess {
+  const _$EditAddressSuccess();
+
+  @override
+  String toString() {
+    return 'AddRemoveAddressState.editAddressSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EditAddressSuccess);
   }
 
   @override
@@ -410,6 +612,150 @@ class _$AddRemoveAddressStateInitialAddAddressSuccess
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(Address address) editAddressStateInitial,
+    required TResult Function() editAddressSuccess,
+    required TResult Function() addAddressSuccess,
+    required TResult Function() removeAddressSuccess,
+    required TResult Function(String error) error,
+  }) {
+    return editAddressSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Address address)? editAddressStateInitial,
+    TResult? Function()? editAddressSuccess,
+    TResult? Function()? addAddressSuccess,
+    TResult? Function()? removeAddressSuccess,
+    TResult? Function(String error)? error,
+  }) {
+    return editAddressSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Address address)? editAddressStateInitial,
+    TResult Function()? editAddressSuccess,
+    TResult Function()? addAddressSuccess,
+    TResult Function()? removeAddressSuccess,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (editAddressSuccess != null) {
+      return editAddressSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddRemoveAddressStateInitial value) initial,
+    required TResult Function(AddRemoveAddressStateLoading value) loading,
+    required TResult Function(EditAddressStateInitial value)
+        editAddressStateInitial,
+    required TResult Function(EditAddressSuccess value) editAddressSuccess,
+    required TResult Function(AddRemoveAddressStateAddSuccess value)
+        addAddressSuccess,
+    required TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)
+        removeAddressSuccess,
+    required TResult Function(AddAddressStateError value) error,
+  }) {
+    return editAddressSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddRemoveAddressStateInitial value)? initial,
+    TResult? Function(AddRemoveAddressStateLoading value)? loading,
+    TResult? Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult? Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult? Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult? Function(AddRemoveAddressStateInitialRemoveSuccess value)?
+        removeAddressSuccess,
+    TResult? Function(AddAddressStateError value)? error,
+  }) {
+    return editAddressSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddRemoveAddressStateInitial value)? initial,
+    TResult Function(AddRemoveAddressStateLoading value)? loading,
+    TResult Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)?
+        removeAddressSuccess,
+    TResult Function(AddAddressStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (editAddressSuccess != null) {
+      return editAddressSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EditAddressSuccess implements AddRemoveAddressState {
+  const factory EditAddressSuccess() = _$EditAddressSuccess;
+}
+
+/// @nodoc
+abstract class _$$AddRemoveAddressStateAddSuccessCopyWith<$Res> {
+  factory _$$AddRemoveAddressStateAddSuccessCopyWith(
+          _$AddRemoveAddressStateAddSuccess value,
+          $Res Function(_$AddRemoveAddressStateAddSuccess) then) =
+      __$$AddRemoveAddressStateAddSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AddRemoveAddressStateAddSuccessCopyWithImpl<$Res>
+    extends _$AddRemoveAddressStateCopyWithImpl<$Res,
+        _$AddRemoveAddressStateAddSuccess>
+    implements _$$AddRemoveAddressStateAddSuccessCopyWith<$Res> {
+  __$$AddRemoveAddressStateAddSuccessCopyWithImpl(
+      _$AddRemoveAddressStateAddSuccess _value,
+      $Res Function(_$AddRemoveAddressStateAddSuccess) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AddRemoveAddressStateAddSuccess
+    implements AddRemoveAddressStateAddSuccess {
+  const _$AddRemoveAddressStateAddSuccess();
+
+  @override
+  String toString() {
+    return 'AddRemoveAddressState.addAddressSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddRemoveAddressStateAddSuccess);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Address address) editAddressStateInitial,
+    required TResult Function() editAddressSuccess,
     required TResult Function() addAddressSuccess,
     required TResult Function() removeAddressSuccess,
     required TResult Function(String error) error,
@@ -422,6 +768,8 @@ class _$AddRemoveAddressStateInitialAddAddressSuccess
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(Address address)? editAddressStateInitial,
+    TResult? Function()? editAddressSuccess,
     TResult? Function()? addAddressSuccess,
     TResult? Function()? removeAddressSuccess,
     TResult? Function(String error)? error,
@@ -434,6 +782,8 @@ class _$AddRemoveAddressStateInitialAddAddressSuccess
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(Address address)? editAddressStateInitial,
+    TResult Function()? editAddressSuccess,
     TResult Function()? addAddressSuccess,
     TResult Function()? removeAddressSuccess,
     TResult Function(String error)? error,
@@ -450,11 +800,12 @@ class _$AddRemoveAddressStateInitialAddAddressSuccess
   TResult map<TResult extends Object?>({
     required TResult Function(AddRemoveAddressStateInitial value) initial,
     required TResult Function(AddRemoveAddressStateLoading value) loading,
-    required TResult Function(
-            AddRemoveAddressStateInitialAddAddressSuccess value)
+    required TResult Function(EditAddressStateInitial value)
+        editAddressStateInitial,
+    required TResult Function(EditAddressSuccess value) editAddressSuccess,
+    required TResult Function(AddRemoveAddressStateAddSuccess value)
         addAddressSuccess,
-    required TResult Function(
-            AddRemoveAddressStateInitialRemoveAddressSuccess value)
+    required TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)
         removeAddressSuccess,
     required TResult Function(AddAddressStateError value) error,
   }) {
@@ -466,9 +817,10 @@ class _$AddRemoveAddressStateInitialAddAddressSuccess
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddRemoveAddressStateInitial value)? initial,
     TResult? Function(AddRemoveAddressStateLoading value)? loading,
-    TResult? Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult? Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult? Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult? Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult? Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult? Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult? Function(AddAddressStateError value)? error,
   }) {
@@ -480,9 +832,10 @@ class _$AddRemoveAddressStateInitialAddAddressSuccess
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddRemoveAddressStateInitial value)? initial,
     TResult Function(AddRemoveAddressStateLoading value)? loading,
-    TResult Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult Function(AddAddressStateError value)? error,
     required TResult orElse(),
@@ -494,39 +847,36 @@ class _$AddRemoveAddressStateInitialAddAddressSuccess
   }
 }
 
-abstract class AddRemoveAddressStateInitialAddAddressSuccess
+abstract class AddRemoveAddressStateAddSuccess
     implements AddRemoveAddressState {
-  const factory AddRemoveAddressStateInitialAddAddressSuccess() =
-      _$AddRemoveAddressStateInitialAddAddressSuccess;
+  const factory AddRemoveAddressStateAddSuccess() =
+      _$AddRemoveAddressStateAddSuccess;
 }
 
 /// @nodoc
-abstract class _$$AddRemoveAddressStateInitialRemoveAddressSuccessCopyWith<
-    $Res> {
-  factory _$$AddRemoveAddressStateInitialRemoveAddressSuccessCopyWith(
-          _$AddRemoveAddressStateInitialRemoveAddressSuccess value,
-          $Res Function(_$AddRemoveAddressStateInitialRemoveAddressSuccess)
-              then) =
-      __$$AddRemoveAddressStateInitialRemoveAddressSuccessCopyWithImpl<$Res>;
+abstract class _$$AddRemoveAddressStateInitialRemoveSuccessCopyWith<$Res> {
+  factory _$$AddRemoveAddressStateInitialRemoveSuccessCopyWith(
+          _$AddRemoveAddressStateInitialRemoveSuccess value,
+          $Res Function(_$AddRemoveAddressStateInitialRemoveSuccess) then) =
+      __$$AddRemoveAddressStateInitialRemoveSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AddRemoveAddressStateInitialRemoveAddressSuccessCopyWithImpl<$Res>
+class __$$AddRemoveAddressStateInitialRemoveSuccessCopyWithImpl<$Res>
     extends _$AddRemoveAddressStateCopyWithImpl<$Res,
-        _$AddRemoveAddressStateInitialRemoveAddressSuccess>
-    implements
-        _$$AddRemoveAddressStateInitialRemoveAddressSuccessCopyWith<$Res> {
-  __$$AddRemoveAddressStateInitialRemoveAddressSuccessCopyWithImpl(
-      _$AddRemoveAddressStateInitialRemoveAddressSuccess _value,
-      $Res Function(_$AddRemoveAddressStateInitialRemoveAddressSuccess) _then)
+        _$AddRemoveAddressStateInitialRemoveSuccess>
+    implements _$$AddRemoveAddressStateInitialRemoveSuccessCopyWith<$Res> {
+  __$$AddRemoveAddressStateInitialRemoveSuccessCopyWithImpl(
+      _$AddRemoveAddressStateInitialRemoveSuccess _value,
+      $Res Function(_$AddRemoveAddressStateInitialRemoveSuccess) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$AddRemoveAddressStateInitialRemoveAddressSuccess
-    implements AddRemoveAddressStateInitialRemoveAddressSuccess {
-  const _$AddRemoveAddressStateInitialRemoveAddressSuccess();
+class _$AddRemoveAddressStateInitialRemoveSuccess
+    implements AddRemoveAddressStateInitialRemoveSuccess {
+  const _$AddRemoveAddressStateInitialRemoveSuccess();
 
   @override
   String toString() {
@@ -537,7 +887,7 @@ class _$AddRemoveAddressStateInitialRemoveAddressSuccess
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddRemoveAddressStateInitialRemoveAddressSuccess);
+            other is _$AddRemoveAddressStateInitialRemoveSuccess);
   }
 
   @override
@@ -548,6 +898,8 @@ class _$AddRemoveAddressStateInitialRemoveAddressSuccess
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(Address address) editAddressStateInitial,
+    required TResult Function() editAddressSuccess,
     required TResult Function() addAddressSuccess,
     required TResult Function() removeAddressSuccess,
     required TResult Function(String error) error,
@@ -560,6 +912,8 @@ class _$AddRemoveAddressStateInitialRemoveAddressSuccess
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(Address address)? editAddressStateInitial,
+    TResult? Function()? editAddressSuccess,
     TResult? Function()? addAddressSuccess,
     TResult? Function()? removeAddressSuccess,
     TResult? Function(String error)? error,
@@ -572,6 +926,8 @@ class _$AddRemoveAddressStateInitialRemoveAddressSuccess
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(Address address)? editAddressStateInitial,
+    TResult Function()? editAddressSuccess,
     TResult Function()? addAddressSuccess,
     TResult Function()? removeAddressSuccess,
     TResult Function(String error)? error,
@@ -588,11 +944,12 @@ class _$AddRemoveAddressStateInitialRemoveAddressSuccess
   TResult map<TResult extends Object?>({
     required TResult Function(AddRemoveAddressStateInitial value) initial,
     required TResult Function(AddRemoveAddressStateLoading value) loading,
-    required TResult Function(
-            AddRemoveAddressStateInitialAddAddressSuccess value)
+    required TResult Function(EditAddressStateInitial value)
+        editAddressStateInitial,
+    required TResult Function(EditAddressSuccess value) editAddressSuccess,
+    required TResult Function(AddRemoveAddressStateAddSuccess value)
         addAddressSuccess,
-    required TResult Function(
-            AddRemoveAddressStateInitialRemoveAddressSuccess value)
+    required TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)
         removeAddressSuccess,
     required TResult Function(AddAddressStateError value) error,
   }) {
@@ -604,9 +961,10 @@ class _$AddRemoveAddressStateInitialRemoveAddressSuccess
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddRemoveAddressStateInitial value)? initial,
     TResult? Function(AddRemoveAddressStateLoading value)? loading,
-    TResult? Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult? Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult? Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult? Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult? Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult? Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult? Function(AddAddressStateError value)? error,
   }) {
@@ -618,9 +976,10 @@ class _$AddRemoveAddressStateInitialRemoveAddressSuccess
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddRemoveAddressStateInitial value)? initial,
     TResult Function(AddRemoveAddressStateLoading value)? loading,
-    TResult Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult Function(AddAddressStateError value)? error,
     required TResult orElse(),
@@ -632,10 +991,10 @@ class _$AddRemoveAddressStateInitialRemoveAddressSuccess
   }
 }
 
-abstract class AddRemoveAddressStateInitialRemoveAddressSuccess
+abstract class AddRemoveAddressStateInitialRemoveSuccess
     implements AddRemoveAddressState {
-  const factory AddRemoveAddressStateInitialRemoveAddressSuccess() =
-      _$AddRemoveAddressStateInitialRemoveAddressSuccess;
+  const factory AddRemoveAddressStateInitialRemoveSuccess() =
+      _$AddRemoveAddressStateInitialRemoveSuccess;
 }
 
 /// @nodoc
@@ -705,6 +1064,8 @@ class _$AddAddressStateError implements AddAddressStateError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(Address address) editAddressStateInitial,
+    required TResult Function() editAddressSuccess,
     required TResult Function() addAddressSuccess,
     required TResult Function() removeAddressSuccess,
     required TResult Function(String error) error,
@@ -717,6 +1078,8 @@ class _$AddAddressStateError implements AddAddressStateError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(Address address)? editAddressStateInitial,
+    TResult? Function()? editAddressSuccess,
     TResult? Function()? addAddressSuccess,
     TResult? Function()? removeAddressSuccess,
     TResult? Function(String error)? error,
@@ -729,6 +1092,8 @@ class _$AddAddressStateError implements AddAddressStateError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(Address address)? editAddressStateInitial,
+    TResult Function()? editAddressSuccess,
     TResult Function()? addAddressSuccess,
     TResult Function()? removeAddressSuccess,
     TResult Function(String error)? error,
@@ -745,11 +1110,12 @@ class _$AddAddressStateError implements AddAddressStateError {
   TResult map<TResult extends Object?>({
     required TResult Function(AddRemoveAddressStateInitial value) initial,
     required TResult Function(AddRemoveAddressStateLoading value) loading,
-    required TResult Function(
-            AddRemoveAddressStateInitialAddAddressSuccess value)
+    required TResult Function(EditAddressStateInitial value)
+        editAddressStateInitial,
+    required TResult Function(EditAddressSuccess value) editAddressSuccess,
+    required TResult Function(AddRemoveAddressStateAddSuccess value)
         addAddressSuccess,
-    required TResult Function(
-            AddRemoveAddressStateInitialRemoveAddressSuccess value)
+    required TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)
         removeAddressSuccess,
     required TResult Function(AddAddressStateError value) error,
   }) {
@@ -761,9 +1127,10 @@ class _$AddAddressStateError implements AddAddressStateError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AddRemoveAddressStateInitial value)? initial,
     TResult? Function(AddRemoveAddressStateLoading value)? loading,
-    TResult? Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult? Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult? Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult? Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult? Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult? Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult? Function(AddAddressStateError value)? error,
   }) {
@@ -775,9 +1142,10 @@ class _$AddAddressStateError implements AddAddressStateError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddRemoveAddressStateInitial value)? initial,
     TResult Function(AddRemoveAddressStateLoading value)? loading,
-    TResult Function(AddRemoveAddressStateInitialAddAddressSuccess value)?
-        addAddressSuccess,
-    TResult Function(AddRemoveAddressStateInitialRemoveAddressSuccess value)?
+    TResult Function(EditAddressStateInitial value)? editAddressStateInitial,
+    TResult Function(EditAddressSuccess value)? editAddressSuccess,
+    TResult Function(AddRemoveAddressStateAddSuccess value)? addAddressSuccess,
+    TResult Function(AddRemoveAddressStateInitialRemoveSuccess value)?
         removeAddressSuccess,
     TResult Function(AddAddressStateError value)? error,
     required TResult orElse(),

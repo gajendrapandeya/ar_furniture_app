@@ -1,44 +1,51 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:ar_furniture_app/features/address/model/area/district.dart';
+import 'package:ar_furniture_app/features/address/model/area/province.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final districtProvinceProvider =
+    StateNotifierProvider.autoDispose<AreaNotifier, AreaModel>((ref) {
+  return AreaNotifier();
+});
+
 class AreaModel {
-  final int selectedDistrictId;
-  final int selectedProvinceId;
+  final Province? selectedProvince;
+  final District? selectedDistrict;
 
   AreaModel({
-    required this.selectedDistrictId,
-    required this.selectedProvinceId,
+    required this.selectedDistrict,
+    required this.selectedProvince,
   });
 
   factory AreaModel.initial() =>
-      AreaModel(selectedDistrictId: -1, selectedProvinceId: -1);
+      AreaModel(selectedDistrict: null, selectedProvince: null);
 
   AreaModel copyWith({
-    int? selectedDistrictId,
-    int? selectedProvinceId,
+    Province? selectedProvince,
+    District? selectedDistrict,
   }) {
     return AreaModel(
-      selectedDistrictId: selectedDistrictId ?? this.selectedDistrictId,
-      selectedProvinceId: selectedProvinceId ?? this.selectedProvinceId,
+      selectedProvince: selectedProvince ?? this.selectedProvince,
+      selectedDistrict: selectedDistrict ?? this.selectedDistrict,
     );
   }
 }
 
 class AreaNotifier extends StateNotifier<AreaModel> {
-  AreaNotifier(this._ref)
+  AreaNotifier()
       : super(
           AreaModel.initial(),
         );
 
-  final Ref _ref;
-
-  void findDistrictByProvinceId(int provinceId) {}
-
-  void setDistrictId(int districtId) {
-    state = state.copyWith(selectedDistrictId: districtId);
+  void setSelectedDistrict(District district) {
+    state = state.copyWith(selectedDistrict: district);
   }
 
-  void setProvinceId(int provinceId) {
-    state = state.copyWith(selectedProvinceId: provinceId);
+  void setSelectedProvince(Province province) {
+    state = state.copyWith(selectedProvince: province);
+  }
+
+  void clearSelected() {
+    state = AreaModel.initial();
   }
 }

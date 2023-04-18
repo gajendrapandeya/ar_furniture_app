@@ -13,7 +13,7 @@ class Address with _$Address {
     required final String state,
     required final String landmark,
     required final String addressType,
-    bool? isSelected,
+    required bool isSelected,
   }) = _Address;
 
   factory Address.fromJson(Map<String, dynamic> json) =>

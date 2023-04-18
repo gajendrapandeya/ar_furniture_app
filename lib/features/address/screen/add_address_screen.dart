@@ -8,6 +8,7 @@ import 'package:ar_furniture_app/core/widgets/loading_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/address/controller/add_address/add_remove_address_controller.dart';
 import 'package:ar_furniture_app/features/address/controller/add_address/add_remove_address_state.dart';
+import 'package:ar_furniture_app/features/address/controller/area_controller.dart';
 import 'package:ar_furniture_app/features/address/model/address.dart';
 import 'package:ar_furniture_app/features/address/widgets/address_type_widget.dart';
 import 'package:ar_furniture_app/features/address/widgets/area_bottom_sheet.dart';
@@ -34,14 +35,17 @@ class _AddAddressScreenState extends ConsumerState<AddAddressScreen> {
   String _address = '';
   String _landmark = '';
   String _addressType = '';
+
+  bool _isDefaultBillingSelected = true;
+
   @override
   Widget build(BuildContext context) {
     ref.listen<AddRemoveAddressState>(
       addRemoveAddressProvider,
       (prevState, currentState) {
-        if (currentState is AddRemoveAddressStateInitialAddAddressSuccess) {
+        if (currentState is AddRemoveAddressStateAddSuccess) {
           context.showSuccessSnackBar(message: 'Address Added Successfully');
-          Navigator.of(context).pop();
+          Navigator.of(context).pop(true);
         }
       },
     );
@@ -61,6 +65,8 @@ class _AddAddressScreenState extends ConsumerState<AddAddressScreen> {
       ),
       body: ref.watch(addRemoveAddressProvider).when(
             initial: () => _buildBody(),
+            editAddressStateInitial: (address) => _buildBody(),
+            editAddressSuccess: () => null,
             loading: () => const LoadingWidget(),
             addAddressSuccess: () {
               return null;
@@ -105,6 +111,9 @@ class _AddAddressScreenState extends ConsumerState<AddAddressScreen> {
             AddressTypeWidget(
               onAddressTypeSelected: (selectedAddress) {
                 _addressType = selectedAddress;
+              },
+              isDefaultBillingSelected: (value) {
+                _isDefaultBillingSelected = value;
               },
             ),
           ],
@@ -218,8 +227,10 @@ class _AddAddressScreenState extends ConsumerState<AddAddressScreen> {
                   builder: (context) => const AreaBottomSheet(),
                 );
                 if (result != null && result == true) {
+                  final selectedDistrictProvinceProvider =
+                      ref.read(districtProvinceProvider);
                   final area =
-                      '${ref.read(selectedProvinceProvider)},  ${ref.read(selectedDistrictProvider)}';
+                      '${selectedDistrictProvinceProvider.selectedProvince!.provinceName}, ${selectedDistrictProvinceProvider.selectedDistrict!.districtName}';
 
                   ref.read(selectedAreaProvider.notifier).update(
                         (state) => state = area,
@@ -256,10 +267,10 @@ class _AddAddressScreenState extends ConsumerState<AddAddressScreen> {
   }
 
   void _saveAddressToFirebase() {
-    final area =
-        ref.read(selectedDistrictProvider) + ref.read(selectedDistrictProvider);
+    final area = ref.read(selectedAreaProvider);
     final address = Address(
-        id: getRandomString(10),
+        id: _getRandomString(10),
+        isSelected: _isDefaultBillingSelected,
         fullName: _fullName,
         mobileNumber: _mobileNumber,
         address: _address,
@@ -272,7 +283,7 @@ class _AddAddressScreenState extends ConsumerState<AddAddressScreen> {
         );
   }
 
-  String getRandomString(int length) {
+  String _getRandomString(int length) {
     const chars =
         'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
     Random rnd = Random();

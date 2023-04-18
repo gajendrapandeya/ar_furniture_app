@@ -1,6 +1,11 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'district.freezed.dart';
+
+final districtListProvider = StateProvider<List<District>>(
+  (ref) => districts,
+);
 
 @freezed
 abstract class District with _$District {

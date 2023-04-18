@@ -25,7 +25,6 @@ class AddressListWidget extends ConsumerStatefulWidget {
 }
 
 class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
-  final List<Address> _addresses = [];
   @override
   void initState() {
     super.initState();
@@ -42,10 +41,7 @@ class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
     return ref.watch(addressProvider).when(
           loading: () => const LoadingWidget(),
           success: (addresses) {
-            _addresses
-              ..clear()
-              ..addAll(addresses);
-            return _addresses.isEmpty
+            return addresses.isEmpty
                 ? const NoDataWidget(title: 'No Addresses added yet.')
                 : Expanded(
                     child: ListView.separated(
@@ -62,6 +58,7 @@ class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
   }
 
   Widget _buildAddressListItem(Address address) {
+    ///TODO: Handle Edit Address
     return InkWell(
       onTap: () => onItemTapped(address.id),
       child: Material(
@@ -71,8 +68,15 @@ class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
         child: Container(
           padding: const EdgeInsets.symmetric(
             horizontal: 16,
-            vertical: 24,
+            vertical: 16,
           ),
+          decoration: BoxDecoration(
+              border: Border.all(
+            color: address.isSelected
+                ? LightColor.platianGreen
+                : Colors.transparent,
+            width: 0.8,
+          )),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -87,7 +91,17 @@ class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
                   HorizontalSpacer.s,
                   Text(
                     address.addressType == 'Home' ? 'Home' : 'Other',
-                  )
+                  ),
+                  const Spacer(),
+                  // TextButton(
+                  //   onPressed: () {},
+                  //   child: const Text('Edit'),
+                  // )
+                  if (address.isSelected)
+                    CustomRadioButton(
+                      value: address.isSelected,
+                      fillColor: LightColor.platianGreen,
+                    )
                 ],
               ),
               VerticalSpacer.xl,
@@ -96,18 +110,9 @@ class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               VerticalSpacer.s,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    address.mobileNumber,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const CustomRadioButton(
-                    value: true,
-                    fillColor: LightColor.platianGreen,
-                  )
-                ],
+              Text(
+                address.mobileNumber,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               VerticalSpacer.l,
               Text(

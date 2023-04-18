@@ -27,7 +27,7 @@ mixin _$Address {
   String get state => throw _privateConstructorUsedError;
   String get landmark => throw _privateConstructorUsedError;
   String get addressType => throw _privateConstructorUsedError;
-  bool? get isSelected => throw _privateConstructorUsedError;
+  bool get isSelected => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +47,7 @@ abstract class $AddressCopyWith<$Res> {
       String state,
       String landmark,
       String addressType,
-      bool? isSelected});
+      bool isSelected});
 }
 
 /// @nodoc
@@ -70,7 +70,7 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
     Object? state = null,
     Object? landmark = null,
     Object? addressType = null,
-    Object? isSelected = freezed,
+    Object? isSelected = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -101,10 +101,10 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
           ? _value.addressType
           : addressType // ignore: cast_nullable_to_non_nullable
               as String,
-      isSelected: freezed == isSelected
+      isSelected: null == isSelected
           ? _value.isSelected
           : isSelected // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ) as $Val);
   }
 }
@@ -124,7 +124,7 @@ abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
       String state,
       String landmark,
       String addressType,
-      bool? isSelected});
+      bool isSelected});
 }
 
 /// @nodoc
@@ -144,7 +144,7 @@ class __$$_AddressCopyWithImpl<$Res>
     Object? state = null,
     Object? landmark = null,
     Object? addressType = null,
-    Object? isSelected = freezed,
+    Object? isSelected = null,
   }) {
     return _then(_$_Address(
       id: null == id
@@ -175,10 +175,10 @@ class __$$_AddressCopyWithImpl<$Res>
           ? _value.addressType
           : addressType // ignore: cast_nullable_to_non_nullable
               as String,
-      isSelected: freezed == isSelected
+      isSelected: null == isSelected
           ? _value.isSelected
           : isSelected // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
@@ -194,7 +194,7 @@ class _$_Address implements _Address {
       required this.state,
       required this.landmark,
       required this.addressType,
-      this.isSelected});
+      required this.isSelected});
 
   factory _$_Address.fromJson(Map<String, dynamic> json) =>
       _$$_AddressFromJson(json);
@@ -214,7 +214,7 @@ class _$_Address implements _Address {
   @override
   final String addressType;
   @override
-  final bool? isSelected;
+  final bool isSelected;
 
   @override
   String toString() {
@@ -269,7 +269,7 @@ abstract class _Address implements Address {
       required final String state,
       required final String landmark,
       required final String addressType,
-      final bool? isSelected}) = _$_Address;
+      required final bool isSelected}) = _$_Address;
 
   factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
 
@@ -288,7 +288,7 @@ abstract class _Address implements Address {
   @override
   String get addressType;
   @override
-  bool? get isSelected;
+  bool get isSelected;
   @override
   @JsonKey(ignore: true)
   _$$_AddressCopyWith<_$_Address> get copyWith =>

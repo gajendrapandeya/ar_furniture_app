@@ -45,8 +45,8 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
         widget._onChanged?.call(_valueNotifier.value);
       },
       child: Container(
-        width: 16,
-        height: 16,
+        width: 22,
+        height: 22,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
@@ -57,7 +57,7 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
             ? Icon(
                 Icons.check,
                 color: widget.checkColor ?? Colors.white,
-                size: 12,
+                size: 16,
               )
             : null,
       ),
