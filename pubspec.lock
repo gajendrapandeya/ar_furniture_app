@@ -414,6 +414,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.0"
+  flutter_dotenv:
+    dependency: "direct main"
+    description:
+      name: flutter_dotenv
+      sha256: d9283d92059a22e9834bc0a31336658ffba77089fb6f3cc36751f1fc7c6661a3
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.2"
   flutter_facebook_auth:
     dependency: "direct main"
     description:
@@ -510,6 +518,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.3"
+  flutter_stripe:
+    dependency: "direct main"
+    description:
+      name: flutter_stripe
+      sha256: "95f3c4b907493ff5cdd6b3cdeda03bb59c2bc409d0c0bfb44db948374f9c3595"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.1.1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -1133,6 +1149,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  stripe_android:
+    dependency: transitive
+    description:
+      name: stripe_android
+      sha256: b0777d7d4db53e4cb6451a530e1d9d0aa09eca1304297944a236399b77b6357a
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.1.0"
+  stripe_ios:
+    dependency: transitive
+    description:
+      name: stripe_ios
+      sha256: "1ce3922c9e9fd2e3ced6b9d349966fa19074794eec1c9bac3cec1bca53e98c85"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.1.0"
+  stripe_platform_interface:
+    dependency: transitive
+    description:
+      name: stripe_platform_interface
+      sha256: "662a152075d1f3ac70b6b3302509381e716dd12e265316320a3a06c06c147f96"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.1.0"
   synchronized:
     dependency: transitive
     description:

@@ -12,6 +12,10 @@ final isAddressSelectedProvider = StateProvider<bool>((ref) {
   return false;
 });
 
+final currentPageIndexProvider = StateProvider<int>((ref) {
+  return 0;
+});
+
 class CheckoutScreen extends ConsumerStatefulWidget {
   const CheckoutScreen({super.key});
 
@@ -20,14 +24,15 @@ class CheckoutScreen extends ConsumerStatefulWidget {
 }
 
 class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
-  final PageController _controller = PageController();
+  final PageController _pageController = PageController();
   final _widgetList = [
     const AddressWidget(),
-    const PaymentWidget(),
+    PaymentWidget(),
     const OrderPlacedWidget(),
   ];
   @override
   Widget build(BuildContext context) {
+    final currentPageIndex = ref.watch(currentPageIndexProvider);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -45,20 +50,31 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
           children: [
             Expanded(
               child: PageView.builder(
-                controller: _controller,
+                physics: const NeverScrollableScrollPhysics(),
+                onPageChanged: (pageIndex) {
+                  ref
+                      .read(currentPageIndexProvider.notifier)
+                      .update((state) => state = pageIndex);
+                },
+                controller: _pageController,
                 itemBuilder: ((context, index) => _widgetList[index]),
               ),
             ),
             VerticalSpacer.l,
-            CustomElevatedButton(
-              onButtonPressed: () {
-                if (!ref.read(isAddressSelectedProvider)) {
-                  context.showInfoSnackBar(
-                      message: 'Please select at least one address first.');
-                }
-              },
-              buttonText: 'Proceed To Payment',
-            ),
+            if (currentPageIndex <= 1)
+              CustomElevatedButton(
+                onButtonPressed: () {
+                  if (!ref.read(isAddressSelectedProvider)) {
+                    return context.showInfoSnackBar(
+                        message: 'Please select at least one address first.');
+                  }
+                  if (currentPageIndex == 0) {
+                    _pageController.jumpToPage(1);
+                  }
+                },
+                buttonText:
+                    currentPageIndex == 0 ? 'Proceed To Payment' : 'Make a pay',
+              ),
           ],
         ),
       ),

@@ -9,7 +9,9 @@ import 'package:ar_furniture_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sharedPreferencesProvider =
@@ -27,6 +29,13 @@ void main() async {
       statusBarColor: Colors.black,
     ),
   );
+
+  //Assign publishable key to flutter_stripe
+  Stripe.publishableKey =
+      "pk_test_51LScxkSBmhp3ogiN1ZH1y80SYuiHDMRSkVHa5MKFc6SoiIGXL9ojW10edz2whxixigIlq4pCEB3Z3AkqmLMjHwuo00IwR5WSPb";
+
+  //Load our .env file that contains our Stripe Secret key
+  await dotenv.load(fileName: "assets/.env");
 
   runApp(
     ProviderScope(
