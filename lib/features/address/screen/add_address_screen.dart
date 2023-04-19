@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/providers/user_provider.dart';
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
@@ -22,7 +23,9 @@ final selectedAreaProvider = StateProvider<String>((ref) {
 });
 
 class AddAddressScreen extends ConsumerStatefulWidget {
-  const AddAddressScreen({super.key});
+  const AddAddressScreen({super.key, this.isFromCheckout = false});
+
+  final bool isFromCheckout;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -45,6 +48,13 @@ class _AddAddressScreenState extends ConsumerState<AddAddressScreen> {
       (prevState, currentState) {
         if (currentState is AddRemoveAddressStateAddSuccess) {
           context.showSuccessSnackBar(message: 'Address Added Successfully');
+          if (widget.isFromCheckout) {
+            Navigator.pushReplacementNamed(
+              context,
+              RouteConstants.checkoutScreenRoute,
+              result: true,
+            );
+          }
           Navigator.of(context).pop(true);
         }
       },

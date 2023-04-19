@@ -59,78 +59,67 @@ class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
 
   Widget _buildAddressListItem(Address address) {
     ///TODO: Handle Edit Address
-    return InkWell(
-      onTap: () => onItemTapped(address.id),
-      child: Material(
-        shadowColor: Colors.grey.shade100,
-        color: Colors.white,
-        elevation: 4,
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 16,
-          ),
-          decoration: BoxDecoration(
-              border: Border.all(
-            color: address.isSelected
-                ? LightColor.platianGreen
-                : Colors.transparent,
-            width: 0.8,
-          )),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Icon(
-                    address.addressType == 'Home'
-                        ? MdiIcons.home
-                        : MdiIcons.officeBuildingMarkerOutline,
-                    color: LightColor.platianGreen,
-                  ),
-                  HorizontalSpacer.s,
-                  Text(
-                    address.addressType == 'Home' ? 'Home' : 'Other',
-                  ),
-                  const Spacer(),
-                  // TextButton(
-                  //   onPressed: () {},
-                  //   child: const Text('Edit'),
-                  // )
-                  if (address.isSelected)
-                    CustomRadioButton(
-                      value: address.isSelected,
-                      fillColor: LightColor.platianGreen,
-                    )
-                ],
-              ),
-              VerticalSpacer.xl,
-              Text(
-                address.fullName,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              VerticalSpacer.s,
-              Text(
-                address.mobileNumber,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              VerticalSpacer.l,
-              Text(
-                '${address.landmark}, ${address.address}, ${address.state}',
-                style: Theme.of(context).textTheme.titleMedium,
-              )
-            ],
-          ),
+    return Material(
+      shadowColor: Colors.grey.shade100,
+      color: Colors.white,
+      elevation: 4,
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
+        decoration: BoxDecoration(
+            border: Border.all(
+          color:
+              address.isSelected ? LightColor.platianGreen : Colors.transparent,
+          width: 0.8,
+        )),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  address.addressType == 'Home'
+                      ? MdiIcons.home
+                      : MdiIcons.officeBuildingMarkerOutline,
+                  color: LightColor.platianGreen,
+                ),
+                HorizontalSpacer.s,
+                Text(
+                  address.addressType == 'Home' ? 'Home' : 'Other',
+                ),
+                const Spacer(),
+                // TextButton(
+                //   onPressed: () {},
+                //   child: const Text('Edit'),
+                // )
+                if (address.isSelected)
+                  CustomRadioButton(
+                    value: address.isSelected,
+                    fillColor: LightColor.platianGreen,
+                  )
+              ],
+            ),
+            VerticalSpacer.xl,
+            Text(
+              address.fullName,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            VerticalSpacer.s,
+            Text(
+              address.mobileNumber,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            VerticalSpacer.l,
+            Text(
+              '${address.landmark}, ${address.address}, ${address.state}',
+              style: Theme.of(context).textTheme.titleMedium,
+            )
+          ],
         ),
       ),
     );
-  }
-
-  void selectAddress(String addressId) {
-    // _addresses
-    //     .map((address) =>
-    //         address.id == addressId ? (address..isSelected = true) : address)
-    //     .toList();
   }
 
   onItemTapped(String id) {}

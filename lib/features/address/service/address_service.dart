@@ -63,10 +63,14 @@ class AddressService with ErrorMixin {
         return [];
       }
 
-      final List<QueryDocumentSnapshot<Map<String, dynamic>>> filteredDocs =
-          addressSnapshot.docs
-              .where((doc) => doc.data()['addressType'] == addressType)
-              .toList();
+      final List<QueryDocumentSnapshot<Map<String, dynamic>>> filteredDocs;
+      if (addressType.isEmpty) {
+        filteredDocs = addressSnapshot.docs;
+      } else {
+        filteredDocs = addressSnapshot.docs
+            .where((doc) => doc.data()['addressType'] == addressType)
+            .toList();
+      }
 
       return filteredDocs.map((doc) => Address.fromJson(doc.data())).toList();
     } catch (error) {

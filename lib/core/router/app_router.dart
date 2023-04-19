@@ -69,7 +69,10 @@ class AppRouter {
       case RouteConstants.addressListScreenRoute:
         return MaterialPageRoute(builder: (_) => const AddressListScreen());
       case RouteConstants.addAddressScreenRoute:
-        return MaterialPageRoute(builder: (_) => const AddAddressScreen());
+        return MaterialPageRoute(
+            builder: (_) => AddAddressScreen(
+                  isFromCheckout: settings.arguments as bool,
+                ));
       case RouteConstants.checkoutScreenRoute:
         return MaterialPageRoute(builder: (_) => const CheckoutScreen());
       case RouteConstants.updateProfileRoute:
