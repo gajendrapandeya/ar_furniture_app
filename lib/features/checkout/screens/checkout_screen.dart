@@ -25,13 +25,19 @@ class CheckoutScreen extends ConsumerStatefulWidget {
 
 class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
   final PageController _pageController = PageController();
-  final _widgetList = [
-    const AddressWidget(),
-    PaymentWidget(),
-    const OrderPlacedWidget(),
-  ];
+
   @override
   Widget build(BuildContext context) {
+    final widgetList = [
+      const AddressWidget(),
+      PaymentWidget(
+        onPaymentSuccessfull: () {
+          Navigator.of(context).pop();
+          _pageController.jumpToPage(2);
+        },
+      ),
+      const OrderPlacedWidget(),
+    ];
     final currentPageIndex = ref.watch(currentPageIndexProvider);
     return Scaffold(
       appBar: AppBar(
@@ -57,7 +63,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                       .update((state) => state = pageIndex);
                 },
                 controller: _pageController,
-                itemBuilder: ((context, index) => _widgetList[index]),
+                itemBuilder: ((context, index) => widgetList[index]),
               ),
             ),
             VerticalSpacer.l,
@@ -73,7 +79,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                   }
                 },
                 buttonText:
-                    currentPageIndex == 0 ? 'Proceed To Payment' : 'Make a pay',
+                    currentPageIndex == 0 ? 'Proceed To Payment' : 'Continue',
               ),
           ],
         ),

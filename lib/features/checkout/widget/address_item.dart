@@ -6,7 +6,7 @@ import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-final selectedIndexProvider = StateProvider<int>((ref) {
+final selectedIndexProvider = StateProvider.autoDispose<int>((ref) {
   return -1;
 });
 
