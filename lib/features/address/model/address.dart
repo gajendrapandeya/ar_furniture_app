@@ -6,13 +6,14 @@ part 'address.g.dart';
 @freezed
 class Address with _$Address {
   const factory Address({
-    required final String userId,
+    required final String id,
     required final String fullName,
     required final String mobileNumber,
     required final String address,
     required final String state,
-    final String? landmark,
-    required String addressType,
+    required final String landmark,
+    required final String addressType,
+    required bool isSelected,
   }) = _Address;
 
   factory Address.fromJson(Map<String, dynamic> json) =>

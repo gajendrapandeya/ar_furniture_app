@@ -1,28 +1,12 @@
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/widgets/custom_outlined_button.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
+import 'package:ar_furniture_app/features/address/controller/area_controller.dart';
 import 'package:ar_furniture_app/features/address/model/area/district.dart';
 import 'package:ar_furniture_app/features/address/model/area/province.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
-final provinceProvider =
-    StateProvider.family<List<Province>, int?>((ref, provindeId) {
-  return province;
-});
-
-final districtProvider = StateProvider.family<List<District>, int?>(
-  (ref, districtId) => districts,
-);
-
-final selectedProvinceProvider = StateProvider<String>((_) {
-  return '';
-});
-
-final selectedDistrictProvider = StateProvider<String>((ref) {
-  return '';
-});
 
 class AreaBottomSheet extends ConsumerStatefulWidget {
   const AreaBottomSheet({super.key});
@@ -33,10 +17,10 @@ class AreaBottomSheet extends ConsumerStatefulWidget {
 }
 
 class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
-  List<District> filteredDistricts = [];
-
   @override
   Widget build(BuildContext context) {
+    final selectedDistrictProvinceProvider =
+        ref.watch(districtProvinceProvider);
     return Container(
       height: MediaQuery.of(context).size.height * 0.8,
       decoration: BoxDecoration(
@@ -68,7 +52,15 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
             VerticalSpacer.l,
             _buildProvinceDistrictList(),
             VerticalSpacer.l,
-            CustomOutlinedButton(onBtnPressed: () {}, buttonText: 'Confirm')
+            CustomOutlinedButton(
+              isFilled:
+                  selectedDistrictProvinceProvider.selectedProvince != null &&
+                      selectedDistrictProvinceProvider.selectedDistrict != null,
+              onBtnPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              buttonText: 'Confirm',
+            )
           ],
         ),
       ),
@@ -76,15 +68,16 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
   }
 
   String _getCurrentlySelectedAreaName() {
-    if (ref.watch(selectedProvinceProvider).isEmpty) {
-      return 'Select the region';
-    }
-    return 'Select the district';
+    final selectedDistrictProvinceProvider =
+        ref.watch(districtProvinceProvider);
+    return selectedDistrictProvinceProvider.selectedProvince == null
+        ? 'Select the district'
+        : 'Select the province';
   }
 
   Expanded _buildProvinceDistrictList() {
-    final provinces = ref.watch(provinceProvider(null));
-    final districts = ref.watch(districtProvider(null).notifier).state;
+    final selectedDistrictProvinceProvider =
+        ref.watch(districtProvinceProvider);
     return Expanded(
       child: Container(
         padding: const EdgeInsets.symmetric(
@@ -96,49 +89,9 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
             Radius.circular(2),
           ),
         ),
-        child: ListView.separated(
-          itemBuilder: ((context, index) => ListTile(
-                onTap: () {
-                  if (ref.read(selectedProvinceProvider).isEmpty) {
-                    ref.read(selectedProvinceProvider.notifier).update(
-                        (state) => state = provinces[index].provinceName);
-                  }
-                  if (filteredDistricts.isNotEmpty) {
-                    ref.read(selectedDistrictProvider.notifier).update(
-                        (state) =>
-                            state = filteredDistricts[index].districtName);
-                  }
-                  filteredDistricts = districts
-                      .where((element) =>
-                          element.stateId == provinces[index].provinceId)
-                      .toList();
-                },
-                contentPadding: EdgeInsets.zero,
-                dense: true,
-                trailing: ref.watch(selectedProvinceProvider).isNotEmpty &&
-                        ref.watch(selectedDistrictProvider).isNotEmpty
-                    ? const Icon(
-                        MdiIcons.check,
-                        color: LightColor.platianGreen,
-                      )
-                    : null,
-                title: Text(
-                  ref.watch(selectedProvinceProvider).isEmpty &&
-                          ref.watch(selectedDistrictProvider).isEmpty
-                      ? provinces[index].provinceName
-                      : filteredDistricts[index].districtName,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-              )),
-          separatorBuilder: ((context, index) => Divider(
-                color: Colors.grey.shade200,
-              )),
-          itemCount: ref.watch(selectedProvinceProvider).isEmpty
-              ? ref.read(provinceProvider(null)).length
-              : filteredDistricts.length,
-        ),
+        child: selectedDistrictProvinceProvider.selectedProvince == null
+            ? _buildProvinceList()
+            : _buildDistrictList(),
       ),
     );
   }
@@ -148,6 +101,9 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
       children: [
         TextButton(
             onPressed: () => Navigator.of(context).pop(),
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+            ),
             child: Text(
               'Close',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -169,8 +125,12 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
   }
 
   Widget _buildParticularArea() {
-    final selectedProvince = ref.watch(selectedProvinceProvider);
-    final selectedDistrict = ref.watch(selectedDistrictProvider);
+    final selectedDistrictProvinceProvider =
+        ref.watch(districtProvinceProvider);
+    final bool isProvinceSelected =
+        selectedDistrictProvinceProvider.selectedProvince != null;
+    final bool isDistrictSelected =
+        selectedDistrictProvinceProvider.selectedDistrict != null;
     return Container(
       padding: const EdgeInsets.only(
         left: 20,
@@ -188,7 +148,7 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
         children: [
           Row(
             children: [
-              _buildDot(selectedProvince.isEmpty),
+              _buildDot(isCurrentlySelected: !isProvinceSelected),
               HorizontalSpacer.l,
               Text(
                 'Province',
@@ -200,13 +160,12 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
               const Spacer(),
               InkWell(
                 onTap: () {
-                  debugPrint('called');
-                  filteredDistricts = [];
+                  ref.read(districtProvinceProvider.notifier).clearSelected();
                 },
                 child: Text(
-                  selectedProvince.isEmpty
+                  !isProvinceSelected
                       ? 'Select your province below'
-                      : '$selectedProvince >',
+                      : '${_selectedProvinceName(selectedDistrictProvinceProvider)} >',
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         color: Colors.grey.shade600,
                       ),
@@ -214,11 +173,11 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
               )
             ],
           ),
-          if (selectedProvince.isNotEmpty) ...[
+          if (isProvinceSelected) ...[
             VerticalSpacer.s,
             Row(
               children: [
-                _buildDot(selectedDistrict.isEmpty),
+                _buildDot(isCurrentlySelected: !isDistrictSelected),
                 HorizontalSpacer.l,
                 Text(
                   'District',
@@ -229,9 +188,9 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
                 ),
                 const Spacer(),
                 Text(
-                  selectedDistrict.isEmpty
+                  !isDistrictSelected
                       ? 'Select your district below'
-                      : '$selectedDistrict >',
+                      : '${_selectedDistrictName(selectedDistrictProvinceProvider)} >',
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         color: Colors.grey.shade600,
                       ),
@@ -244,7 +203,13 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
     );
   }
 
-  Widget _buildDot(bool isCurrentlySelected) {
+  String _selectedDistrictName(AreaModel selectedDistrictProvinceProvider) =>
+      ref.watch(districtProvinceProvider).selectedDistrict!.districtName;
+
+  String _selectedProvinceName(AreaModel selectedDistrictProvinceProvider) =>
+      ref.watch(districtProvinceProvider).selectedProvince!.provinceName;
+
+  Widget _buildDot({required bool isCurrentlySelected}) {
     return Container(
       width: 10,
       height: 10,
@@ -253,5 +218,76 @@ class _AreaBottomSheetState extends ConsumerState<AreaBottomSheet> {
         color: isCurrentlySelected ? LightColor.platianGreen : Colors.grey,
       ),
     );
+  }
+
+  Widget _buildProvinceList() {
+    final provinceList = ref.read(provinceListProvider);
+    return ListView.separated(
+        itemBuilder: ((context, index) => ListTile(
+              onTap: () {
+                ref.read(districtProvinceProvider.notifier).setSelectedProvince(
+                      provinceList[index],
+                    );
+              },
+              contentPadding: EdgeInsets.zero,
+              trailing:
+                  ref.watch(districtProvinceProvider).selectedProvince != null
+                      ? const Icon(MdiIcons.check)
+                      : null,
+              title: Text(
+                provinceList[index].provinceName,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+            )),
+        separatorBuilder: ((context, index) => Divider(
+              color: Colors.grey.shade200,
+            )),
+        itemCount: provinceList.length);
+  }
+
+  Widget _buildDistrictList() {
+    final districtList = ref.read(districtListProvider);
+
+    final filteredDistricts = _getDistrictsOfParticularProvince(
+        ref.read(districtProvinceProvider).selectedProvince!.provinceId);
+    return ListView.separated(
+      itemBuilder: ((context, index) => ListTile(
+            onTap: () {
+              ref.read(districtProvinceProvider.notifier).setSelectedDistrict(
+                    districtList[index],
+                  );
+            },
+            contentPadding: EdgeInsets.zero,
+            trailing: ref
+                        .watch(districtProvinceProvider)
+                        .selectedDistrict
+                        ?.districtId ==
+                    districtList[index].districtId
+                ? const Icon(
+                    MdiIcons.check,
+                    color: LightColor.platianGreen,
+                  )
+                : null,
+            title: Text(
+              filteredDistricts[index].districtName,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+          )),
+      separatorBuilder: ((context, index) => Divider(
+            color: Colors.grey.shade200,
+          )),
+      itemCount: filteredDistricts.length,
+    );
+  }
+
+  List<District> _getDistrictsOfParticularProvince(int provinceId) {
+    final districts = ref.read(districtListProvider);
+    return districts
+        .where((element) => element.provinceId == provinceId)
+        .toList();
   }
 }

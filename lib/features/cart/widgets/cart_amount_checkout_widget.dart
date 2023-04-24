@@ -1,12 +1,19 @@
+import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/utils/generic_utils.dart';
 import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/cart/controller/cart_amount_controller.dart';
+import 'package:ar_furniture_app/features/cart/model/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CartAmountCheckoutWidget extends ConsumerWidget {
-  const CartAmountCheckoutWidget({super.key});
+  const CartAmountCheckoutWidget({
+    super.key,
+    required this.cartProducts,
+  });
+
+  final List<Cart> cartProducts;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -58,7 +65,14 @@ class CartAmountCheckoutWidget extends ConsumerWidget {
             true,
           ),
           VerticalSpacer.m,
-          CustomElevatedButton(onButtonPressed: () {}, buttonText: 'Checkout')
+          CustomElevatedButton(
+              onButtonPressed: () {
+                Navigator.of(context).pushNamed(
+                  RouteConstants.checkoutScreenRoute,
+                  arguments: cartProducts,
+                );
+              },
+              buttonText: 'Checkout')
         ],
       ),
     );

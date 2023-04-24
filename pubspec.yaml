@@ -28,6 +28,7 @@ dependencies:
   flutter_svg: ^2.0.1
   cached_network_image: ^3.2.3
   intl: ^0.17.0
+  easy_stepper: ^0.5.0
   firebase_storage: ^11.0.11
   shared_preferences: ^2.0.15
   flutter_facebook_auth: ^5.0.7
@@ -35,9 +36,12 @@ dependencies:
   image_picker: ^0.8.6+1
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
+  flutter_stripe: ^9.1.1
+  flutter_dotenv: ^5.0.2
   like_button: ^2.0.5
   path_provider: ^2.0.12
   http: ^0.13.5
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:
@@ -63,3 +67,4 @@ flutter:
   assets:
     - assets/images/
     - assets/lottie/
+    - assets/.env

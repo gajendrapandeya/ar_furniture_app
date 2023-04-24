@@ -3,7 +3,8 @@ import 'package:ar_furniture_app/features/cart/model/cart.dart';
 import 'package:ar_furniture_app/features/cart/service/cart_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final cartProvider = StateNotifierProvider<CartController, CartState>((ref) {
+final cartProvider =
+    StateNotifierProvider.autoDispose<CartController, CartState>((ref) {
   return CartController();
 });
 

@@ -15,12 +15,15 @@ class AddressService with ErrorMixin {
         FirebaseConstants.usersCollection,
       );
 
-  Future<bool> addAddress({required Address address}) async {
+  Future<bool> addAddress({
+    required Address address,
+    required String userId,
+  }) async {
     try {
       await _userCollection
-          .doc(address.userId)
+          .doc(userId)
           .collection(FirebaseConstants.addressCollection)
-          .doc(address.userId)
+          .doc(address.id)
           .set(
             address.toJson(),
           );
@@ -48,15 +51,28 @@ class AddressService with ErrorMixin {
   Future<List<Address>> fetchAddresses(
       {required String addressType, required String userId}) async {
     try {
-      QuerySnapshot snapshot = await _userCollection
-          .doc(userId)
-          .collection(FirebaseConstants.addressCollection)
-          .where('addressType', isEqualTo: addressType)
-          .get();
+      final CollectionReference<Map<String, dynamic>> addressCollection =
+          _userCollection
+              .doc(userId)
+              .collection(FirebaseConstants.addressCollection);
 
-      return snapshot.docs
-          .map((doc) => Address.fromJson(doc.data() as Map<String, dynamic>))
-          .toList();
+      final QuerySnapshot<Map<String, dynamic>> addressSnapshot =
+          await addressCollection.get();
+
+      if (addressSnapshot.docs.isEmpty) {
+        return [];
+      }
+
+      final List<QueryDocumentSnapshot<Map<String, dynamic>>> filteredDocs;
+      if (addressType.isEmpty) {
+        filteredDocs = addressSnapshot.docs;
+      } else {
+        filteredDocs = addressSnapshot.docs
+            .where((doc) => doc.data()['addressType'] == addressType)
+            .toList();
+      }
+
+      return filteredDocs.map((doc) => Address.fromJson(doc.data())).toList();
     } catch (error) {
       debugPrint('error: $error');
       throw handleError(error);

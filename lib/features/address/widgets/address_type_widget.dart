@@ -2,6 +2,7 @@
 
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
+import 'package:ar_furniture_app/features/address/widgets/billing_address_switch.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +12,11 @@ class AddressTypeWidget extends StatefulWidget {
   const AddressTypeWidget({
     super.key,
     required this.onAddressTypeSelected,
+    required this.isDefaultBillingSelected,
   });
 
   final Function(String) onAddressTypeSelected;
+  final Function(bool) isDefaultBillingSelected;
 
   @override
   State<AddressTypeWidget> createState() => _AddressTypeWidgetState();
@@ -94,6 +97,13 @@ class _AddressTypeWidgetState extends State<AddressTypeWidget> {
             ],
           ),
           VerticalSpacer.l,
+          Divider(
+            color: Colors.grey.shade200,
+          ),
+          BillingAddressSwitch(
+            onDefaultBillingSelected: (value) =>
+                widget.isDefaultBillingSelected(value),
+          ),
         ],
       ),
     );

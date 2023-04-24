@@ -9,11 +9,17 @@ class CustomOutlinedButton extends ConsumerWidget {
     required this.buttonText,
     this.isWideBorder = false,
     this.isLoading = false,
+    this.isFilled = false,
+    this.textSize = 14.0,
+    this.borderColor,
   }) : super(key: key);
   final Function onBtnPressed;
   final String buttonText;
+  final double textSize;
   final bool isWideBorder;
   final bool isLoading;
+  final bool isFilled;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,10 +28,14 @@ class CustomOutlinedButton extends ConsumerWidget {
             minimumSize: MaterialStateProperty.all(
               const Size(double.infinity, 50.0),
             ),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+            backgroundColor: isFilled
+                ? MaterialStateProperty.all(
+                    const Color(0xff346751),
+                  )
+                : MaterialStateProperty.all(Colors.transparent),
             side: MaterialStateProperty.all(
               BorderSide(
-                color: Colors.grey.shade400,
+                color: borderColor ?? Colors.grey.shade400,
                 width: isWideBorder ? 2.0 : 1.0,
               ),
             ),
@@ -41,7 +51,10 @@ class CustomOutlinedButton extends ConsumerWidget {
             buttonText,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.secondary,
+                  fontSize: textSize,
+                  color: isFilled
+                      ? Colors.white
+                      : Theme.of(context).colorScheme.secondary,
                 ),
           ),
           HorizontalSpacer.xs,

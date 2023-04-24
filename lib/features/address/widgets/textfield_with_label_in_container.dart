@@ -5,12 +5,14 @@ class TextfieldWithLableInContainer extends StatelessWidget {
     super.key,
     required this.title,
     required this.hintText,
+    required this.onInputChanged,
     this.textInputType = TextInputType.text,
   });
 
   final String title;
   final String hintText;
   final TextInputType textInputType;
+  final Function(String) onInputChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class TextfieldWithLableInContainer extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                 textAlign: TextAlign.end,
+                onChanged: (value) => onInputChanged(value),
                 keyboardType: textInputType,
                 decoration: InputDecoration(
                   filled: false,

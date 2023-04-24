@@ -16,4 +16,5 @@ class RouteConstants {
   static const String arViewScreenRoute = '/arview';
   static const String addressListScreenRoute = '/address-list';
   static const String addAddressScreenRoute = '/add-address';
+  static const String checkoutScreenRoute = '/checkout';
 }
