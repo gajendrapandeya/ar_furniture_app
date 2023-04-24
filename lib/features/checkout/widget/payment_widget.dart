@@ -3,9 +3,11 @@
 import 'dart:convert';
 
 import 'package:ar_furniture_app/core/model/radio_list_item.dart';
+import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
 import 'package:ar_furniture_app/core/widgets/custom_radio_list.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/cart/controller/cart_amount_controller.dart';
+import 'package:ar_furniture_app/features/profile/orders/model/product_order.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,11 +33,12 @@ final List<RadioListItem> radioItems = [
 class PaymentWidget extends ConsumerWidget {
   PaymentWidget({
     super.key,
-    required this.onPaymentSuccessfull,
+    required this.onPaymentMethodSelected,
   });
 
-  Map<String, dynamic>? paymentIntent;
-  final VoidCallback onPaymentSuccessfull;
+  Map<String, dynamic>? _paymentIntent;
+  final Function(ProductPaymentMethod) onPaymentMethodSelected;
+  ProductPaymentMethod _paymentMethod = ProductPaymentMethod.cod;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -62,7 +65,10 @@ class PaymentWidget extends ConsumerWidget {
           items: radioItems,
           onItemChecked: (selectedIndex) {
             if (selectedIndex == 0) {
-              makePayment(ref, context);
+              _paymentMethod = ProductPaymentMethod.stripe;
+              _makePayment(ref, context);
+            } else {
+              _paymentMethod = ProductPaymentMethod.cod;
             }
           },
         ),
@@ -70,10 +76,10 @@ class PaymentWidget extends ConsumerWidget {
     );
   }
 
-  Future<void> makePayment(WidgetRef ref, BuildContext context) async {
+  Future<void> _makePayment(WidgetRef ref, BuildContext context) async {
     try {
       //STEP 1: Create Payment Intent
-      paymentIntent = await createPaymentIntent(
+      _paymentIntent = await _createPaymentIntent(
           ref.read(cartAmountProvider).total, 'NPR', ref);
 
       //STEP 2: Initialize Payment Sheet
@@ -81,21 +87,21 @@ class PaymentWidget extends ConsumerWidget {
           .initPaymentSheet(
               paymentSheetParameters: SetupPaymentSheetParameters(
                   customFlow: true,
-                  paymentIntentClientSecret: paymentIntent![
+                  paymentIntentClientSecret: _paymentIntent![
                       'client_secret'], //Gotten from payment intent
                   style: ThemeMode.light,
                   merchantDisplayName: 'Ikay'))
           .then((value) {});
 
       //STEP 3: Display Payment sheet
-      displayPaymentSheet(context);
+      _displayPaymentSheet(context);
     } catch (err) {
       debugPrint('errP : $err');
       throw Exception(err);
     }
   }
 
-  createPaymentIntent(int amount, String currency, WidgetRef ref) async {
+  _createPaymentIntent(int amount, String currency, WidgetRef ref) async {
     try {
       //Request body
       Map<String, dynamic> body = {
@@ -112,40 +118,16 @@ class PaymentWidget extends ConsumerWidget {
         },
         body: body,
       );
-      debugPrint('response: $response');
       return json.decode(response.body);
     } catch (err) {
       throw Exception(err.toString());
     }
   }
 
-  displayPaymentSheet(BuildContext context) async {
+  _displayPaymentSheet(BuildContext context) async {
     try {
       await Stripe.instance.presentPaymentSheet();
-      showModalBottomSheet(
-        context: context,
-        backgroundColor: Colors.white,
-        isDismissible: false,
-        builder: (context) => SizedBox(
-          height: 150,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Payment Successfull.',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-              TextButton(
-                onPressed: () => onPaymentSuccessfull(),
-                child: const Text('OK'),
-              ),
-            ],
-          ),
-        ),
-      );
+      context.showSuccessSnackBar(message: 'Payment Successfull');
     } catch (e) {
       debugPrint('$e');
     }

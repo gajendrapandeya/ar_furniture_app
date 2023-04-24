@@ -25,7 +25,7 @@ final selectedAreaProvider = StateProvider<String>((ref) {
 class AddAddressScreen extends ConsumerStatefulWidget {
   const AddAddressScreen({super.key, this.isFromCheckout = false});
 
-  final bool isFromCheckout;
+  final bool? isFromCheckout;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -48,7 +48,7 @@ class _AddAddressScreenState extends ConsumerState<AddAddressScreen> {
       (prevState, currentState) {
         if (currentState is AddRemoveAddressStateAddSuccess) {
           context.showSuccessSnackBar(message: 'Address Added Successfully');
-          if (widget.isFromCheckout) {
+          if (widget.isFromCheckout == true) {
             Navigator.pushReplacementNamed(
               context,
               RouteConstants.checkoutScreenRoute,

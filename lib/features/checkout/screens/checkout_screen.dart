@@ -31,10 +31,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
     final widgetList = [
       const AddressWidget(),
       PaymentWidget(
-        onPaymentSuccessfull: () {
-          Navigator.of(context).pop();
-          _pageController.jumpToPage(2);
-        },
+        onPaymentMethodSelected: (paymentMethod) {},
       ),
       const OrderPlacedWidget(),
     ];

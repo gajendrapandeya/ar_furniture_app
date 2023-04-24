@@ -27,7 +27,7 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       color: LightColor.primaryColor,
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
         statusBarColor: LightColor.secondaryColor,
       ),
     ),
