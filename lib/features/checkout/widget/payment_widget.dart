@@ -7,13 +7,16 @@ import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
 import 'package:ar_furniture_app/core/widgets/custom_radio_list.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/cart/controller/cart_amount_controller.dart';
+import 'package:ar_furniture_app/features/checkout/controller/checkout_provider.dart';
 import 'package:ar_furniture_app/features/profile/orders/model/product_order.dart';
+import 'package:ar_furniture_app/features/profile/saved_cards/model/cart_detail.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:uuid/uuid.dart';
 
 final List<RadioListItem> radioItems = [
   RadioListItem(
@@ -33,15 +36,13 @@ final List<RadioListItem> radioItems = [
 class PaymentWidget extends ConsumerWidget {
   PaymentWidget({
     super.key,
-    required this.onPaymentMethodSelected,
   });
 
   Map<String, dynamic>? _paymentIntent;
-  final Function(ProductPaymentMethod) onPaymentMethodSelected;
-  ProductPaymentMethod _paymentMethod = ProductPaymentMethod.cod;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(checkoutNotifier);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -65,10 +66,14 @@ class PaymentWidget extends ConsumerWidget {
           items: radioItems,
           onItemChecked: (selectedIndex) {
             if (selectedIndex == 0) {
-              _paymentMethod = ProductPaymentMethod.stripe;
               _makePayment(ref, context);
+              ref
+                  .read(checkoutNotifier.notifier)
+                  .setPaymentMethod(paymentMethod: ProductPaymentMethod.stripe);
             } else {
-              _paymentMethod = ProductPaymentMethod.cod;
+              ref
+                  .read(checkoutNotifier.notifier)
+                  .setPaymentMethod(paymentMethod: ProductPaymentMethod.cod);
             }
           },
         ),
@@ -94,7 +99,7 @@ class PaymentWidget extends ConsumerWidget {
           .then((value) {});
 
       //STEP 3: Display Payment sheet
-      _displayPaymentSheet(context);
+      _displayPaymentSheet(context, ref);
     } catch (err) {
       debugPrint('errP : $err');
       throw Exception(err);
@@ -118,15 +123,27 @@ class PaymentWidget extends ConsumerWidget {
         },
         body: body,
       );
+      ref
+          .read(checkoutNotifier.notifier)
+          .setPaymentId(paymentId: jsonDecode(response.body)['id']);
+      debugPrint('response: ${jsonEncode(response.body)}');
       return json.decode(response.body);
     } catch (err) {
       throw Exception(err.toString());
     }
   }
 
-  _displayPaymentSheet(BuildContext context) async {
+  _displayPaymentSheet(BuildContext context, WidgetRef ref) async {
     try {
       await Stripe.instance.presentPaymentSheet();
+      ref.read(checkoutNotifier.notifier).setCardDetails(
+            cardDetail: CardDetail(
+                id: const Uuid().v1(),
+                cardNumber: '4242 4242 4242 4242',
+                cvv: '123',
+                expiryDate: '04/32',
+                zipCode: '12345'),
+          );
       context.showSuccessSnackBar(message: 'Payment Successfull');
     } catch (e) {
       debugPrint('$e');

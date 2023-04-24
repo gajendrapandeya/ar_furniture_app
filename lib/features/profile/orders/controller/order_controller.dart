@@ -12,14 +12,16 @@ final orderProvider = StateNotifierProvider<OrderNotifier, OrderState>((ref) {
 class OrderNotifier extends StateNotifier<OrderState> {
   OrderNotifier({required OrderService orderService})
       : _orderService = orderService,
-        super(const OrderState.initial());
+        super(const OrderState.loading());
 
   final OrderService _orderService;
 
-  Future<void> createOrder(ProductOrder order) async {
+  Future<void> createOrder({required ProductOrder order}) async {
     try {
       state = const OrderState.loading();
-      await _orderService.createOrder(order);
+      await _orderService.createOrder(
+        order: order,
+      );
       state = const OrderState.success();
     } catch (error) {
       state = OrderState.failure(error: error.toString());

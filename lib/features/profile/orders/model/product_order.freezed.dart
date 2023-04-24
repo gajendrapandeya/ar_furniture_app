@@ -22,7 +22,7 @@ ProductOrder _$ProductOrderFromJson(Map<String, dynamic> json) {
 mixin _$ProductOrder {
   String get orderId => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
-  List<Product> get product => throw _privateConstructorUsedError;
+  List<Cart> get product => throw _privateConstructorUsedError;
   int get totalAmount => throw _privateConstructorUsedError;
   Address get userAddress => throw _privateConstructorUsedError;
   String? get paymentId => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $ProductOrderCopyWith<$Res> {
   $Res call(
       {String orderId,
       String userId,
-      List<Product> product,
+      List<Cart> product,
       int totalAmount,
       Address userAddress,
       String? paymentId,
@@ -94,7 +94,7 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
       product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
+              as List<Cart>,
       totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ abstract class _$$_OrderCopyWith<$Res> implements $ProductOrderCopyWith<$Res> {
   $Res call(
       {String orderId,
       String userId,
-      List<Product> product,
+      List<Cart> product,
       int totalAmount,
       Address userAddress,
       String? paymentId,
@@ -190,7 +190,7 @@ class __$$_OrderCopyWithImpl<$Res>
       product: null == product
           ? _value._product
           : product // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
+              as List<Cart>,
       totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
@@ -229,7 +229,7 @@ class _$_Order implements _Order {
   const _$_Order(
       {required this.orderId,
       required this.userId,
-      required final List<Product> product,
+      required final List<Cart> product,
       required this.totalAmount,
       required this.userAddress,
       required this.paymentId,
@@ -246,9 +246,9 @@ class _$_Order implements _Order {
   final String orderId;
   @override
   final String userId;
-  final List<Product> _product;
+  final List<Cart> _product;
   @override
-  List<Product> get product {
+  List<Cart> get product {
     if (_product is EqualUnmodifiableListView) return _product;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_product);
@@ -331,7 +331,7 @@ abstract class _Order implements ProductOrder {
   const factory _Order(
       {required final String orderId,
       required final String userId,
-      required final List<Product> product,
+      required final List<Cart> product,
       required final int totalAmount,
       required final Address userAddress,
       required final String? paymentId,
@@ -347,7 +347,7 @@ abstract class _Order implements ProductOrder {
   @override
   String get userId;
   @override
-  List<Product> get product;
+  List<Cart> get product;
   @override
   int get totalAmount;
   @override

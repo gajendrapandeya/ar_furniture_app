@@ -10,7 +10,7 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
       orderId: json['orderId'] as String,
       userId: json['userId'] as String,
       product: (json['product'] as List<dynamic>)
-          .map((e) => Product.fromJson(e as Map<String, dynamic>))
+          .map((e) => Cart.fromJson(e as Map<String, dynamic>))
           .toList(),
       totalAmount: json['totalAmount'] as int,
       userAddress:
@@ -26,9 +26,9 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
 Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'orderId': instance.orderId,
       'userId': instance.userId,
-      'product': instance.product,
+      'product': instance.product.map((e) => e.toJson()).toList(),
       'totalAmount': instance.totalAmount,
-      'userAddress': instance.userAddress,
+      'userAddress': instance.userAddress.toJson(),
       'paymentId': instance.paymentId,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),

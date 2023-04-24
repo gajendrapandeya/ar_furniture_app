@@ -6,6 +6,7 @@ import 'package:ar_furniture_app/features/ar_view/ar_view_screen.dart';
 import 'package:ar_furniture_app/features/auth/forgot_password/screens/forgot_password_screen.dart';
 import 'package:ar_furniture_app/features/auth/login/screens/login_screen.dart';
 import 'package:ar_furniture_app/features/auth/register/screens/register_screen.dart';
+import 'package:ar_furniture_app/features/cart/model/cart.dart';
 import 'package:ar_furniture_app/features/cart/screens/cart_screen.dart';
 import 'package:ar_furniture_app/features/category/screens/category_screen.dart';
 import 'package:ar_furniture_app/features/checkout/screens/checkout_screen.dart';
@@ -74,7 +75,11 @@ class AppRouter {
                   isFromCheckout: settings.arguments as bool?,
                 ));
       case RouteConstants.checkoutScreenRoute:
-        return MaterialPageRoute(builder: (_) => const CheckoutScreen());
+        return MaterialPageRoute(
+          builder: (_) => CheckoutScreen(
+            cartProducts: settings.arguments as List<Cart>,
+          ),
+        );
       case RouteConstants.updateProfileRoute:
         return MaterialPageRoute(
           builder: (_) => UpdateProfileScreen(

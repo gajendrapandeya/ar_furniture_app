@@ -15,12 +15,19 @@ class OrderService with ErrorMixin {
 
   OrderService({required FirebaseFirestore firestore}) : _firestore = firestore;
 
-  CollectionReference get _orderCollection =>
-      _firestore.collection(FirebaseConstants.orderCollection);
+  CollectionReference get _userCollection =>
+      _firestore.collection(FirebaseConstants.usersCollection);
 
-  Future<void> createOrder(ProductOrder order) async {
+  Future<void> createOrder({
+    required ProductOrder order,
+  }) async {
     try {
-      _orderCollection.doc(order.orderId).set(order.toJson());
+      debugPrint('order: $order');
+      _userCollection
+          .doc(order.userId)
+          .collection(FirebaseConstants.orderCollection)
+          .doc(order.orderId)
+          .set(order.toJson());
     } catch (error) {
       debugPrint('OrderCreateError: $error');
       handleError(error);

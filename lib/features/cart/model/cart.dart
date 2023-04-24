@@ -6,6 +6,7 @@ part 'cart.g.dart';
 @freezed
 class Cart with _$Cart {
   const Cart._();
+
   const factory Cart({
     required String id,
     required int quantity,

@@ -1,14 +1,10 @@
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/address/model/address.dart';
-import 'package:ar_furniture_app/features/checkout/screens/checkout_screen.dart';
+import 'package:ar_furniture_app/features/checkout/controller/checkout_provider.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
-final selectedIndexProvider = StateProvider.autoDispose<int>((ref) {
-  return -1;
-});
 
 class AddressItem extends ConsumerWidget {
   const AddressItem({
@@ -22,8 +18,8 @@ class AddressItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedIndex = ref.watch(selectedIndexProvider);
-    bool isSelected = selectedIndex == index;
+    final checkoutProvider = ref.watch(checkoutNotifier);
+    bool isSelected = checkoutProvider.selectedAddress == address;
     return Material(
       shadowColor: Colors.grey.shade100,
       color: Colors.white,
@@ -31,11 +27,8 @@ class AddressItem extends ConsumerWidget {
       child: InkWell(
         onTap: () {
           ref
-              .read(selectedIndexProvider.notifier)
-              .update((state) => state = index);
-          ref
-              .read(isAddressSelectedProvider.notifier)
-              .update((state) => state = true);
+              .read(checkoutNotifier.notifier)
+              .setSelectedAddress(address: address);
         },
         child: Container(
           padding: const EdgeInsets.symmetric(

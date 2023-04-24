@@ -110,7 +110,9 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                         left: 0,
                         right: 0,
                         child: ref.read(cartProvider) is CartStateSuccess
-                            ? const CartAmountCheckoutWidget()
+                            ? CartAmountCheckoutWidget(
+                                cartProducts: cartList,
+                              )
                             : Container(),
                       )
                     ],

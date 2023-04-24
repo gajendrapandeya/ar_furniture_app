@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OrderState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -26,7 +25,6 @@ mixin _$OrderState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -34,7 +32,6 @@ mixin _$OrderState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -43,7 +40,6 @@ mixin _$OrderState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(OrderStateInitial value) initial,
     required TResult Function(OrderStateLoading value) loading,
     required TResult Function(OrderStateSuccess value) success,
     required TResult Function(OrderStateFailure value) failure,
@@ -51,7 +47,6 @@ mixin _$OrderState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(OrderStateInitial value)? initial,
     TResult? Function(OrderStateLoading value)? loading,
     TResult? Function(OrderStateSuccess value)? success,
     TResult? Function(OrderStateFailure value)? failure,
@@ -59,7 +54,6 @@ mixin _$OrderState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(OrderStateInitial value)? initial,
     TResult Function(OrderStateLoading value)? loading,
     TResult Function(OrderStateSuccess value)? success,
     TResult Function(OrderStateFailure value)? failure,
@@ -84,120 +78,6 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$OrderStateInitialCopyWith<$Res> {
-  factory _$$OrderStateInitialCopyWith(
-          _$OrderStateInitial value, $Res Function(_$OrderStateInitial) then) =
-      __$$OrderStateInitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$OrderStateInitialCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$OrderStateInitial>
-    implements _$$OrderStateInitialCopyWith<$Res> {
-  __$$OrderStateInitialCopyWithImpl(
-      _$OrderStateInitial _value, $Res Function(_$OrderStateInitial) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$OrderStateInitial implements OrderStateInitial {
-  const _$OrderStateInitial();
-
-  @override
-  String toString() {
-    return 'OrderState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OrderStateInitial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() success,
-    required TResult Function(String error) failure,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? success,
-    TResult? Function(String error)? failure,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? success,
-    TResult Function(String error)? failure,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(OrderStateInitial value) initial,
-    required TResult Function(OrderStateLoading value) loading,
-    required TResult Function(OrderStateSuccess value) success,
-    required TResult Function(OrderStateFailure value) failure,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(OrderStateInitial value)? initial,
-    TResult? Function(OrderStateLoading value)? loading,
-    TResult? Function(OrderStateSuccess value)? success,
-    TResult? Function(OrderStateFailure value)? failure,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(OrderStateInitial value)? initial,
-    TResult Function(OrderStateLoading value)? loading,
-    TResult Function(OrderStateSuccess value)? success,
-    TResult Function(OrderStateFailure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class OrderStateInitial implements OrderState {
-  const factory OrderStateInitial() = _$OrderStateInitial;
 }
 
 /// @nodoc
@@ -238,7 +118,6 @@ class _$OrderStateLoading implements OrderStateLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -249,7 +128,6 @@ class _$OrderStateLoading implements OrderStateLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -260,7 +138,6 @@ class _$OrderStateLoading implements OrderStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -275,7 +152,6 @@ class _$OrderStateLoading implements OrderStateLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(OrderStateInitial value) initial,
     required TResult Function(OrderStateLoading value) loading,
     required TResult Function(OrderStateSuccess value) success,
     required TResult Function(OrderStateFailure value) failure,
@@ -286,7 +162,6 @@ class _$OrderStateLoading implements OrderStateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(OrderStateInitial value)? initial,
     TResult? Function(OrderStateLoading value)? loading,
     TResult? Function(OrderStateSuccess value)? success,
     TResult? Function(OrderStateFailure value)? failure,
@@ -297,7 +172,6 @@ class _$OrderStateLoading implements OrderStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(OrderStateInitial value)? initial,
     TResult Function(OrderStateLoading value)? loading,
     TResult Function(OrderStateSuccess value)? success,
     TResult Function(OrderStateFailure value)? failure,
@@ -352,7 +226,6 @@ class _$OrderStateSuccess implements OrderStateSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -363,7 +236,6 @@ class _$OrderStateSuccess implements OrderStateSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -374,7 +246,6 @@ class _$OrderStateSuccess implements OrderStateSuccess {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -389,7 +260,6 @@ class _$OrderStateSuccess implements OrderStateSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(OrderStateInitial value) initial,
     required TResult Function(OrderStateLoading value) loading,
     required TResult Function(OrderStateSuccess value) success,
     required TResult Function(OrderStateFailure value) failure,
@@ -400,7 +270,6 @@ class _$OrderStateSuccess implements OrderStateSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(OrderStateInitial value)? initial,
     TResult? Function(OrderStateLoading value)? loading,
     TResult? Function(OrderStateSuccess value)? success,
     TResult? Function(OrderStateFailure value)? failure,
@@ -411,7 +280,6 @@ class _$OrderStateSuccess implements OrderStateSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(OrderStateInitial value)? initial,
     TResult Function(OrderStateLoading value)? loading,
     TResult Function(OrderStateSuccess value)? success,
     TResult Function(OrderStateFailure value)? failure,
@@ -492,7 +360,6 @@ class _$OrderStateFailure implements OrderStateFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -503,7 +370,6 @@ class _$OrderStateFailure implements OrderStateFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -514,7 +380,6 @@ class _$OrderStateFailure implements OrderStateFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -529,7 +394,6 @@ class _$OrderStateFailure implements OrderStateFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(OrderStateInitial value) initial,
     required TResult Function(OrderStateLoading value) loading,
     required TResult Function(OrderStateSuccess value) success,
     required TResult Function(OrderStateFailure value) failure,
@@ -540,7 +404,6 @@ class _$OrderStateFailure implements OrderStateFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(OrderStateInitial value)? initial,
     TResult? Function(OrderStateLoading value)? loading,
     TResult? Function(OrderStateSuccess value)? success,
     TResult? Function(OrderStateFailure value)? failure,
@@ -551,7 +414,6 @@ class _$OrderStateFailure implements OrderStateFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(OrderStateInitial value)? initial,
     TResult Function(OrderStateLoading value)? loading,
     TResult Function(OrderStateSuccess value)? success,
     TResult Function(OrderStateFailure value)? failure,
