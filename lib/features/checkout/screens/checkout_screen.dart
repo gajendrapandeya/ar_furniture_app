@@ -1,5 +1,6 @@
 import 'package:ar_furniture_app/core/providers/user_provider.dart';
 import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
+import 'package:ar_furniture_app/core/widgets/custom_app_bar.dart';
 import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
 import 'package:ar_furniture_app/core/widgets/loading_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
@@ -17,7 +18,6 @@ import 'package:ar_furniture_app/features/profile/orders/model/product_order.dar
 import 'package:ar_furniture_app/features/profile/saved_cards/controller/card_controller.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:uuid/uuid.dart';
 
 final currentPageIndexProvider = StateProvider<int>((ref) {
@@ -59,13 +59,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
       }
     });
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(),
-          icon: const Icon(MdiIcons.chevronLeft),
-        ),
-        title: const Text('Checkout'),
-      ),
+      appBar: const CustomAppbar(title: 'Checkout'),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16,

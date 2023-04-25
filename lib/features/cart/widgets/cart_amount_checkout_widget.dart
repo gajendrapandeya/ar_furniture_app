@@ -64,7 +64,7 @@ class CartAmountCheckoutWidget extends ConsumerWidget {
             context,
             true,
           ),
-          VerticalSpacer.m,
+          VerticalSpacer.xl,
           CustomElevatedButton(
               onButtonPressed: () {
                 Navigator.of(context).pushNamed(

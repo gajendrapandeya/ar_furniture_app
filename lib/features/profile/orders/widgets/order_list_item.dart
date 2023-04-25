@@ -42,7 +42,6 @@ class OrderListItem extends StatelessWidget {
                   )),
               itemCount: order.product.length,
             ),
-            VerticalSpacer.l,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -54,8 +53,8 @@ class OrderListItem extends StatelessWidget {
                       child: CustomOutlinedButton(
                         buttonTextColor: LightColor.platianGreen,
                         onBtnPressed: () {
-                          Navigator.of(context).pushReplacementNamed(
-                            RouteConstants.productListRoute,
+                          Navigator.of(context).pushNamed(
+                            RouteConstants.trackOrderScreenRoute,
                           );
                         },
                         buttonText: 'Track Order',
@@ -71,8 +70,9 @@ class OrderListItem extends StatelessWidget {
                     child: CustomOutlinedButton(
                       buttonTextColor: LightColor.platianGreen,
                       onBtnPressed: () {
-                        Navigator.of(context).pushReplacementNamed(
-                          RouteConstants.productListRoute,
+                        Navigator.of(context).pushNamed(
+                          RouteConstants.orderDetailScreenRoute,
+                          arguments: order,
                         );
                       },
                       buttonText: 'Order Details',

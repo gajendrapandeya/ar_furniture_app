@@ -1,6 +1,7 @@
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/providers/user_provider.dart';
 import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
+import 'package:ar_furniture_app/core/widgets/loading_widget.dart';
 import 'package:ar_furniture_app/core/widgets/no_data_widget.dart';
 import 'package:ar_furniture_app/core/widgets/not_logged_in_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
@@ -63,9 +64,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
   Widget _buildCartList() {
     return ref.watch(cartProvider).maybeWhen(
           orElse: () => Container(),
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
-          ),
+          loading: () => const LoadingWidget(),
           success: (cartList) {
             _calculateCostAndSetToCartAmountController(cartList);
             return cartList.isEmpty
@@ -76,33 +75,43 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                 : Stack(
                     children: [
                       Positioned.fill(
-                        child: ListView.separated(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 28,
-                          ),
-                          itemBuilder: ((ctx, index) {
-                            final cartItem = cartList[index];
-                            return CartListItem(
-                              key: ValueKey(cartItem.id),
-                              cart: cartList[index],
-                              isLastItem: index == cartList.length - 1,
-                              onAddPressed: () {
-                                _calculateSubtotalAndTotalOnPressingOnAddButton(
-                                    cartItem);
-                              },
-                              onMinusPressed: () {
-                                _calculateSubtotalAndTotalOnPressingOnMinusButton(
-                                    cartItem);
-                              },
-                              onDeletePressed: () {
-                                _deleteCartItem(cartList, index);
-                              },
-                            );
-                          }),
-                          separatorBuilder: ((ctx, index) => VerticalSpacer.xl),
-                          itemCount: cartList.length,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: ListView.separated(
+                                physics: const AlwaysScrollableScrollPhysics(),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 28,
+                                ),
+                                itemBuilder: ((ctx, index) {
+                                  final cartItem = cartList[index];
+                                  return CartListItem(
+                                    key: ValueKey(cartItem.id),
+                                    cart: cartList[index],
+                                    isLastItem: index == cartList.length - 1,
+                                    onAddPressed: () {
+                                      _calculateSubtotalAndTotalOnPressingOnAddButton(
+                                          cartItem);
+                                    },
+                                    onMinusPressed: () {
+                                      _calculateSubtotalAndTotalOnPressingOnMinusButton(
+                                          cartItem);
+                                    },
+                                    onDeletePressed: () {
+                                      _deleteCartItem(cartList, index);
+                                    },
+                                  );
+                                }),
+                                separatorBuilder: ((ctx, index) =>
+                                    VerticalSpacer.xl),
+                                itemCount: cartList.length,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 150,
+                            ),
+                          ],
                         ),
                       ),
                       Positioned(

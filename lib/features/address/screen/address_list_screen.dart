@@ -1,6 +1,7 @@
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/providers/user_provider.dart';
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
+import 'package:ar_furniture_app/core/widgets/custom_app_bar.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/address/controller/address_list/address_controller.dart';
 import 'package:ar_furniture_app/features/address/controller/tab_controller.dart';
@@ -25,18 +26,7 @@ class _AddressListScreenState extends ConsumerState<AddressListScreen> {
   Widget build(BuildContext context) {
     tabItems = ref.watch(tabsProvider);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(),
-          icon: const Icon(
-            MdiIcons.chevronLeft,
-            size: 28,
-          ),
-        ),
-        title: const Text(
-          'Manage your addresses',
-        ),
-      ),
+      appBar: const CustomAppbar(title: 'Manage your addresses'),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: LightColor.platianGreen,
         icon: const Icon(
@@ -59,24 +49,22 @@ class _AddressListScreenState extends ConsumerState<AddressListScreen> {
         },
         label: const Text('Add Address'),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 16,
-          ),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 4.0,
-                ),
-                child: _buildTabBar(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 4.0,
               ),
-              VerticalSpacer.l,
-              _buildSelectedTabWidget(),
-            ],
-          ),
+              child: _buildTabBar(),
+            ),
+            VerticalSpacer.l,
+            _buildSelectedTabWidget(),
+          ],
         ),
       ),
     );

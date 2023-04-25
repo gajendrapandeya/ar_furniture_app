@@ -4,6 +4,7 @@ import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/providers/user_provider.dart';
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
+import 'package:ar_furniture_app/core/widgets/custom_app_bar.dart';
 import 'package:ar_furniture_app/core/widgets/generic_error_widget.dart';
 import 'package:ar_furniture_app/core/widgets/loading_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
@@ -61,18 +62,7 @@ class _AddAddressScreenState extends ConsumerState<AddAddressScreen> {
     );
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(),
-          icon: const Icon(
-            MdiIcons.chevronLeft,
-            size: 28,
-          ),
-        ),
-        title: const Text(
-          'Add Billing Address',
-        ),
-      ),
+      appBar: const CustomAppbar(title: 'Add Billing Addres'),
       body: ref.watch(addRemoveAddressProvider).when(
             initial: () => _buildBody(),
             editAddressStateInitial: (address) => _buildBody(),

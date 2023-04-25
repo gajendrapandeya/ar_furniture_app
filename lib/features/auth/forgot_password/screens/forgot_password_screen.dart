@@ -4,6 +4,7 @@ import 'package:ar_furniture_app/core/constants/asset_constants.dart';
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/utils/enums.dart';
 import 'package:ar_furniture_app/core/utils/snackbar_utils.dart';
+import 'package:ar_furniture_app/core/widgets/custom_app_bar.dart';
 import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
 import 'package:ar_furniture_app/core/widgets/custom_text_form_field.dart';
 import 'package:ar_furniture_app/core/widgets/image_widget.dart';
@@ -13,7 +14,6 @@ import 'package:ar_furniture_app/features/auth/auth_state.dart';
 import 'package:ar_furniture_app/features/auth/forgot_password/controller/forgot_password_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 /// Displays the Reset Password page of the app
 /// Allows resetting password with email
@@ -50,22 +50,7 @@ class ForgotPasswordScreen extends ConsumerWidget {
       }
     });
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(
-            MdiIcons.chevronLeftCircle,
-          ),
-        ),
-        title: Text(
-          'Forgot Password',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-      ),
+      appBar: const CustomAppbar(title: 'Forgot Password'),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(

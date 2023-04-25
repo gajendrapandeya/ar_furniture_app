@@ -18,6 +18,8 @@ import 'package:ar_furniture_app/features/product/product_detail/screens/product
 import 'package:ar_furniture_app/features/product/product_list/screens/product_list_screen.dart';
 import 'package:ar_furniture_app/features/profile/change_password/screens/change_password_screen.dart';
 import 'package:ar_furniture_app/features/profile/core/screens/profile_screen.dart';
+import 'package:ar_furniture_app/features/profile/orders/model/product_order.dart';
+import 'package:ar_furniture_app/features/profile/orders/screens/order_detail_screen.dart';
 import 'package:ar_furniture_app/features/profile/orders/screens/order_list_screen.dart';
 import 'package:ar_furniture_app/features/profile/track_order/screen/track_order_screen.dart';
 import 'package:ar_furniture_app/features/profile/update_profile/screens/update_profile_screen.dart';
@@ -85,6 +87,12 @@ class AppRouter {
       case RouteConstants.orderListScreenRoute:
         return MaterialPageRoute(
           builder: (_) => const OrderListScreen(),
+        );
+      case RouteConstants.orderDetailScreenRoute:
+        return MaterialPageRoute(
+          builder: (_) => OrderDetailScreen(
+            order: settings.arguments as ProductOrder,
+          ),
         );
       case RouteConstants.trackOrderScreenRoute:
         return MaterialPageRoute(
