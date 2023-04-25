@@ -22,7 +22,6 @@ class OrderService with ErrorMixin {
     required ProductOrder order,
   }) async {
     try {
-      debugPrint('order: $order');
       _orderCollection.doc(order.orderId).set(order.toJson());
     } catch (error) {
       debugPrint('OrderCreateError: $error');

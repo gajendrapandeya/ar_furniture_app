@@ -96,7 +96,9 @@ class AppRouter {
         );
       case RouteConstants.trackOrderScreenRoute:
         return MaterialPageRoute(
-          builder: (_) => const TrackOrderScreen(),
+          builder: (_) => TrackOrderScreen(
+            order: settings.arguments as ProductOrder,
+          ),
         );
       case RouteConstants.updateProfileRoute:
         return MaterialPageRoute(

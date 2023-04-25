@@ -265,14 +265,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.4"
-  easy_stepper:
-    dependency: "direct main"
-    description:
-      name: easy_stepper
-      sha256: "984e4e666276b51e251275f906d56d45c6cd6aee31c42d50b5bf513d75c3e1e6"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.5.0"
   equatable:
     dependency: transitive
     description:

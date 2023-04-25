@@ -1,6 +1,6 @@
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
-import 'package:easy_stepper/easy_stepper.dart';
+import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class AddAddressButton extends StatelessWidget {

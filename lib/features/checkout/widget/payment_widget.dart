@@ -10,7 +10,7 @@ import 'package:ar_furniture_app/features/cart/controller/cart_amount_controller
 import 'package:ar_furniture_app/features/checkout/controller/checkout_provider.dart';
 import 'package:ar_furniture_app/features/profile/orders/model/product_order.dart';
 import 'package:ar_furniture_app/features/profile/saved_cards/model/cart_detail.dart';
-import 'package:easy_stepper/easy_stepper.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -126,7 +126,6 @@ class PaymentWidget extends ConsumerWidget {
       ref
           .read(checkoutNotifier.notifier)
           .setPaymentId(paymentId: jsonDecode(response.body)['id']);
-      debugPrint('response: ${jsonEncode(response.body)}');
       return json.decode(response.body);
     } catch (err) {
       throw Exception(err.toString());

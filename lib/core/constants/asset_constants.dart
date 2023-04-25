@@ -1,6 +1,7 @@
 class AssetConstants {
   static const String sittingOnSofa = 'assets/images/sitting.svg';
   static const String orderComplete = 'assets/images/order_complete.svg';
+  static const String trackOrder = 'assets/images/track_order.svg';
   static const String furnish = 'assets/images/furnish.svg';
   static const String comfort = 'assets/images/comfort.svg';
   static const String login = 'assets/images/login.svg';

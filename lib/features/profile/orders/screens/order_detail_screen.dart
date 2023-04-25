@@ -60,8 +60,10 @@ class OrderDetailScreen extends StatelessWidget {
                 child: CustomOutlinedButton(
                   borderColor: LightColor.platianGreen,
                   onBtnPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(RouteConstants.trackOrderScreenRoute);
+                    Navigator.of(context).pushNamed(
+                      RouteConstants.trackOrderScreenRoute,
+                      arguments: order,
+                    );
                   },
                   buttonText: 'Track Order',
                 ),

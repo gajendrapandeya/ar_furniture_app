@@ -2,7 +2,7 @@ import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/address/model/address.dart';
 import 'package:ar_furniture_app/features/checkout/controller/checkout_provider.dart';
-import 'package:easy_stepper/easy_stepper.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 

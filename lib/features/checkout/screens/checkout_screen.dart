@@ -16,7 +16,7 @@ import 'package:ar_furniture_app/features/profile/orders/controller/order_contro
 import 'package:ar_furniture_app/features/profile/orders/controller/order_state.dart';
 import 'package:ar_furniture_app/features/profile/orders/model/product_order.dart';
 import 'package:ar_furniture_app/features/profile/saved_cards/controller/card_controller.dart';
-import 'package:easy_stepper/easy_stepper.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
@@ -92,7 +92,6 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                   }
 
                   if (currentPageIndex == 1) {
-                    debugPrint('paymentId: ${checkoutProvider.paymentId}');
                     if (checkoutProvider.paymentId != null) {
                       _saveCard(checkoutProvider);
                     }
