@@ -25,6 +25,7 @@ enum ProductPaymentMethod {
 
 @freezed
 class ProductOrder with _$ProductOrder {
+  const ProductOrder._();
   const factory ProductOrder({
     required String orderId,
     required String userId,
@@ -40,4 +41,6 @@ class ProductOrder with _$ProductOrder {
 
   factory ProductOrder.fromJson(Map<String, dynamic> json) =>
       _$ProductOrderFromJson(json);
+
+  String get formattedOrderId => '#$orderId';
 }

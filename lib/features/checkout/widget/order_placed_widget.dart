@@ -1,4 +1,5 @@
 import 'package:ar_furniture_app/core/constants/asset_constants.dart';
+import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
 import 'package:ar_furniture_app/core/widgets/custom_outlined_button.dart';
@@ -48,16 +49,27 @@ class OrderPlacedWidget extends ConsumerWidget {
           Row(
             children: [
               Expanded(
-                  child: CustomOutlinedButton(
-                onBtnPressed: () {},
-                buttonText: 'Continue Shopping',
-                textSize: 12,
-                borderColor: LightColor.platianGreen,
-              )),
+                child: CustomOutlinedButton(
+                  onBtnPressed: () {
+                    Navigator.of(context).pushReplacementNamed(
+                      RouteConstants.productListRoute,
+                    );
+                  },
+                  buttonText: 'Continue Shopping',
+                  textSize: 12,
+                  borderColor: LightColor.platianGreen,
+                ),
+              ),
               HorizontalSpacer.l,
               Expanded(
                 child: CustomElevatedButton(
-                    onButtonPressed: () {}, buttonText: 'Track Order'),
+                  onButtonPressed: () {
+                    Navigator.of(context).pushReplacementNamed(
+                      RouteConstants.trackOrderScreenRoute,
+                    );
+                  },
+                  buttonText: 'Track Order',
+                ),
               )
             ],
           ),

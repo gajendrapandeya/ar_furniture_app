@@ -26,6 +26,18 @@ class CartController extends StateNotifier<CartState> {
     }
   }
 
+  void removeAllProductsFromCart({required String userId}) async {
+    try {
+      state = const CartStateLoading();
+      await _cartService.removeAllProductsFromCart(userId: userId);
+      state = const CartState.success(data: []);
+    } catch (error) {
+      state = CartState.error(
+        error: error.toString(),
+      );
+    }
+  }
+
   void removeFromCart({required Cart cart}) {
     final cartItems = [...(state as CartStateSuccess).data];
     cartItems.remove(cart);

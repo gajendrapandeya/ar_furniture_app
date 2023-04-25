@@ -59,6 +59,23 @@ class CartService with ErrorMixin {
     }
   }
 
+  Future<bool> removeAllProductsFromCart({
+    required String userId,
+  }) async {
+    try {
+      final querySnapshot = await _userCollection
+          .doc(userId)
+          .collection(FirebaseConstants.cartCollection)
+          .get();
+      for (var document in querySnapshot.docs) {
+        document.reference.delete();
+      }
+      return true;
+    } catch (error) {
+      throw handleError(error);
+    }
+  }
+
   Future<List<Cart>> fetchProductsInCart({required String userId}) async {
     try {
       final snapshot = await _userCollection

@@ -4,6 +4,7 @@ import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
 import 'package:ar_furniture_app/core/widgets/loading_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/cart/controller/cart_amount_controller.dart';
+import 'package:ar_furniture_app/features/cart/controller/cart_controller.dart';
 import 'package:ar_furniture_app/features/cart/model/cart.dart';
 import 'package:ar_furniture_app/features/checkout/controller/checkout_provider.dart';
 import 'package:ar_furniture_app/features/checkout/model/checkout_model.dart';
@@ -101,6 +102,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                     if (checkoutProvider.paymentId != null) {
                       _saveCard(checkoutProvider);
                     }
+                    _removeCartProducts();
                     _createOrder(checkoutProvider);
                     _pageController.jumpToPage(2);
                   }
@@ -135,6 +137,12 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
             orderStatus: OrderStatus.ordered,
             paymentMethod: checkoutProvider.paymentMethod,
           ),
+        );
+  }
+
+  void _removeCartProducts() {
+    ref.read(cartProvider.notifier).removeAllProductsFromCart(
+          userId: ref.read(userNotifierProvider)!.uid,
         );
   }
 }

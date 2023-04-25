@@ -326,6 +326,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
       quantity: 1,
       imageUrl: product.imageUrls.first,
       price: product.price!,
+      productDescription: product.description!,
       name: product.name,
     );
     return Padding(

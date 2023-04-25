@@ -17,4 +17,6 @@ class RouteConstants {
   static const String addressListScreenRoute = '/address-list';
   static const String addAddressScreenRoute = '/add-address';
   static const String checkoutScreenRoute = '/checkout';
+  static const String orderListScreenRoute = '/order-list';
+  static const String trackOrderScreenRoute = '/track-order';
 }

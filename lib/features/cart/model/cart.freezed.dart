@@ -24,6 +24,7 @@ mixin _$Cart {
   int get quantity => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
+  String get productDescription => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,13 @@ abstract class $CartCopyWith<$Res> {
   factory $CartCopyWith(Cart value, $Res Function(Cart) then) =
       _$CartCopyWithImpl<$Res, Cart>;
   @useResult
-  $Res call({String id, int quantity, String imageUrl, int price, String name});
+  $Res call(
+      {String id,
+      int quantity,
+      String imageUrl,
+      int price,
+      String productDescription,
+      String name});
 }
 
 /// @nodoc
@@ -56,6 +63,7 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
     Object? quantity = null,
     Object? imageUrl = null,
     Object? price = null,
+    Object? productDescription = null,
     Object? name = null,
   }) {
     return _then(_value.copyWith(
@@ -75,6 +83,10 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      productDescription: null == productDescription
+          ? _value.productDescription
+          : productDescription // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -89,7 +101,13 @@ abstract class _$$_CartCopyWith<$Res> implements $CartCopyWith<$Res> {
       __$$_CartCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, int quantity, String imageUrl, int price, String name});
+  $Res call(
+      {String id,
+      int quantity,
+      String imageUrl,
+      int price,
+      String productDescription,
+      String name});
 }
 
 /// @nodoc
@@ -105,6 +123,7 @@ class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
     Object? quantity = null,
     Object? imageUrl = null,
     Object? price = null,
+    Object? productDescription = null,
     Object? name = null,
   }) {
     return _then(_$_Cart(
@@ -124,6 +143,10 @@ class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      productDescription: null == productDescription
+          ? _value.productDescription
+          : productDescription // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -140,6 +163,7 @@ class _$_Cart extends _Cart {
       required this.quantity,
       required this.imageUrl,
       required this.price,
+      required this.productDescription,
       required this.name})
       : super._();
 
@@ -154,11 +178,13 @@ class _$_Cart extends _Cart {
   @override
   final int price;
   @override
+  final String productDescription;
+  @override
   final String name;
 
   @override
   String toString() {
-    return 'Cart(id: $id, quantity: $quantity, imageUrl: $imageUrl, price: $price, name: $name)';
+    return 'Cart(id: $id, quantity: $quantity, imageUrl: $imageUrl, price: $price, productDescription: $productDescription, name: $name)';
   }
 
   @override
@@ -172,13 +198,15 @@ class _$_Cart extends _Cart {
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.price, price) || other.price == price) &&
+            (identical(other.productDescription, productDescription) ||
+                other.productDescription == productDescription) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, quantity, imageUrl, price, name);
+  int get hashCode => Object.hash(
+      runtimeType, id, quantity, imageUrl, price, productDescription, name);
 
   @JsonKey(ignore: true)
   @override
@@ -200,6 +228,7 @@ abstract class _Cart extends Cart {
       required final int quantity,
       required final String imageUrl,
       required final int price,
+      required final String productDescription,
       required final String name}) = _$_Cart;
   const _Cart._() : super._();
 
@@ -213,6 +242,8 @@ abstract class _Cart extends Cart {
   String get imageUrl;
   @override
   int get price;
+  @override
+  String get productDescription;
   @override
   String get name;
   @override

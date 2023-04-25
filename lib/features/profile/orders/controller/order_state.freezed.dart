@@ -19,21 +19,21 @@ mixin _$OrderState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<ProductOrder> orders) success,
     required TResult Function(String error) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(List<ProductOrder> orders)? success,
     TResult? Function(String error)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<ProductOrder> orders)? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) =>
@@ -119,7 +119,7 @@ class _$OrderStateLoading implements OrderStateLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<ProductOrder> orders) success,
     required TResult Function(String error) failure,
   }) {
     return loading();
@@ -129,7 +129,7 @@ class _$OrderStateLoading implements OrderStateLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(List<ProductOrder> orders)? success,
     TResult? Function(String error)? failure,
   }) {
     return loading?.call();
@@ -139,7 +139,7 @@ class _$OrderStateLoading implements OrderStateLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<ProductOrder> orders)? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
@@ -193,6 +193,8 @@ abstract class _$$OrderStateSuccessCopyWith<$Res> {
   factory _$$OrderStateSuccessCopyWith(
           _$OrderStateSuccess value, $Res Function(_$OrderStateSuccess) then) =
       __$$OrderStateSuccessCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ProductOrder> orders});
 }
 
 /// @nodoc
@@ -202,57 +204,88 @@ class __$$OrderStateSuccessCopyWithImpl<$Res>
   __$$OrderStateSuccessCopyWithImpl(
       _$OrderStateSuccess _value, $Res Function(_$OrderStateSuccess) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orders = null,
+  }) {
+    return _then(_$OrderStateSuccess(
+      orders: null == orders
+          ? _value._orders
+          : orders // ignore: cast_nullable_to_non_nullable
+              as List<ProductOrder>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$OrderStateSuccess implements OrderStateSuccess {
-  const _$OrderStateSuccess();
+  const _$OrderStateSuccess({required final List<ProductOrder> orders})
+      : _orders = orders;
+
+  final List<ProductOrder> _orders;
+  @override
+  List<ProductOrder> get orders {
+    if (_orders is EqualUnmodifiableListView) return _orders;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_orders);
+  }
 
   @override
   String toString() {
-    return 'OrderState.success()';
+    return 'OrderState.success(orders: $orders)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OrderStateSuccess);
+        (other.runtimeType == runtimeType &&
+            other is _$OrderStateSuccess &&
+            const DeepCollectionEquality().equals(other._orders, _orders));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OrderStateSuccessCopyWith<_$OrderStateSuccess> get copyWith =>
+      __$$OrderStateSuccessCopyWithImpl<_$OrderStateSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<ProductOrder> orders) success,
     required TResult Function(String error) failure,
   }) {
-    return success();
+    return success(orders);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(List<ProductOrder> orders)? success,
     TResult? Function(String error)? failure,
   }) {
-    return success?.call();
+    return success?.call(orders);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<ProductOrder> orders)? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(orders);
     }
     return orElse();
   }
@@ -293,7 +326,13 @@ class _$OrderStateSuccess implements OrderStateSuccess {
 }
 
 abstract class OrderStateSuccess implements OrderState {
-  const factory OrderStateSuccess() = _$OrderStateSuccess;
+  const factory OrderStateSuccess({required final List<ProductOrder> orders}) =
+      _$OrderStateSuccess;
+
+  List<ProductOrder> get orders;
+  @JsonKey(ignore: true)
+  _$$OrderStateSuccessCopyWith<_$OrderStateSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -361,7 +400,7 @@ class _$OrderStateFailure implements OrderStateFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<ProductOrder> orders) success,
     required TResult Function(String error) failure,
   }) {
     return failure(error);
@@ -371,7 +410,7 @@ class _$OrderStateFailure implements OrderStateFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(List<ProductOrder> orders)? success,
     TResult? Function(String error)? failure,
   }) {
     return failure?.call(error);
@@ -381,7 +420,7 @@ class _$OrderStateFailure implements OrderStateFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<ProductOrder> orders)? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
