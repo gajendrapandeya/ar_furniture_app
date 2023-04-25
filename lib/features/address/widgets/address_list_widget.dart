@@ -58,7 +58,7 @@ class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
   }
 
   Widget _buildAddressListItem(Address address) {
-    ///TODO: Handle Edit Address
+    ///TODO: Handle Edit/Delete Address
     return Material(
       shadowColor: Colors.grey.shade100,
       color: Colors.white,

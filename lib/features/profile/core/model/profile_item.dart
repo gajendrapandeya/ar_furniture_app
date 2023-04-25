@@ -14,7 +14,6 @@ class ProfileItem {
 final List<ProfileItem> profileItems = [
   ProfileItem(title: 'My Orders', iconData: MdiIcons.gift),
   ProfileItem(title: 'Address Book', iconData: CupertinoIcons.placemark_fill),
-  ProfileItem(title: 'Track Orders', iconData: MdiIcons.archiveSearch),
   ProfileItem(title: 'Change Password', iconData: MdiIcons.key),
   ProfileItem(title: 'Saved Card', iconData: MdiIcons.cardAccountDetails),
 ];

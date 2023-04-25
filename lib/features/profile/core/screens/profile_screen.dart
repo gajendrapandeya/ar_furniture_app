@@ -103,5 +103,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         RouteConstants.orderListScreenRoute,
       );
     }
+
+    if (itemName == 'Saved Card') {
+      Navigator.of(context).pushNamed(RouteConstants.savedCardsScreenRoute);
+    }
   }
 }
