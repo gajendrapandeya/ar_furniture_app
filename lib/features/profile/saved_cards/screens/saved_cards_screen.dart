@@ -2,6 +2,7 @@ import 'package:ar_furniture_app/core/providers/user_provider.dart';
 import 'package:ar_furniture_app/core/widgets/custom_app_bar.dart';
 import 'package:ar_furniture_app/core/widgets/generic_error_widget.dart';
 import 'package:ar_furniture_app/core/widgets/loading_widget.dart';
+import 'package:ar_furniture_app/core/widgets/no_data_widget.dart';
 import 'package:ar_furniture_app/features/profile/saved_cards/controller/card_controller.dart';
 import 'package:ar_furniture_app/features/profile/saved_cards/model/cart_detail.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,12 @@ class _SavedCardsScreenState extends ConsumerState<SavedCardsScreen> {
   }
 
   Widget _buildSavedCards(List<CardDetail> savedCards) {
+    if (savedCards.isEmpty) {
+      return const NoDataWidget(
+        title: 'You haven\'t saved any cards',
+        subTitle: 'Please save some cards first.',
+      );
+    }
     return ListView.builder(
         itemBuilder: ((context, index) => _buildListItem(savedCards[index])),
         itemCount: savedCards.length);
