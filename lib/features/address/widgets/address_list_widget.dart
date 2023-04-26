@@ -58,7 +58,7 @@ class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
   }
 
   Widget _buildAddressListItem(Address address) {
-    ///TODO: Handle Edit Address
+    ///TODO: Handle Edit/Delete Address
     return Material(
       shadowColor: Colors.grey.shade100,
       color: Colors.white,
@@ -69,11 +69,14 @@ class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
           vertical: 16,
         ),
         decoration: BoxDecoration(
-            border: Border.all(
-          color:
-              address.isSelected ? LightColor.platianGreen : Colors.transparent,
-          width: 0.8,
-        )),
+          border: Border.all(
+            color: address.isSelected
+                ? LightColor.platianGreen
+                : Colors.transparent,
+            width: 0.8,
+          ),
+          borderRadius: BorderRadius.circular(4),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -121,6 +124,4 @@ class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
       ),
     );
   }
-
-  onItemTapped(String id) {}
 }

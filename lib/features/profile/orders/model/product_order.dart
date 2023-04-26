@@ -1,5 +1,6 @@
 import 'package:ar_furniture_app/features/address/model/address.dart';
 import 'package:ar_furniture_app/features/cart/model/cart.dart';
+import 'package:ar_furniture_app/features/profile/track_order/model/order_tracking.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'product_order.freezed.dart';
@@ -10,6 +11,8 @@ enum OrderStatus {
   ordered,
   @JsonValue('inProcess')
   inProcess,
+  @JsonValue('inTransit')
+  inTransit,
   @JsonValue('delivered')
   delivered,
   @JsonValue('cancelled')
@@ -25,6 +28,7 @@ enum ProductPaymentMethod {
 
 @freezed
 class ProductOrder with _$ProductOrder {
+  const ProductOrder._();
   const factory ProductOrder({
     required String orderId,
     required String userId,
@@ -33,6 +37,7 @@ class ProductOrder with _$ProductOrder {
     required Address userAddress,
     required String? paymentId,
     required DateTime createdAt,
+    required List<OrderTracking> trackings,
     required DateTime updatedAt,
     required OrderStatus orderStatus,
     required ProductPaymentMethod paymentMethod,
@@ -40,4 +45,6 @@ class ProductOrder with _$ProductOrder {
 
   factory ProductOrder.fromJson(Map<String, dynamic> json) =>
       _$ProductOrderFromJson(json);
+
+  String get formattedOrderId => '#$orderId';
 }

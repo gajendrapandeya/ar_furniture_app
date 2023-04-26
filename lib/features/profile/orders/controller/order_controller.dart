@@ -22,7 +22,23 @@ class OrderNotifier extends StateNotifier<OrderState> {
       await _orderService.createOrder(
         order: order,
       );
-      state = const OrderState.success();
+      state = const OrderState.success(orders: []);
+    } catch (error) {
+      state = OrderState.failure(error: error.toString());
+    }
+  }
+
+  Future<void> fetchOrder({
+    required String orderStatus,
+    required String userId,
+  }) async {
+    try {
+      state = const OrderState.loading();
+      final orders = await _orderService.fetchOrders(
+        userId: userId,
+        orderStatus: orderStatus,
+      );
+      state = OrderState.success(orders: orders);
     } catch (error) {
       state = OrderState.failure(error: error.toString());
     }

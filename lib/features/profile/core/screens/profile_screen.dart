@@ -98,5 +98,14 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         RouteConstants.addressListScreenRoute,
       );
     }
+    if (itemName == 'My Orders') {
+      Navigator.of(context).pushNamed(
+        RouteConstants.orderListScreenRoute,
+      );
+    }
+
+    if (itemName == 'Saved Card') {
+      Navigator.of(context).pushNamed(RouteConstants.savedCardsScreenRoute);
+    }
   }
 }

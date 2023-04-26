@@ -12,6 +12,7 @@ class Cart with _$Cart {
     required int quantity,
     required String imageUrl,
     required int price,
+    required String productDescription,
     required String name,
   }) = _Cart;
 

@@ -12,9 +12,11 @@ class CustomOutlinedButton extends ConsumerWidget {
     this.isFilled = false,
     this.textSize = 14.0,
     this.borderColor,
+    this.buttonTextColor = Colors.black,
   }) : super(key: key);
   final Function onBtnPressed;
   final String buttonText;
+  final Color buttonTextColor;
   final double textSize;
   final bool isWideBorder;
   final bool isLoading;
@@ -52,9 +54,7 @@ class CustomOutlinedButton extends ConsumerWidget {
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: textSize,
-                  color: isFilled
-                      ? Colors.white
-                      : Theme.of(context).colorScheme.secondary,
+                  color: isFilled ? Colors.white : buttonTextColor,
                 ),
           ),
           HorizontalSpacer.xs,

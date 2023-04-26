@@ -17,6 +17,9 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
           Address.fromJson(json['userAddress'] as Map<String, dynamic>),
       paymentId: json['paymentId'] as String?,
       createdAt: DateTime.parse(json['createdAt'] as String),
+      trackings: (json['trackings'] as List<dynamic>)
+          .map((e) => OrderTracking.fromJson(e as Map<String, dynamic>))
+          .toList(),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
       orderStatus: $enumDecode(_$OrderStatusEnumMap, json['orderStatus']),
       paymentMethod:
@@ -31,6 +34,7 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'userAddress': instance.userAddress.toJson(),
       'paymentId': instance.paymentId,
       'createdAt': instance.createdAt.toIso8601String(),
+      'trackings': instance.trackings.map((e) => e.toJson()).toList(),
       'updatedAt': instance.updatedAt.toIso8601String(),
       'orderStatus': _$OrderStatusEnumMap[instance.orderStatus]!,
       'paymentMethod': _$ProductPaymentMethodEnumMap[instance.paymentMethod]!,
@@ -39,6 +43,7 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
 const _$OrderStatusEnumMap = {
   OrderStatus.ordered: 'ordered',
   OrderStatus.inProcess: 'inProcess',
+  OrderStatus.inTransit: 'inTransit',
   OrderStatus.delivered: 'delivered',
   OrderStatus.cancelled: 'cancelled',
 };

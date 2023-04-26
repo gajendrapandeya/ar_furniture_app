@@ -1,4 +1,5 @@
 import 'package:ar_furniture_app/core/constants/route_constants.dart';
+import 'package:ar_furniture_app/core/widgets/custom_app_bar.dart';
 import 'package:ar_furniture_app/core/widgets/generic_error_widget.dart';
 import 'package:ar_furniture_app/core/widgets/loading_widget.dart';
 import 'package:ar_furniture_app/features/category/controller/category_controller.dart';
@@ -6,7 +7,6 @@ import 'package:ar_furniture_app/features/category/model/category.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CategoryScreen extends ConsumerWidget {
   const CategoryScreen({super.key});
@@ -14,22 +14,7 @@ class CategoryScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(
-            MdiIcons.chevronLeft,
-          ),
-        ),
-        title: Text(
-          'Category',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-      ),
+      appBar: const CustomAppbar(title: 'Category'),
       body: ref.watch(categoryProvider).when(
             initial: () => const LoadingWidget(),
             loading: () => const LoadingWidget(),

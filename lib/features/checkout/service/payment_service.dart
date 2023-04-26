@@ -30,7 +30,6 @@ class PaymentService with ErrorMixin {
         },
         body: body,
       );
-      debugPrint('response: ${response.body}');
       return json.decode(response.body);
     } catch (e) {
       debugPrint('paymentError: $e');

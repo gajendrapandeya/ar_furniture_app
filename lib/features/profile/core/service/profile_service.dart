@@ -6,6 +6,7 @@ import 'package:ar_furniture_app/core/providers/firebase_providers.dart';
 import 'package:ar_furniture_app/core/utils/error_mixin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final profileServiceProvider = Provider<ProfileService>((ref) => ProfileService(
@@ -30,8 +31,10 @@ class ProfileService with ErrorMixin {
     required String userId,
   }) async {
     try {
+      debugPrint('file: $file');
       final ref = _firebaseStorage.ref();
       final imageName = file.path.split('/').last;
+      debugPrint('imageName: $imageName');
       final imagesRef = ref.child('images/users/$imageName');
       await imagesRef.putFile(file);
       final downloadImageUrl = await imagesRef.getDownloadURL();

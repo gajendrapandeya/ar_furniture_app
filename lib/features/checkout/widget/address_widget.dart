@@ -7,7 +7,7 @@ import 'package:ar_furniture_app/features/address/controller/address_list/addres
 import 'package:ar_furniture_app/features/address/model/address.dart';
 import 'package:ar_furniture_app/features/checkout/widget/add_address_button.dart';
 import 'package:ar_furniture_app/features/checkout/widget/address_item.dart';
-import 'package:easy_stepper/easy_stepper.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AddressWidget extends ConsumerStatefulWidget {

@@ -1,10 +1,10 @@
 import 'package:ar_furniture_app/core/constants/asset_constants.dart';
+import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
-import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
 import 'package:ar_furniture_app/core/widgets/custom_outlined_button.dart';
 import 'package:ar_furniture_app/core/widgets/image_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
-import 'package:easy_stepper/easy_stepper.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class OrderPlacedWidget extends ConsumerWidget {
@@ -20,9 +20,10 @@ class OrderPlacedWidget extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           VerticalSpacer.exl,
-          const Align(
-            alignment: Alignment.center,
-            child: ImageWidget(
+          Padding(
+            padding:
+                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.12),
+            child: const ImageWidget(
               url: AssetConstants.orderComplete,
               isSvg: true,
               imageWidth: 400,
@@ -45,21 +46,16 @@ class OrderPlacedWidget extends ConsumerWidget {
                 ),
           ),
           const Spacer(),
-          Row(
-            children: [
-              Expanded(
-                  child: CustomOutlinedButton(
-                onBtnPressed: () {},
-                buttonText: 'Continue Shopping',
-                textSize: 12,
-                borderColor: LightColor.platianGreen,
-              )),
-              HorizontalSpacer.l,
-              Expanded(
-                child: CustomElevatedButton(
-                    onButtonPressed: () {}, buttonText: 'Track Order'),
-              )
-            ],
+          CustomOutlinedButton(
+            onBtnPressed: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                RouteConstants.homeRoute,
+                (value) => true,
+              );
+            },
+            buttonText: 'Continue Shopping',
+            textSize: 12,
+            borderColor: LightColor.platianGreen,
           ),
           VerticalSpacer.exl,
         ],
