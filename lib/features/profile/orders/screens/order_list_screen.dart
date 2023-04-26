@@ -55,6 +55,11 @@ class _OrderListScreenState extends ConsumerState<OrderListScreen>
             );
       } else if (_tabController.index == 2) {
         ref.read(orderProvider.notifier).fetchOrder(
+              orderStatus: OrderStatus.inTransit.name,
+              userId: userId,
+            );
+      } else if (_tabController.index == 3) {
+        ref.read(orderProvider.notifier).fetchOrder(
               orderStatus: OrderStatus.delivered.name,
               userId: userId,
             );
@@ -100,6 +105,9 @@ class _OrderListScreenState extends ConsumerState<OrderListScreen>
               ),
               Tab(
                 text: 'In Process',
+              ),
+              Tab(
+                text: 'In Transit',
               ),
               Tab(
                 text: 'Delivered',

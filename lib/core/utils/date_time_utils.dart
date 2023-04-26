@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 extension DateTimeUtils on DateTime {
   String timeAgo({bool numericDates = true}) {
     final date2 = DateTime.now();
@@ -22,5 +24,10 @@ extension DateTimeUtils on DateTime {
     } else {
       return 'Just now';
     }
+  }
+
+  String getFormattedDate() {
+    DateFormat dateFormat = DateFormat('dd.MM.yyyy - HH:mm');
+    return dateFormat.format(this);
   }
 }

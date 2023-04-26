@@ -8,6 +8,7 @@ import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/profile/orders/model/product_order.dart';
 import 'package:ar_furniture_app/features/profile/orders/widgets/delivery_address_widget.dart';
 import 'package:ar_furniture_app/features/profile/track_order/widgets/order_progress_widget.dart';
+import 'package:ar_furniture_app/features/profile/track_order/widgets/time_line_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,15 +26,14 @@ class TrackOrderScreen extends ConsumerWidget {
       appBar: const CustomAppbar(
         title: 'Track Orders',
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 16,
-          ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: EdgeInsets.only(
@@ -67,7 +67,7 @@ class TrackOrderScreen extends ConsumerWidget {
               ),
               VerticalSpacer.xxl,
               Material(
-                elevation: 4,
+                elevation: 2,
                 color: Colors.transparent,
                 child: Container(
                   padding: const EdgeInsets.symmetric(
@@ -75,12 +75,16 @@ class TrackOrderScreen extends ConsumerWidget {
                     vertical: 12,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.grey.shade50,
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: DeliveryAddressWidget(userAddress: order.userAddress),
                 ),
               ),
+              VerticalSpacer.xxl,
+              TimelineWidget(
+                trackings: order.trackings,
+              )
             ],
           ),
         ),
@@ -90,7 +94,7 @@ class TrackOrderScreen extends ConsumerWidget {
 
   Material _buildOrderIdWidget(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: Colors.grey.shade50,
       elevation: 2,
       borderRadius: BorderRadius.circular(4),
       child: Container(

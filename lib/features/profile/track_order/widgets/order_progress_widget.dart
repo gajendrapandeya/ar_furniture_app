@@ -38,6 +38,8 @@ class OrderProgressWidget extends StatelessWidget {
         return screenWidth * 0.25;
       case OrderStatus.inProcess:
         return screenWidth * 0.5;
+      case OrderStatus.inTransit:
+        return screenWidth * 0.75;
       case OrderStatus.delivered:
         return screenWidth;
       case OrderStatus.cancelled:

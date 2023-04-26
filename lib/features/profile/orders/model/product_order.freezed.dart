@@ -27,6 +27,7 @@ mixin _$ProductOrder {
   Address get userAddress => throw _privateConstructorUsedError;
   String? get paymentId => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
+  List<OrderTracking> get trackings => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   OrderStatus get orderStatus => throw _privateConstructorUsedError;
   ProductPaymentMethod get paymentMethod => throw _privateConstructorUsedError;
@@ -51,6 +52,7 @@ abstract class $ProductOrderCopyWith<$Res> {
       Address userAddress,
       String? paymentId,
       DateTime createdAt,
+      List<OrderTracking> trackings,
       DateTime updatedAt,
       OrderStatus orderStatus,
       ProductPaymentMethod paymentMethod});
@@ -78,6 +80,7 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
     Object? userAddress = null,
     Object? paymentId = freezed,
     Object? createdAt = null,
+    Object? trackings = null,
     Object? updatedAt = null,
     Object? orderStatus = null,
     Object? paymentMethod = null,
@@ -111,6 +114,10 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      trackings: null == trackings
+          ? _value.trackings
+          : trackings // ignore: cast_nullable_to_non_nullable
+              as List<OrderTracking>,
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -149,6 +156,7 @@ abstract class _$$_OrderCopyWith<$Res> implements $ProductOrderCopyWith<$Res> {
       Address userAddress,
       String? paymentId,
       DateTime createdAt,
+      List<OrderTracking> trackings,
       DateTime updatedAt,
       OrderStatus orderStatus,
       ProductPaymentMethod paymentMethod});
@@ -174,6 +182,7 @@ class __$$_OrderCopyWithImpl<$Res>
     Object? userAddress = null,
     Object? paymentId = freezed,
     Object? createdAt = null,
+    Object? trackings = null,
     Object? updatedAt = null,
     Object? orderStatus = null,
     Object? paymentMethod = null,
@@ -207,6 +216,10 @@ class __$$_OrderCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      trackings: null == trackings
+          ? _value._trackings
+          : trackings // ignore: cast_nullable_to_non_nullable
+              as List<OrderTracking>,
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -234,10 +247,12 @@ class _$_Order extends _Order {
       required this.userAddress,
       required this.paymentId,
       required this.createdAt,
+      required final List<OrderTracking> trackings,
       required this.updatedAt,
       required this.orderStatus,
       required this.paymentMethod})
       : _product = product,
+        _trackings = trackings,
         super._();
 
   factory _$_Order.fromJson(Map<String, dynamic> json) =>
@@ -263,6 +278,14 @@ class _$_Order extends _Order {
   final String? paymentId;
   @override
   final DateTime createdAt;
+  final List<OrderTracking> _trackings;
+  @override
+  List<OrderTracking> get trackings {
+    if (_trackings is EqualUnmodifiableListView) return _trackings;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_trackings);
+  }
+
   @override
   final DateTime updatedAt;
   @override
@@ -272,7 +295,7 @@ class _$_Order extends _Order {
 
   @override
   String toString() {
-    return 'ProductOrder(orderId: $orderId, userId: $userId, product: $product, totalAmount: $totalAmount, userAddress: $userAddress, paymentId: $paymentId, createdAt: $createdAt, updatedAt: $updatedAt, orderStatus: $orderStatus, paymentMethod: $paymentMethod)';
+    return 'ProductOrder(orderId: $orderId, userId: $userId, product: $product, totalAmount: $totalAmount, userAddress: $userAddress, paymentId: $paymentId, createdAt: $createdAt, trackings: $trackings, updatedAt: $updatedAt, orderStatus: $orderStatus, paymentMethod: $paymentMethod)';
   }
 
   @override
@@ -291,6 +314,8 @@ class _$_Order extends _Order {
                 other.paymentId == paymentId) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
+            const DeepCollectionEquality()
+                .equals(other._trackings, _trackings) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             (identical(other.orderStatus, orderStatus) ||
@@ -310,6 +335,7 @@ class _$_Order extends _Order {
       userAddress,
       paymentId,
       createdAt,
+      const DeepCollectionEquality().hash(_trackings),
       updatedAt,
       orderStatus,
       paymentMethod);
@@ -337,6 +363,7 @@ abstract class _Order extends ProductOrder {
       required final Address userAddress,
       required final String? paymentId,
       required final DateTime createdAt,
+      required final List<OrderTracking> trackings,
       required final DateTime updatedAt,
       required final OrderStatus orderStatus,
       required final ProductPaymentMethod paymentMethod}) = _$_Order;
@@ -358,6 +385,8 @@ abstract class _Order extends ProductOrder {
   String? get paymentId;
   @override
   DateTime get createdAt;
+  @override
+  List<OrderTracking> get trackings;
   @override
   DateTime get updatedAt;
   @override

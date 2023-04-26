@@ -5,6 +5,7 @@ import 'package:ar_furniture_app/core/widgets/loading_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/cart/model/cart.dart';
 import 'package:ar_furniture_app/features/profile/orders/model/product_order.dart';
+import 'package:ar_furniture_app/features/profile/track_order/model/order_tracking.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -55,7 +56,28 @@ class OrderListItem extends StatelessWidget {
                         onBtnPressed: () {
                           Navigator.of(context).pushNamed(
                             RouteConstants.trackOrderScreenRoute,
-                            arguments: order,
+                            arguments: order.copyWith(
+                              trackings: [
+                                OrderTracking(
+                                  orderStatus: OrderStatus.ordered,
+                                  updatedAt: order.updatedAt.subtract(
+                                    const Duration(days: 2),
+                                  ),
+                                ),
+                                OrderTracking(
+                                  orderStatus: OrderStatus.inProcess,
+                                  updatedAt: order.updatedAt.subtract(
+                                    const Duration(days: 1),
+                                  ),
+                                ),
+                                OrderTracking(
+                                  orderStatus: OrderStatus.inTransit,
+                                  updatedAt: order.updatedAt.subtract(
+                                    const Duration(hours: 16),
+                                  ),
+                                ),
+                              ],
+                            ),
                           );
                         },
                         buttonText: 'Track Order',

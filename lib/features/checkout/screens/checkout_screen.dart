@@ -16,6 +16,7 @@ import 'package:ar_furniture_app/features/profile/orders/controller/order_contro
 import 'package:ar_furniture_app/features/profile/orders/controller/order_state.dart';
 import 'package:ar_furniture_app/features/profile/orders/model/product_order.dart';
 import 'package:ar_furniture_app/features/profile/saved_cards/controller/card_controller.dart';
+import 'package:ar_furniture_app/features/profile/track_order/model/order_tracking.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
@@ -128,6 +129,12 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
             createdAt: DateTime.now(),
             updatedAt: DateTime.now(),
             orderStatus: OrderStatus.ordered,
+            trackings: [
+              OrderTracking(
+                orderStatus: OrderStatus.ordered,
+                updatedAt: DateTime.now(),
+              )
+            ],
             paymentMethod: checkoutProvider.paymentMethod,
           ),
         );
