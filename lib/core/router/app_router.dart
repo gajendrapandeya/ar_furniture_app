@@ -24,6 +24,7 @@ import 'package:ar_furniture_app/features/profile/orders/screens/order_list_scre
 import 'package:ar_furniture_app/features/profile/saved_cards/screens/saved_cards_screen.dart';
 import 'package:ar_furniture_app/features/profile/track_order/screen/track_order_screen.dart';
 import 'package:ar_furniture_app/features/profile/update_profile/screens/update_profile_screen.dart';
+import 'package:ar_furniture_app/features/search/screen/search_screen.dart';
 import 'package:ar_furniture_app/features/wishlist/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -92,6 +93,10 @@ class AppRouter {
       case RouteConstants.savedCardsScreenRoute:
         return MaterialPageRoute(
           builder: (_) => const SavedCardsScreen(),
+        );
+      case RouteConstants.searchScreenRoute:
+        return MaterialPageRoute(
+          builder: (_) => const SearchScreen(),
         );
       case RouteConstants.orderDetailScreenRoute:
         return MaterialPageRoute(
