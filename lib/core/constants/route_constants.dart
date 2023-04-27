@@ -21,4 +21,5 @@ class RouteConstants {
   static const String trackOrderScreenRoute = '/track-order';
   static const String orderDetailScreenRoute = '/order-detail';
   static const String savedCardsScreenRoute = '/saved-cards';
+  static const String searchScreenRoute = '/search';
 }

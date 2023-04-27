@@ -1,3 +1,4 @@
+import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,8 @@ class ProductListAppBar extends StatelessWidget with PreferredSizeWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => Navigator.of(context)
+                .pushNamed(RouteConstants.searchScreenRoute),
             icon: const Icon(
               CupertinoIcons.search,
               size: 26,

@@ -4,6 +4,7 @@ import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/themes/app_colors.dart';
 import 'package:ar_furniture_app/core/widgets/custom_app_bar.dart';
 import 'package:ar_furniture_app/core/widgets/custom_outlined_button.dart';
+import 'package:ar_furniture_app/core/widgets/custom_rating_widget.dart';
 import 'package:ar_furniture_app/core/widgets/loading_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/cart/model/cart.dart';
@@ -12,7 +13,6 @@ import 'package:ar_furniture_app/features/profile/orders/widgets/delivery_addres
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class OrderDetailScreen extends StatelessWidget {
@@ -143,19 +143,9 @@ class OrderDetailScreen extends StatelessWidget {
                     ),
               ),
               HorizontalSpacer.l,
-              Expanded(
-                child: RatingBar.builder(
+              const Expanded(
+                child: CustomRatingWidget(
                   initialRating: 4,
-                  minRating: 1,
-                  ignoreGestures: true,
-                  direction: Axis.horizontal,
-                  itemCount: 5,
-                  itemSize: 20,
-                  itemBuilder: (context, _) => const Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                  ),
-                  onRatingUpdate: (rating) {},
                 ),
               ),
               HorizontalSpacer.l,
