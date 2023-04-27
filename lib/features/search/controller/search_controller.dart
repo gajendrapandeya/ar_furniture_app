@@ -16,11 +16,16 @@ class SearchNotifier extends StateNotifier<SearchState> {
         super(const SearchState.initial());
   final SearchService _searchService;
 
-  Future<void> searchProduct({required String searchQuery}) async {
+  Future<void> searchProduct({
+    required String searchQuery,
+    String? filterType,
+  }) async {
     try {
       state = const SearchState.loading();
-      final result =
-          await _searchService.searchProduct(searchQuery: searchQuery);
+      final result = await _searchService.searchProducts(
+        searchQuery: searchQuery,
+        filterType: filterType,
+      );
       debugPrint('resutl: $result');
       state = SearchStateSuccess(products: result);
     } catch (error) {

@@ -15,11 +15,13 @@ class SearchBar extends ConsumerStatefulWidget {
     required this.hintText,
     required this.onFieldChanged,
     this.searchBackgroundColor = Colors.white,
+    required this.onClearClicked,
   }) : super(key: key);
 
   final String hintText;
   final Function(String) onFieldChanged;
   final Color searchBackgroundColor;
+  final VoidCallback onClearClicked;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _SearchBarState();
@@ -67,6 +69,7 @@ class _SearchBarState extends ConsumerState<SearchBar> {
               setState(() {
                 _searchController.text = '';
               });
+              widget.onClearClicked();
             } else {
               context.showErrorSnackBar(message: 'Please enter a search term');
             }

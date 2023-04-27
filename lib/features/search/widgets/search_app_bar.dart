@@ -8,10 +8,12 @@ class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
     super.key,
     required this.onChanged,
     required this.onFilterClicked,
+    required this.onClearClicked,
   });
 
   final Function(String) onChanged;
   final VoidCallback onFilterClicked;
+  final VoidCallback onClearClicked;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,28 @@ class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
           horizontal: 12,
         ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            IconButton(
+              style: IconButton.styleFrom(
+                padding: EdgeInsets.zero,
+              ),
+              onPressed: () => Navigator.of(context).pop(),
+              icon: const Icon(
+                MdiIcons.chevronLeftCircle,
+                color: Colors.black,
+                size: 26,
+              ),
+            ),
+            HorizontalSpacer.l,
+            Expanded(
+              child: SearchBar(
+                hintText: 'Search for a product',
+                onFieldChanged: (userInput) => onChanged(userInput),
+                searchBackgroundColor: Colors.grey.shade100,
+                onClearClicked: () => onClearClicked(),
+              ),
+            ),
             IconButton(
               style: IconButton.styleFrom(
                 backgroundColor: Colors.black,
@@ -32,14 +55,6 @@ class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
               icon: const Icon(
                 MdiIcons.filterVariant,
                 color: Colors.white,
-              ),
-            ),
-            HorizontalSpacer.l,
-            Expanded(
-              child: SearchBar(
-                hintText: 'Search for a product',
-                onFieldChanged: (userInput) => onChanged(userInput),
-                searchBackgroundColor: Colors.grey.shade100,
               ),
             )
           ],
