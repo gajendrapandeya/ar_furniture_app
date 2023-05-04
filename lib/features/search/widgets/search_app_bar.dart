@@ -21,6 +21,7 @@ class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 12,
+          vertical: 4,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
