@@ -1,10 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final arRecommendedProvider = StateNotifierProvider.family
-    .autoDispose<ArRecommendedNotifier, ArRecommendedModel, String>(
-        (ref, imageUrl) {
-  return ArRecommendedNotifier(imageUrl: imageUrl);
+final arRecommendedProvider = StateNotifierProvider.autoDispose<
+    ArRecommendedNotifier, ArRecommendedModel>((ref) {
+  return ArRecommendedNotifier();
 });
 
 class ArRecommendedModel {
@@ -15,6 +14,9 @@ class ArRecommendedModel {
     required this.imageUrl,
     required this.selectedIndex,
   });
+
+  factory ArRecommendedModel.initial() =>
+      ArRecommendedModel(imageUrl: '', selectedIndex: 0);
 
   ArRecommendedModel copyWith({
     String? imageUrl,
@@ -28,13 +30,10 @@ class ArRecommendedModel {
 }
 
 class ArRecommendedNotifier extends StateNotifier<ArRecommendedModel> {
-  ArRecommendedNotifier({
-    required this.imageUrl,
-  }) : super(
-          ArRecommendedModel(imageUrl: imageUrl, selectedIndex: 0),
+  ArRecommendedNotifier()
+      : super(
+          ArRecommendedModel.initial(),
         );
-
-  final String imageUrl;
 
   void setImageUrl({required String imageUrl}) {
     state = state.copyWith(imageUrl: imageUrl);

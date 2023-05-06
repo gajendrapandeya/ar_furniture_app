@@ -13,7 +13,6 @@ class TimelineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('widgetTrackings: ${trackings.length}');
     return ListView.builder(
       itemCount: trackings.length,
       physics: const NeverScrollableScrollPhysics(),

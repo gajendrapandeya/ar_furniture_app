@@ -24,7 +24,6 @@ class ArViewScreen extends ConsumerStatefulWidget {
 
 class _ArViewScreenState extends ConsumerState<ArViewScreen> {
   late ArCoreController arCoreController;
-  late String _removedBgUrl;
 
   @override
   void initState() {
@@ -52,7 +51,13 @@ class _ArViewScreenState extends ConsumerState<ArViewScreen> {
       body: ref.watch(imageProvider).when(
             loading: () => const LoadingWidget(),
             success: (imageUrl) {
-              _removedBgUrl = imageUrl;
+              WidgetsBinding.instance.addPostFrameCallback(
+                (_) {
+                  ref
+                      .read(arRecommendedProvider.notifier)
+                      .setImageUrl(imageUrl: imageUrl);
+                },
+              );
               return Stack(
                 children: [
                   Positioned.fill(
@@ -92,7 +97,7 @@ class _ArViewScreenState extends ConsumerState<ArViewScreen> {
     final plane = hits.first;
 
     final file = await GenericUtils.urlToFile(
-      _removedBgUrl,
+      ref.watch(arRecommendedProvider).imageUrl,
     );
     final bytes = file.readAsBytesSync();
 
@@ -134,16 +139,11 @@ class _ArViewScreenState extends ConsumerState<ArViewScreen> {
   Widget _buildRecommendedItem(
       List<Product> addedRecommendedProducts, int index) {
     final recommendedItemUrl = addedRecommendedProducts[index].imageUrls.first;
-    final arRecommenderProvider =
-        ref.watch(arRecommendedProvider(_removedBgUrl));
+    final arRecommenderProvider = ref.watch(arRecommendedProvider);
     return InkWell(
       onTap: () {
-        ref
-            .read(arRecommendedProvider(recommendedItemUrl).notifier)
-            .setIndex(index: index);
-        ref
-            .read(arRecommendedProvider(recommendedItemUrl).notifier)
-            .setImageUrl(imageUrl: _removedBgUrl);
+        ref.read(arRecommendedProvider.notifier).setIndex(index: index);
+
         ref.read(imageProvider.notifier).getImageUrl(
               imageUrl: recommendedItemUrl,
               apiKey: dotenv.env['REMOVE_BG_API_KEY']!,
