@@ -21,7 +21,7 @@ OrderTracking _$OrderTrackingFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OrderTracking {
   OrderStatus get orderStatus => throw _privateConstructorUsedError;
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  String get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $OrderTrackingCopyWith<$Res> {
           OrderTracking value, $Res Function(OrderTracking) then) =
       _$OrderTrackingCopyWithImpl<$Res, OrderTracking>;
   @useResult
-  $Res call({OrderStatus orderStatus, DateTime updatedAt});
+  $Res call({OrderStatus orderStatus, String updatedAt});
 }
 
 /// @nodoc
@@ -62,7 +62,7 @@ class _$OrderTrackingCopyWithImpl<$Res, $Val extends OrderTracking>
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$_OrderTrackingCopyWith<$Res>
       __$$_OrderTrackingCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({OrderStatus orderStatus, DateTime updatedAt});
+  $Res call({OrderStatus orderStatus, String updatedAt});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class __$$_OrderTrackingCopyWithImpl<$Res>
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
     ));
   }
 }
@@ -117,7 +117,7 @@ class _$_OrderTracking extends _OrderTracking {
   @override
   final OrderStatus orderStatus;
   @override
-  final DateTime updatedAt;
+  final String updatedAt;
 
   @override
   String toString() {
@@ -156,7 +156,7 @@ class _$_OrderTracking extends _OrderTracking {
 abstract class _OrderTracking extends OrderTracking {
   const factory _OrderTracking(
       {required final OrderStatus orderStatus,
-      required final DateTime updatedAt}) = _$_OrderTracking;
+      required final String updatedAt}) = _$_OrderTracking;
   const _OrderTracking._() : super._();
 
   factory _OrderTracking.fromJson(Map<String, dynamic> json) =
@@ -165,7 +165,7 @@ abstract class _OrderTracking extends OrderTracking {
   @override
   OrderStatus get orderStatus;
   @override
-  DateTime get updatedAt;
+  String get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_OrderTrackingCopyWith<_$_OrderTracking> get copyWith =>

@@ -44,7 +44,7 @@ class SearchService with ErrorMixin {
           .map((doc) => Product.fromJson(doc.data() as Map<String, dynamic>))
           .toList();
     } catch (error) {
-      debugPrint('error: $error');
+      debugPrint('SearchError: $error');
       throw handleError(error);
     }
   }

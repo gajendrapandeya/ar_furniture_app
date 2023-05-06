@@ -22,13 +22,13 @@ ProductOrder _$ProductOrderFromJson(Map<String, dynamic> json) {
 mixin _$ProductOrder {
   String get orderId => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
-  List<Cart> get product => throw _privateConstructorUsedError;
+  List<Cart> get products => throw _privateConstructorUsedError;
   int get totalAmount => throw _privateConstructorUsedError;
   Address get userAddress => throw _privateConstructorUsedError;
   String? get paymentId => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  String get createdAt => throw _privateConstructorUsedError;
   List<OrderTracking> get trackings => throw _privateConstructorUsedError;
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  String get updatedAt => throw _privateConstructorUsedError;
   OrderStatus get orderStatus => throw _privateConstructorUsedError;
   ProductPaymentMethod get paymentMethod => throw _privateConstructorUsedError;
 
@@ -47,13 +47,13 @@ abstract class $ProductOrderCopyWith<$Res> {
   $Res call(
       {String orderId,
       String userId,
-      List<Cart> product,
+      List<Cart> products,
       int totalAmount,
       Address userAddress,
       String? paymentId,
-      DateTime createdAt,
+      String createdAt,
       List<OrderTracking> trackings,
-      DateTime updatedAt,
+      String updatedAt,
       OrderStatus orderStatus,
       ProductPaymentMethod paymentMethod});
 
@@ -75,7 +75,7 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
   $Res call({
     Object? orderId = null,
     Object? userId = null,
-    Object? product = null,
+    Object? products = null,
     Object? totalAmount = null,
     Object? userAddress = null,
     Object? paymentId = freezed,
@@ -94,9 +94,9 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      product: null == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
+      products: null == products
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
               as List<Cart>,
       totalAmount: null == totalAmount
           ? _value.totalAmount
@@ -113,7 +113,7 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       trackings: null == trackings
           ? _value.trackings
           : trackings // ignore: cast_nullable_to_non_nullable
@@ -121,7 +121,7 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       orderStatus: null == orderStatus
           ? _value.orderStatus
           : orderStatus // ignore: cast_nullable_to_non_nullable
@@ -151,13 +151,13 @@ abstract class _$$_OrderCopyWith<$Res> implements $ProductOrderCopyWith<$Res> {
   $Res call(
       {String orderId,
       String userId,
-      List<Cart> product,
+      List<Cart> products,
       int totalAmount,
       Address userAddress,
       String? paymentId,
-      DateTime createdAt,
+      String createdAt,
       List<OrderTracking> trackings,
-      DateTime updatedAt,
+      String updatedAt,
       OrderStatus orderStatus,
       ProductPaymentMethod paymentMethod});
 
@@ -177,7 +177,7 @@ class __$$_OrderCopyWithImpl<$Res>
   $Res call({
     Object? orderId = null,
     Object? userId = null,
-    Object? product = null,
+    Object? products = null,
     Object? totalAmount = null,
     Object? userAddress = null,
     Object? paymentId = freezed,
@@ -196,9 +196,9 @@ class __$$_OrderCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      product: null == product
-          ? _value._product
-          : product // ignore: cast_nullable_to_non_nullable
+      products: null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
               as List<Cart>,
       totalAmount: null == totalAmount
           ? _value.totalAmount
@@ -215,7 +215,7 @@ class __$$_OrderCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       trackings: null == trackings
           ? _value._trackings
           : trackings // ignore: cast_nullable_to_non_nullable
@@ -223,7 +223,7 @@ class __$$_OrderCopyWithImpl<$Res>
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       orderStatus: null == orderStatus
           ? _value.orderStatus
           : orderStatus // ignore: cast_nullable_to_non_nullable
@@ -242,7 +242,7 @@ class _$_Order extends _Order {
   const _$_Order(
       {required this.orderId,
       required this.userId,
-      required final List<Cart> product,
+      required final List<Cart> products,
       required this.totalAmount,
       required this.userAddress,
       required this.paymentId,
@@ -251,7 +251,7 @@ class _$_Order extends _Order {
       required this.updatedAt,
       required this.orderStatus,
       required this.paymentMethod})
-      : _product = product,
+      : _products = products,
         _trackings = trackings,
         super._();
 
@@ -262,12 +262,12 @@ class _$_Order extends _Order {
   final String orderId;
   @override
   final String userId;
-  final List<Cart> _product;
+  final List<Cart> _products;
   @override
-  List<Cart> get product {
-    if (_product is EqualUnmodifiableListView) return _product;
+  List<Cart> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_product);
+    return EqualUnmodifiableListView(_products);
   }
 
   @override
@@ -277,7 +277,7 @@ class _$_Order extends _Order {
   @override
   final String? paymentId;
   @override
-  final DateTime createdAt;
+  final String createdAt;
   final List<OrderTracking> _trackings;
   @override
   List<OrderTracking> get trackings {
@@ -287,7 +287,7 @@ class _$_Order extends _Order {
   }
 
   @override
-  final DateTime updatedAt;
+  final String updatedAt;
   @override
   final OrderStatus orderStatus;
   @override
@@ -295,7 +295,7 @@ class _$_Order extends _Order {
 
   @override
   String toString() {
-    return 'ProductOrder(orderId: $orderId, userId: $userId, product: $product, totalAmount: $totalAmount, userAddress: $userAddress, paymentId: $paymentId, createdAt: $createdAt, trackings: $trackings, updatedAt: $updatedAt, orderStatus: $orderStatus, paymentMethod: $paymentMethod)';
+    return 'ProductOrder(orderId: $orderId, userId: $userId, products: $products, totalAmount: $totalAmount, userAddress: $userAddress, paymentId: $paymentId, createdAt: $createdAt, trackings: $trackings, updatedAt: $updatedAt, orderStatus: $orderStatus, paymentMethod: $paymentMethod)';
   }
 
   @override
@@ -305,7 +305,7 @@ class _$_Order extends _Order {
             other is _$_Order &&
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            const DeepCollectionEquality().equals(other._product, _product) &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.totalAmount, totalAmount) ||
                 other.totalAmount == totalAmount) &&
             (identical(other.userAddress, userAddress) ||
@@ -330,7 +330,7 @@ class _$_Order extends _Order {
       runtimeType,
       orderId,
       userId,
-      const DeepCollectionEquality().hash(_product),
+      const DeepCollectionEquality().hash(_products),
       totalAmount,
       userAddress,
       paymentId,
@@ -358,13 +358,13 @@ abstract class _Order extends ProductOrder {
   const factory _Order(
       {required final String orderId,
       required final String userId,
-      required final List<Cart> product,
+      required final List<Cart> products,
       required final int totalAmount,
       required final Address userAddress,
       required final String? paymentId,
-      required final DateTime createdAt,
+      required final String createdAt,
       required final List<OrderTracking> trackings,
-      required final DateTime updatedAt,
+      required final String updatedAt,
       required final OrderStatus orderStatus,
       required final ProductPaymentMethod paymentMethod}) = _$_Order;
   const _Order._() : super._();
@@ -376,7 +376,7 @@ abstract class _Order extends ProductOrder {
   @override
   String get userId;
   @override
-  List<Cart> get product;
+  List<Cart> get products;
   @override
   int get totalAmount;
   @override
@@ -384,11 +384,11 @@ abstract class _Order extends ProductOrder {
   @override
   String? get paymentId;
   @override
-  DateTime get createdAt;
+  String get createdAt;
   @override
   List<OrderTracking> get trackings;
   @override
-  DateTime get updatedAt;
+  String get updatedAt;
   @override
   OrderStatus get orderStatus;
   @override

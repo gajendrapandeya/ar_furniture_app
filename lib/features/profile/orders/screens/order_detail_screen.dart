@@ -37,13 +37,13 @@ class OrderDetailScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ...order.product
+              ...order.products
                   .mapIndexed(
                     (index, product) => Column(
                       children: [
                         _buildProductItem(product, context),
-                        if (order.product.length > 1 &&
-                            index != order.product.length - 1) ...[
+                        if (order.products.length > 1 &&
+                            index != order.products.length - 1) ...[
                           VerticalSpacer.s,
                           Divider(
                             color: Colors.grey.shade400,

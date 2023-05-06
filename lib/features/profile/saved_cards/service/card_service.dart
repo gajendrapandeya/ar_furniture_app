@@ -21,7 +21,6 @@ class CardService with ErrorMixin {
   Future<void> saveCard(
       {required CardDetail cardDetail, required String userId}) async {
     try {
-      debugPrint('card: $cardDetail');
       await _usersCollection
           .doc(userId)
           .collection(FirebaseConstants.cardsCollection)

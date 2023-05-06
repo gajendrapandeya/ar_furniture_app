@@ -1,6 +1,5 @@
 import 'package:ar_furniture_app/features/search/controller/search_state.dart';
 import 'package:ar_furniture_app/features/search/service/search_service.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final searchProvider =
@@ -26,7 +25,6 @@ class SearchNotifier extends StateNotifier<SearchState> {
         searchQuery: searchQuery,
         filterType: filterType,
       );
-      debugPrint('resutl: $result');
       state = SearchStateSuccess(products: result);
     } catch (error) {
       state = SearchState.error(

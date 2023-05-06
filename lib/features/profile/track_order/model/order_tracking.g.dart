@@ -9,13 +9,13 @@ part of 'order_tracking.dart';
 _$_OrderTracking _$$_OrderTrackingFromJson(Map<String, dynamic> json) =>
     _$_OrderTracking(
       orderStatus: $enumDecode(_$OrderStatusEnumMap, json['orderStatus']),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      updatedAt: json['updatedAt'] as String,
     );
 
 Map<String, dynamic> _$$_OrderTrackingToJson(_$_OrderTracking instance) =>
     <String, dynamic>{
       'orderStatus': _$OrderStatusEnumMap[instance.orderStatus]!,
-      'updatedAt': instance.updatedAt.toIso8601String(),
+      'updatedAt': instance.updatedAt,
     };
 
 const _$OrderStatusEnumMap = {

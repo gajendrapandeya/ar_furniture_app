@@ -9,10 +9,10 @@ import 'package:ar_furniture_app/core/widgets/custom_elevated_button.dart';
 import 'package:ar_furniture_app/core/widgets/image_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/cart/controller/cart_item_controller.dart';
-import 'package:ar_furniture_app/features/cart/controller/cart_item_state.dart';
 import 'package:ar_furniture_app/features/cart/model/cart.dart';
 import 'package:ar_furniture_app/features/product/core/model/product/product.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/add_to_wishlist_button.dart';
+import 'package:ar_furniture_app/features/recommendation/screens/recommended_product_list_view.dart';
 import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -201,7 +201,16 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                         fontWeight: FontWeight.w300,
                       ),
                 )
-              ]
+              ],
+              VerticalSpacer.exl,
+              Text(
+                'Recommended Products',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+              VerticalSpacer.l,
+              RecommendedProductListView(productId: widget.product.id),
             ],
           ),
         )
@@ -368,12 +377,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                     )),
               ),
             )
-          else if (ref.watch(cartItemProvider) is CartItemStateLoading)
-            Container(
-              width: 30,
-              height: 30,
-              color: Colors.green,
-            ),
         ],
       ),
     );
@@ -385,7 +388,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
             minimumSize: MaterialStateProperty.all(
               const Size(double.infinity, 50.0),
             ),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+            backgroundColor: MaterialStateProperty.all(LightColor.platianGreen),
             side: MaterialStateProperty.all(
               const BorderSide(
                 color: LightColor.platianGreen,
@@ -396,17 +399,18 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
       onPressed: () {
         Navigator.of(context).pushNamed(
           RouteConstants.arViewScreenRoute,
-          arguments: widget.product.imageUrls.first,
+          arguments: widget.product,
         );
       },
       icon: const Icon(
         MdiIcons.scanHelper,
         size: 22,
+        color: Colors.white,
       ),
       label: Text(
         'Live View',
         style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              color: LightColor.platianGreen,
+              color: Colors.white,
             ),
       ),
     );

@@ -62,7 +62,7 @@ class AppRouter {
       case RouteConstants.arViewScreenRoute:
         return MaterialPageRoute(
           builder: (_) => ArViewScreen(
-            imageUrl: settings.arguments as String,
+            product: settings.arguments as Product,
           ),
         );
       case RouteConstants.cartRoute:
