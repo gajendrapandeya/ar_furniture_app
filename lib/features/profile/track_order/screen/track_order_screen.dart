@@ -55,7 +55,7 @@ class TrackOrderScreen extends ConsumerWidget {
               ),
               VerticalSpacer.xs,
               Text(
-                'Last Updated: ${order.updatedAt.timeAgo()}',
+                'Last Updated: ${DateTime.parse(order.updatedAt).timeAgo()}',
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       color: Colors.grey.shade500,
                     ),

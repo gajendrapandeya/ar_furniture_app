@@ -32,13 +32,13 @@ class ProductOrder with _$ProductOrder {
   const factory ProductOrder({
     required String orderId,
     required String userId,
-    required List<Cart> product,
+    required List<Cart> products,
     required int totalAmount,
     required Address userAddress,
     required String? paymentId,
-    required DateTime createdAt,
+    required String createdAt,
     required List<OrderTracking> trackings,
-    required DateTime updatedAt,
+    required String updatedAt,
     required OrderStatus orderStatus,
     required ProductPaymentMethod paymentMethod,
   }) = _Order;

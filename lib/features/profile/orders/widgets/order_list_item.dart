@@ -5,7 +5,6 @@ import 'package:ar_furniture_app/core/widgets/loading_widget.dart';
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:ar_furniture_app/features/cart/model/cart.dart';
 import 'package:ar_furniture_app/features/profile/orders/model/product_order.dart';
-import 'package:ar_furniture_app/features/profile/track_order/model/order_tracking.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -37,11 +36,11 @@ class OrderListItem extends StatelessWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: ((context, index) =>
-                  _buildProductItem(order.product[index], context)),
+                  _buildProductItem(order.products[index], context)),
               separatorBuilder: ((context, index) => Divider(
                     color: Colors.grey.shade400,
                   )),
-              itemCount: order.product.length,
+              itemCount: order.products.length,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -56,28 +55,7 @@ class OrderListItem extends StatelessWidget {
                         onBtnPressed: () {
                           Navigator.of(context).pushNamed(
                             RouteConstants.trackOrderScreenRoute,
-                            arguments: order.copyWith(
-                              trackings: [
-                                OrderTracking(
-                                  orderStatus: OrderStatus.ordered,
-                                  updatedAt: order.updatedAt.subtract(
-                                    const Duration(days: 2),
-                                  ),
-                                ),
-                                OrderTracking(
-                                  orderStatus: OrderStatus.inProcess,
-                                  updatedAt: order.updatedAt.subtract(
-                                    const Duration(days: 1),
-                                  ),
-                                ),
-                                OrderTracking(
-                                  orderStatus: OrderStatus.inTransit,
-                                  updatedAt: order.updatedAt.subtract(
-                                    const Duration(hours: 16),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            arguments: order.trackings,
                           );
                         },
                         buttonText: 'Track Order',

@@ -18,6 +18,7 @@ class OrderService with ErrorMixin {
   CollectionReference get _orderCollection =>
       _firestore.collection(FirebaseConstants.orderCollection);
 
+// Assuming that `order` is a `ProductOrder` object with `createdAt` and `updatedAt` fields of type `DateTime`.
   Future<void> createOrder({
     required ProductOrder order,
   }) async {

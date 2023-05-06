@@ -122,17 +122,17 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
           order: ProductOrder(
             orderId: const Uuid().v1(),
             userId: ref.read(userNotifierProvider)!.uid,
-            product: widget.cartProducts,
+            products: widget.cartProducts,
             totalAmount: ref.read(cartAmountProvider).total,
             userAddress: checkoutProvider.selectedAddress!,
             paymentId: checkoutProvider.paymentId,
-            createdAt: DateTime.now(),
-            updatedAt: DateTime.now(),
+            createdAt: DateTime.now().toString(),
+            updatedAt: DateTime.now().toString(),
             orderStatus: OrderStatus.ordered,
             trackings: [
               OrderTracking(
                 orderStatus: OrderStatus.ordered,
-                updatedAt: DateTime.now(),
+                updatedAt: DateTime.now().toString(),
               )
             ],
             paymentMethod: checkoutProvider.paymentMethod,

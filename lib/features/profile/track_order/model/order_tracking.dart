@@ -12,7 +12,7 @@ class OrderTracking with _$OrderTracking {
   const OrderTracking._();
   const factory OrderTracking({
     required OrderStatus orderStatus,
-    required DateTime updatedAt,
+    required String updatedAt,
   }) = _OrderTracking;
 
   factory OrderTracking.fromJson(Map<String, dynamic> json) =>
@@ -49,5 +49,5 @@ class OrderTracking with _$OrderTracking {
     }
   }
 
-  String get formattedUpdatedAt => updatedAt.getFormattedDate();
+  String get formattedUpdatedAt => DateTime.parse(updatedAt).getFormattedDate();
 }
