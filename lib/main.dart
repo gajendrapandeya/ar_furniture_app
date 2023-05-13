@@ -5,6 +5,8 @@ import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:ar_furniture_app/core/controllers/theme_controller.dart';
 import 'package:ar_furniture_app/core/providers/storage_provider.dart';
 import 'package:ar_furniture_app/core/router/app_router.dart';
+import 'package:ar_furniture_app/core/utils/firebase_messaging_helper.dart';
+import 'package:ar_furniture_app/core/utils/notification_helper.dart';
 import 'package:ar_furniture_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +39,9 @@ void main() async {
 
   //Load our .env file that contains our Stripe Secret key
   await dotenv.load(fileName: "assets/.env");
+
+  FirebaseMessageHelper.init();
+  NotificationsHelper.init();
 
   runApp(
     ProviderScope(

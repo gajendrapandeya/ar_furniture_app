@@ -2,6 +2,7 @@ import 'package:ar_furniture_app/core/constants/firebase_constants.dart';
 import 'package:ar_furniture_app/core/utils/error_mixin.dart';
 import 'package:ar_furniture_app/features/product/core/model/product/product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final productServiceProvider = Provider(
@@ -27,6 +28,7 @@ class ProductService with ErrorMixin {
         return Product.fromJson(doc.data() as Map<String, dynamic>);
       }).toList();
     } catch (error) {
+      debugPrint('prdouctFetchError: $error');
       throw handleError(error);
     }
   }

@@ -55,7 +55,7 @@ class OrderListItem extends StatelessWidget {
                         onBtnPressed: () {
                           Navigator.of(context).pushNamed(
                             RouteConstants.trackOrderScreenRoute,
-                            arguments: order.trackings,
+                            arguments: order,
                           );
                         },
                         buttonText: 'Track Order',
