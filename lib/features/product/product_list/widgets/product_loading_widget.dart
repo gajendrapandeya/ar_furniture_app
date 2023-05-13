@@ -34,9 +34,9 @@ class ProductsLoadingWidget extends StatelessWidget {
           radius: 8,
         ),
         VerticalSpacer.l,
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             ShimmerSkeleton(
               height: 10,
               width: 80,
@@ -50,9 +50,9 @@ class ProductsLoadingWidget extends StatelessWidget {
           ],
         ),
         VerticalSpacer.l,
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             ShimmerSkeleton(
               height: 10,
               width: 80,

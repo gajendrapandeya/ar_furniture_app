@@ -2,7 +2,7 @@ import 'package:ar_furniture_app/core/constants/route_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ProductListAppBar extends StatelessWidget with PreferredSizeWidget {
+class ProductListAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ProductListAppBar({super.key});
 
   @override

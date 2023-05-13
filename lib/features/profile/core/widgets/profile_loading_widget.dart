@@ -11,9 +11,9 @@ class ProfileLoadingWidget extends StatelessWidget {
     return ShimmerLoader(
       child: SizedBox(
           height: MediaQuery.of(context).size.height * .3,
-          child: Column(
+          child: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Align(
                 alignment: Alignment.center,
                 child: ShimmerSkeleton.circular(

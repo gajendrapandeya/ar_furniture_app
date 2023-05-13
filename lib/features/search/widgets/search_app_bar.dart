@@ -1,9 +1,9 @@
-import 'package:ar_furniture_app/core/widgets/search_bar.dart';
+import 'package:ar_furniture_app/core/widgets/search_bar.dart' as search_bar;
 import 'package:ar_furniture_app/core/widgets/spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
+class SearchAppBar extends StatelessWidget implements PreferredSizeWidget {
   const SearchAppBar({
     super.key,
     required this.onChanged,
@@ -39,7 +39,7 @@ class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
             ),
             HorizontalSpacer.l,
             Expanded(
-              child: SearchBar(
+              child: search_bar.SearchBar(
                 hintText: 'Search for a product',
                 onFieldChanged: (userInput) => onChanged(userInput),
                 searchBackgroundColor: Colors.grey.shade100,
