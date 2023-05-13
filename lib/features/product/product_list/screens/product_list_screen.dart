@@ -5,9 +5,9 @@ import 'package:ar_furniture_app/features/category/controller/category_state.dar
 import 'package:ar_furniture_app/features/product/core/controller/product_controller.dart';
 import 'package:ar_furniture_app/features/product/core/controller/product_state.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/categories_list_widget.dart';
-import 'package:ar_furniture_app/features/product/product_list/widgets/hot_deal_widget.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/product_list_app_bar.dart';
 import 'package:ar_furniture_app/features/product/product_list/widgets/product_list_widget.dart';
+import 'package:ar_furniture_app/features/product/trending_product/widgets/trending_product_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -52,16 +52,16 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
             children: [
               VerticalSpacer.l,
               Text(
-                'Find The\nBest Furniture',
+                '#Trending Products',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
                     ),
               ),
-              VerticalSpacer.l,
+              VerticalSpacer.m,
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.18,
-                child: const HotDealWidget(),
+                child: const TrendingProductWidget(),
               ),
               VerticalSpacer.m,
               Row(
